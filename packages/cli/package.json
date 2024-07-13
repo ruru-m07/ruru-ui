@@ -1,11 +1,12 @@
 {
-  "name": "cli",
+  "name": "ruru-ui",
   "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "echo 'Add dev script here'",
-    "build": "echo 'Add build script here'",
-    "test": "echo 'Add test script here'",
-    "lint": "echo 'Add lint script here'"
+  "description": "A CLI tool for Ruru UI components",
+  "main": "index.js",
+  "bin": {
+    "ruru-ui": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^8.3.0"
   }
 }
