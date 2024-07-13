@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "A CLI tool for Ruru UI components",
   "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "bin": {
     "ruru-ui": "./index.js"
   },
