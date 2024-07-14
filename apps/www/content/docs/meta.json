@@ -1,0 +1,18 @@
+{
+  "root": true,
+  "pages": [
+    "---Getting Started---",
+    "index",
+    "installation",
+    "components-json",
+    "theming",
+    "dark-mode",
+    "cli",
+    "typography",
+    "changelog",
+    "---Components---",
+    "...components",
+    "---Others---",
+    "[Github](https://github.com/ruru-m07/ruru-ui/)"
+  ]
+}
