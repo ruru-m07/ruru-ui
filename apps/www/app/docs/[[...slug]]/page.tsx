@@ -8,7 +8,7 @@ export default async function Page({
 }: {
   params: { slug?: string[] };
 }) {
-  const page = getPage(params.slug);
+  const page = getPage(params.slug ?? []);
 
   if (page == null) {
     notFound();
@@ -21,7 +21,7 @@ export default async function Page({
       <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
         {page.data.title}
       </h1>
-      <p className="mb-8 text-lg text-muted-foreground">
+      <p className="mb-6 text-sm text-muted-foreground">
         {page.data.description}
       </p>
       <DocsBody>
@@ -38,7 +38,7 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: { params: { slug?: string[] } }) {
-  const page = getPage(params.slug);
+  const page = getPage(params.slug ?? []);
 
   if (page == null) notFound();
 

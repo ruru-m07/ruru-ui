@@ -39,6 +39,7 @@ export const baseOptions: BaseLayoutProps = {
 // docs layout configuration
 export const docsOptions: DocsLayoutProps = {
   ...baseOptions,
+  // @ts-expect-error
   tree: pageTree,
   nav: {
     ...baseOptions.nav,

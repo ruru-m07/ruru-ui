@@ -8,7 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ruru/ui": "workspace:*",
     "fumadocs-core": "12.4.2",
+    "fumadocs-docgen": "^1.1.0",
     "fumadocs-mdx": "8.2.33",
     "fumadocs-ui": "12.4.2",
     "next": "^14.2.4",
@@ -17,6 +19,8 @@
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
+    "@ruru/eslint-config": "workspace:*",
+    "@ruru/typescript-config": "workspace:*",
     "@types/mdx": "^2.0.13",
     "@types/node": "20.14.10",
     "@types/react": "^18.3.3",
