@@ -1,11 +1,8 @@
 name: Deploy CLI
 
 on:
-  push:
-    paths:
-      - 'packages/ui/**'
-    branches:
-      - main
+  release:
+    types: [created]
 
 jobs:
   deploy:
