@@ -3,7 +3,7 @@ name: Deploy CLI
 on:
   push:
     paths:
-      - 'packages/cli/**'
+      - 'packages/ui/**'
     branches:
       - main
 
@@ -24,7 +24,7 @@ jobs:
       run: npm install
 
     - name: Change directory to CLI package
-      run: cd packages/cli
+      run: cd packages/ui
 
     - name: Publish CLI package
       run: npm publish
