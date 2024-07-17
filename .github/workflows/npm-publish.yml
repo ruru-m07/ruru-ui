@@ -1,32 +1,64 @@
-name: Deploy CLI
+name: CI
 
 on:
   push:
-    paths:
-      - 'packages/cli/**'
-    branches:
+    branches: 
       - main
+  pull_request:
+    branches: 
+      - main
+  release:
+    types: [created]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-    - name: Change directory to CLI package
-      run: cd packages/cli
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Publish CLI package
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Run tests
+        run: pnpm --filter packages/ui test
+
+      - name: Build package
+        run: pnpm --filter packages/ui build
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'release'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build package
+        run: pnpm --filter packages/ui build
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm --filter packages/ui publish --access public
