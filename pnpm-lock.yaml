@@ -20,9 +20,6 @@ importers:
 
   apps/example:
     dependencies:
-      '@ruru/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
       next:
         specifier: 14.2.5
         version: 14.2.5(react-dom@18.3.1)(react@18.3.1)
@@ -32,6 +29,9 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
+      ruru-ui:
+        specifier: workspace:*
+        version: link:../../packages/ui
     devDependencies:
       '@ruru/typescript-config':
         specifier: workspace:*
@@ -66,9 +66,6 @@ importers:
 
   apps/www:
     dependencies:
-      '@ruru/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
       fumadocs-core:
         specifier: 12.4.2
         version: 12.4.2(@types/react@18.3.3)(next@14.2.5)(react-dom@18.3.1)(react@18.3.1)
@@ -90,6 +87,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      ruru-ui:
+        specifier: workspace:*
+        version: link:../../packages/ui
       tailwind-merge:
         specifier: ^2.4.0
         version: 2.4.0

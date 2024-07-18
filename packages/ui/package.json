@@ -1,6 +1,6 @@
 {
-  "name": "@ruru/ui",
-  "version": "v0.0.0",
+  "name": "ruru-ui",
+  "version": "v0.0.0-beta.1",
   "description": "Ruru UI Components",
   "publishConfig": {
     "access": "public"
@@ -32,11 +32,14 @@
     "./style.css": "./dist/style.css",
     ".": "./src/index.ts"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "build": "pnpm build:layout && pnpm build:tailwind",
+    "build": "pnpm build:layout && pnpm build:tailwind && pnpm build:ts",
     "build:layout": "tsup",
-    "build:tailwind": "postcss css/*.css --dir dist"
+    "build:tailwind": "postcss css/*.css --dir dist",
+    "build:ts": "tsc"
   },
   "devDependencies": {
     "@ruru/eslint-config": "workspace:*",

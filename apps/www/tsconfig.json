@@ -19,7 +19,7 @@
     "incremental": true,
     "paths": {
       "@/*": ["./*"],
-      "@ruru/ui": ["../../packages/ui/src"]
+      "@ruru-ui": ["../../packages/ui/dist"],
     },
     "plugins": [
       {

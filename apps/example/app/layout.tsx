@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { RuruProvider } from "@ruru/ui";
-import "@ruru/ui/style.css";
+import { RuruProvider } from "ruru-ui";
+import "ruru-ui/style.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
