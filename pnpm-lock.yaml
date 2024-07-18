@@ -149,6 +149,8 @@ importers:
         specifier: ^5.3.3
         version: 5.5.3
 
+  packages/tsconfig: {}
+
   packages/typescript-config: {}
 
   packages/ui:
@@ -226,6 +228,9 @@ importers:
       tailwindcss:
         specifier: ^3.4.4
         version: 3.4.4
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
       typescript:
         specifier: ^5.3.3
         version: 5.5.3

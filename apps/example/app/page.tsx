@@ -1,4 +1,4 @@
-import { Button } from 'ruru-ui';
+import Button from 'ruru-ui/components/button';
 
 export default function Home() {
   return (

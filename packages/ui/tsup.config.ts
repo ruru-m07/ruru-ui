@@ -20,6 +20,7 @@ const exportedComponents = [
   'dialog/search-algolia',
   'layout/root-toggle',
   'layout/language-toggle',
+  'button',
 ];
 
 export default defineConfig([

@@ -1,8 +1,0 @@
-{
-  "extends": "@ruru/typescript-config/react-library.json",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
-  "include": ["src", "turbo", "./tailwind.config.js", "./postcss.config.js", "./tsup.config.ts"],
-  "exclude": ["node_modules", "dist"]
-}
