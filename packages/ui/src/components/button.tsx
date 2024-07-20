@@ -1,3 +1,5 @@
+"use client";
+
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
@@ -9,10 +11,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-primary hover:bg-primary/85 text-primary-foreground shadow hover:shadow-md",
-        secondary:
-          "bg-primary-foreground dark:hover:bg-[#202020]  hover:bg-[#f3f3f3] border-[1.5px] border-input",
+        default: "bg-primary hover:bg-primary/85 text-primary-foreground shadow hover:shadow-md",
+        secondary: "bg-primary-foreground dark:hover:bg-[#202020] hover:bg-[#f3f3f3] border-[1.5px] border-input",
         tertiary: "dark:hover:bg-[#202020] hover:bg-[#f3f3f3] text-primary",
         error: "bg-destructive hover:bg-destructive/75",
         warning: "bg-warning hover:bg-[#d27504] text-primary-foreground",
@@ -37,45 +37,130 @@ export interface ButtonProps
       "prefix" | "suffix"
     >,
     VariantProps<typeof buttonVariants> {
+  /**
+   * Render as child component.
+   * @default false
+   * @type {boolean}
+   *
+   * @example
+   * ```tsx
+   * <Button asChild>Upload</Button>
+   * ```
+   */
   asChild?: boolean;
+
+  /**
+   * Element to render before the button text.
+   * @type {React.ReactNode}
+   * @default undefined
+   *
+   * @example
+   * ```tsx
+   * <Button prefix={<ArrowLeftIcon />}>Upload</Button>
+   * ```
+   */
   prefix?: React.ReactNode;
+
+  /**
+   * Element to render after the button text.
+   * @type {React.ReactNode}
+   * @default undefined
+   *
+   * @example
+   * ```tsx
+   * <Button suffix={<ArrowRightIcon />}>Upload</Button>
+   * ```
+   */
   suffix?: React.ReactNode;
+
+  /**
+   * Disable the button.
+   * @type {boolean}
+   * @default false
+   *
+   * @example
+   * ```tsx
+   * <Button disabled>Disabled</Button>
+   * ```
+   */
   disabled?: boolean;
+
+  /**
+   * Show loading spinner inside the button.
+   * @type {boolean}
+   * @default false
+   *
+   * @example
+   * ```tsx
+   * <Button loading>Loading</Button>
+   * ```
+   */
   loading?: boolean;
 }
 
+/**
+ * A customizable button component with different variants and sizes.
+ *
+ * @param {string} className - Additional class names for the button.
+ * @param {"default" | "secondary" | "tertiary" | "error" | "warning"} variant - Button style variant.
+ * @param {"default" | "small" | "large" | "icon"} size - Button size variant.
+ * @param {boolean} asChild - Render as child component.
+ * @param {React.ReactNode} prefix - Element to render before the button text.
+ * @param {React.ReactNode} suffix - Element to render after the button text.
+ * @param {boolean} disabled - Disable the button.
+ * @param {boolean} loading - Show loading spinner inside the button.
+ * @param {React.Ref<HTMLButtonElement>} ref - Forwarded ref.
+ *
+ * @example
+ * ```tsx
+ * <Button variant="secondary" size="large" prefix={<ArrowLeftIcon />} suffix={<ArrowRightIcon />}>
+ *   Click Me
+ * </Button>
+ * ```
+ */
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, asChild = false, prefix, suffix, disabled = false, loading, ...props },
+    {
+      className,
+      variant = "default",
+      size = "default",
+      asChild = false,
+      prefix,
+      suffix,
+      disabled = false,
+      loading = false,
+      ...props
+    },
     ref
   ) => {
     const Comp = asChild ? Slot : "button";
 
     return (
-      <div className={disabled ? "cursor-not-allowed" : undefined}>
-        <Comp
-          className={cn(buttonVariants({ variant, size, className }), disabled && "dark:bg-[#202020] bg-[#f3f3f3]")}
-          ref={ref}
-          disabled={disabled}
-          {...props}
-        >
-          {loading && (
-            <Spinner className="mr-2" />
-          )}
-          {prefix && (
-            <span className="mr-2 flex items-center justify-center">
-              {prefix}
-            </span>
-          )}
-          {props.children}
-          {suffix && (
-            <span className="ml-2 flex items-center justify-center">
-              {suffix}
-            </span>
-          )}
-        </Comp>
-      </div>
+      <Comp
+        className={cn(
+          buttonVariants({ variant, size }),
+          className,
+          disabled && "dark:bg-[#202020] bg-[#f3f3f3]"
+        )}
+        ref={ref}
+        disabled={disabled}
+        {...props}
+      >
+        {loading && <Spinner className="mr-2" />}
+        {prefix && (
+          <span className="mr-2 flex items-center justify-center">
+            {prefix}
+          </span>
+        )}
+        {props.children}
+        {suffix && (
+          <span className="ml-2 flex items-center justify-center">
+            {suffix}
+          </span>
+        )}
+      </Comp>
     );
   }
 );
+
 Button.displayName = "Button";
