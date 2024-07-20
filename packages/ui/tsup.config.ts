@@ -25,12 +25,13 @@ const exportedComponents = [
 
 export default defineConfig([
   {
-    entry: [
-      `./src/components/{${exportedComponents.join(',')}}.tsx`,
-      './src/{i18n,home-layout,layout,page,provider,mdx,tailwind-plugin}.{ts,tsx}',
-      './src/twoslash/popup.tsx',
-      './src/*.client.tsx',
-    ],
+    // entry: [
+    //   `./src/components/{${exportedComponents.join(',')}}.tsx`,
+    //   './src/{i18n,home-layout,layout,page,provider,mdx,tailwind-plugin}.{ts,tsx}',
+    //   './src/twoslash/popup.tsx',
+    //   './src/*.client.tsx',
+    // ],
+    entry: ["./src"],
     external: ['server-only', '../../dist/image-zoom.css', 'tailwindcss'],
     format: 'esm',
     dts: true,
@@ -45,3 +46,4 @@ export default defineConfig([
     target: 'node18',
   },
 ]);
+
