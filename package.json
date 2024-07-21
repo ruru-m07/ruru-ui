@@ -1,5 +1,5 @@
 {
-  "name": "ruru-ui",
+  "name": "root",
   "private": true,
   "scripts": {
     "build": "turbo build",

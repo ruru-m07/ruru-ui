@@ -1,10 +1,11 @@
 {
-  "name": "@ruru/ui",
-  "version": "v0.0.0",
+  "name": "ruru-ui",
+  "version": "1.0.0-beta.1",
   "description": "Ruru UI Components",
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "license": "MIT",
   "author": {
     "name": "ruru",
@@ -25,22 +26,49 @@
     "radix-ui",
     "ruru-ui"
   ],
-  "bin": {
-    "ruru-ui": "./dist/index.js"
-  },
   "exports": {
     "./style.css": "./dist/style.css",
-    ".": "./src/index.ts"
+    "./twoslash.css": "./dist/twoslash.css",
+    "./image-zoom.css": "./dist/image-zoom.css",
+    "./tailwind-plugin": {
+      "import": "./dist/tailwind-plugin.js",
+      "require": "./dist/tailwind-plugin.cjs",
+      "types": "./dist/tailwind-plugin.d.ts"
+    },
+    "./components/*": {
+      "import": "./dist/components/*.js",
+      "types": "./dist/components/*.d.ts"
+    },
+    "./provider": {
+      "import": "./dist/provider/index.js",
+      "types": "./dist/provider/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "tailwind-plugin": [
+        "./dist/tailwind-plugin.d.ts"
+      ],
+      "components/*": [
+        "./dist/components/*.d.ts"
+      ]
+    }
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
     "build": "pnpm build:layout && pnpm build:tailwind",
     "build:layout": "tsup",
-    "build:tailwind": "postcss css/*.css --dir dist"
+    "build:tailwind": "postcss css/*.css --dir dist",
+    "clean": "rimraf dist",
+    "dev": "concurrently \"pnpm dev:layout\" \"pnpm dev:tailwind\"",
+    "dev:layout": "tsup --watch",
+    "dev:tailwind": "postcss css/*.css --dir dist --watch",
+    "lint": "eslint .",
+    "types:check": "tsc --noEmit"
   },
   "devDependencies": {
     "@ruru/eslint-config": "workspace:*",
     "@ruru/typescript-config": "workspace:*",
+    "tsconfig": "workspace:*",
     "@turbo/gen": "^1.12.4",
     "@types/eslint": "^8.56.5",
     "@types/node": "^20.11.24",
@@ -49,6 +77,8 @@
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "postcss": "^8.4.39",
+    "postcss-cli": "^11.0.0",
+    "postcss-lightningcss": "^1.0.0",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.3.3"
   },
@@ -60,8 +90,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "next-themes": "^0.3.0",
-    "postcss-cli": "^11.0.0",
-    "postcss-lightningcss": "^1.0.0",
     "react": "^18.2.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",

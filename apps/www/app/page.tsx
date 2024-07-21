@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "@ruru/ui";
 
 export default function HomePage() {
   return (

@@ -13,22 +13,22 @@ First, you'll need to install **ruru UI** and its peer dependencies. You can do 
 <Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
   <Tab value="npm">
     ```bash
-    npm install @ruru/ui
+    npm install ruru-ui
     ```
   </Tab>
   <Tab value="pnpm">
     ```bash
-    pnpm install @ruru/ui
+    pnpm install ruru-ui
     ```
   </Tab>
   <Tab value="yarn">
     ```bash
-    yarn add @ruru/ui
+    yarn add ruru-ui
     ```
   </Tab>
   <Tab value="bun">
     ```bash
-    bun add @ruru/ui
+    bun add ruru-ui
     ```
   </Tab>
 </Tabs>
@@ -38,7 +38,7 @@ First, you'll need to install **ruru UI** and its peer dependencies. You can do 
 Next, you'll need to import **ruru UI**'s styles into your project. You can do this by including the following line in your main stylesheet:
 
 ```tsx title="layout.tsx"
-import "@ruru/ui/style.css";
+import "ruru-ui/style.css";
 ```
 
 ## Usage
@@ -46,7 +46,7 @@ import "@ruru/ui/style.css";
 Now that you've installed **ruru UI** and imported its styles, you can start using the components in your project. Here's an example of how you can use a button component:
 
 ```tsx title="App.tsx"
-import { Button } from "@ruru/ui";
+import { Button } from "ruru-ui";
 
 function App() {
   return <Button>Click me</Button>;
