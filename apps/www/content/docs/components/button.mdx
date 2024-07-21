@@ -4,4 +4,310 @@ description: Displays a button or a component that looks like a button.
 preview: button
 ---
 
-### SOON
+import { Button } from "ruru-ui/components/button";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ChevronRightIcon,
+} from "@radix-ui/react-icons";
+import Link from "next/link";
+
+## Installation
+
+---
+
+```tsx
+import { Button } from "ruru-ui/components/button";
+```
+
+## Usage
+
+---
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Button>Click me</Button>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Button } from "ruru-ui/components/button";
+
+    export function ButtonDemo() {
+      return (
+          <Button>Button</Button>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+## Link
+
+---
+
+You can use the `buttonVariants` helper to create a link that looks like a button.
+
+```tsx
+import { buttonVariants } from "ruru-ui/components/button";
+```
+
+```tsx
+<Link className={buttonVariants({ variant: "secondary" })}>Click here</Link>
+```
+
+Alternatively, you can set the `asChild` parameter and nest the link component.
+
+```tsx
+<Button asChild>
+  <Link href="/login">Login</Link>
+</Button>
+```
+
+## Examples
+
+---
+
+### Variants
+
+The `Button` component is like a chameleon, it can change its appearance to match different moods and situations. It's like having a button for every occasion!
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+    <Button> Default </Button>
+    <Button variant="secondary"> Secondary </Button>
+    <Button variant="tertiary"> Tertiary </Button>
+    <Button variant="error"> Error </Button>
+    <Button variant="warning"> Warning </Button>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Button } from "ruru-ui/components/button";
+
+    export function ButtonDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <Button> Default </Button>
+            <Button variant="secondary"> Secondary </Button>
+            <Button variant="tertiary"> Tertiary </Button>
+            <Button variant="error"> Error </Button>
+            <Button variant="warning"> Warning </Button>
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+To make your button stand out from the crowd, you can choose from a variety of variants. Each variant has its own unique style and personality. Here are some of the available variants:
+
+| Variant       | Description                                                                                                                                                                    |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Default**   | The classic button that never goes out of style. It's like your favorite pair of jeans, always reliable and comfortable.                                                       |
+| **Secondary** | This variant is like the sidekick to the default button. It adds a touch of flair and excitement, without stealing the spotlight.                                              |
+| **Tertiary**  | If you're looking for a more subtle and understated button, the tertiary variant is perfect for you. It's like a whisper in a crowded room, quietly making its presence known. |
+| **Error**     | Need to grab someone's attention? The error variant is here to help. It's like a fire alarm, warning everyone that something important is happening.                           |
+| **Warning**   | This variant is like a traffic light, cautioning you to proceed with care. It's perfect for those moments when you need to take a step back and think twice.                   |
+
+So go ahead, unleash your creativity and choose the perfect variant for your button. Your users will thank you for it!
+
+### Sizes
+
+The `Button` component comes in a variety of sizes to suit your needs. Whether you want a small button for a subtle touch or a large button that commands attention, we've got you covered!
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+    <Button size="small"> Small </Button>
+    <Button> Default </Button>
+    <Button size="large"> Large </Button>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Button } from "ruru-ui/components/button";
+
+    export function ButtonDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <Button size="small"> Small </Button>
+            <Button> Default </Button>
+            <Button size="large"> Large </Button>
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+Here are the available sizes for the `Button` component:
+
+| Size        | Description                                                                                                                                                                                 |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Small**   | This size is perfect for when you need a button that's subtle and unobtrusive. It's like a whisper in a crowded room, quietly making its presence known.                                    |
+| **Default** | The classic size that never goes out of style. It's like your favorite pair of jeans, always reliable and comfortable.                                                                      |
+| **Large**   | If you're looking for a button that commands attention, the large size is perfect for you. It's like a spotlight, shining brightly and drawing everyone's gaze.                             |
+| **Sizes**   | The `Button` component comes in a variety of sizes to suit your needs. Whether you want a small button for a subtle touch or a large button that commands attention, we've got you covered! |
+
+So go ahead, choose the perfect size for your button and make a statement that can't be ignored!
+
+### Prefix and suffix
+
+The `Button` component allows you to add a prefix and suffix to your button. This is perfect for when you need to add a little extra flair or information to your button.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+    <Button prefix={<ArrowLeftIcon />}>Upload</Button>
+    <Button prefix={<ArrowLeftIcon />} suffix={<ArrowRightIcon />}>
+        Upload
+    </Button>
+    <Button suffix={<ArrowRightIcon />}>Upload</Button>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Button } from "ruru-ui/components/button";
+    import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
+    
+    export function ButtonDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <Button prefix={<ArrowLeftIcon />}>Upload</Button>
+            <Button prefix={<ArrowLeftIcon />} suffix={<ArrowRightIcon />}>
+                Upload
+            </Button>
+            <Button suffix={<ArrowRightIcon />}>Upload</Button>
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+You can add a prefix to your button by passing the `prefix` prop. This is perfect for when you need to add an icon or other visual element to your button. You can also add a suffix to your button by passing the `suffix` prop. This is perfect for when you need to add an arrow or other indicator to your button.
+
+| Name       | Type      | Default | Description                           |
+| ---------- | --------- | ------- | ------------------------------------- |
+| **prefix** | ReactNode | null    | The prefix to add to brfore children. |
+| **suffix** | ReactNode | null    | The suffix to add to after children   |
+
+So go ahead, add a prefix and suffix to your button and make it stand out from the crowd!
+
+### Loading
+
+The `Button` component allows you to show a loading spinner when the button is in a loading state. This is perfect for when you need to indicate to the user that something is happening in the background.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+     <Button loading variant={"secondary"} disabled size={"small"}>
+        default
+    </Button>
+    <Button loading variant={"secondary"} disabled>
+        default
+    </Button>
+    <Button loading variant={"secondary"} disabled size={"large"}>
+        default
+    </Button>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Button } from "ruru-ui/components/button";
+
+    export function ButtonDemo() {
+      return (
+        <Button loading variant={"secondary"} disabled size={"small"}>
+            default
+        </Button>
+        <Button loading variant={"secondary"} disabled>
+            default
+        </Button>
+        <Button loading variant={"secondary"} disabled size={"large"}>
+            default
+        </Button>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+You can show a loading spinner by passing the `loading` prop to the `Button` component. This will display a spinner in place of the button text, indicating to the user that something is happening in the background.
+
+| Name        | Type    | Default | Description                                       |
+| ----------- | ------- | ------- | ------------------------------------------------- |
+| **loading** | boolean | false   | If `true` , the button will be in a loading state. |
+
+So go ahead, show a loading spinner on your button and let your users know that something is happening behind the scenes!
+
+### Disabled
+
+The `Button` component allows you to disable the button by passing the `disabled` prop. This is perfect for when you need to prevent the user from interacting with the button.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+    <Button disabled> Default </Button>
+    <Button disabled variant="secondary"> Secondary </Button>
+    <Button disabled variant="tertiary"> Tertiary </Button>
+    <Button disabled variant="error"> Error </Button>
+    <Button disabled variant="warning"> Warning </Button>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Button } from "ruru-ui/components/button";
+
+    export function ButtonDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <Button disabled> Default </Button>
+            <Button disabled variant="secondary"> Secondary </Button>
+            <Button disabled variant="tertiary"> Tertiary </Button>
+            <Button disabled variant="error"> Error </Button>
+            <Button disabled variant="warning"> Warning </Button>
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+### More
+
+#### Icon
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center gap-5"} value="Preview" >
+    <Button variant="secondary" size="icon"> 
+        <ChevronRightIcon />
+    </Button>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Button } from "ruru-ui/components/button";
+
+    export function ButtonDemo() {
+      return (
+        <div className={"flex justify-center gap-5"}>
+            <Button variant="secondary" size="icon">
+                <ChevronRightIcon />
+            </Button>
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+## Props
+
+---
+
+| Name         | Type                                   | Default   | Description                                      |
+| ------------ | -------------------------------------- | --------- | ------------------------------------------------ |
+| **children** | ReactNode                              | -         | The content of the button.                       |
+| **disabled** | boolean                                | false     | If `true` , the button will be disabled.          |
+| **onClick**  | ( ) => void                            | -         | The function to call when the button is clicked. |
+| **type**     | 'button' \| 'submit' \| 'reset'        | 'button'  | The type of the button.                          |
+| **variant**  | 'primary' \| 'secondary' \| 'tertiary' | 'primary' | The variant of the button.                       |

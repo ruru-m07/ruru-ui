@@ -14,8 +14,8 @@ const buttonVariants = cva(
         default: "bg-primary hover:bg-primary/85 text-primary-foreground shadow hover:shadow-md",
         secondary: "bg-primary-foreground dark:hover:bg-[#202020] hover:bg-[#f3f3f3] border-[1.5px] border-input",
         tertiary: "dark:hover:bg-[#202020] hover:bg-[#f3f3f3] text-primary",
-        error: "bg-destructive hover:bg-destructive/75",
-        warning: "bg-warning hover:bg-[#d27504] text-primary-foreground",
+        error: "bg-[#d93036] hover:bg-[#ff6166]",
+        warning: "bg-[#ff990a] hover:bg-[#d27504] text-primary-foreground",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -140,7 +140,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           buttonVariants({ variant, size }),
           className,
-          disabled && "dark:bg-[#202020] bg-[#f3f3f3]"
+          disabled && " cursor-not-allowed ",
         )}
         ref={ref}
         disabled={disabled}

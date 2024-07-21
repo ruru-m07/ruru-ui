@@ -4,6 +4,8 @@ import { RootProvider } from "fumadocs-ui/provider";
 import type { Viewport } from "next";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
+import "ruru-ui/style.css";
+import "fumadocs-ui/style.css";
 
 const inter = Inter({
   subsets: ["latin"],

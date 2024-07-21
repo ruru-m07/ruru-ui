@@ -2,12 +2,14 @@ import { getPage, getPages } from "@/app/source";
 import type { Metadata } from "next";
 import { DocsPage, DocsBody } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
+import { ReactNode } from "react";
+import Preview from "@/components/preview";
 
-export default async function Page({
-  params,
-}: {
-  params: { slug?: string[] };
-}) {
+interface Param {
+  slug: string[];
+}
+
+export default async function Page({ params }: { params: Param }) {
   const page = getPage(params.slug ?? []);
 
   if (page == null) {
@@ -15,6 +17,7 @@ export default async function Page({
   }
 
   const MDX = page.data.exports.default;
+  const preview = page.data.preview;
 
   return (
     <DocsPage toc={page.data.exports.toc} full={page.data.full}>
@@ -25,6 +28,7 @@ export default async function Page({
         {page.data.description}
       </p>
       <DocsBody>
+        {preview && preview in Preview ? Preview[preview] : null}
         <MDX />
       </DocsBody>
     </DocsPage>
