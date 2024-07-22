@@ -1,0 +1,63 @@
+---
+title: Spinner
+description: The Spinner component is used to indicate that a page is loading or that an action is being processed.
+preview: spinner
+---
+
+import { Spinner } from "ruru-ui/components/spinner";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+## Usage
+
+---
+
+### Basic usage
+
+The Spinner component is used to indicate that a page is loading or that an action is being processed.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Spinner />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Spinner } from "ruru-ui/components/spinner";
+
+    export function SpinnerDemo() {
+      return (
+          <Spinner />
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+### Custom size
+
+You can customize the size of the spinner by passing the `size` prop.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Spinner size={30} />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Spinner } from "ruru-ui/components/spinner";
+
+    export function SpinnerDemo() {
+      return (
+        <Spinner size={30} />
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+## Props
+
+| Name      | Type   | Default | Description                    |
+| --------- | ------ | ------- | ------------------------------ |
+| size      | number | 20      | The size of the spinner.       |
+| className | string | -      | The class name of the spinner. |

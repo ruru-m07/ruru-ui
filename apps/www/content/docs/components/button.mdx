@@ -13,14 +13,6 @@ import {
 } from "@radix-ui/react-icons";
 import Link from "next/link";
 
-## Installation
-
----
-
-```tsx
-import { Button } from "ruru-ui/components/button";
-```
-
 ## Usage
 
 ---
@@ -54,7 +46,7 @@ import { buttonVariants } from "ruru-ui/components/button";
 ```
 
 ```tsx
-<Link className={buttonVariants({ variant: "secondary" })}>Click here</Link>
+<Link href={"/"} className={buttonVariants({ variant: "secondary" })}>Click here</Link>
 ```
 
 Alternatively, you can set the `asChild` parameter and nest the link component.

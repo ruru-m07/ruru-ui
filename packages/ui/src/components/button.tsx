@@ -6,13 +6,15 @@ import React from "react";
 import { cn } from "../utils/cn";
 import { Spinner } from "./spinner";
 
-const buttonVariants = cva(
+export const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-primary hover:bg-primary/85 text-primary-foreground shadow hover:shadow-md",
-        secondary: "bg-primary-foreground dark:hover:bg-[#202020] hover:bg-[#f3f3f3] border-[1.5px] border-input",
+        default:
+          "bg-primary hover:bg-primary/85 text-primary-foreground shadow hover:shadow-md",
+        secondary:
+          "bg-primary-foreground dark:hover:bg-[#202020] hover:bg-[#f3f3f3] border-[1.5px] border-input",
         tertiary: "dark:hover:bg-[#202020] hover:bg-[#f3f3f3] text-primary",
         error: "bg-[#d93036] hover:bg-[#ff6166]",
         warning: "bg-[#ff990a] hover:bg-[#d27504] text-primary-foreground",
@@ -136,29 +138,27 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : "button";
 
     return (
-      <Comp
-        className={cn(
-          buttonVariants({ variant, size }),
-          className,
-          disabled && " cursor-not-allowed ",
-        )}
-        ref={ref}
-        disabled={disabled}
-        {...props}
-      >
-        {loading && <Spinner className="mr-2" />}
-        {prefix && (
-          <span className="mr-2 flex items-center justify-center">
-            {prefix}
-          </span>
-        )}
-        {props.children}
-        {suffix && (
-          <span className="ml-2 flex items-center justify-center">
-            {suffix}
-          </span>
-        )}
-      </Comp>
+      <div className={ disabled ? " cursor-not-allowed " : undefined}>
+        <Comp
+          className={cn(buttonVariants({ variant, size }), className)}
+          ref={ref}
+          disabled={disabled}
+          {...props}
+        >
+          {loading && <Spinner className="mr-2" />}
+          {prefix && (
+            <span className="mr-2 flex items-center justify-center">
+              {prefix}
+            </span>
+          )}
+          {props.children}
+          {suffix && (
+            <span className="ml-2 flex items-center justify-center">
+              {suffix}
+            </span>
+          )}
+        </Comp>
+      </div>
     );
   }
 );
