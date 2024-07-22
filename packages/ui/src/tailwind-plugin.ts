@@ -5,7 +5,7 @@ import { presets } from "./theme/colors";
 import { animations } from "./theme/animations";
 import { typography as typographyConfig } from "./theme/typography";
 
-interface DocsUIOptions {
+interface UIOptions {
   /**
    * Prefix of colors
    */
@@ -61,7 +61,7 @@ function colorToCSS(prefix: string, name: Keys): string {
   return `hsl(var(${variableName(prefix, name)}) / <alpha-value>)`;
 }
 
-export const docsUi = plugin.withOptions<DocsUIOptions>(
+export const Ui = plugin.withOptions<UIOptions>(
   ({
     prefix = "",
     preset = "default",
@@ -218,10 +218,10 @@ export const docsUi = plugin.withOptions<DocsUIOptions>(
   })
 );
 
-export function createPreset(options: DocsUIOptions = {}): PresetsConfig {
+export function createPreset(options: UIOptions = {}): PresetsConfig {
   return {
     darkMode: "class",
-    plugins: [typography, docsUi(options)],
+    plugins: [typography, Ui(options)],
   };
 }
 
