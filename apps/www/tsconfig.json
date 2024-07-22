@@ -1,5 +1,5 @@
 {
-  "extends": "@ruru/typescript-config/nextjs.json",
+  "extends": "tsconfig/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ESNext",

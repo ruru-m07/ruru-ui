@@ -2,14 +2,10 @@ import { baseUrl, createMetadata } from "@/utils/metadata";
 import "./global.css";
 import { RootProvider } from "fumadocs-ui/provider";
 import type { Viewport } from "next";
-import { Inter } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import type { ReactNode } from "react";
 import "ruru-ui/style.css";
 import "fumadocs-ui/style.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-});
 
 export const metadata = createMetadata({
   title: {
@@ -17,7 +13,7 @@ export const metadata = createMetadata({
     default: "Ruru UI",
   },
   description:
-    "Ruru UI is a design system for building modern web applications.",
+    "Ruru UI is a design system for building classic web applications.",
   metadataBase: baseUrl,
 });
 
@@ -30,7 +26,7 @@ export const viewport: Viewport = {
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
+    <html lang="en" className={GeistSans.className} suppressHydrationWarning>
       <body>
         <RootProvider>{children}</RootProvider>
       </body>
