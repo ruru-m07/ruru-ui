@@ -2,6 +2,17 @@ import * as React from "react";
 
 import { cn } from "@/utils/cn";
 
+/**
+ * A customizable card component.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <Card>
+ *   This is a card.
+ * </Card>
+ * ```
+ */
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -17,6 +28,19 @@ const Card = React.forwardRef<
 ));
 Card.displayName = "Card";
 
+/**
+ * A card header component.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <Card>
+ *  <CardHeader>
+ *    This is a card header.
+ *  </CardHeader>
+ * <Card>
+ * ```
+ */
 const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>

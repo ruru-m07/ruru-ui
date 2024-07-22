@@ -1,0 +1,213 @@
+---
+title: Avatar
+description: The Avatar component is used to represent a user or entity.
+preview: avatar
+---
+
+import {
+  Avatar,
+  AvatarGroup,
+  AvatarWithBadge,
+} from "ruru-ui/components/avatar";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Callout } from "fumadocs-ui/components/callout";
+
+<Callout title="Bug(docs)!" type="error">
+  This component uses __absolute__ and __relative__ positioning so that in our **MDX** docs
+  the component is not visible properly, but it's fine to use in your project.
+  
+  issue: [#9](https://github.com/ruru-m07/ruru-ui/issues/9)
+
+  if you can fix this then feel free to submit a PR : ) 
+
+</Callout>
+
+## Usage
+
+The `Avatar` component is used to represent a user or entity.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"grid grid-cols-3 place-items-center "} value="Preview" >
+    <Avatar
+        placeholder="RU"
+        src={"https://github.com/ruru-m07.png"}
+    />
+    <Avatar
+        size={50}
+        placeholder="RU"
+        src={"https://github.com/ruru-m07.png"}
+    />
+    <Avatar
+        size={70}
+        placeholder="RU"
+        src={"https://github.com/ruru-m07.png"}
+    />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Avatar } from "ruru-ui/components/avatar";
+
+    export function AvatarDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <Avatar
+                placeholder="RU"
+                src={"https://github.com/ruru-m07.png"}
+            />
+            <Avatar
+                size={50}
+                placeholder="RU"
+                src={"https://github.com/ruru-m07.png"}
+            />
+            <Avatar
+                size={70}
+                placeholder="RU"
+                src={"https://github.com/ruru-m07.png"}
+            />
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+### Props
+
+| Prop            | Description                                                           | Type   | Default |
+| --------------- | --------------------------------------------------------------------- | ------ | ------- |
+| **src**         | The URL of the image to be displayed.                                 | string | -       |
+| **placeholder** | The placeholder text to be displayed when the image is not available. | string | -       |
+| **size**        | The size of the avatar.                                               | number | 30      |
+| **className**   | The class name to be applied to the avatar.                           | string | -       |
+
+## AvatarGroup
+
+The `AvatarGroup` component is used to display multiple avatars in a group.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex flex-col items-center justify-center"} value="Preview">
+        <AvatarGroup
+          members={[
+            { src: "https://github.com/ruru-m07.png", alt: "ruru-m07" },
+            { src: "https://github.com/leerob.png", alt: "leerob" },
+            { src: "https://github.com/evilrabbit.png", alt: "evilrabbit" },
+            { src: "https://github.com/rauchg.png", alt: "rauchg" },
+            { src: "https://github.com/shadcn.png", alt: "shadcn" },
+          ]}
+          size={40}
+        />
+        <AvatarGroup
+          limit={4}
+          members={[
+            { src: "https://github.com/ruru-m07.png", alt: "ruru-m07" },
+            { src: "https://github.com/leerob.png", alt: "leerob" },
+            { src: "https://github.com/evilrabbit.png", alt: "evilrabbit" },
+            { src: "https://github.com/rauchg.png", alt: "rauchg" },
+            { src: "https://github.com/shadcn.png", alt: "shadcn" },
+          ]}
+        />
+
+        <AvatarGroup
+          limit={4}
+          members={[
+            { src: "https://github.com/ruru-m07.png", alt: "ruru-m07" },
+            { src: "https://github.com/leerob.png", alt: "leerob" },
+            { src: "https://github.com/evilrabbit.png", alt: "evilrabbit" },
+            { src: "https://github.com/rauchg.png", alt: "rauchg" },
+            { src: "https://github.com/shadcn.png", alt: "shadcn" },
+          ]}
+          size={40}
+        />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { AvatarGroup } from "ruru-ui/components/avatar";
+
+    export function AvatarGroupDemo() {
+      return (
+        <AvatarGroup
+          members={[
+            { src: "https://github.com/ruru-m07.png", alt: "ruru-m07" },
+            { src: "https://github.com/leerob.png", alt: "leerob" },
+            { src: "https://github.com/evilrabbit.png", alt: "evilrabbit" },
+            { src: "https://github.com/rauchg.png", alt: "rauchg" },
+            { src: "https://github.com/shadcn.png", alt: "shadcn" },
+          ]}
+          size={40}
+        />
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+### Props
+
+| Prop          | Description                                                                  | Type                                    | Default |
+| ------------- | ---------------------------------------------------------------------------- | --------------------------------------- | ------- |
+| **members**   | An array of objects containing the `src` and `alt` properties of the avatar. | Array\<\{ src: string; alt: string \}\> | -       |
+| **limit**     | The maximum number of avatars to be displayed.                               | number                                  | -       |
+| **size**      | The size of the avatars.                                                     | number                                  | 30      |
+| **className** | The class name to be applied to the avatar group.                            | string                                  | -       |
+
+## AvatarWithBadge
+
+The `AvatarWithBadge` component is used to display an avatar with a badge.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+    <AvatarWithBadge
+        src="https://github.com/ruru-m07.png"
+        badgeSrc="https://github.com/github.png"
+        size={50}
+    />
+    <AvatarWithBadge
+        src="https://github.com/ruru-m07.png"
+        badgeSrc="https://github.com/github.png"
+    />
+    <AvatarWithBadge
+        src="https://github.com/ruru-m07.png"
+        badgeSrc="https://github.com/github.png"
+        size={70}
+    />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+   import { AvatarWithBadge } from "ruru-ui/components/avatar";
+
+    export function AvatarWithBadgeDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <AvatarWithBadge
+                src="https://github.com/ruru-m07.png"
+                badgeSrc="https://github.com/github.png"
+                size={50}
+            />
+            <AvatarWithBadge
+                src="https://github.com/ruru-m07.png"
+                badgeSrc="https://github.com/github.png"
+            />
+            <AvatarWithBadge
+                src="https://github.com/ruru-m07.png"
+                badgeSrc="https://github.com/github.png"
+                size={70}
+            />
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+### Props
+
+| Prop            | Description                                                           | Type   | Default |
+| --------------- | --------------------------------------------------------------------- | ------ | ------- |
+| **src**         | The URL of the image to be displayed.                                 | string | -       |
+| **badgeSrc**    | The URL of the badge image to be displayed.                           | string | -       |
+| **size**        | The size of the avatar.                                               | number | 30      |
+| **className**   | The class name to be applied to the avatar.                           | string | -       |
+| **placeholder** | The placeholder text to be displayed when the image is not available. | string | -       |
