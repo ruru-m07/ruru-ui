@@ -1,5 +1,5 @@
-import { cn } from "@/utils/cn";
 import React from "react";
+import { cn } from "@/utils/cn";
 
 type SpinnerProps = React.ComponentPropsWithoutRef<"div"> & {
   /**
@@ -75,7 +75,7 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           {[...Array(12)].map((_, i) => (
             <div
               key={i}
-              className="absolute left-[-10%] top-[-3.9%] h-[8%] w-[24%] animate-spinner bg-foreground rounded-md"
+              className="absolute left-[-10%] top-[-3.9%] h-[8%] w-[24%] animate-spinner rounded-md bg-foreground"
               style={{
                 animationDelay: computeDelay(i),
                 transform: `rotate(${computeRotation(i)}) translate(146%)`,

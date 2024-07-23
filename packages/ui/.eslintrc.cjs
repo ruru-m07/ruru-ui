@@ -1,9 +1,14 @@
 module.exports = {
-  extends: ['custom/next'],
-  rules: {
-    // for the import hacks
-    '@typescript-eslint/consistent-type-imports': 'off',
-    // some arrays like link items won't be changed
-    'react/no-array-index-key': 'off',
+  plugins: ['@typescript-eslint/eslint-plugin', 'eslint-plugin-tsdoc'],
+  extends: ['plugin:@typescript-eslint/recommended'],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
+    ecmaVersion: 2018,
+    sourceType: 'module'
   },
+  rules: {
+    // 'tsdoc/syntax': 'warn'
+  }
 };

@@ -1,28 +1,5 @@
 import { defineConfig } from "tsup";
 
-const exportedComponents = [
-  "type-table",
-  "roll-button",
-  "image-zoom",
-  "files",
-  "tabs",
-  "accordion",
-  "steps",
-  "inline-toc",
-  "callout",
-  "api",
-  "card",
-  "heading",
-  "codeblock",
-  "banner",
-  "dialog/search",
-  "dialog/search-default",
-  "dialog/search-algolia",
-  "layout/root-toggle",
-  "layout/language-toggle",
-  "button",
-];
-
 export default defineConfig([
   {
     entry: [

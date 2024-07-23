@@ -111,7 +111,7 @@ type AvatarGroupProps = Omit<
    * ```
    *
    */
-  members: Array<{ src: string; alt: string }>;
+  members: { src: string; alt: string }[];
   /**
    * Size of the avatar
    * @default 30
@@ -158,7 +158,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
         {extraMembersCount > 0 && (
           <div
             className={cn(
-              `rounded-full flex items-center justify-center bg-primary-foreground border -ml-2`,
+              `-ml-2 flex items-center justify-center rounded-full border bg-primary-foreground`,
               className
             )}
             style={{
