@@ -30,12 +30,11 @@ jobs:
 
       - name: Run ESLint
         run: pnpm lint
-  
+
   build:
     runs-on: ubuntu-latest
-    
-    steps:
 
+    steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
 
       - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
@@ -45,9 +44,9 @@ jobs:
         with:
           node-version: 18
           cache: "pnpm"
-        
+
       - name: Install Dependencies
         run: pnpm i --frozen-lockfile
 
       - name: Build Check
-        run: pnpm build 
+        run: pnpm build
