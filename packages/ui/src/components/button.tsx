@@ -30,7 +30,7 @@ export const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 export interface ButtonProps
@@ -133,12 +133,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       loading = false,
       ...props
     },
-    ref
+    ref,
   ) => {
     const Comp = asChild ? Slot : "button";
 
     return (
-      <div className={ disabled ? " cursor-not-allowed " : undefined}>
+      <div className={disabled ? " cursor-not-allowed " : undefined}>
         <Comp
           className={cn(buttonVariants({ variant, size }), className)}
           ref={ref}
@@ -146,17 +146,21 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           {...props}
         >
           {loading ? <Spinner className="mr-2" /> : null}
-          {prefix ? <span className="mr-2 flex items-center justify-center">
+          {prefix ? (
+            <span className="mr-2 flex items-center justify-center">
               {prefix}
-            </span> : null}
+            </span>
+          ) : null}
           {props.children}
-          {suffix ? <span className="ml-2 flex items-center justify-center">
+          {suffix ? (
+            <span className="ml-2 flex items-center justify-center">
               {suffix}
-            </span> : null}
+            </span>
+          ) : null}
         </Comp>
       </div>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

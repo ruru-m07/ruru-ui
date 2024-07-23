@@ -49,7 +49,7 @@ export interface Preset {
 
 function getThemeStyles(prefix: string, theme: Theme): Record<string, string> {
   return Object.fromEntries(
-    Object.entries(theme).map(([k, v]) => [variableName(prefix, k), v])
+    Object.entries(theme).map(([k, v]) => [variableName(prefix, k), v]),
   );
 }
 
@@ -215,7 +215,7 @@ export const Ui = plugin.withOptions<UIOptions>(
         },
       },
     },
-  })
+  }),
 );
 
 export function createPreset(options: UIOptions = {}): PresetsConfig {

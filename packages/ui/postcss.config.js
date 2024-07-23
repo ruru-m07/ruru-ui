@@ -1,8 +1,8 @@
 export default {
   plugins: {
     tailwindcss: {},
-    'postcss-lightningcss': {
-      browsers: '>= .25%',
+    "postcss-lightningcss": {
+      browsers: ">= .25%",
     },
   },
 };

@@ -46,7 +46,9 @@ import { buttonVariants } from "ruru-ui/components/button";
 ```
 
 ```tsx
-<Link href={"/"} className={buttonVariants({ variant: "secondary" })}>Click here</Link>
+<Link href={"/"} className={buttonVariants({ variant: "secondary" })}>
+  Click here
+</Link>
 ```
 
 Alternatively, you can set the `asChild` parameter and nest the link component.
@@ -226,8 +228,8 @@ The `Button` component allows you to show a loading spinner when the button is i
 
 You can show a loading spinner by passing the `loading` prop to the `Button` component. This will display a spinner in place of the button text, indicating to the user that something is happening in the background.
 
-| Name        | Type    | Default | Description                                       |
-| ----------- | ------- | ------- | ------------------------------------------------- |
+| Name        | Type    | Default | Description                                        |
+| ----------- | ------- | ------- | -------------------------------------------------- |
 | **loading** | boolean | false   | If `true` , the button will be in a loading state. |
 
 So go ahead, show a loading spinner on your button and let your users know that something is happening behind the scenes!
@@ -297,7 +299,7 @@ The `Button` component allows you to disable the button by passing the `disabled
 | Name         | Type                                   | Default   | Description                                      |
 | ------------ | -------------------------------------- | --------- | ------------------------------------------------ |
 | **children** | ReactNode                              | -         | The content of the button.                       |
-| **disabled** | boolean                                | false     | If `true` , the button will be disabled.          |
+| **disabled** | boolean                                | false     | If `true` , the button will be disabled.         |
 | **onClick**  | ( ) => void                            | -         | The function to call when the button is clicked. |
 | **type**     | 'button' \| 'submit' \| 'reset'        | 'button'  | The type of the button.                          |
 | **variant**  | 'primary' \| 'secondary' \| 'tertiary' | 'primary' | The variant of the button.                       |

@@ -68,7 +68,10 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
         role="status"
         aria-label="Loading"
         ref={ref}
-        style={{ width: `${size ? size : "20"}px`, height: `${size ? size : "20"}px` }}
+        style={{
+          width: `${size ? size : "20"}px`,
+          height: `${size ? size : "20"}px`,
+        }}
         {...props}
       >
         <div className="relative left-1/2 top-1/2 size-full">
@@ -85,7 +88,7 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 Spinner.displayName = "Spinner";

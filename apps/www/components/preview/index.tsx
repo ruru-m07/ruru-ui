@@ -4,11 +4,11 @@ import { Wrapper } from "./wrapper";
 import { Avatar, AvatarWithBadge } from "ruru-ui/components/avatar";
 
 const Button = dynamic(() =>
-  import("ruru-ui/components/button").then((m) => m.Button)
+  import("ruru-ui/components/button").then((m) => m.Button),
 );
 
 const Spinner = dynamic(() =>
-  import("ruru-ui/components/spinner").then((m) => m.Spinner)
+  import("ruru-ui/components/spinner").then((m) => m.Spinner),
 );
 
 export default {
