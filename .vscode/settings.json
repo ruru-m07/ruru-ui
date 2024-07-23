@@ -4,4 +4,9 @@
       "mode": "auto"
     }
   ],
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

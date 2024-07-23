@@ -115,7 +115,7 @@
   top: -1.2em;
   height: 1em;
   left: -1px;
-  content: ' ';
+  content: " ";
   background-color: hsl(var(--foreground));
 }
 

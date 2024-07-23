@@ -1,4 +1,3 @@
-
 # Contribution Guidelines
 
 Welcome to our project! We appreciate your interest in contributing. Before you get started, please take a moment to review the following guidelines.

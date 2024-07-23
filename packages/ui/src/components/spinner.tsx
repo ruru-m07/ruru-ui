@@ -1,5 +1,5 @@
-import { cn } from "@/utils/cn";
 import React from "react";
+import { cn } from "@/utils/cn";
 
 type SpinnerProps = React.ComponentPropsWithoutRef<"div"> & {
   /**
@@ -68,14 +68,17 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
         role="status"
         aria-label="Loading"
         ref={ref}
-        style={{ width: `${size ? size : "20"}px`, height: `${size ? size : "20"}px` }}
+        style={{
+          width: `${size ? size : "20"}px`,
+          height: `${size ? size : "20"}px`,
+        }}
         {...props}
       >
         <div className="relative left-1/2 top-1/2 size-full">
           {[...Array(12)].map((_, i) => (
             <div
               key={i}
-              className="absolute left-[-10%] top-[-3.9%] h-[8%] w-[24%] animate-spinner bg-foreground rounded-md"
+              className="absolute left-[-10%] top-[-3.9%] h-[8%] w-[24%] animate-spinner rounded-md bg-foreground"
               style={{
                 animationDelay: computeDelay(i),
                 transform: `rotate(${computeRotation(i)}) translate(146%)`,
@@ -85,7 +88,7 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 Spinner.displayName = "Spinner";

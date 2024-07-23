@@ -1,8 +1,8 @@
 "use client";
 
-import { RuruThemeProviderProps } from "@/interface/RuruThemeProviderProps";
 import { ThemeProvider } from "next-themes";
 import React from "react";
+import { type RuruThemeProviderProps } from "@/interface/RuruThemeProviderProps";
 
 /**
  * A wrapper component to provide theme context using `next-themes`.

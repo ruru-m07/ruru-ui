@@ -12,25 +12,25 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary hover:bg-primary/85 text-primary-foreground shadow hover:shadow-md",
+          "bg-primary text-primary-foreground shadow hover:bg-primary/85 hover:shadow-md",
         secondary:
-          "bg-primary-foreground dark:hover:bg-[#202020] hover:bg-[#f3f3f3] border-[1.5px] border-input",
-        tertiary: "dark:hover:bg-[#202020] hover:bg-[#f3f3f3] text-primary",
+          "border-input border-[1.5px] bg-primary-foreground hover:bg-[#f3f3f3] dark:hover:bg-[#202020]",
+        tertiary: "text-primary hover:bg-[#f3f3f3] dark:hover:bg-[#202020]",
         error: "bg-[#d93036] hover:bg-[#ff6166]",
-        warning: "bg-[#ff990a] hover:bg-[#d27504] text-primary-foreground",
+        warning: "bg-[#ff990a] text-primary-foreground hover:bg-[#d27504]",
       },
       size: {
         default: "h-9 px-4 py-2",
         small: "h-8 rounded-md px-3 text-xs",
         large: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
+        icon: "size-9",
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 export interface ButtonProps
@@ -133,34 +133,34 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       loading = false,
       ...props
     },
-    ref
+    ref,
   ) => {
     const Comp = asChild ? Slot : "button";
 
     return (
-      <div className={ disabled ? " cursor-not-allowed " : undefined}>
+      <div className={disabled ? " cursor-not-allowed " : undefined}>
         <Comp
           className={cn(buttonVariants({ variant, size }), className)}
           ref={ref}
           disabled={disabled}
           {...props}
         >
-          {loading && <Spinner className="mr-2" />}
-          {prefix && (
+          {loading ? <Spinner className="mr-2" /> : null}
+          {prefix ? (
             <span className="mr-2 flex items-center justify-center">
               {prefix}
             </span>
-          )}
+          ) : null}
           {props.children}
-          {suffix && (
+          {suffix ? (
             <span className="ml-2 flex items-center justify-center">
               {suffix}
             </span>
-          )}
+          ) : null}
         </Comp>
       </div>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

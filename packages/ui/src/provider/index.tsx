@@ -1,9 +1,9 @@
 "use client";
 
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
+import { type RuruContextType } from "@/interface/RuruContextType";
+import { type RuruProviderProps } from "@/interface/RuruProviderProps";
 import { RuruThemeProvider } from "./theme";
-import { RuruContextType } from "@/interface/RuruContextType";
-import { RuruProviderProps } from "@/interface/RuruProviderProps";
 
 // Create the context with default values
 const RuruContext = createContext<RuruContextType | undefined>(undefined);

@@ -78,7 +78,7 @@ const Avatar = React.forwardRef<HTMLImageElement, AvatarProps>(
         {...props}
       />
     );
-  }
+  },
 );
 Avatar.displayName = "Avatar";
 
@@ -111,7 +111,7 @@ type AvatarGroupProps = Omit<
    * ```
    *
    */
-  members: Array<{ src: string; alt: string }>;
+  members: { src: string; alt: string }[];
   /**
    * Size of the avatar
    * @default 30
@@ -158,8 +158,8 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
         {extraMembersCount > 0 && (
           <div
             className={cn(
-              `rounded-full flex items-center justify-center bg-primary-foreground border -ml-2`,
-              className
+              `-ml-2 flex items-center justify-center rounded-full border bg-primary-foreground`,
+              className,
             )}
             style={{
               width: `${size}px`,
@@ -171,7 +171,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
         )}
       </div>
     );
-  }
+  },
 );
 AvatarGroup.displayName = "AvatarGroup";
 
@@ -283,7 +283,7 @@ const AvatarWithBadge = React.forwardRef<HTMLDivElement, AvatarWithBadgeProps>(
         />
       </div>
     );
-  }
+  },
 );
 AvatarWithBadge.displayName = "AvatarWithBadge";
 
