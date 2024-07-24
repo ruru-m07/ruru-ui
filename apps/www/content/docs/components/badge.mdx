@@ -1,0 +1,165 @@
+---
+title: Badge
+description: The Badge component is used to represent a user or entity.
+preview: badge
+---
+
+import { Badge } from "ruru-ui/components/badge";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { CubeIcon } from "@radix-ui/react-icons";
+
+## Usage
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Badge variant="green-subtle" size="md" >green-subtle</Badge>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Badge } from "ruru-ui/components/badge";
+
+    export function BadgeDemo() {
+      return (
+        <Badge variant="green-subtle" size="md" >green-subtle</Badge>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+## Examples
+
+### variant
+
+The variant of the badge (e.g., "gray", "red", etc...).
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex flex-wrap space-x-2 space-y-2"} value="Preview" >
+    <div />
+    <Badge variant="gray" size="md" >gray</Badge>
+    <Badge variant="gray-subtle" size="md" >gray-subtle</Badge>
+    <Badge variant="blue" size="md" >blue</Badge>
+    <Badge variant="blue-subtle" size="md" >blue-subtle</Badge>
+    <Badge variant="purple" size="md" >purple</Badge>
+    <Badge variant="purple-subtle" size="md" >purple-subtle</Badge>
+    <Badge variant="amber" size="md" >amber</Badge>
+    <Badge variant="amber-subtle" size="md" >amber-subtle</Badge>
+    <Badge variant="red" size="md" >red</Badge>
+    <Badge variant="red-subtle" size="md" >red-subtle</Badge>
+    <Badge variant="pink" size="md" >pink</Badge>
+    <Badge variant="pink-subtle" size="md" >pink-subtle</Badge>
+    <Badge variant="green" size="md" >green</Badge>
+    <Badge variant="green-subtle" size="md" >Green-Subtle</Badge>
+    <Badge variant="teal" size="md" >teal</Badge>
+    <Badge variant="teal-subtle" size="md" >teal-subtle</Badge>
+    <Badge variant="inverted" size="md" >inverted</Badge>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Badge } from "ruru-ui/components/badge";
+
+    export function BadgeDemo() {
+      return (
+        <div>
+            <Badge variant="gray" size="md" >gray</Badge>
+            <Badge variant="gray-subtle" size="md" >gray-subtle</Badge>
+            <Badge variant="blue" size="md" >blue</Badge>
+            <Badge variant="blue-subtle" size="md" >blue-subtle</Badge>
+            <Badge variant="purple" size="md" >purple</Badge>
+            <Badge variant="purple-subtle" size="md" >purple-subtle</Badge>
+            <Badge variant="amber" size="md" >amber</Badge>
+            <Badge variant="amber-subtle" size="md" >amber-subtle</Badge>
+            <Badge variant="red" size="md" >red</Badge>
+            <Badge variant="red-subtle" size="md" >red-subtle</Badge>
+            <Badge variant="pink" size="md" >pink</Badge>
+            <Badge variant="pink-subtle" size="md" >pink-subtle</Badge>
+            <Badge variant="green" size="md" >green</Badge>
+            <Badge variant="green-subtle" size="md" >Green-Subtle</Badge>
+            <Badge variant="teal" size="md" >teal</Badge>
+            <Badge variant="teal-subtle" size="md" >teal-subtle</Badge>
+            <Badge variant="inverted" size="md" >inverted</Badge>
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+### size
+
+The size of the badge (e.g., "sm", "md", "lg").
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between"} value="Preview" >
+    <Badge variant="gray-subtle" size="sm" >gray</Badge>
+    <Badge variant="gray-subtle" size="md" >gray</Badge>
+    <Badge variant="gray-subtle" size="lg" >gray</Badge>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Badge } from "ruru-ui/components/badge";
+
+    export function BadgeDemo() {
+      return (
+        <div className={"flex justify-between"}>
+            <Badge variant="green-subtle" size="sm">
+                sm
+            </Badge>
+            <Badge variant="green-subtle" size="md">
+                md
+            </Badge>
+            <Badge variant="green-subtle" size="lg">
+                lg
+            </Badge>
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+### icon
+
+An optional icon to display before the badge content.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between"} value="Preview" >
+    <Badge variant="gray-subtle" size="sm" icon={<CubeIcon />} >gray</Badge>
+    <Badge variant="gray-subtle" size="md" icon={<CubeIcon />} >gray</Badge>
+    <Badge variant="gray-subtle" size="lg" icon={<CubeIcon />} >gray</Badge>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Badge } from "ruru-ui/components/badge";
+
+    export function BadgeDemo() {
+      return (
+        <div className={"flex justify-between"}>
+            <Badge variant="gray-subtle" size="sm">
+                sm
+            </Badge>
+            <Badge variant="gray-subtle" size="md">
+                md
+            </Badge>
+            <Badge variant="gray-subtle" size="lg">
+                lg
+            </Badge>
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+## Props
+
+| Name         | Type                                                                                                                                                                                                                                                                                           | Default | Description                       |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | --------------------------------- |
+| **variant**  | **green-subtle** \| **gray** \| **gray-subtle** \| **blue** \| **blue-subtle** \| **purple** \| **purple-subtle** \| **amber** \| **amber-subtle** \| **red** \| **red-subtle** \| **pink** \| **pink-subtle** \| **green** \| **green-subtle** \| **teal** \| **teal-subtle** \| **inverted** | "gray"  | The color variant of the badge.   |
+| **size**     | **sm** \| **md** \| **lg**                                                                                                                                                                                                                                                                     | "md"    | The size of the badge.            |
+| **icon**     | React.ReactNode                                                                                                                                                                                                                                                                                | null    | The icon to display in the badge. |
+| **children** | React.ReactNode                                                                                                                                                                                                                                                                                | null    | The content of the badge.         |

@@ -29,7 +29,7 @@ const sizes = {
 };
 
 const badgeVariants = cva(
-  "w-fit inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 capitalize",
+  "w-fit h-fit inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 capitalize",
   {
     variants: {
       variant: {
@@ -43,7 +43,7 @@ const badgeVariants = cva(
       variant: "gray",
       size: "md",
     },
-  }
+  },
 );
 
 export interface BadgeProps
@@ -61,7 +61,7 @@ export interface BadgeProps
    */
   children: React.ReactNode;
   /**
-   * Additional CSS class names to apply to the badge.
+   * The variant of the badge (e.g., "gray", "red", etc...).
    *
    * @type {keyof typeof variants}
    * @default "gray"
@@ -72,24 +72,24 @@ export interface BadgeProps
    */
   variant: keyof typeof variants;
   /**
-   * Additional CSS class names to apply to the badge.
+   * The size of the badge (e.g., "sm", "md", "lg").
    *
    * @type {string}
    * @default "md"
    * @example
    * ```tsx
-   * <Badge className="text-[#f00]">Error</Badge>
+   * <Badge size={"sm"} > sm </Badge>
    * ```
    */
   size?: "sm" | "md" | "lg";
   /**
-   * The variant of the badge (e.g., "primary", "secondary", "success").
+   * An optional icon to display before the badge content.
    *
    * @type {string}
    * @default "md"
    * @example
    * ```tsx
-   * <Badge variant="primary" size="sm">New</Badge>
+   * <Badge icon={<CubeIcon />} variant="primary" size="sm">New</Badge>
    * ```
    */
   icon?: React.ReactNode;
