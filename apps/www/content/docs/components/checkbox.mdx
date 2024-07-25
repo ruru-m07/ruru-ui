@@ -11,6 +11,9 @@ import { Checkbox } from "ruru-ui/components/checkbox";
 
 ---
 
+To use the Checkbox component, import it from `ruru-ui` and include it in your component.
+This example shows a basic checkbox.
+
 <Tabs items={["Preview", "Code"]}>
   <Tab className={"flex justify-between gap-5"} value="Preview" >
     <Checkbox />
@@ -37,6 +40,8 @@ import { Checkbox } from "ruru-ui/components/checkbox";
 
 ### indeterminate
 
+This example demonstrates a checkbox in an indeterminate state.
+
 <Tabs items={["Preview", "Code"]}>
   <Tab className={"flex justify-between gap-5"} value="Preview" >
     <Checkbox indeterminate />
@@ -58,6 +63,8 @@ import { Checkbox } from "ruru-ui/components/checkbox";
 </Tabs>
 
 ### disabled
+
+This example shows a checkbox in a disabled state, making it unclickable.
 
 <Tabs items={["Preview", "Code"]}>
   <Tab className={"flex justify-between gap-5"} value="Preview" >
@@ -81,6 +88,8 @@ import { Checkbox } from "ruru-ui/components/checkbox";
 
 ### checked
 
+This example shows a checkbox that is checked by default.
+
 <Tabs items={["Preview", "Code"]}>
   <Tab className={"flex justify-between gap-5"} value="Preview" >
     <Checkbox checked />
@@ -101,7 +110,9 @@ import { Checkbox } from "ruru-ui/components/checkbox";
 
 </Tabs>
 
-### label
+### with label
+
+This example shows a checkbox with an associated label.
 
 <Tabs items={["Preview", "Code"]}>
   <Tab className={"flex justify-between gap-5"} value="Preview" >
@@ -141,6 +152,8 @@ import { Checkbox } from "ruru-ui/components/checkbox";
 
 ## Props
 
+The Checkbox component accepts the following props:
+
 | Name          | Type                                                  | Default | Description                              |
 | ------------- | ----------------------------------------------------- | ------- | ---------------------------------------- |
 | indeterminate | boolean                                               | false   | Set the checkbox to indeterminate state. |
@@ -149,3 +162,7 @@ import { Checkbox } from "ruru-ui/components/checkbox";
 | checked       | boolean                                               | false   | Set the checkbox to checked state.       |
 | label         | string                                                | -       | Label for the checkbox.                  |
 | className     | string                                                | -       | Custom class for the checkbox.           |
+
+---
+
+This extended documentation provides clear and detailed information on how to use the Checkbox component, with multiple examples showcasing different states and configurations.
