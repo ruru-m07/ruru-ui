@@ -1,0 +1,151 @@
+---
+title: Checkbox
+description: Checkboxes allow the user to select one or more items from a set.
+preview: checkbox
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Checkbox } from "ruru-ui/components/checkbox";
+
+## Usage
+
+---
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+    <Checkbox />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Checkbox } from "ruru-ui/components/checkbox";
+
+    export function CheckboxDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <Checkbox />
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+## Examples
+
+---
+
+### indeterminate
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+    <Checkbox indeterminate />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Checkbox } from "ruru-ui/components/checkbox";
+
+    export function CheckboxDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <Checkbox indeterminate />
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+### disabled
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+    <Checkbox disabled />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Checkbox } from "ruru-ui/components/checkbox";
+
+    export function CheckboxDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <Checkbox disabled />
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+### checked
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+    <Checkbox checked />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Checkbox } from "ruru-ui/components/checkbox";
+
+    export function CheckboxDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <Checkbox checked />
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+### label
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-between gap-5"} value="Preview" >
+    <div className="flex items-center space-x-2">
+        <Checkbox id="terms1" />
+        <label
+        htmlFor="terms1"
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+        Accept terms and conditions
+        </label>
+    </div>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import { Checkbox } from "ruru-ui/components/checkbox";
+
+    export function CheckboxDemo() {
+      return (
+        <div className={"flex justify-between gap-5"}>
+            <div className="flex items-center space-x-2">
+                <Checkbox id="terms" />
+                <label
+                    htmlFor="terms"
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                    Accept terms and conditions
+                </label>
+            </div>
+        </div>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+## Props
+
+| Name          | Type                                                  | Default | Description                              |
+| ------------- | ----------------------------------------------------- | ------- | ---------------------------------------- |
+| indeterminate | boolean                                               | false   | Set the checkbox to indeterminate state. |
+| disabled      | boolean                                               | false   | Set the checkbox to disabled state.      |
+| onChange      | (event: React.ChangeEvent\<HTMLInputElement>) => void | -       | Callback when the checkbox is clicked.   |
+| checked       | boolean                                               | false   | Set the checkbox to checked state.       |
+| label         | string                                                | -       | Label for the checkbox.                  |
+| className     | string                                                | -       | Custom class for the checkbox.           |
