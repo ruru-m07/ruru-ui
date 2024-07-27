@@ -135,10 +135,16 @@ type AvatarGroupProps = Omit<
    *
    */
   limit?: number;
+
+  aClassName?: string;
+  lnClassName?: string;
 };
 
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
-  ({ className, size = 30, members, limit, ...props }, ref) => {
+  (
+    { className, aClassName, lnClassName, size = 30, members, limit, ...props },
+    ref,
+  ) => {
     const displayedMembers =
       limit && members.length > limit ? members.slice(0, limit - 1) : members;
     const extraMembersCount =
@@ -149,7 +155,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
         {displayedMembers.map((member, index) => (
           <Avatar
             key={index}
-            className={cn(`-ml-2 border`, className)}
+            className={cn(`-ml-2 border`, aClassName)}
             size={size}
             src={member.src}
             placeholder={member.alt}
@@ -158,8 +164,8 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
         {extraMembersCount > 0 && (
           <div
             className={cn(
-              `-ml-2 flex items-center justify-center rounded-full border bg-primary-foreground`,
-              className,
+              `lastcount -ml-2 flex items-center justify-center rounded-full border bg-primary-foreground`,
+              lnClassName,
             )}
             style={{
               width: `${size}px`,
@@ -243,6 +249,9 @@ type AvatarWithBadgeProps = Omit<
    *
    */
   badgeSrc: string;
+
+  iClassName?: string;
+  sClassName?: string;
 };
 
 /**
@@ -252,7 +261,19 @@ type AvatarWithBadgeProps = Omit<
  * @returns {ReactElement}
  */
 const AvatarWithBadge = React.forwardRef<HTMLDivElement, AvatarWithBadgeProps>(
-  ({ className, size = 30, src, placeholder, badgeSrc, ...props }, ref) => {
+  (
+    {
+      className,
+      sClassName,
+      iClassName,
+      size = 30,
+      src,
+      placeholder,
+      badgeSrc,
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <div
         className={cn("relative inline-block", className)}
@@ -264,7 +285,7 @@ const AvatarWithBadge = React.forwardRef<HTMLDivElement, AvatarWithBadgeProps>(
         {...props}
       >
         <img
-          className="rounded-full border"
+          className={cn("rounded-full border", iClassName)}
           style={{
             width: "100%",
             height: "100%",
@@ -273,7 +294,10 @@ const AvatarWithBadge = React.forwardRef<HTMLDivElement, AvatarWithBadgeProps>(
           alt={placeholder}
         />
         <img
-          className="absolute bottom-0 left-0 rounded-full border"
+          className={cn(
+            "absolute bottom-0 left-0 rounded-full border",
+            sClassName,
+          )}
           style={{
             width: `${size / 3}px`,
             height: `${size / 3}px`,
