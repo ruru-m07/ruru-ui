@@ -71,7 +71,15 @@ export default {
           <Tooltip>
             <TooltipTrigger className="underline">@ruru</TooltipTrigger>
             <TooltipContent
-              style={{ padding: "0px", paddingRight: "10px", paddingLeft: "10px",  height: "35px", display: "flex", justifyContent: "center", alignItems: "center" }}
+              style={{
+                padding: "0px",
+                paddingRight: "10px",
+                paddingLeft: "10px",
+                height: "35px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
               <p> author of ruru-UI </p>
             </TooltipContent>

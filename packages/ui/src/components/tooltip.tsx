@@ -8,7 +8,7 @@ import { cn } from "@/utils/cn";
 /**
  * TooltipProvider component.
  * Provides context for all tooltip components.
- * 
+ *
  * @component
  * @example
  * <TooltipProvider>
@@ -27,7 +27,7 @@ const TooltipProvider = TooltipPrimitive.Provider;
 /**
  * Tooltip component.
  * The root component for the tooltip.
- * 
+ *
  * @component
  * @example
  * <Tooltip>
@@ -44,7 +44,7 @@ const Tooltip = TooltipPrimitive.Root;
 /**
  * TooltipTrigger component.
  * The element that triggers the display of the tooltip.
- * 
+ *
  * @component
  * @example
  * <TooltipTrigger asChild>
@@ -56,7 +56,7 @@ const TooltipTrigger = TooltipPrimitive.Trigger;
 /**
  * TooltipContent component.
  * The content of the tooltip that appears when the trigger is activated.
- * 
+ *
  * @component
  * @param {string} className - Additional classes to style the tooltip content.
  * @param {number} sideOffset - Offset from the trigger element.
@@ -75,7 +75,7 @@ const TooltipContent = React.forwardRef<
     ref={ref}
     className={cn(
       "h-fit data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade text-primary-foreground select-none rounded-[4px] bg-primary px-[15px] py-[10px] text-[15px] leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity]",
-      className
+      className,
     )}
     sideOffset={sideOffset}
     {...props}
