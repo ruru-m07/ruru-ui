@@ -1,0 +1,92 @@
+---
+title: Tooltip
+description: This set of components provides a tooltip implementation using the `@radix-ui/react-tooltip package`. It includes components for the tooltip provider, root, trigger, and content.
+preview: tooltip
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "ruru-ui/components/tooltip";
+import { Button } from "ruru-ui/components/button";
+
+## Usage
+
+---
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <TooltipProvider>
+        <Tooltip>
+            <TooltipTrigger 
+              asChild>
+                <Button>Hover or focus me</Button>
+            </TooltipTrigger>
+            <TooltipContent
+              style={{ padding: "0px", paddingRight: "10px", paddingLeft: "10px",  height: "35px", display: "flex", justifyContent: "center", alignItems: "center" }}
+            >
+                Tooltip content here
+            </TooltipContent>
+        </Tooltip>
+    </TooltipProvider>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+   ```tsx
+    import {
+        Tooltip,
+        TooltipContent,
+        TooltipProvider,
+        TooltipTrigger,
+    } from "ruru-ui/components/tooltip";
+    import { Button } from "ruru-ui/components/button";
+
+    export function TooltipDemo() {
+      return (
+        <TooltipProvider>
+            <Tooltip>
+                <TooltipTrigger asChild>
+                    <Button>Hover or focus me</Button>
+                </TooltipTrigger>
+                <TooltipContent className="px-[15px] py-[px]">
+                    Tooltip content here
+                </TooltipContent>
+            </Tooltip>
+        </TooltipProvider>
+      )
+    }
+    ```
+    </Tab>
+
+</Tabs>
+
+## Components
+
+### TooltipProvider
+
+The `TooltipProvider` component is a context provider that wraps the tooltip components. It is required to be used in order to provide the context to the tooltip components.
+
+### Tooltip
+
+The `Tooltip` component is a container component that wraps the `TooltipTrigger` and `TooltipContent` components. It is used to group the trigger and content components together.
+
+### TooltipTrigger
+
+The `TooltipTrigger` component is a component that triggers the tooltip to be shown. It can be used as a child component or as a trigger for another component.
+
+### TooltipContent
+
+The `TooltipContent` component is a component that contains the content of the tooltip. It is shown when the trigger component is hovered or focused.
+
+## props
+
+---
+
+| Prop name  | Type            | Default value | Description                                      |
+| ---------- | --------------- | ------------- | ------------------------------------------------ |
+| className  | string          |               | Additional classes to style the tooltip content. |
+| sideOffset | number          | 8             | Offset from the trigger element.                 |
+| ref        | React.Ref       |               | Forwarded ref to the content element.            |
+| children   | React.ReactNode |               | Children to be rendered inside the tooltip.      |
