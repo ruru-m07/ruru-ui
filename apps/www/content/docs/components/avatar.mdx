@@ -10,17 +10,6 @@ import {
   AvatarWithBadge,
 } from "ruru-ui/components/avatar";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { Callout } from "fumadocs-ui/components/callout";
-
-<Callout title="Bug(docs)!" type="error">
-  This component uses __absolute__ and __relative__ positioning so that in our **MDX** docs
-  the component is not visible properly, but it's fine to use in your project.
-  
-  issue: [#9](https://github.com/ruru-m07/ruru-ui/issues/9)
-
-if you can fix this then feel free to submit a PR : )
-
-</Callout>
 
 ## Usage
 
@@ -95,7 +84,17 @@ The `AvatarGroup` component is used to display multiple avatars in a group.
             { src: "https://github.com/rauchg.png", alt: "rauchg" },
             { src: "https://github.com/shadcn.png", alt: "shadcn" },
           ]}
+          className={"mb-5"}
           size={40}
+          style={{
+            display: "flex",
+            gap: "20px",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "0px",
+          }}
+          aClassName="-ml-[26px] "
+          lnClassName="-ml-[26px] "
         />
         <AvatarGroup
           limit={4}
@@ -106,6 +105,15 @@ The `AvatarGroup` component is used to display multiple avatars in a group.
             { src: "https://github.com/rauchg.png", alt: "rauchg" },
             { src: "https://github.com/shadcn.png", alt: "shadcn" },
           ]}
+          style={{
+            display: "flex",
+            gap: "20px",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "0px",
+          }}
+          aClassName="-ml-[26px] "
+          lnClassName="-ml-[26px] "
         />
 
         <AvatarGroup
@@ -118,6 +126,15 @@ The `AvatarGroup` component is used to display multiple avatars in a group.
             { src: "https://github.com/shadcn.png", alt: "shadcn" },
           ]}
           size={40}
+          style={{
+            display: "flex",
+            gap: "20px",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "0px",
+          }}
+          aClassName="-ml-[26px] "
+          lnClassName="-ml-[26px] "
         />
     </Tab>
     <Tab className={"-mt-8"} value="Code">
@@ -157,20 +174,44 @@ The `AvatarGroup` component is used to display multiple avatars in a group.
 The `AvatarWithBadge` component is used to display an avatar with a badge.
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-between gap-5"} value="Preview" >
+  <Tab className={"flex items-center justify-between gap-5"} value="Preview" >
     <AvatarWithBadge
-        src="https://github.com/ruru-m07.png"
-        badgeSrc="https://github.com/github.png"
-        size={50}
+      src="https://github.com/ruru-m07.png"
+      badgeSrc="https://github.com/github.png"
+      size={50}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "0px",
+        height: "50px",
+      }}
+      sClassName="-bottom-8 -left-1"
     />
     <AvatarWithBadge
-        src="https://github.com/ruru-m07.png"
-        badgeSrc="https://github.com/github.png"
+      src="https://github.com/ruru-m07.png"
+      badgeSrc="https://github.com/github.png"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "0px",
+        height: "30px",
+      }}
+      sClassName="-bottom-8 -left-0"
     />
     <AvatarWithBadge
-        src="https://github.com/ruru-m07.png"
-        badgeSrc="https://github.com/github.png"
-        size={70}
+      src="https://github.com/ruru-m07.png"
+      badgeSrc="https://github.com/github.png"
+      size={70}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "0px",
+        height: "70px",
+      }}
+      sClassName="-bottom-7 -left-1"
     />
   </Tab>
   <Tab className={"-mt-8"} value="Code">
