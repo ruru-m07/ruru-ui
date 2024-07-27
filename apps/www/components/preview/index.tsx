@@ -33,7 +33,7 @@ export default {
   ),
   avatar: (
     <Wrapper>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-center">
         <Avatar
           size={50}
           placeholder="RU"
