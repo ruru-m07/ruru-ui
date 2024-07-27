@@ -5,6 +5,12 @@ import { Button } from "ruru-ui/components/button";
 import { Spinner } from "ruru-ui/components/spinner";
 import { Avatar } from "ruru-ui/components/avatar";
 import { Checkbox } from "ruru-ui/components/checkbox";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "ruru-ui/components/tooltip";
 
 import { BadgePreview } from "../badgePreview";
 
@@ -55,6 +61,30 @@ export default {
             Accept terms and conditions
           </label>
         </div>
+      </div>
+    </Wrapper>
+  ),
+  tooltip: (
+    <Wrapper>
+      <div className="flex items-center justify-center gap-4">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger className="underline">@ruru</TooltipTrigger>
+            <TooltipContent
+              style={{
+                padding: "0px",
+                paddingRight: "10px",
+                paddingLeft: "10px",
+                height: "35px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <p> author of ruru-UI </p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     </Wrapper>
   ),
