@@ -42,6 +42,10 @@
     "./provider": {
       "import": "./dist/provider/index.js",
       "types": "./dist/provider/index.d.ts"
+    },
+    "./utils": {
+      "import": "./dist/utils/cn.js",
+      "types": "./dist/utils/cn.d.ts"
     }
   },
   "typesVersions": {
