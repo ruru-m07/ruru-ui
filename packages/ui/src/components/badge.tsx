@@ -4,7 +4,7 @@ import { cn } from "@/utils/cn";
 
 const variants = {
   gray: "bg-[#8f8f8f] text-white",
-  "gray-subtle": "bg-[#1f1f1f]",
+  "gray-subtle": "bg-[#1f1f1f] text-white",
   blue: "bg-[#0072f5] text-white",
   "blue-subtle": "bg-[#10233d] text-[#52a8ff]",
   purple: "bg-[#8e4ec6] text-white",
