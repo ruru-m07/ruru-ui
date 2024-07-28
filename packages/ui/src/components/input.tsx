@@ -146,7 +146,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       error,
       ...props
     },
-    ref
+    ref,
   ) => {
     /**
      * Refs for the prefix and suffix elements.
@@ -185,7 +185,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             ref={prefixRef}
             className={cn(
               "absolute top-0 left-0 h-full flex items-center justify-center pl-2 text-muted-foreground",
-              `${prefixStyling ? "rounded-l-md" : ""}`
+              `${prefixStyling ? "rounded-l-md" : ""}`,
             )}
           >
             {prefix}
@@ -197,7 +197,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           className={cn(
             "flex w-full h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-shadow file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:border-primary/75 focus-visible:ring-primary/35 disabled:cursor-not-allowed disabled:opacity-50",
             iclassName,
-            `${error ? "outline-none ring-2 border-[#ff6166] ring-[#561a1e] hover:ring-[#832126]" : ""}`
+            `${error ? "outline-none ring-2 border-[#ff6166] ring-[#561a1e] hover:ring-[#832126]" : ""}`,
           )}
           style={{
             paddingLeft: prefix ? `${prefixWidth + 12}px` : "0.75rem",
@@ -211,7 +211,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             ref={suffixRef}
             className={cn(
               "absolute top-0 right-0 h-full flex items-center justify-center pr-2 text-muted-foreground",
-              `${suffixStyling ? "rounded-r-md" : ""}`
+              `${suffixStyling ? "rounded-r-md" : ""}`,
             )}
           >
             {suffixStyling && (
@@ -247,7 +247,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";
@@ -298,7 +298,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
 SearchInput.displayName = "SearchInput";

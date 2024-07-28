@@ -10,25 +10,22 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 ## Usage
 
 <Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center"} value="Preview" >
-<Input placeholder="Enter text" />
-</Tab>
-<Tab className={"-mt-8"} value="Code">
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Input placeholder="Enter text" />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { Input } from "ruru-ui/components/input";
 
-```tsx
-import { Input } from "ruru-ui/components/input";
+    export function InputDemo() {
+      return <Input placeholder="Enter text" />;
+    }
+    ```
 
-export function InputDemo() {
-  return <Input placeholder="Enter text" />;
-}
-```
-
-</Tab>
+  </Tab>
 </Tabs>
 
 ## Variants
-
----
 
 ### Default Input
 
@@ -43,105 +40,104 @@ import { Input } from "ruru-ui/components/input";
 export function DefaultInputDemo() {
   return <Input placeholder="Enter text" />;
 }
-````;
-
+```
  </Tab>
 </Tabs>
 
 ### Input with Label
 
 <Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center"} value="Preview" >
- <Input label="Email" placeholder="Enter your email" />
-</Tab>
-<Tab className={"-mt-8"} value="Code">
-```tsx
- import { Input } from "ruru-ui/components/input";
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Input label="Email" placeholder="Enter your email" />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { Input } from "ruru-ui/components/input";
 
-export function LabelInputDemo() {
-  return <Input label="Email" placeholder="Enter your email" />;
-}
+    export function LabelInputDemo() {
+      return <Input label="Email" placeholder="Enter your email" />;
+    }
 
-````
-</Tab>
+    ```
+
+  </Tab>
 </Tabs>
 
 ### Input with Prefix and Suffix
 
 <Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center gap-5"} value="Preview" >
-<Input prefix="@" placeholder="Username" />
-<Input suffix=".com" placeholder="Website" />
-</Tab>
-<Tab className={"-mt-8"} value="Code">
-```tsx
-import { Input } from "ruru-ui/components/input";
+  <Tab className={"flex justify-center gap-5"} value="Preview" >
+    <Input prefix="@" placeholder="Username" />
+  <Input suffix=".com" placeholder="Website" />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { Input } from "ruru-ui/components/input";
 
-export function PrefixSuffixInputDemo() {
-  return (
-    <div className={"flex justify-center gap-5"}>
-      <Input prefix="@" placeholder="Username" />
-      <Input suffix=".com" placeholder="Website" />
-    </div>
-  )
-}
-````
+    export function PrefixSuffixInputDemo() {
+      return (
+        <div className={"flex justify-center gap-5"}>
+          <Input prefix="@" placeholder="Username" />
+          <Input suffix=".com" placeholder="Website" />
+        </div>
+      );
+    }
+    ```
 
- </Tab>
+  </Tab>
 </Tabs>
 
 ### Input with Error Message
 
 <Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center"} value="Preview" >
- <Input error="Invalid input" placeholder="Enter text" />
-</Tab>
-<Tab className={"-mt-8"} value="Code">
-```tsx
- import { Input } from "ruru-ui/components/input";
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Input error="Invalid input" placeholder="Enter text" />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { Input } from "ruru-ui/components/input";
 
-export function ErrorInputDemo() {
-  return <Input error="Invalid input" placeholder="Enter text" />;
-}
+    export function ErrorInputDemo() {
+      return <Input error="Invalid input" placeholder="Enter text" />;
+    }
 
-````
-</Tab>
+    ```
+
+  </Tab>
 </Tabs>
 
 ### Search Input
 
 <Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center"} value="Preview" >
-<SearchInput placeholder="Search..." />
-</Tab>
-<Tab className={"-mt-8"} value="Code">
-```tsx
-import { SearchInput } from "ruru-ui/components/input";
+  <Tab className={"flex justify-center"} value="Preview" >
+    <SearchInput placeholder="Search..." />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { SearchInput } from "ruru-ui/components/input";
 
-export function SearchInputDemo() {
-  return (
-      <SearchInput placeholder="Search..." />
-  )
-}
-````
+    export function SearchInputDemo() {
+      return <SearchInput placeholder="Search..." />;
+    }
+    ```
 
- </Tab>
+  </Tab>
 </Tabs>
 
 ## Props
 
 ### Input
 
-| Name            | Type                          | Default     | Description                                                    |
-| --------------- | ----------------------------- | ----------- | -------------------------------------------------------------- |
-| `className`     | `string`                      | `""`        | Additional class names for the container.                      |
-| `iclassName`    | `string`                      | `""`        | Additional class names for the input element.                  |
-| `prefix`        | `React.ReactNode` or `string` | `undefined` | Node or string to render as prefix inside the input container. |
-| `suffix`        | `React.ReactNode` or `string` | `undefined` | Node or string to render as suffix inside the input container. |
-| `prefixStyling` | `boolean`                     | `true`      | Flag to apply styling to the prefix.                           |
-| `suffixStyling` | `boolean`                     | `true`      | Flag to apply styling to the suffix.                           |
-| `label`         | `string`                      | `undefined` | Label for the input element.                                   |
-| `error`         | `string`                      | `""`        | Error message to display below the input.                      |
+| Name              | Type                              | Default     | Description                                                    |
+| ----------------- | --------------------------------- | ----------- | -------------------------------------------------------------- |
+| **className**     | **string**                        | `""`        | Additional class names for the container.                      |
+| **iclassName**    | **string**                        | `""`        | Additional class names for the input element.                  |
+| **prefix**        | **React.ReactNode** or **string** | `undefined` | Node or string to render as prefix inside the input container. |
+| **suffix**        | **React.ReactNode** or **string** | `undefined` | Node or string to render as suffix inside the input container. |
+| **prefixStyling** | **boolean**                       | `true`      | Flag to apply styling to the prefix.                           |
+| **suffixStyling** | **boolean**                       | `true`      | Flag to apply styling to the suffix.                           |
+| **label**         | **string**                        | `undefined` | Label for the input element.                                   |
+| **error**         | **string**                        | `""`        | Error message to display below the input.                      |
 
 ### SearchInput
 
@@ -154,100 +150,98 @@ export function SearchInputDemo() {
 ### Default Input Example
 
 <Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center"} value="Preview" >
- <Input placeholder="Enter text" />
-</Tab>
-<Tab className={"-mt-8"} value="Code">
-```tsx
- import { Input } from "ruru-ui/components/input";
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Input placeholder="Enter text" />
+  </Tab>
+    <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { Input } from "ruru-ui/components/input";
 
-export function DefaultInputExample() {
-  return <Input placeholder="Enter text" />;
-}
+    export function DefaultInputExample() {
+      return <Input placeholder="Enter text" />;
+    }
 
-````
-</Tab>
+    ```
+
+  </Tab>
 </Tabs>
 
 ### Input with Label Example
 
 <Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center"} value="Preview" >
-<Input label="Email" placeholder="Enter your email" />
-</Tab>
-<Tab className={"-mt-8"} value="Code">
-```tsx
-import { Input } from "ruru-ui/components/input";
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Input label="Email" placeholder="Enter your email" />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { Input } from "ruru-ui/components/input";
 
-export function LabelInputExample() {
-  return (
-      <Input label="Email" placeholder="Enter your email" />
-  )
-}
-````
+    export function LabelInputExample() {
+      return <Input label="Email" placeholder="Enter your email" />;
+    }
+    ```
 
- </Tab>
+  </Tab>
 </Tabs>
 
 ### Input with Prefix and Suffix Example
 
 <Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center gap-5"} value="Preview" >
- <Input prefix="@" placeholder="Username" />
- <Input suffix=".com" placeholder="Website" />
-</Tab>
-<Tab className={"-mt-8"} value="Code">
-```tsx
- import { Input } from "ruru-ui/components/input";
+  <Tab className={"flex justify-center gap-5"} value="Preview" >
+    <Input prefix="@" placeholder="Username" />
+  <Input suffix=".com" placeholder="Website" />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { Input } from "ruru-ui/components/input";
 
-export function PrefixSuffixInputExample() {
-  return (
-    <div className={"flex justify-center gap-5"}>
-      <Input prefix="@" placeholder="Username" />
-      <Input suffix=".com" placeholder="Website" />
-    </div>
-  );
-}
+    export function PrefixSuffixInputExample() {
+      return (
+        <div className={"flex justify-center gap-5"}>
+          <Input prefix="@" placeholder="Username" />
+          <Input suffix=".com" placeholder="Website" />
+        </div>
+      );
+    }
 
-````
-</Tab>
+    ```
+
+  </Tab>
 </Tabs>
 
 ### Input with Error Message Example
 
 <Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center"} value="Preview" >
-<Input error="Invalid input" placeholder="Enter text" />
-</Tab>
-<Tab className={"-mt-8"} value="Code">
-```tsx
-import { Input } from "ruru-ui/components/input";
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Input error="Invalid input" placeholder="Enter text" />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { Input } from "ruru-ui/components/input";
 
-export function ErrorInputExample() {
-  return (
-      <Input error="Invalid input" placeholder="Enter text" />
-  )
-}
-````
+    export function ErrorInputExample() {
+      return <Input error="Invalid input" placeholder="Enter text" />;
+    }
+    ```
 
- </Tab>
+  </Tab>
 </Tabs>
 
 ### Search Input Example
 
 <Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center"} value="Preview" >
- <SearchInput placeholder="Search..." />
-</Tab>
-<Tab className={"-mt-8"} value="Code">
-```tsx
- import { SearchInput } from "ruru-ui/components/input";
+  <Tab className={"flex justify-center"} value="Preview" >
+    <SearchInput placeholder="Search..." />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { SearchInput } from "ruru-ui/components/input";
 
-export function SearchInputExample() {
-  return <SearchInput placeholder="Search..." />;
-}
+    export function SearchInputExample() {
+      return <SearchInput placeholder="Search..." />;
+    }
 
-```
-</Tab>
+    ```
+
+  </Tab>
 </Tabs>
-
