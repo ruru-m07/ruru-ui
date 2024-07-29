@@ -138,6 +138,7 @@ export function DefaultInputDemo() {
 | **suffixStyling** | **boolean**                       | `true`      | Flag to apply styling to the suffix.                           |
 | **label**         | **string**                        | `undefined` | Label for the input element.                                   |
 | **error**         | **string**                        | `""`        | Error message to display below the input.                      |
+| **disabled**      | **boolean**                       | `false`     | Flag to disable the input.                                     |
 
 ### SearchInput
 
@@ -221,6 +222,24 @@ export function DefaultInputDemo() {
 
     export function ErrorInputExample() {
       return <Input error="Invalid input" placeholder="Enter text" />;
+    }
+    ```
+
+  </Tab>
+</Tabs>
+
+### Disabled Input Example
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Input disabled placeholder="Enter text" />
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { Input } from "ruru-ui/components/input";
+
+    export function DisabledInputExample() {
+      return <Input disabled placeholder="Enter text" />;
     }
     ```
 
