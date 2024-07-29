@@ -197,7 +197,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           className={cn(
             "flex w-full h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-shadow file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:border-primary/75 focus-visible:ring-primary/35 disabled:cursor-not-allowed disabled:opacity-50",
             iclassName,
-            `${error ? "outline-none ring-2 border-[#ff6166] ring-[#561a1e] hover:ring-[#832126]" : ""}`,
+            `${error ? "outline-none ring-2 ring-[#ffe6e6] border-[#ff6166] dark:ring-[#561a1e] focus-visible:dark:ring-primary/35 dark:hover:ring-[#832126] hover:ring-[#f8b9b9]" : ""}`,
           )}
           style={{
             paddingLeft: prefix ? `${prefixWidth + 12}px` : "0.75rem",

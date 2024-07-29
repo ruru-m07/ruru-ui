@@ -1,0 +1,159 @@
+---
+title: Textarea
+description: The Textarea component is used to get multi-line user input.
+preview: textarea
+---
+
+import { Textarea } from "ruru-ui/components/textarea";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+## Usage
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Textarea 
+          style={{ minHeight: 100, width: 500 }}
+          placeholder="Enter text"
+        />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Textarea } from "ruru-ui/components/textarea";
+
+        export function TextareaDemo() {
+            return <Textarea style={{ minHeight: 100, width: 500 }} placeholder="Enter text" />;
+        }
+
+        ```
+    </Tab>
+
+</Tabs>
+
+## Variants
+
+### Default Textarea
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Textarea style={{ minHeight: 100, width: 500 }} placeholder="Enter text" />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Textarea } from "ruru-ui/components/textarea";
+
+        export function DefaultTextareaDemo() {
+            return <Textarea style={{ minHeight: 100, width: 500 }} placeholder="Enter text" />;
+        }
+        ```
+
+  </Tab>
+</Tabs>
+
+### Textarea with Label
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Textarea style={{ minHeight: 100, width: 500 }} label="Comments" placeholder="Enter your comments" />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Textarea } from "ruru-ui/components/textarea";
+
+        export function LabelTextareaDemo() {
+            return <Textarea style={{ minHeight: 100, width: 500 }} label="Comments" placeholder="Enter your comments" />;
+        }
+
+        ```
+
+  </Tab>
+</Tabs>
+
+### Textarea with Error Message
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Textarea style={{ minHeight: 100, width: 500 }} error="Invalid input" placeholder="Enter text" />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import { Textarea } from "ruru-ui/components/textarea";
+
+    export function ErrorTextareaDemo() {
+        return <Textarea style={{ minHeight: 100, width: 500 }} error="Invalid input" placeholder="Enter text" />;
+    }
+    ```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### Textarea
+
+| Name          | Type                                                                                     | Default     | Description                                   |
+| ------------- | ---------------------------------------------------------------------------------------- | ----------- | --------------------------------------------- |
+| **className** | string                                                                                   | `""`        | Additional class names for the container.     |
+| **label**     | string                                                                                   | `undefined` | Label for the textarea element.               |
+| **error**     | string                                                                                   | `""`        | Error message to display below the textarea.  |
+| **...props**  | **Omit\<React.InputHTMLAttributes\<HTMLTextAreaElement>, "children" "prefix" "suffix">** | `-`         | Any other props to be passed to the textarea. |
+
+## Examples
+
+### Default Textarea Example
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Textarea 
+            style={{ minHeight: 100, width: 500 }}
+            placeholder="Enter text"
+         />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Textarea } from "ruru-ui/components/textarea";
+
+        export function DefaultTextareaExample() {
+             return <Textarea style={{ minHeight: 100, width: 500 }} placeholder="Enter text" />;
+        }
+        ```
+
+  </Tab>
+</Tabs>
+
+### Textarea with Label Example
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Textarea style={{ minHeight: 100, width: 500 }} label="Comments" placeholder="Enter your comments" />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Textarea } from "ruru-ui/components/textarea";
+
+        export function LabelTextareaExample() {
+            return <Textarea style={{ minHeight: 100, width: 500 }} label="Comments" placeholder="Enter your comments" />;
+        }
+
+        ```
+
+  </Tab>
+</Tabs>
+
+### Textarea with Error Message Example
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Textarea style={{ minHeight: 100, width: 500 }} error="Invalid input" placeholder="Enter text" />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Textarea } from "ruru-ui/components/textarea";
+
+        export function ErrorTextareaExample() {
+             return <Textarea style={{ minHeight: 100, width: 500 }} error="Invalid input" placeholder="Enter text" />;
+        }
+
+        ```
+
+  </Tab>
+</Tabs>

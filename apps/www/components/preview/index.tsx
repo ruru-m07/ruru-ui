@@ -6,6 +6,7 @@ import { Spinner } from "ruru-ui/components/spinner";
 import { Avatar } from "ruru-ui/components/avatar";
 import { Checkbox } from "ruru-ui/components/checkbox";
 import { Input } from "ruru-ui/components/input";
+import { Textarea } from "ruru-ui/components/textarea";
 import {
   Tooltip,
   TooltipContent,
@@ -14,7 +15,6 @@ import {
 } from "ruru-ui/components/tooltip";
 
 import { BadgePreview } from "../badgePreview";
-import { PersonIcon } from "@radix-ui/react-icons";
 
 export default {
   button: (
@@ -97,6 +97,17 @@ export default {
           prefix={"https://"}
           suffix={".com"}
           placeholder="Enter your domain name"
+        />
+      </div>
+    </Wrapper>
+  ),
+  textarea: (
+    <Wrapper>
+      <div className="flex items-center justify-center gap-4">
+        <Textarea
+          label={"Email"}
+          placeholder="Enter your email"
+          style={{ minHeight: 100, width: 500 }}
         />
       </div>
     </Wrapper>
