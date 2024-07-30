@@ -7,7 +7,7 @@ import { Avatar } from "ruru-ui/components/avatar";
 import { Checkbox } from "ruru-ui/components/checkbox";
 import { Input } from "ruru-ui/components/input";
 import { Textarea } from "ruru-ui/components/textarea";
-import { Tab, Tabs } from "ruru-ui/components/tabs";
+import { Switch } from "ruru-ui/components/switch";
 import {
   Tooltip,
   TooltipContent,
@@ -117,6 +117,14 @@ export default {
   tabs: (
     <Wrapper>
       <Tabspreview />
+    </Wrapper>
+  ),
+  switch: (
+    <Wrapper>
+      <div className="flex items-center justify-center space-x-2">
+        <Switch id="airplane-mode" />
+        <label htmlFor="airplane-mode">Toggle Button</label>
+      </div>
     </Wrapper>
   ),
 } as Record<string, ReactNode>;
