@@ -1,0 +1,104 @@
+---
+title: Switch
+description: The Switch component is used to toggle between two states.
+preview: switch
+---
+
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { Switch } from "ruru-ui/components/switch";
+
+## Usage
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Switch />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Switch } from "your-ui-library/components/switch";
+
+        export function SwitchDemo() {
+            return <Switch />;
+        }
+        ```
+
+  </Tab>
+</Tabs>
+
+## Variants
+
+### Default Switch
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Switch />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Switch } from "your-ui-library/components/switch";
+
+        export function DefaultSwitchDemo() {
+            return <Switch />;
+        }
+        ```
+    </Tab>
+
+</Tabs>
+
+### Disabled Switch
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Switch disabled />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Switch } from "your-ui-library/components/switch";
+
+        export function DisabledSwitchDemo() {
+            return <Switch disabled />;
+        }
+        ```
+    </Tab>
+
+</Tabs>
+
+## Props
+
+| Name          | Type    | Default | Description                            |
+| ------------- | ------- | ------- | -------------------------------------- |
+| **className** | string  | `"" `   | Additional class names for the switch. |
+| **disabled**  | boolean | `false` | Flag to disable the switch.            |
+
+## Examples
+
+### Switch with lables
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <div className="flex items-center space-x-2">
+          <Switch id="airplane-mode" />
+          <label htmlFor="airplane-mode">toggle Mode</label>
+        </div>
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Switch } from "your-ui-library/components/switch";
+
+        export function DefaultSwitchExample() {
+            return (
+                <div className="flex items-center space-x-2">
+                    <Switch id="airplane-mode" />
+                    <label htmlFor="airplane-mode">toggle Mode</label>
+                </div>
+            );
+        }
+
+        ```
+    </Tab>
+
+</Tabs>
+
+---
+
+This document provides an overview of the Switch component, including usage examples, variants, props, and example implementations.
