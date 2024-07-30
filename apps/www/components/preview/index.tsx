@@ -7,6 +7,7 @@ import { Avatar } from "ruru-ui/components/avatar";
 import { Checkbox } from "ruru-ui/components/checkbox";
 import { Input } from "ruru-ui/components/input";
 import { Textarea } from "ruru-ui/components/textarea";
+import { Tab, Tabs } from "ruru-ui/components/tabs";
 import {
   Tooltip,
   TooltipContent,
@@ -15,6 +16,7 @@ import {
 } from "ruru-ui/components/tooltip";
 
 import { BadgePreview } from "../badgePreview";
+import Tabspreview from "../tabs";
 
 export default {
   button: (
@@ -110,6 +112,11 @@ export default {
           style={{ minHeight: 100, width: 500 }}
         />
       </div>
+    </Wrapper>
+  ),
+  tabs: (
+    <Wrapper>
+      <Tabspreview />
     </Wrapper>
   ),
 } as Record<string, ReactNode>;
