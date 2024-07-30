@@ -1,0 +1,159 @@
+---
+title: Tabs
+description: The Tabs component is used to organize content into multiple sections with navigation.
+preview: tabs
+---
+
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+## Usage
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview" >
+        <div className="w-[80%]">
+            <Rutabs items={["Apple", "Orange", "Mango"]}>
+                <Rutab value={"Apple"}>Apple</Rutab>
+                <Rutab value={"Orange"}>Orange</Rutab>
+                <Rutab value={"Mango"}>Mango</Rutab>
+            </Rutabs>
+        </div>
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+        export function TabsDemo() {
+            return (
+                <div className="w-[80%]">
+                    <Tabs items={["Apple", "Orange", "Mango"]}>
+                        <Tab value={"Apple"}>Apple</Tab>
+                        <Tab value={"Orange"}>Orange</Tab>
+                        <Tab value={"Mango"}>Mango</Tab>
+                    </Tabs>
+                </div>
+            );
+        }
+
+        ```
+    </Tab>
+
+</Tabs>
+
+## Variants
+
+### Default Tabs
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview" >
+        <div className="w-[80%]">
+            <Rutabs items={["Apple", "Orange", "Mango"]}>
+                <Rutab value={"Apple"}>Apple</Rutab>
+                <Rutab value={"Orange"}>Orange</Rutab>
+                <Rutab value={"Mango"}>Mango</Rutab>
+            </Rutabs>
+        </div>
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+        export function DefaultTabsDemo() {
+            return (
+                <div className="w-[80%]">
+                    <Tabs items={["Apple", "Orange", "Mango"]}>
+                        <Tab value={"Apple"}>Apple</Tab>
+                        <Tab value={"Orange"}>Orange</Tab>
+                        <Tab value={"Mango"}>Mango</Tab>
+                    </Tabs>
+                </div>
+            );
+        }
+
+        ```
+    </Tab>
+
+</Tabs>
+
+### Disabled Tabs
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview" >
+        <div className="w-[80%]">
+            <Rutabs disabled items={["Apple", "Orange", "Mango"]}>
+                <Rutab value={"Apple"}>Apple</Rutab>
+                <Rutab value={"Orange"}>Orange</Rutab>
+                <Rutab value={"Mango"}>Mango</Rutab>
+            </Rutabs>
+        </div>
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+        export function DisabledTabsDemo() {
+            return (
+                <div className="w-[80%]">
+                    <Tabs disabled items={["Apple", "Orange", "Mango"]}>
+                        <Tab value={"Apple"}>Apple</Tab>
+                        <Tab value={"Orange"}>Orange</Tab>
+                        <Tab value={"Mango"}>Mango</Tab>
+                    </Tabs>
+                </div>
+            );
+        }
+        ```
+    </Tab>
+
+</Tabs>
+
+### Default Index Tabs
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview" >
+        <div className="w-[80%]">
+            <Rutabs defaultIndex={2} items={["Apple", "Orange", "Mango"]}>
+                <Rutab value={"Apple"}>Apple</Rutab>
+                <Rutab value={"Orange"}>Orange</Rutab>
+                <Rutab value={"Mango"}>Mango</Rutab>
+            </Rutabs>
+        </div>
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+        export function DefaultIndexTabsDemo() {
+            return (
+                <div className="w-[80%]">
+                    <Tabs defaultIndex={2} items={["Apple", "Orange", "Mango"]}>
+                        <Tab value={"Apple"}>Apple</Tab>
+                        <Tab value={"Orange"}>Orange</Tab>
+                        <Tab value={"Mango"}>Mango</Tab>
+                    </Tabs>
+                </div>
+            );
+        }
+        ```
+    </Tab>
+
+</Tabs>
+
+## Props
+
+### Tabs
+
+| Name             | Type     | Default     | Description                             |
+| ---------------- | -------- | ----------- | --------------------------------------- |
+| **groupId**      | string   | `undefined` | Identifier for sharing value of tabs    |
+| **persist**      | boolean  | `false`     | Enable persistent state                 |
+| **defaultIndex** | number   | `0`         | Default index of the selected tab       |
+| **disabled**     | boolean  | `false`     | Disable all tabs                        |
+| **items**        | string[] | `[]`        | Array of items to be used as tab labels |
+
+### Tab
+
+| Name          | Type   | Default | Description                                             |
+| ------------- | ------ | ------- | ------------------------------------------------------- |
+| **value**     | string |         | Value of the tab, used for identifying the selected tab |
+| **className** | string | `""`    | Additional class names for the container                |
