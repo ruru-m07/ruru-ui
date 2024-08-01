@@ -16,23 +16,25 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 The `Avatar` component is used to represent a user or entity.
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"grid grid-cols-3 place-items-center "} value="Preview" >
-    <Avatar
-        placeholder="RU"
-        src={"https://github.com/ruru-m07.png"}
-    />
-    <Avatar
-        size={50}
-        placeholder="RU"
-        src={"https://github.com/ruru-m07.png"}
-    />
-    <Avatar
-        size={70}
-        placeholder="RU"
-        src={"https://github.com/ruru-m07.png"}
-    />
+  <Tab value="Preview" >
+    <div className="grid grid-cols-3 place-items-center">
+      <Avatar
+          size={50}
+          placeholder="RU"
+          src={"https://github.com/ruru-m07.png"}
+      />
+      <Avatar
+          placeholder="RU"
+          src={"https://github.com/ruru-m07.png"}
+      />
+      <Avatar
+          size={70}
+          placeholder="RU"
+          src={"https://github.com/ruru-m07.png"}
+      />
+    </div>
   </Tab>
-  <Tab className={"-mt-8"} value="Code">
+  <Tab value="Code">
    ```tsx
     import { Avatar } from "ruru-ui/components/avatar";
 
