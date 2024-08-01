@@ -9,12 +9,9 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 First, you'll need to install **ruru UI** and its peer dependencies. You can do this using npm or yarn:
 
-<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
-  <Tab value="npm">```bash npm install ruru-ui ```</Tab>
-  <Tab value="pnpm">```bash pnpm install ruru-ui ```</Tab>
-  <Tab value="yarn">```bash yarn add ruru-ui ```</Tab>
-  <Tab value="bun">```bash bun add ruru-ui ```</Tab>
-</Tabs>
+```package-install
+npm i ruru-ui
+```
 
 ## Import Styles
 
@@ -29,7 +26,7 @@ import "ruru-ui/style.css";
 Now that you've installed **ruru UI** and imported its styles, you can start using the components in your project. Here's an example of how you can use a button component:
 
 ```tsx title="App.tsx"
-import { Button } from "ruru-ui";
+import { Button } from "ruru-ui/components/button";
 
 function App() {
   return <Button>Click me</Button>;
@@ -42,19 +39,19 @@ That's it! You're now ready to start building beautiful interfaces with **ruru U
 
 <Cards>
   <Card
-    href="/docs/components"
-    title="Explore the Components"
-    description="Discover all the components and features ruru UI has to offer."
+    href="/docs/dark-mode"
+    title="Dark Mode"
+    description="Learn how to enable dark mode in your ruru UI app."
   />
   <Card
-    href="/docs/examples"
-    title="View the Examples"
-    description="Explore the examples to see ruru UI in action and get inspired."
+    href="/docs/typography"
+    title="Typography"
+    description="Explore the typography styles available in ruru UI."
   />
   <Card
-    href="/docs/contributing"
-    title="Contribute to the Library"
-    description="Help make ruru UI even better by contributing to the library."
+    href="/docs/components/button"
+    title="Button"
+    description="Explore the Button component and its props."
   />
 </Cards>
 

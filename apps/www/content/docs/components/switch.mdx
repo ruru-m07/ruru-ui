@@ -99,6 +99,24 @@ import { Switch } from "ruru-ui/components/switch";
 
 </Tabs>
 
+### Default Checked Switch
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Switch defaultChecked />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+        ```tsx
+        import { Switch } from "your-ui-library/components/switch";
+
+        export function DefaultCheckedSwitchDemo() {
+            return <Switch defaultChecked />;
+        }
+        ```
+    </Tab>
+
+</Tabs>
+
 ---
 
 This document provides an overview of the Switch component, including usage examples, variants, props, and example implementations.

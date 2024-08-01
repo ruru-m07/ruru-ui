@@ -10,7 +10,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint:prettier": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
     "prettier": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
-    "types:check": "turbo run types:check"
+    "types:check": "turbo run types:check",
+    "release": "turbo run build --filter=./packages/* && changeset publish",
+    "version": "changeset version && pnpm install --lockfile-only"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.16.1",
@@ -19,6 +21,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-tailwindcss": "^3.17.4",
     "eslint-plugin-tsdoc": "^0.3.0",
+    "husky": "^9.1.4",
     "prettier": "^3.3.3",
     "turbo": "^2.0.9",
     "typescript": "^5.4.5"
@@ -26,5 +29,8 @@
   "packageManager": "pnpm@9.5.0",
   "engines": {
     "node": ">=18.17.0"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.27.7"
   }
 }
