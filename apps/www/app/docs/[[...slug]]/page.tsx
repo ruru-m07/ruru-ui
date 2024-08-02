@@ -2,8 +2,8 @@ import { getPage, getPages } from "@/app/source";
 import type { Metadata } from "next";
 import { DocsPage, DocsBody } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
-import { ReactNode } from "react";
 import Preview from "@/components/preview";
+import EditonGithub from "@/components/EditonGithub";
 
 interface Param {
   slug: string[];
@@ -11,6 +11,14 @@ interface Param {
 
 export default async function Page({ params }: { params: Param }) {
   const page = getPage(params.slug ?? []);
+
+  const path = `apps/www/content/docs/${page.file.path}`;
+
+  const footer = (
+    <div className="w-full">
+      <EditonGithub path={path} />
+    </div>
+  );
 
   if (page == null) {
     notFound();
@@ -20,7 +28,14 @@ export default async function Page({ params }: { params: Param }) {
   const preview = page.data.preview;
 
   return (
-    <DocsPage toc={page.data.exports.toc} full={page.data.full}>
+    <DocsPage
+      toc={page.data.exports.toc}
+      full={page.data.full}
+      tableOfContent={{
+        footer,
+      }}
+      tableOfContentPopover={{ footer }}
+    >
       <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
         {page.data.title}
       </h1>
