@@ -13,7 +13,7 @@ export const {
   getPage: (slugs: string[], language?: string) => any;
   getPages: (language?: string) => any[];
   pageTree: (
-    slug?: string[] | undefined
+    slug?: string[] | undefined,
   ) => Partial<Omit<BuildPageTreeOptions, "storage" | "getUrl">>;
   // pageTree: PageTree.Root;
 } = loader({
