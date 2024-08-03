@@ -52,3 +52,239 @@
   --muted-foreground: 230 80% 84% !important;
   --card: 230 40% 26.3% !important;
 }
+
+.border-box {
+  position: relative;
+}
+
+.border-box::before,
+.border-box::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #2e2e2e;
+}
+
+.border-box::before {
+  top: -4px;
+  left: -4px;
+}
+
+.border-box::after {
+  bottom: -4px;
+  right: -4px;
+}
+
+.border-box::before::before,
+.border-box::before::after,
+.border-box::after::before,
+.border-box::after::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #2e2e2e;
+}
+
+.border-box::before::before {
+  top: 0;
+  left: 0;
+}
+
+.border-box::before::before::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  top: 1;
+  left: 3;
+}
+
+.border-box::before::after {
+  top: 0;
+  right: 0;
+}
+
+.border-box::after::before {
+  bottom: 0;
+  left: 0;
+}
+
+.border-box::after::after {
+  bottom: 0;
+  right: 0;
+}
+
+.home_main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/rings-bg.svg");
+  width: 100%;
+  height: 100vh;
+  max-height: 1000px;
+  background-size: cover;
+  position: relative;
+  flex-wrap: wrap;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+.home_spotlight {
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #fff 0,
+    hsla(0, 0%, 100%, 0) 100%
+  );
+  opacity: 0.06;
+  transform: rotate(45deg);
+  width: 100%;
+  top: -80px;
+  max-width: 1800px;
+}
+
+.home_intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 712px;
+  padding: 0 16px;
+}
+
+.words_selectionDot__A9lBk {
+  background: #fff;
+  width: 4px;
+  height: 4px;
+  box-shadow: 0 0 0 1px var(--accent-color);
+  position: absolute;
+}
+
+.words_designers__jgVLV {
+  --accent-color: #666;
+  box-shadow: 0 0 0 2px var(--accent-color);
+  padding: 0 2px;
+  position: relative;
+  display: inline-flex;
+}
+
+.words_width__LcrJC {
+  display: inline-block;
+  width: -moz-fit-content;
+  width: fit-content;
+  letter-spacing: -1px;
+  line-height: 16px;
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-size: 12px;
+  background: var(--accent-color);
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: words_width_animation 2s normal;
+}
+
+@keyframes words_width_animation {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  50% {
+    top: -28px;
+    opacity: 0.5;
+  }
+  100% {
+    top: -28px;
+    opacity: 1;
+  }
+}
+
+.words_stunning {
+  fill: none;
+  stroke: #f1f1f1;
+  stroke-width: 0.2px;
+  stroke-linejoin: round;
+  stroke-dasharray: 3;
+  stroke-dashoffset: 0;
+}
+
+.words_customizable {
+  padding: 0 2px;
+  position: relative;
+  display: inline-flex;
+}
+
+.words_width_lens_body {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: -1px;
+  line-height: 16px;
+  border-radius: 50%;
+  border: solid 1px #2e2e2e;
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  left: 17%;
+  transform: translateX(-50%);
+  animation: lense 2s normal;
+}
+
+@keyframes lense {
+  0% {
+    left: 50%;
+  }
+  100% {
+    left: 17%;
+  }
+}
+
+.word_large_text {
+  font-size: 3rem;
+  line-height: 1;
+  animation: word_large_text_animation 2s normal;
+}
+
+@keyframes word_large_text_animation {
+  0% {
+    font-size: 2rem;
+  }
+  100% {
+    font-size: 3rem;
+  }
+}
+
+.words_width_lens {
+  margin: 3px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.2px);
+  -webkit-backdrop-filter: blur(1.2px);
+}
+
+.underline-clip:after {
+  content: "";
+  position: absolute;
+  top: 95%;
+  width: 150%;
+  aspect-ratio: 5 / 1;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 50%;
+  border: 2px solid hsl(0, 0%, 90%);
+  clip-path: polygon(0 0, 50% 50%, 100% 0);
+  animation: underline_clip 3s none;
+}
+
+@keyframes underline_clip {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
