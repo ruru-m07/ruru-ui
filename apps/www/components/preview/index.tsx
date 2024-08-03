@@ -9,18 +9,6 @@ import { Input } from "ruru-ui/components/input";
 import { Textarea } from "ruru-ui/components/textarea";
 import { Switch } from "ruru-ui/components/switch";
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectScrollDownButton,
-  SelectScrollUpButton,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from "ruru-ui/components/select";
-import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -136,31 +124,6 @@ export default {
       <div className="flex items-center justify-center space-x-2">
         <Switch id="airplane-mode" />
         <label htmlFor="airplane-mode">Toggle Button</label>
-      </div>
-    </Wrapper>
-  ),
-  select: (
-    <Wrapper>
-      <div className="flex items-center justify-center">
-        <Select defaultValue="Ruby">
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select a programming languages" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Fruits</SelectLabel>
-              <SelectItem value="C ">C </SelectItem>
-              <SelectItem value="C++">C++</SelectItem>
-              <SelectItem value="Java">Java</SelectItem>
-              <SelectItem value="Python">Python</SelectItem>
-              <SelectItem value="Rust">Rust</SelectItem>
-              <SelectItem value="Golang">Golang</SelectItem>
-              <SelectItem value="Scala">Scala</SelectItem>
-              <SelectItem value="Ruby">Ruby</SelectItem>
-              <SelectItem value="C#">C#</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
       </div>
     </Wrapper>
   ),
