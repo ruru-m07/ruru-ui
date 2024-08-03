@@ -1,0 +1,312 @@
+---
+title: Select
+description: The Select component is used to get user input.
+preview: select
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+import {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectLabel,
+  SelectItem,
+  SelectSeparator,
+  SelectScrollUpButton,
+  SelectScrollDownButton,
+} from "ruru-ui/components/select";
+
+## Usage
+
+---
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <div className={"flex justify-between gap-5"}>
+            <Select>
+                <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Select a fruit" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectGroup>
+                        <SelectLabel>Fruits</SelectLabel>
+                        <SelectItem value="apple">Apple</SelectItem>
+                        <SelectItem value="banana">Banana</SelectItem>
+                        <SelectItem value="blueberry">Blueberry</SelectItem>
+                        <SelectItem value="grapes">Grapes</SelectItem>
+                        <SelectItem value="pineapple">Pineapple</SelectItem>
+                    </SelectGroup>
+                </SelectContent>
+            </Select>
+        </div>
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+import {
+    Select,
+    SelectGroup,
+    SelectValue,
+    SelectTrigger,
+    SelectContent,
+    SelectLabel,
+    SelectItem,
+    SelectSeparator,
+    SelectScrollUpButton,
+    SelectScrollDownButton,
+} from "ruru-ui/components/select";
+
+export function SelectDemo() {
+    return (
+        <div className={"flex justify-between gap-5"}>
+            <Select>
+                <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select a fruit" />
+                </SelectTrigger>
+                <SelectContent>
+                <SelectGroup>
+                    <SelectLabel>Fruits</SelectLabel>
+                    <SelectItem value="apple">Apple</SelectItem>
+                    <SelectItem value="banana">Banana</SelectItem>
+                    <SelectItem value="blueberry">Blueberry</SelectItem>
+                    <SelectItem value="grapes">Grapes</SelectItem>
+                    <SelectItem value="pineapple">Pineapple</SelectItem>
+                </SelectGroup>
+                </SelectContent>
+            </Select>
+        </div>
+    )
+}
+```
+    </Tab>
+
+</Tabs>
+
+## Examples
+
+---
+
+### Basic Usage
+
+The `Select` component can be used to create a basic dropdown menu.
+
+<Tabs items={["Preview", "Code"]}>
+<Tab className={"flex justify-center"} value="Preview">
+ <Select>
+   <SelectTrigger className="w-[180px]">
+     <SelectValue placeholder="Select a fruit" />
+   </SelectTrigger>
+   <SelectContent>
+     <SelectGroup>
+       <SelectLabel>Fruits</SelectLabel>
+       <SelectItem value="apple">Apple</SelectItem>
+       <SelectItem value="banana">Banana</SelectItem>
+       <SelectItem value="blueberry">Blueberry</SelectItem>
+       <SelectItem value="grapes">Grapes</SelectItem>
+       <SelectItem value="pineapple">Pineapple</SelectItem>
+     </SelectGroup>
+   </SelectContent>
+ </Select>
+</Tab>
+<Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import {
+        Select,
+        SelectGroup,
+        SelectValue,
+        SelectTrigger,
+        SelectContent,
+        SelectLabel,
+        SelectItem,
+    } from "ruru-ui/components/select";
+
+    export function BasicSelect() {
+        return (
+            <Select>
+                <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Select a fruit" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectGroup>
+                        <SelectLabel>Fruits</SelectLabel>
+                        <SelectItem value="apple">Apple</SelectItem>
+                        <SelectItem value="banana">Banana</SelectItem>
+                        <SelectItem value="blueberry">Blueberry</SelectItem>
+                        <SelectItem value="grapes">Grapes</SelectItem>
+                        <SelectItem value="pineapple">Pineapple</SelectItem>
+                    </SelectGroup>
+                </SelectContent>
+            </Select>
+        );
+    }
+    ```
+
+</Tab>
+</Tabs>
+
+### Disabled Select
+
+You can disable the `Select` component by passing the `disabled` prop to the `SelectTrigger`.
+
+<Tabs items={["Preview", "Code"]}>
+<Tab className={"flex justify-center"} value="Preview">
+<Select>
+  <SelectTrigger disabled className="w-[180px]">
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Fruits</SelectLabel>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="blueberry">Blueberry</SelectItem>
+      <SelectItem value="grapes">Grapes</SelectItem>
+      <SelectItem value="pineapple">Pineapple</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
+</Tab>
+    <Tab className={"-mt-8"} value="Code">
+    ```tsx
+    import {
+        Select,
+        SelectGroup,
+        SelectValue,
+        SelectTrigger,
+        SelectContent,
+        SelectLabel,
+        SelectItem,
+    } from "ruru-ui/components/select";
+
+    export function DisabledSelect() {
+        return (
+            <Select>
+                <SelectTrigger disabled className="w-[180px]">
+                    <SelectValue placeholder="Select a fruit" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectGroup>
+                        <SelectLabel>Fruits</SelectLabel>
+                        <SelectItem value="apple">Apple</SelectItem>
+                        <SelectItem value="banana">Banana</SelectItem>
+                        <SelectItem value="blueberry">Blueberry</SelectItem>
+                        <SelectItem value="grapes">Grapes</SelectItem>
+                        <SelectItem value="pineapple">Pineapple</SelectItem>
+                    </SelectGroup>
+                </SelectContent>
+            </Select>
+        );
+    }
+    ```
+
+    </Tab>
+
+</Tabs>
+
+### Default Value
+
+You can set a default value for the `Select` component by passing the `defaultValue` prop to the `Select` component.
+
+<Tabs items={["Preview", "Code"]}>
+<Tab className={"flex justify-center"} value="Preview">
+ <Select defaultValue="banana">
+   <SelectTrigger className="w-[180px]">
+     <SelectValue placeholder="Select a fruit" />
+   </SelectTrigger>
+   <SelectContent>
+     <SelectGroup>
+       <SelectLabel>Fruits</SelectLabel>
+       <SelectItem value="apple">Apple</SelectItem>
+       <SelectItem value="banana">Banana</SelectItem>
+       <SelectItem value="blueberry">Blueberry</SelectItem>
+       <SelectItem value="grapes">Grapes</SelectItem>
+       <SelectItem value="pineapple">Pineapple</SelectItem>
+     </SelectGroup>
+   </SelectContent>
+ </Select>
+</Tab>
+<Tab className={"-mt-8"} value="Code">
+```tsx
+ import {
+   Select,
+   SelectGroup,
+   SelectValue,
+   SelectTrigger,
+   SelectContent,
+   SelectLabel,
+   SelectItem,
+ } from "ruru-ui/components/select";
+
+export function DefaultValueSelect() {
+  return (
+    <Select defaultValue="banana">
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Fruits</SelectLabel>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+          <SelectItem value="blueberry">Blueberry</SelectItem>
+          <SelectItem value="grapes">Grapes</SelectItem>
+          <SelectItem value="pineapple">Pineapple</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  );
+}
+```
+</Tab>
+</Tabs>
+
+## Props
+
+| Name              | Type                     | Default   | Description                                |
+| ----------------- | ------------------------ | --------- | ------------------------------------------ |
+| **children**      | ReactNode                | -         | The content of the select component.       |
+| **defaultValue**  | string                   | -         | The default value of the select component. |
+| **disabled**      | boolean                  | false     | If `true`, the select will be disabled.    |
+| **value**         | string                   | -         | The value of the select component.         |
+| **onValueChange** | (value: string) => void  | -         | Function to call when the value changes.   |
+| **placeholder**   | string                   | -         | Placeholder text for the select component. |
+| **variant**       | 'primary' \| 'secondary' | 'primary' | The variant of the select component.       |
+
+---
+
+The `Select` component is a powerful and flexible dropdown menu that can be used in a variety of scenarios. It supports customization through its various props and can be integrated seamlessly into your application.
+
+## Importing Components
+
+The `Select` component is built using several subcomponents that you can import individually:
+
+- `Select`
+- `SelectGroup`
+- `SelectValue`
+- `SelectTrigger`
+- `SelectContent`
+- `SelectLabel`
+- `SelectItem`
+- `SelectSeparator`
+- `SelectScrollUpButton`
+- `SelectScrollDownButton`
+
+This allows for fine-grained control and customization over the appearance and behavior of the select dropdown.
+
+For more detailed information on each subcomponent and additional examples, please refer to the documentation for each individual component.
+
+---
+
+## Conclusion
+
+The `Select` component in the `ruru-ui` library offers a robust solution for creating dropdown menus in your application. By leveraging its flexible API and various customization options, you can create user-friendly and accessible dropdown menus that fit seamlessly into your application's design.
+
+Feel free to experiment with the examples provided and explore the various props to see how you can best utilize the `Select` component in your projects.
+
+---
+
+This documentation provides a comprehensive overview of the `Select` component, including usage examples, prop descriptions, and subcomponent details. By following this structure, you ensure that users can easily understand how to use and customize the component in their projects.
+
+Would you like to add more specific examples or cover additional subcomponents in this documentation?
