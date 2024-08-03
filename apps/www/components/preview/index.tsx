@@ -14,6 +14,15 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "ruru-ui/components/tooltip";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "ruru-ui/components/select";
 
 import { BadgePreview } from "../badgePreview";
 import Tabspreview from "../tabs";
@@ -124,6 +133,31 @@ export default {
       <div className="flex items-center justify-center space-x-2">
         <Switch id="airplane-mode" />
         <label htmlFor="airplane-mode">Toggle Button</label>
+      </div>
+    </Wrapper>
+  ),
+  select: (
+    <Wrapper>
+      <div className="flex items-center justify-center">
+        <Select defaultValue="Ruby">
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select a programming languages" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Fruits</SelectLabel>
+              <SelectItem value="C ">C </SelectItem>
+              <SelectItem value="C++">C++</SelectItem>
+              <SelectItem value="Java">Java</SelectItem>
+              <SelectItem value="Python">Python</SelectItem>
+              <SelectItem value="Rust">Rust</SelectItem>
+              <SelectItem value="Golang">Golang</SelectItem>
+              <SelectItem value="Scala">Scala</SelectItem>
+              <SelectItem value="Ruby">Ruby</SelectItem>
+              <SelectItem value="C#">C#</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
     </Wrapper>
   ),
