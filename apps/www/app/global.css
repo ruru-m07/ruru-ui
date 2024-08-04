@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+#nd-subnav {
+  display: none;
+}
+
 .ui {
   --primary: var(--ui-color);
 }
@@ -51,17 +55,14 @@
 
 .words_width_animat {
   animation: words_width_animation 4s normal;
-  animation-delay: 1s;
 }
 
 .words_width_lens_body {
   animation: lense 3s normal;
-  animation-delay: 1s;
 }
 
 .word_large_text {
   animation: word_large_text_animation 1s normal;
-  animation-delay: 1s;
 }
 
 .underline-clip:after {
@@ -95,8 +96,11 @@
   0% {
     left: 28%;
   }
-  50% {
+  25% {
     left: 60%;
+  }
+  50% {
+    left: 28%;
   }
   100% {
     left: 28%;
