@@ -7,7 +7,14 @@ export function createMetadata(override: Metadata): Metadata {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       url: "https://ruru-ui.vercel.app",
-      images: "/banner.png",
+      images: [
+        {
+          url: "https://ruru-ui.vercel.app/banner.png",
+          width: 1200,
+          height: 567,
+          alt: "ruru-ui",
+        },
+      ],
       siteName: "Ruru UI",
       ...override.openGraph,
     },
