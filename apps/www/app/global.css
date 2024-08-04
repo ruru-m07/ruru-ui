@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .catppuccin-mocha {
-    background: #0f0f0f;
-} */
+#nd-subnav {
+  display: none;
+}
 
 .ui {
   --primary: var(--ui-color);
@@ -51,4 +51,106 @@
   --accent: 250 20% 38.3% !important;
   --muted-foreground: 230 80% 84% !important;
   --card: 230 40% 26.3% !important;
+}
+
+.words_width_animat {
+  animation: words_width_animation 4s normal;
+}
+
+.words_width_lens_body {
+  animation: lense 3s normal;
+}
+
+.word_large_text {
+  animation: word_large_text_animation 1s normal;
+}
+
+.underline-clip:after {
+  animation: underline_clip 4s none;
+}
+
+.words_interfaces::after {
+  animation: words_interfaces_after_animation 3.5s normal;
+}
+
+.words_interfaces::before {
+  animation: words_interfaces_before_animation 3.5s normal;
+}
+
+@keyframes words_width_animation {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  50% {
+    top: -28px;
+    opacity: 0.5;
+  }
+  100% {
+    top: -28px;
+    opacity: 1;
+  }
+}
+
+@keyframes lense {
+  0% {
+    left: 28%;
+  }
+  25% {
+    left: 60%;
+  }
+  50% {
+    left: 28%;
+  }
+  100% {
+    left: 28%;
+  }
+}
+
+@keyframes word_large_text_animation {
+  0% {
+    font-size: 2rem;
+  }
+  100% {
+    font-size: 3rem;
+  }
+}
+
+@keyframes underline_clip {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes words_interfaces_before_animation {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  65% {
+    width: 205px;
+    opacity: 0.5;
+  }
+  100% {
+    width: 205px;
+    opacity: 1;
+  }
+}
+
+@keyframes words_interfaces_after_animation {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  65% {
+    height: 60px;
+    opacity: 0.5;
+  }
+  100% {
+    height: 60px;
+    opacity: 1;
+  }
 }
