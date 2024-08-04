@@ -39,7 +39,7 @@ export default function HomePage() {
             </text>
           </span>
           <br />
-          <div className="my-4" />
+          <div className="my-7" />
           <span className="words_customizable">
             <div className="words_width_lens_body">
               <div
@@ -48,8 +48,10 @@ export default function HomePage() {
                 style={{ transform: "none" }}
               />
             </div>
-            Customizable Interfaces
+            Customizable
           </span>
+          <span className="mx-52" />
+          <span className="words_interfaces">Interfaces</span>
           <span>with</span>
           <span className="relative underline-clip">Ruru UI</span>
         </h1>
