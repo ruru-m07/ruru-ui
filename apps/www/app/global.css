@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .catppuccin-mocha {
-    background: #0f0f0f;
-} */
-
 .ui {
   --primary: var(--ui-color);
 }
@@ -131,6 +127,7 @@
   background-repeat: no-repeat;
   background-position: 50%;
 }
+
 .home_spotlight {
   background: radial-gradient(
     50% 50% at 50% 50%,
@@ -185,21 +182,6 @@
   animation: words_width_animation 2s normal;
 }
 
-@keyframes words_width_animation {
-  0% {
-    top: 0;
-    opacity: 0;
-  }
-  50% {
-    top: -28px;
-    opacity: 0.5;
-  }
-  100% {
-    top: -28px;
-    opacity: 1;
-  }
-}
-
 .words_stunning {
   fill: none;
   stroke: #f1f1f1;
@@ -225,19 +207,10 @@
   border: solid 1px #2e2e2e;
   font-size: 12px;
   position: absolute;
-  top: -10px;
-  left: 17%;
+  top: -15px;
+  left: 28%;
   transform: translateX(-50%);
   animation: lense 2s normal;
-}
-
-@keyframes lense {
-  0% {
-    left: 50%;
-  }
-  100% {
-    left: 17%;
-  }
 }
 
 .word_large_text {
@@ -246,19 +219,10 @@
   animation: word_large_text_animation 2s normal;
 }
 
-@keyframes word_large_text_animation {
-  0% {
-    font-size: 2rem;
-  }
-  100% {
-    font-size: 3rem;
-  }
-}
-
 .words_width_lens {
   margin: 3px;
-  width: 58px;
-  height: 58px;
+  width: 63px;
+  height: 63px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -278,15 +242,6 @@
   border: 2px solid hsl(0, 0%, 90%);
   clip-path: polygon(0 0, 50% 50%, 100% 0);
   animation: underline_clip 3s none;
-}
-
-@keyframes underline_clip {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 .words_interfaces {
@@ -315,6 +270,48 @@
   border-radius: 9999px;
   background: #f0f0f0;
   animation: words_interfaces_before_animation 2s normal;
+}
+
+@keyframes words_width_animation {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  50% {
+    top: -28px;
+    opacity: 0.5;
+  }
+  100% {
+    top: -28px;
+    opacity: 1;
+  }
+}
+
+@keyframes lense {
+  0% {
+    left: 50%;
+  }
+  100% {
+    left: 17%;
+  }
+}
+
+@keyframes word_large_text_animation {
+  0% {
+    font-size: 2rem;
+  }
+  100% {
+    font-size: 3rem;
+  }
+}
+
+@keyframes underline_clip {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes words_interfaces_before_animation {
