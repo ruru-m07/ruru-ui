@@ -4,7 +4,6 @@ import { RootProvider } from "fumadocs-ui/provider";
 import type { Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import type { ReactNode } from "react";
-import "ruru-ui/style.css";
 import "fumadocs-ui/style.css";
 
 export const metadata = createMetadata({
