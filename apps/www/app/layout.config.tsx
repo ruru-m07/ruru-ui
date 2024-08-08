@@ -27,6 +27,7 @@ export const baseOptions: BaseLayoutProps = {
       </>
     ),
   },
+  githubUrl: "https://github.com/ruru-m07/ruru-ui/",
   // links: [
   //   {
   //     text: 'Documentation',

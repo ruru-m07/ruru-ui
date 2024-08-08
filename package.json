@@ -31,6 +31,7 @@
     "node": ">=18.17.0"
   },
   "dependencies": {
-    "@changesets/cli": "^2.27.7"
+    "@changesets/cli": "^2.27.7",
+    "sharp": "^0.33.4"
   }
 }
