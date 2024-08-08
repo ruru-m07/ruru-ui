@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#nd-subnav {
-  display: none;
-}
-
 .ui {
   --primary: var(--ui-color);
 }
