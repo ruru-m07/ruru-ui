@@ -13,7 +13,7 @@ async function main(): Promise<void> {
       await import("./commands/add").then((mod) => mod.add());
       break;
     default:
-      console.log("Usage: . <command>");
+      console.log("Usage: <command>");
       break;
   }
 }

@@ -5,15 +5,174 @@ import {
   intro,
   note,
   outro,
-  spinner,
   text,
 } from "@clack/prompts";
+import { existsSync, promises as fs } from "fs";
+import * as templates from "../utils/templates";
 import pc from "picocolors";
+import { getProjectConfig, preFlight } from "@/utils/get-project-info";
+import {
+  Config,
+  getConfig,
+  rawConfigSchema,
+  resolveConfigPaths,
+} from "@/utils/get-config";
+import { getPackageManager } from "@/utils/get-package-manager";
+import path from "path";
+import { execa } from "execa";
+import template from "lodash.template";
+import ora from "ora";
+import { applyPrefixesCss } from "@/utils/transformers/transform-tw-prefix";
+
+const PROJECT_DEPENDENCIES = [
+  "tailwindcss-animate",
+  "class-variance-authority",
+  "clsx",
+  "tailwind-merge",
+];
 
 export async function init() {
   console.log("\n");
   intro(pc.white(pc.bold(" 🚀  Welcome to the installation wizard! ")));
 
+  // TODO: get values from argvs.
+  const options = {
+    defaults: true,
+  };
+
+  // TODO: we'll give the user the option to change this.
+  let cwd = process.cwd();
+
+  preFlight(cwd);
+  const projectConfig = await getProjectConfig(cwd);
+
+  if (projectConfig) {
+    console.log(pc.green(pc.bold("\n config found! \n ")));
+
+    const config = await promptForMinimalConfig(
+      cwd,
+      projectConfig,
+      options.defaults,
+    );
+    await runInit(cwd, config);
+  } else {
+    // Read config.
+    const existingConfig = await getConfig(cwd);
+    const config = await promptForConfig(cwd, existingConfig, options.defaults);
+    await runInit(cwd, config);
+  }
+
+  let nextSteps = `npx ruru-ui-cli add button             `;
+
+  note(nextSteps, "Next steps.");
+
+  outro(
+    `Problems? ${pc.underline(pc.cyan("https://github.com/ruru-m07/ruru-ui/issues"))}`,
+  );
+
+  process.exit(0);
+}
+
+/**
+ * ! Prompt for minimal configuration.
+ */
+
+export async function runInit(cwd: string, config: Config) {
+  const spinner = ora(`Initializing project...`)?.start();
+
+  // Ensure all resolved paths directories exist.
+  for (const [key, resolvedPath] of Object.entries(config.resolvedPaths)) {
+    // Determine if the path is a file or directory.
+    // TODO: is there a better way to do this?
+    let dirname = path.extname(resolvedPath)
+      ? path.dirname(resolvedPath)
+      : resolvedPath;
+
+    // If the utils alias is set to something like "@/lib/utils",
+    // assume this is a file and remove the "utils" file name.
+    // TODO: In future releases we should add support for individual utils.
+    if (key === "utils" && resolvedPath.endsWith("/utils")) {
+      // Remove /utils at the end.
+      dirname = dirname.replace(/\/utils$/, "");
+    }
+
+    if (!existsSync(dirname)) {
+      await fs.mkdir(dirname, { recursive: true });
+    }
+  }
+
+  const extension = config.tsx ? "ts" : "js";
+
+  const tailwindConfigExtension = path.extname(
+    config.resolvedPaths.tailwindConfig,
+  );
+
+  let tailwindConfigTemplate: string;
+  if (tailwindConfigExtension === ".ts") {
+    tailwindConfigTemplate = config.tailwind.cssVariables
+      ? templates.TAILWIND_CONFIG_TS_WITH_VARIABLES
+      : templates.TAILWIND_CONFIG_TS;
+  } else {
+    tailwindConfigTemplate = config.tailwind.cssVariables
+      ? templates.TAILWIND_CONFIG_WITH_VARIABLES
+      : templates.TAILWIND_CONFIG;
+  }
+
+  // Write tailwind config.
+  await fs.writeFile(
+    config.resolvedPaths.tailwindConfig,
+    template(tailwindConfigTemplate)({
+      extension,
+      prefix: config.tailwind.prefix,
+    }),
+    "utf8",
+  );
+
+  // Write css file.
+  // const baseColor = await getRegistryBaseColor(config.tailwind.);
+  // if (baseColor) {
+  await fs.writeFile(
+    config.resolvedPaths.tailwindCss,
+    config.tailwind.cssVariables
+      ? config.tailwind.prefix
+        ? applyPrefixesCss(templates.GLOBLES_CSS_FILES, config.tailwind.prefix)
+        : templates.GLOBLES_CSS_FILES
+      : templates.GLOBLES_CSS_FILES,
+    "utf8",
+  );
+  // }
+
+  // Write cn file.
+  await fs.writeFile(
+    `${config.resolvedPaths.utils}.${extension}`,
+    extension === "ts" ? templates.UTILS : templates.UTILS_JS,
+    "utf8",
+  );
+
+  spinner?.succeed();
+
+  // Install dependencies.
+  const dependenciesSpinner = ora(`Installing dependencies...`)?.start();
+  const packageManager = await getPackageManager(cwd);
+
+  // TODO: add support for other icon libraries.
+  const deps = [...PROJECT_DEPENDENCIES, "@radix-ui/react-icons"];
+
+  await execa(
+    packageManager,
+    [packageManager === "npm" ? "install" : "add", ...deps],
+    {
+      cwd,
+    },
+  );
+  dependenciesSpinner?.succeed();
+}
+
+export async function promptForConfig(
+  cwd: string,
+  defaultConfig: Config | null = null,
+  skip = false,
+) {
   const options = await group(
     {
       typescript: () =>
@@ -21,11 +180,16 @@ export async function init() {
           message: `Would you like to use ${pc.bold("TypeScript")} (recommended)?`,
           initialValue: true,
         }),
+      defaults: () =>
+        confirm({
+          message: `use default configuration.`,
+          initialValue: false,
+        }),
       tailwindCss: () =>
         text({
           message: `Where is your ${pc.bold("global CSS")} file?`,
-          placeholder: "./app/global.css",
-          initialValue: "./app/global.css",
+          placeholder: "./app/globals.css",
+          initialValue: "./app/globals.css",
           validate: (value) => {
             if (!value) return "Please enter a path.";
             if (value[0] !== ".") return "Please enter a relative path.";
@@ -40,6 +204,18 @@ export async function init() {
             if (value[0] !== ".") return "Please enter a relative path.";
           },
         }),
+      tailwindCssVariables: () =>
+        confirm({
+          message: `Would you like to use ${pc.bold("CSS variables")} for colors?`,
+          initialValue: true,
+        }),
+      tailwindPrefix: () =>
+        text({
+          message: `Are you using a custom ${pc.bold("tailwind prefix eg. tw-")}? (Leave blank if not)`,
+          initialValue: "",
+          defaultValue: "",
+          placeholder: "(Leave blank if not)",
+        }),
       components: () =>
         text({
           message: `Configure the import alias for ${pc.bold("components")}:`,
@@ -49,8 +225,13 @@ export async function init() {
       utils: () =>
         text({
           message: `Configure the import alias for ${pc.bold("utils")}:`,
-          placeholder: "@/utils",
-          initialValue: "@/utils",
+          placeholder: "@/lib/utils",
+          initialValue: "@/lib/utils",
+        }),
+      rsc: () =>
+        confirm({
+          message: `Would you like to use ${pc.bold("RSC")} ?`,
+          initialValue: true,
         }),
     },
     {
@@ -61,24 +242,76 @@ export async function init() {
     },
   );
 
-  if (true) {
-    const s = spinner();
-    s.start("Installing via pnpm");
-    setTimeout(() => {}, 2500);
-    s.stop("Installed via pnpm");
+  const config = rawConfigSchema.parse({
+    tailwind: {
+      config: options.tailwindConfig,
+      css: options.tailwindCss,
+      cssVariables: options.tailwindCssVariables,
+      prefix: options.tailwindPrefix,
+    },
+    rsc: options.rsc,
+    tsx: options.typescript,
+    aliases: {
+      utils: options.utils,
+      components: options.components,
+    },
+  });
+
+  if (!skip) {
+    const proceed = confirm({
+      message: `Write configuration to ${pc.bold("components.json")}. Proceed??`,
+      initialValue: true,
+    });
+
+    if (!proceed) {
+      process.exit(0);
+    }
   }
 
-  let nextSteps = `npx ruru-ui-cli add button             `;
+  // Write to file.
 
-  note(nextSteps, "Next steps.");
+  const spinner = ora(`Writing components.json...`)?.start();
+  const targetPath = path.resolve(cwd, "components.json");
+  await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8");
+  spinner.succeed();
 
-  outro(
-    `Problems? ${pc.underline(pc.cyan("https://github.com/ruru-m07/ruru-ui/issues"))}`,
-  );
+  return await resolveConfigPaths(cwd, config);
+}
 
-  console.log("\n\n\n\n\n");
+export async function promptForMinimalConfig(
+  cwd: string,
+  defaultConfig: Config,
+  defaults = false,
+) {
+  let cssVariables = defaultConfig.tailwind.cssVariables;
 
-  console.log(options);
+  if (!defaults) {
+    const options = await group({
+      tailwindCssVariables: () =>
+        confirm({
+          message: `Would you like to use ${pc.bold("CSS variables")} for colors?`,
+          initialValue: true,
+        }),
+    });
 
-  process.exit(0);
+    cssVariables = options.tailwindCssVariables;
+  }
+
+  const config = rawConfigSchema.parse({
+    tailwind: {
+      ...defaultConfig?.tailwind,
+      cssVariables,
+    },
+    rsc: defaultConfig?.rsc,
+    tsx: defaultConfig?.tsx,
+    aliases: defaultConfig?.aliases,
+  });
+
+  // Write to file.
+  const spinner = ora(`Writing components.json...`).start();
+  const targetPath = path.resolve(cwd, "components.json");
+  await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8");
+  spinner.succeed();
+
+  return await resolveConfigPaths(cwd, config);
 }
