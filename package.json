@@ -33,6 +33,7 @@
   "dependencies": {
     "@changesets/cli": "^2.27.7",
     "sharp": "^0.33.4",
+    "tsup": "^8.1.1",
     "tsx": "^4.17.0"
   }
 }
