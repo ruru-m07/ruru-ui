@@ -41,7 +41,7 @@ export const Index: Record<string, any> = {
       source: "${sourceFilename}",
       files: [${resolveFiles.map((file) => `"${file}"`)}],
       category: "${item.category}",
-      subcategory: "${item.subcategory}"
+      subcategory: ${JSON.stringify(item.subcategory)}
     },`;
   }
 
@@ -103,6 +103,10 @@ async function buildStyles(registry: Registry) {
 
       // Remove multi-line comments
       content = content.replace(/\/\*[\s\S]*?\*\//gm, "");
+
+      // ! it also removeing white lines :( , will fix
+      // Remove lines that are completely empty (after removing comments)
+      content = content.replace(/^\s*\n/gm, "");
 
       return {
         name: basename(file),

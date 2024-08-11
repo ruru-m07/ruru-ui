@@ -223,8 +223,8 @@ export async function promptForConfig(
       components: () =>
         text({
           message: `Configure the import alias for ${pc.bold("components")}:`,
-          placeholder: "@/components/ui",
-          initialValue: "@/components/ui",
+          placeholder: "@/components",
+          initialValue: "@/components",
         }),
       utils: () =>
         text({
@@ -257,7 +257,7 @@ export async function promptForConfig(
     tsx: options.typescript,
     aliases: {
       utils: options.utils,
-      components: options.components,
+      ui: options.components,
     },
   });
 

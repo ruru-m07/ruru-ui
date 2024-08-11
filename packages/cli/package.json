@@ -29,6 +29,7 @@
     "types:check": "tsc --noEmit"
   },
   "devDependencies": {
+    "@types/babel__core": "^7.20.5",
     "@types/fs-extra": "^11.0.4",
     "@types/lodash.template": "^4.5.3",
     "tsconfig": "workspace:*"
@@ -41,17 +42,23 @@
   },
   "dependencies": {
     "@antfu/ni": "^0.22.1",
+    "@babel/core": "^7.25.2",
+    "@babel/parser": "^7.25.3",
+    "@babel/plugin-transform-typescript": "^7.25.2",
     "@clack/prompts": "^0.7.0",
     "cosmiconfig": "^9.0.0",
     "cross-spawn": "^7.0.3",
     "execa": "^9.3.0",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.2.0",
+    "https-proxy-agent": "^7.0.5",
     "lodash": "^4.17.21",
     "lodash.template": "^4.5.0",
+    "node-fetch": "^3.3.2",
     "ora": "^8.0.1",
     "picocolors": "^1.0.1",
     "prompts": "^2.4.2",
+    "recast": "^0.23.9",
     "ts-morph": "^23.0.0",
     "tsconfig-paths": "^4.2.0",
     "type-fest": "^4.24.0",

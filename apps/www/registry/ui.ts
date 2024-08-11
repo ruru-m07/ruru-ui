@@ -15,7 +15,7 @@ export const ui: Registry = [
     name: "button",
     type: "components:ui",
     dependencies: ["@radix-ui/react-slot"],
-    subcategory: "spinner",
+    subcategory: ["spinner"],
     files: ["button.tsx"],
   },
   {

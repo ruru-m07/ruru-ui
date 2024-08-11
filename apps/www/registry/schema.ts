@@ -23,7 +23,7 @@ export const registryEntrySchema = z.object({
   source: z.string().optional(),
   type: z.enum(["components:ui", "components:component"]),
   category: z.string().optional(),
-  subcategory: z.string().optional(),
+  subcategory: z.array(z.string()).optional(),
   chunks: z.array(blockChunkSchema).optional(),
 });
 
