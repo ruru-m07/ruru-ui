@@ -1,1 +1,1 @@
-pnpm prettier && pnpm run --filter=./apps/www build:registry
+pnpm run --filter=./apps/www build:registry && pnpm prettier
