@@ -11,8 +11,11 @@ import { HttpsProxyAgent } from "https-proxy-agent";
 import fetch from "node-fetch";
 import { z } from "zod";
 
-// const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "https://ruru-ui.vercel.app";
-const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "http://localhost:3000";
+const baseUrl =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://ruru-ui.vercel.app";
+
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined;

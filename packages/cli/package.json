@@ -48,6 +48,7 @@
     "@clack/prompts": "^0.7.0",
     "cosmiconfig": "^9.0.0",
     "cross-spawn": "^7.0.3",
+    "dotenv": "^16.4.5",
     "execa": "^9.3.0",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.2.0",

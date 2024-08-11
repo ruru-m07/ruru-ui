@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import "dotenv/config";
+
 async function main(): Promise<void> {
   switch (process.argv[2]) {
     case "init":
