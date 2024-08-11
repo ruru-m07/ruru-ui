@@ -1,9 +1,6 @@
 {
   "name": "select",
-  "dependencies": [
-    "@radix-ui/react-select",
-    "@radix-ui/react-icons"
-  ],
+  "dependencies": ["@radix-ui/react-select", "@radix-ui/react-icons"],
   "files": [
     {
       "name": "select.tsx",
