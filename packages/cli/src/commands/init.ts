@@ -23,6 +23,7 @@ import { execa } from "execa";
 import template from "lodash.template";
 import ora from "ora";
 import { applyPrefixesCss } from "@/utils/transformers/transform-tw-prefix";
+import * as z from "zod";
 
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
@@ -31,14 +32,25 @@ const PROJECT_DEPENDENCIES = [
   "tailwind-merge",
 ];
 
+const initOptionsSchema = z.object({
+  defaults: z.boolean().default(false),
+});
+
 export async function init() {
   console.log("\n");
   intro(pc.white(pc.bold(" 🚀  Welcome to the installation wizard! ")));
 
-  // TODO: get values from argvs.
-  const options = {
-    defaults: true,
+  const flags = process.argv
+    .slice(3, process.argv.length)
+    .filter((arg) => arg.startsWith("-"));
+
+  const opts = {
+    defaults: flags.includes("-d"),
   };
+
+  const options = initOptionsSchema.parse({
+    ...opts,
+  });
 
   // TODO: we'll give the user the option to change this.
   const cwd = process.cwd();
