@@ -36,7 +36,7 @@ export function splitClassName(className: string): (string | null)[] {
 
   const parts: (string | null)[] = [];
   // First we split to find the alpha.
-  let [rest, alpha] = className.split("/");
+  const [rest, alpha] = className.split("/");
 
   // Check if rest has a colon.
   if (!rest.includes(":")) {
@@ -73,7 +73,7 @@ export function applyColorMapping(
   const classNames = input.split(" ");
   const lightMode = new Set<string>();
   const darkMode = new Set<string>();
-  for (let className of classNames) {
+  for (const className of classNames) {
     const [variant, value, modifier] = splitClassName(className);
     const prefix = PREFIXES.find((prefix) => value?.startsWith(prefix));
     if (!prefix) {

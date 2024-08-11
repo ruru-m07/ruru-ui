@@ -58,6 +58,7 @@ export const transformTwPrefixes: Transformer = async ({
 
   // Find all jsx attributes with the name className.
   sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
+    // @ts-expect-error - TS doesn't know that getName() returns a string.
     if (node.getName() === "className") {
       // className="..."
       if (node.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
@@ -112,6 +113,7 @@ export const transformTwPrefixes: Transformer = async ({
     }
 
     // classNames={...}
+    // @ts-expect-error - TS doesn't know that getName() returns a string.
     if (node.getName() === "classNames") {
       if (node.getInitializer()?.isKind(SyntaxKind.JsxExpression)) {
         node
@@ -173,7 +175,7 @@ export const transformTwPrefixes: Transformer = async ({
 export function applyPrefix(input: string, prefix: string = "") {
   const classNames = input.split(" ");
   const prefixed: string[] = [];
-  for (let className of classNames) {
+  for (const className of classNames) {
     const [variant, value, modifier] = splitClassName(className);
     if (variant) {
       modifier
@@ -190,7 +192,7 @@ export function applyPrefix(input: string, prefix: string = "") {
 
 export function applyPrefixesCss(css: string, prefix: string) {
   const lines = css.split("\n");
-  for (let line of lines) {
+  for (const line of lines) {
     if (line.includes("@apply")) {
       const originalTWCls = line.replace("@apply", "").trim();
       const prefixedTwCls = applyPrefix(originalTWCls, prefix);

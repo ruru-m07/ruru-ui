@@ -41,7 +41,7 @@ export async function init() {
   };
 
   // TODO: we'll give the user the option to change this.
-  let cwd = process.cwd();
+  const cwd = process.cwd();
 
   preFlight(cwd);
   const projectConfig = await getProjectConfig(cwd);
@@ -62,7 +62,7 @@ export async function init() {
     await runInit(cwd, config);
   }
 
-  let nextSteps = `npx ruru-ui-cli add button             `;
+  const nextSteps = `npx ruru-ui-cli add button             `;
 
   note(nextSteps, "Next steps.");
 
@@ -173,6 +173,10 @@ export async function promptForConfig(
   defaultConfig: Config | null = null,
   skip = false,
 ) {
+  if (defaultConfig) {
+    null;
+  }
+
   const options = await group(
     {
       typescript: () =>
