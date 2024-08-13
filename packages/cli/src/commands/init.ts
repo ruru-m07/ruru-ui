@@ -10,7 +10,11 @@ import {
 import { existsSync, promises as fs } from "fs";
 import * as templates from "../utils/templates";
 import pc from "picocolors";
-import { getProjectConfig, preFlight } from "@/utils/get-project-info";
+import {
+  getProjectConfig,
+  isTypeScriptProject,
+  preFlight,
+} from "@/utils/get-project-info";
 import {
   Config,
   getConfig,
@@ -34,6 +38,7 @@ const PROJECT_DEPENDENCIES = [
 
 const initOptionsSchema = z.object({
   defaults: z.boolean().default(false),
+  autodetact: z.boolean().default(false),
 });
 
 export async function init() {
@@ -46,6 +51,7 @@ export async function init() {
 
   const opts = {
     defaults: flags.includes("-d"),
+    autodetact: flags.includes("-a"),
   };
 
   const options = initOptionsSchema.parse({
@@ -58,7 +64,7 @@ export async function init() {
   preFlight(cwd);
   const projectConfig = await getProjectConfig(cwd);
 
-  if (projectConfig) {
+  if (options.autodetact && projectConfig) {
     console.log(pc.green(pc.bold("\n config found! \n ")));
 
     const config = await promptForMinimalConfig(
@@ -189,6 +195,8 @@ export async function promptForConfig(
     null;
   }
 
+  const isTsx = await isTypeScriptProject(cwd);
+
   const options = await group(
     {
       typescript: () =>
@@ -214,7 +222,7 @@ export async function promptForConfig(
       tailwindConfig: () =>
         text({
           message: `Where is your ${pc.bold("tailwind.config.js")} located?`,
-          initialValue: "./tailwind.config.js",
+          initialValue: isTsx ? "./tailwind.config.ts" : "./tailwind.config.js",
           validate: (value) => {
             if (!value) return "Please enter a path.";
             if (value[0] !== ".") return "Please enter a relative path.";
@@ -268,6 +276,7 @@ export async function promptForConfig(
     rsc: options.rsc,
     tsx: options.typescript,
     aliases: {
+      components: options.components,
       utils: options.utils,
       ui: options.components,
     },

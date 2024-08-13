@@ -3,14 +3,123 @@ title: Installation
 description: To get started with ruru UI, you'll need to install the necessary dependencies and set up your project structure. This guide will walk you through the process step by step.
 ---
 
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
 
+<Rutabs items={["Components", "Dependencies"]}>
+  <Rutab value={"Components"}>
+  <Steps>
+    <Step>
+    
+    ### Run the CLI
+
+    Run the `ruru-ui-cli init` command to setup your project:
+
+   <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value={"npm"}>
+      ```bash
+      npx ruru-ui-cli@latest init
+      ```
+      </Tab>
+      <Tab value={"pnpm"}>
+      ```bash
+      pnpm dlx ruru-ui-cli@latest init
+      ```
+      </Tab>
+      <Tab value={"yarn"}>
+      ```bash
+      npx shadcn-ui@latest init
+      ```
+      </Tab>
+      <Tab value={"bun"}>
+      ```bash
+      bunx --bun shadcn-ui@latest init
+      ```
+    </Tab>
+   </Tabs>
+    
+    </Step>
+    
+    <Step>
+    
+    ### Configure components
+
+    You will need to answer a few questions to configure the `components.json` file:
+
+    ```txt
+
+◇ Would you like to use TypeScript (recommended)? Yes
+◇ use default configuration. No
+◇ Where is your global CSS file? ./app/globals.css
+◇ Where is your tailwind.config.js located? ./tailwind.config.js
+◇ Would you like to use CSS variables for colors? Yes
+◇ Are you using a custom tailwind prefix eg. tw-? (Leave blank if not) (Leave blank if not)
+◇ Configure the import alias for components: @/components
+◇ Configure the import alias for utils: @/lib/utils
+◇ Would you like to use RSC ? Yes
+◇ Write configuration to components.json. Proceed? Yes
+
+    ```
+
+    </Step>
+
+    <Step>
+
+    ### That's it
+
+    Now you can start adding components
+
+       <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value={"npm"}>
+      ```bash
+      npx ruru-ui-cli@latest add button
+      ```
+      </Tab>
+      <Tab value={"pnpm"}>
+      ```bash
+      pnpm dlx ruru-ui-cli@latest add button
+      ```
+      </Tab>
+      <Tab value={"yarn"}>
+      ```bash
+      npx shadcn-ui@latest add button
+      ```
+      </Tab>
+      <Tab value={"bun"}>
+      ```bash
+      bunx --bun shadcn-ui@latest add button
+      ```
+    </Tab>
+
+   </Tabs>
+
+This command adds the `button` component to your project.
+
+    ```tsx
+    import { Button } from "@/components/ui/button"
+
+    export default function Home() {
+      return (
+        <div>
+          <Button>Click me</Button>
+        </div>
+      )
+    }
+    ```
+
+    </Step>
+
+  </Steps>
+  </Rutab>
+
+  <Rutab value="Dependencies">
 ## Install Dependencies
 
 First, you'll need to install **ruru UI** and its peer dependencies. You can do this using npm or yarn:
 
 ```package-install
-npm i ruru-ui
+npm i ruru-ui@latest
 ```
 
 ## Import Styles
@@ -34,6 +143,9 @@ function App() {
 ```
 
 That's it! You're now ready to start building beautiful interfaces with **ruru UI**. If you have any questions or need further assistance, feel free to reach out to us on [GitHub Discussions](https://github.com/ruru-m07/ruru-ui/discussions/3).
+
+  </Rutab>
+</Rutabs>
 
 ## Next Steps
 

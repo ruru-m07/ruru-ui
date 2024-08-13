@@ -12,6 +12,44 @@ import {
   ChevronRightIcon,
 } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+
+## Installation
+
+<Rutabs items={["CLI", "Dependencies"]}>
+  <Rutab value={"CLI"}>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value={"npm"}>
+      ```bash
+      npx ruru-ui-cli@latest add button
+      ```
+      </Tab>
+      <Tab value={"pnpm"}>
+      ```bash
+      pnpm dlx ruru-ui-cli@latest add button
+      ```
+      </Tab>
+      <Tab value={"yarn"}>
+      ```bash
+      npx shadcn-ui@latest add button
+      ```
+      </Tab>
+      <Tab value={"bun"}>
+      ```bash
+      bunx --bun shadcn-ui@latest add button
+      ```
+    </Tab>
+    </Tabs>
+
+  </Rutab>
+  <Rutab value={"Dependencies"}>
+
+    ```package-install
+    npm install ruru-ui@latest
+    ```
+
+  </Rutab>
+</Rutabs>
 
 ## Usage
 

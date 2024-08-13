@@ -10,6 +10,42 @@ import {
   AvatarWithBadge,
 } from "ruru-ui/components/avatar";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+
+## Installation
+
+<Rutabs items={["CLI", "Dependencies"]}>
+  <Rutab value={"CLI"}>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value={"npm"}>
+      ```bash
+      npx ruru-ui-cli@latest add avatar
+      ```
+      </Tab>
+      <Tab value={"pnpm"}>
+      ```bash
+      pnpm dlx ruru-ui-cli@latest add avatar
+      ```
+      </Tab>
+      <Tab value={"yarn"}>
+      ```bash
+      npx shadcn-ui@latest add avatar
+      ```
+      </Tab>
+      <Tab value={"bun"}>
+      ```bash
+      bunx --bun shadcn-ui@latest add avatar
+      ```
+    </Tab>
+    </Tabs>
+
+  </Rutab>
+  <Rutab value={"Dependencies"}>
+    ```package-install
+    npm install ruru-ui@latest
+    ```
+  </Rutab>
+</Rutabs>
 
 ## Usage
 
@@ -42,11 +78,11 @@ The `Avatar` component is used to represent a user or entity.
       return (
         <div className={"flex justify-between gap-5"}>
             <Avatar
+                size={50}
                 placeholder="RU"
                 src={"https://github.com/ruru-m07.png"}
             />
             <Avatar
-                size={50}
                 placeholder="RU"
                 src={"https://github.com/ruru-m07.png"}
             />

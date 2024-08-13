@@ -8,7 +8,7 @@ export function Wrapper(
     <div
       {...props}
       className={cn(
-        "rounded-xl bg-primary-foreground/30 p-4 prose-no-margin border",
+        "rounded-xl bg-primary-foreground/30 p-4 prose-no-margin border min-h-96 flex items-center justify-center",
         props.className,
       )}
     >
