@@ -75,21 +75,6 @@ export async function add() {
       ? registryIndex.map((entry) => entry.name)
       : options.components;
     if (!options.components?.length && !options.all) {
-      // const { components } = await prompts({
-      //   type: "multiselect",
-      //   name: "components",
-      //   message: "Which components would you like to add?",
-      //   hint: "Space to select. A to toggle all. Enter to submit.",
-      //   instructions: false,
-      //   choices: registryIndex.map((entry) => ({
-      //     title: entry.name,
-      //     value: entry.name,
-      //     selected: options.all
-      //       ? true
-      //       : options.components?.includes(entry.name),
-      //   })),
-      // });
-
       const { components } = await group({
         components: () =>
           multiselect({
@@ -122,13 +107,6 @@ export async function add() {
     }
 
     if (!options.yes) {
-      // const { proceed } = await prompts({
-      //   type: "confirm",
-      //   name: "proceed",
-      //   message: `Ready to install components and dependencies. Proceed?`,
-      //   initial: true,
-      // });
-
       const { proceed } = await group({
         proceed: () =>
           confirm({
