@@ -2,3 +2,96 @@
 title: Cli
 description: The CLI is a command-line interface that allows you to add components to your project.
 ---
+
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+## init
+
+Use the `init` command to initialize dependencies for a new project.
+
+The `init`, and CSS variables for the project.
+
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+<Tab value={"npm"}>
+```bash
+npx ruru-ui-cli@latest init 
+```
+</Tab>
+<Tab value={"pnpm"}>
+```bash
+pnpm dlx ruru-ui-cli@latest init 
+```
+</Tab>
+<Tab value={"yarn"}>
+```bash
+npx shadcn-ui@latest init 
+```
+</Tab>
+<Tab value={"bun"}>
+```bash
+bunx --bun shadcn-ui@latest init 
+```
+</Tab>
+</Tabs>
+
+
+    ```txt
+
+◇ Would you like to use TypeScript (recommended)? Yes
+◇ use default configuration. No
+◇ Where is your global CSS file? ./app/globals.css
+◇ Where is your tailwind.config.js located? ./tailwind.config.js
+◇ Would you like to use CSS variables for colors? Yes
+◇ Are you using a custom tailwind prefix eg. tw-? (Leave blank if not) (Leave blank if not)
+◇ Configure the import alias for components: @/components
+◇ Configure the import alias for utils: @/lib/utils
+◇ Would you like to use RSC ? Yes
+◇ Write configuration to components.json. Proceed? Yes
+
+    ```
+
+### Options
+
+The `init` command supports the following options:
+
+- `-d`: Use default configuration settings without prompting.
+- `-a`: Automatically detect existing project configuration.
+
+
+## add
+
+Use the `add` command to add components to your project.
+
+The `add` command adds a component to your project and installs all required dependencies.
+
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+<Tab value={"npm"}>
+```bash
+npx ruru-ui-cli@latest add [component] 
+```
+</Tab>
+<Tab value={"pnpm"}>
+```bash
+pnpm dlx ruru-ui-cli@latest add [component]
+```
+</Tab>
+<Tab value={"yarn"}>
+```bash
+npx shadcn-ui@latest add [component] 
+```
+</Tab>
+<Tab value={"bun"}>
+```bash
+bunx --bun shadcn-ui@latest add [component]
+```
+</Tab>
+</Tabs>
+
+### Options
+
+The `add` command supports the following options:
+
+- `-y`: Skip the confirmation prompt. 
+- `-o`: Overwrite existing files.
+- `-a`: Install all components.
+
