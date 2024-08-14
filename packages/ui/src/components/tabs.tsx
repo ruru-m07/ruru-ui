@@ -4,11 +4,66 @@ import type {
   TabsContentProps,
   TabsProps as BaseProps,
 } from "@radix-ui/react-tabs";
-import { useMemo, useState, useCallback, useLayoutEffect } from "react";
+import * as TabsPrimitive from "@radix-ui/react-tabs";
+import React, { useMemo, useState, useCallback, useLayoutEffect } from "react";
 import { cn } from "@/utils/cn";
 
-import * as Primitive from "@/components/ui/tabs";
-export * as Primitive from "@/components/ui/tabs";
+const TabsPrimitiveRoot = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>
+>((props, ref) => {
+  return (
+    <TabsPrimitive.Root
+      ref={ref}
+      {...props}
+      className={cn("flex flex-col overflow-hidden", props.className)}
+    />
+  );
+});
+
+TabsPrimitiveRoot.displayName = "TabsPrimitiveRoot";
+
+const TabsList = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+>((props, ref) => (
+  <TabsPrimitive.List
+    ref={ref}
+    {...props}
+    className={cn(
+      "flex flex-row items-end gap-4 overflow-x-auto px-4 border-b",
+      props.className,
+    )}
+  />
+));
+TabsList.displayName = "TabsList";
+
+const TabsTrigger = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+>((props, ref) => (
+  <TabsPrimitive.Trigger
+    ref={ref}
+    {...props}
+    className={cn(
+      "whitespace-nowrap border-b border-transparent py-2 text-sm font-medium transition-colors hover:text-primary disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-primary data-[state=active]:text-primary text-muted-foreground mx-1",
+      props.className,
+    )}
+  />
+));
+TabsTrigger.displayName = "TabsTrigger";
+
+const TabsContent = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
+>((props, ref) => (
+  <TabsPrimitive.Content
+    ref={ref}
+    {...props}
+    className={cn("p-4", props.className)}
+  />
+));
+TabsContent.displayName = "TabsContent";
 
 type ChangeListener = (v: string) => void;
 const listeners = new Map<string, ChangeListener[]>();
@@ -104,21 +159,21 @@ export function Tabs({
   );
 
   return (
-    <Primitive.Tabs
+    <TabsPrimitiveRoot
       value={value}
       onValueChange={onValueChange}
       {...props}
       className={cn("my-4", props.className)}
     >
-      <Primitive.TabsList>
+      <TabsList>
         {values.map((v, i) => (
-          <Primitive.TabsTrigger disabled={disabled} key={v} value={v}>
+          <TabsTrigger disabled={disabled} key={v} value={v}>
             {items[i]}
-          </Primitive.TabsTrigger>
+          </TabsTrigger>
         ))}
-      </Primitive.TabsList>
+      </TabsList>
       {props.children}
-    </Primitive.Tabs>
+    </TabsPrimitiveRoot>
   );
 }
 
@@ -132,7 +187,7 @@ export function Tab({
   ...props
 }: TabsContentProps): React.ReactElement {
   return (
-    <Primitive.TabsContent
+    <TabsContent
       value={toValue(value)}
       className={cn(
         "prose-no-margin [&>figure:only-child]:-m-4 [&>figure:only-child]:rounded-none [&>figure:only-child]:border-none",
@@ -142,3 +197,5 @@ export function Tab({
     />
   );
 }
+
+export { TabsList, TabsTrigger, TabsContent };
