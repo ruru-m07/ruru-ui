@@ -2,3 +2,5 @@ pnpm-lock.yaml
 .github/**/*.md
 
 .content-collections/**/*
+
+**/*.mdx

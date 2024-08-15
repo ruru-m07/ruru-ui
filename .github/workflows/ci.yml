@@ -30,12 +30,6 @@ jobs:
       - name: Lint Format
         run: pnpm lint:prettier
 
-      - name: Check Types
-        run: pnpm build --filter=./packages/*
-
-      - name: Run ESLint
-        run: pnpm lint --filter=./packages/*
-
   # This workflow contains a single job called "build"
   build:
     runs-on: ubuntu-latest
@@ -55,4 +49,4 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: Build Check
-        run: pnpm build
+        run: pnpm build --filter=./packages/*

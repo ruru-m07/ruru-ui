@@ -1,0 +1,11 @@
+{
+  "name": "tooltip",
+  "dependencies": ["@radix-ui/react-tooltip"],
+  "files": [
+    {
+      "name": "tooltip.tsx",
+      "content": "\"use client\";\nimport * as React from \"react\";\nimport * as TooltipPrimitive from \"@radix-ui/react-tooltip\";\nimport { cn } from \"@/utils/cn\";\nconst TooltipProvider = TooltipPrimitive.Provider;\nconst Tooltip = TooltipPrimitive.Root;\nconst TooltipTrigger = TooltipPrimitive.Trigger;\nconst TooltipContent = React.forwardRef<\n  React.ElementRef<typeof TooltipPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>\n>(({ className, sideOffset = 5, ...props }, ref) => (\n  <TooltipPrimitive.Content\n    ref={ref}\n    className={cn(\n      \"h-fit data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade text-primary-foreground select-none rounded-[4px] bg-primary px-[15px] py-[10px] text-[15px] leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity]\",\n      className,\n    )}\n    sideOffset={sideOffset}\n    {...props}\n  >\n    {props.children}\n    <TooltipPrimitive.Arrow className=\"fill-primary\" />\n  </TooltipPrimitive.Content>\n));\nTooltipContent.displayName = TooltipPrimitive.Content.displayName;\nexport { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };\n"
+    }
+  ],
+  "type": "components:ui"
+}

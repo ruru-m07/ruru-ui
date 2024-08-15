@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { buttonVariants } from "ruru-ui/components/button";
 
 const Hero = () => {
   return (
@@ -87,9 +90,9 @@ const Hero = () => {
           <Link
             href={"https://github.com/ruru-m07/ruru-ui"}
             target="_blank"
-            className={
-              "h-9 px-4 py-2 border-input border-[1.5px] bg-primary-foreground hover:bg-[#f3f3f3] dark:hover:bg-[#202020] inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-            }
+            className={buttonVariants({
+              variant: "secondary",
+            })}
           >
             <GitHubLogoIcon className="mr-2" /> Give a star
           </Link>

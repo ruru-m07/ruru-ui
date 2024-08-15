@@ -3,14 +3,130 @@ title: Installation
 description: To get started with ruru UI, you'll need to install the necessary dependencies and set up your project structure. This guide will walk you through the process step by step.
 ---
 
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
 
+<Rutabs items={["Components", "Dependencies"]}>
+  <Rutab value={"Components"}>
+  <Steps>
+    <Step>
+    
+    ### Run the CLI
+
+    Run the `ruru-ui-cli init` command to setup your project:
+
+   <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value={"npm"}>
+      ```bash
+      npx ruru-ui-cli@latest init
+      ```
+      </Tab>
+      <Tab value={"pnpm"}>
+      ```bash
+      pnpm dlx ruru-ui-cli@latest init
+      ```
+      </Tab>
+      <Tab value={"yarn"}>
+      ```bash
+      npx ruru-ui@latest init
+      ```
+      </Tab>
+      <Tab value={"bun"}>
+      ```bash
+      bunx --bun ruru-ui@latest init
+      ```
+    </Tab>
+   </Tabs>
+    
+    </Step>
+    
+    <Step>
+    
+    ### Configure components
+
+    You will need to answer a few questions to configure the `components.json` file:
+
+    ```txt
+// [!code word:Yes]
+// [!code word:No]
+// [!code word:./app/globals.css]
+// [!code word:./tailwind.config.js]
+// [!code word:(Leave blank if not)]
+// [!code word:@/components/ui]
+// [!code word:@/lib/utils]
+◇ Would you like to use TypeScript (recommended)? Yes
+◇ use default configuration. No
+◇ Where is your global CSS file? ./app/globals.css
+◇ Where is your tailwind.config.js located? ./tailwind.config.js
+◇ Would you like to use CSS variables for colors? Yes
+◇ Are you using a custom tailwind prefix eg. tw-? (Leave blank if not)
+◇ Configure the import alias for components: @/components/ui
+◇ Configure the import alias for utils: @/lib/utils
+◇ Would you like to use RSC ? Yes
+◇ Write configuration to components.json. Proceed? Yes
+
+    ```
+
+    </Step>
+
+    <Step>
+
+    ### That's it
+
+    Now you can start adding components
+
+       <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value={"npm"}>
+      ```bash
+      npx ruru-ui-cli@latest add button
+      ```
+      </Tab>
+      <Tab value={"pnpm"}>
+      ```bash
+      pnpm dlx ruru-ui-cli@latest add button
+      ```
+      </Tab>
+      <Tab value={"yarn"}>
+      ```bash
+      npx ruru-ui@latest add button
+      ```
+      </Tab>
+      <Tab value={"bun"}>
+      ```bash
+      bunx --bun ruru-ui@latest add button
+      ```
+    </Tab>
+
+   </Tabs>
+
+This command adds the `button` component to your project.
+
+    ```tsx title="App.tsx"
+    // [!code word:Button]
+    import { Button } from "@/components/ui/button"  // [!code highlight]
+
+    export default function App() {
+      return (
+        <div>
+          <Button>Click me</Button>  // [!code highlight]
+        </div>
+      )
+    }
+    ```
+
+    </Step>
+
+  </Steps>
+  </Rutab>
+
+  <Rutab value="Dependencies">
 ## Install Dependencies
 
 First, you'll need to install **ruru UI** and its peer dependencies. You can do this using npm or yarn:
 
 ```package-install
-npm i ruru-ui
+npm i ruru-ui@latest
 ```
 
 ## Import Styles
@@ -26,14 +142,20 @@ import "ruru-ui/style.css";
 Now that you've installed **ruru UI** and imported its styles, you can start using the components in your project. Here's an example of how you can use a button component:
 
 ```tsx title="App.tsx"
-import { Button } from "ruru-ui/components/button";
+// [!code word:Button]
+import { Button } from "ruru-ui/components/button"; // [!code highlight]
 
 function App() {
-  return <Button>Click me</Button>;
+  return (
+    <Button>Click me</Button> // [!code highlight]
+  );  
 }
 ```
 
 That's it! You're now ready to start building beautiful interfaces with **ruru UI**. If you have any questions or need further assistance, feel free to reach out to us on [GitHub Discussions](https://github.com/ruru-m07/ruru-ui/discussions/3).
+
+  </Rutab>
+</Rutabs>
 
 ## Next Steps
 
@@ -44,15 +166,16 @@ That's it! You're now ready to start building beautiful interfaces with **ruru U
     description="Learn how to enable dark mode in your ruru UI app."
   />
   <Card
-    href="/docs/typography"
-    title="Typography"
-    description="Explore the typography styles available in ruru UI."
-  />
-  <Card
     href="/docs/components/button"
     title="Button"
     description="Explore the Button component and its props."
   />
+  <Card
+    href="/docs/cli"
+    title="CLI"
+    description="Learn how to use the ruru UI CLI to add components to your project."
+  />
+  
 </Cards>
 
 ---

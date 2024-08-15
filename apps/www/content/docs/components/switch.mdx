@@ -6,6 +6,45 @@ preview: switch
 
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 import { Switch } from "ruru-ui/components/switch";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+
+## Installation
+
+<Rutabs items={["CLI", "Dependencies"]}>
+  <Rutab value={"CLI"}>
+  
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value={"npm"}>
+      ```bash
+      npx ruru-ui-cli@latest add switch
+      ```
+      </Tab>
+      <Tab value={"pnpm"}>
+      ```bash
+      pnpm dlx ruru-ui-cli@latest add switch
+      ```
+      </Tab>
+      <Tab value={"yarn"}>
+      ```bash
+      npx ruru-ui@latest add switch
+      ```
+      </Tab>
+      <Tab value={"bun"}>
+      ```bash
+      bunx --bun ruru-ui@latest add switch
+      ```
+    </Tab>
+    </Tabs>
+
+  </Rutab>
+  <Rutab value={"Dependencies"}>
+
+    ```package-install
+    npm install ruru-ui@latest
+    ```
+
+  </Rutab>
+</Rutabs>
 
 ## Usage
 

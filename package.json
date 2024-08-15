@@ -9,7 +9,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint:prettier": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
-    "prettier": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
+    "prettier": "prettier --loglevel silent --write \"\" --cache",
     "types:check": "turbo run types:check",
     "release": "turbo run build --filter=./packages/* && changeset publish",
     "version": "changeset version && pnpm install --lockfile-only"
@@ -32,6 +32,8 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.27.7",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.4",
+    "tsup": "^8.1.1",
+    "tsx": "^4.17.0"
   }
 }

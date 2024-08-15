@@ -1,0 +1,58 @@
+[
+  {
+    "name": "avatar",
+    "files": ["avatar.tsx"],
+    "type": "components:ui"
+  },
+  {
+    "name": "badge",
+    "files": ["badge.tsx"],
+    "type": "components:ui"
+  },
+  {
+    "name": "button",
+    "dependencies": ["@radix-ui/react-slot"],
+    "files": ["button.tsx"],
+    "type": "components:ui",
+    "subcategory": ["spinner"]
+  },
+  {
+    "name": "checkbox",
+    "dependencies": ["@radix-ui/react-checkbox"],
+    "files": ["checkbox.tsx"],
+    "type": "components:ui"
+  },
+  {
+    "name": "input",
+    "files": ["input.tsx"],
+    "type": "components:ui"
+  },
+  {
+    "name": "select",
+    "dependencies": ["@radix-ui/react-select", "@radix-ui/react-icons"],
+    "files": ["select.tsx"],
+    "type": "components:ui"
+  },
+  {
+    "name": "spinner",
+    "files": ["spinner.tsx"],
+    "type": "components:ui"
+  },
+  {
+    "name": "switch",
+    "dependencies": ["@radix-ui/react-icons", "@radix-ui/react-select"],
+    "files": ["switch.tsx"],
+    "type": "components:ui"
+  },
+  {
+    "name": "textarea",
+    "files": ["textarea.tsx"],
+    "type": "components:ui"
+  },
+  {
+    "name": "tooltip",
+    "dependencies": ["@radix-ui/react-tooltip"],
+    "files": ["tooltip.tsx"],
+    "type": "components:ui"
+  }
+]
