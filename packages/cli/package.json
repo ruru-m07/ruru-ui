@@ -1,6 +1,6 @@
 {
   "name": "ruru-ui-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ruru UI - CLI - add components and dependencies to your project",
   "keywords": [
     "cli",
