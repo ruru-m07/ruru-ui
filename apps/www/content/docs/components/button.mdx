@@ -235,7 +235,7 @@ The `Button` component allows you to show a loading spinner when the button is i
 
 <Tabs items={["Preview", "Code"]}>
   <Tab className={"flex justify-between gap-5"} value="Preview" >
-     <Button loading variant={"secondary"} disabled size={"small"}>
+    <Button loading variant={"secondary"} disabled size={"small"}>
         default
     </Button>
     <Button loading variant={"secondary"} disabled>
@@ -251,15 +251,17 @@ The `Button` component allows you to show a loading spinner when the button is i
 
     export function ButtonDemo() {
       return (
-        <Button loading variant={"secondary"} disabled size={"small"}>
-            default
-        </Button>
-        <Button loading variant={"secondary"} disabled>
-            default
-        </Button>
-        <Button loading variant={"secondary"} disabled size={"large"}>
-            default
-        </Button>
+        <div className={"flex justify-between gap-5"}>
+          <Button loading variant={"secondary"} disabled size={"small"}>
+              default
+          </Button>
+          <Button loading variant={"secondary"} disabled>
+              default
+          </Button>
+          <Button loading variant={"secondary"} disabled size={"large"}>
+              default
+          </Button>
+        </div>
       )
     }
     ```

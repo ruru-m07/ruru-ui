@@ -9,7 +9,7 @@ export function getPackageInfo() {
 }
 
 export function config() {
-  //   const baseUrl = "http://localhost:3000";
+  // const baseUrl = "http://localhost:3000";
 
   const baseUrl =
     process.env.NODE_ENV === "development"

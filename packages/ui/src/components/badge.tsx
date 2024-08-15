@@ -94,7 +94,6 @@ export interface BadgeProps
    */
   icon?: React.ReactNode;
 }
-
 /**
  * A badge component used to display a small notification or status indicator.
  *

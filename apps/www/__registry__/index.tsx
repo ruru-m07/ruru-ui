@@ -101,6 +101,18 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: undefined,
     },
+    tabs: {
+      name: "tabs",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(
+        () => import("@/../../packages/ui/src/components/tabs"),
+      ),
+      source: "",
+      files: ["@/../../packages/ui/src/components/tabs.tsx"],
+      category: "undefined",
+      subcategory: undefined,
+    },
     textarea: {
       name: "textarea",
       type: "components:ui",

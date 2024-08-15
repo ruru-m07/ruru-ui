@@ -4,7 +4,6 @@ import * as React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 
 import { cn } from "@/utils/cn";
-
 /**
  * TooltipProvider component.
  * Provides context for all tooltip components.
@@ -23,7 +22,6 @@ import { cn } from "@/utils/cn";
  * </TooltipProvider>
  */
 const TooltipProvider = TooltipPrimitive.Provider;
-
 /**
  * Tooltip component.
  * The root component for the tooltip.
@@ -40,7 +38,6 @@ const TooltipProvider = TooltipPrimitive.Provider;
  * </Tooltip>
  */
 const Tooltip = TooltipPrimitive.Root;
-
 /**
  * TooltipTrigger component.
  * The element that triggers the display of the tooltip.
@@ -52,7 +49,6 @@ const Tooltip = TooltipPrimitive.Root;
  * </TooltipTrigger>
  */
 const TooltipTrigger = TooltipPrimitive.Trigger;
-
 /**
  * TooltipContent component.
  * The content of the tooltip that appears when the trigger is activated.

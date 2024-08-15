@@ -20,6 +20,7 @@ import {
   SelectGroup,
   SelectItem,
   SelectLabel,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "ruru-ui/components/select";
@@ -145,7 +146,8 @@ export default {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>Fruits</SelectLabel>
+              <SelectLabel>Languages</SelectLabel>
+              <SelectSeparator />
               <SelectItem value="C ">C </SelectItem>
               <SelectItem value="C++">C++</SelectItem>
               <SelectItem value="Java">Java</SelectItem>

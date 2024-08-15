@@ -19,6 +19,7 @@ import {
   SelectScrollDownButton,
 } from "ruru-ui/components/select";
 import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import SelectCountries from "../../../components/selectLargeData.tsx"
 
 ## Installation
 
@@ -71,6 +72,7 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
                 <SelectContent>
                     <SelectGroup>
                         <SelectLabel>Fruits</SelectLabel>
+                        <SelectSeparator />
                         <SelectItem value="apple">Apple</SelectItem>
                         <SelectItem value="banana">Banana</SelectItem>
                         <SelectItem value="blueberry">Blueberry</SelectItem>
@@ -106,6 +108,7 @@ export function SelectDemo() {
                 <SelectContent>
                 <SelectGroup>
                     <SelectLabel>Fruits</SelectLabel>
+                    <SelectSeparator />
                     <SelectItem value="apple">Apple</SelectItem>
                     <SelectItem value="banana">Banana</SelectItem>
                     <SelectItem value="blueberry">Blueberry</SelectItem>
@@ -139,6 +142,7 @@ The `Select` component can be used to create a basic dropdown menu.
    <SelectContent>
      <SelectGroup>
        <SelectLabel>Fruits</SelectLabel>
+       <SelectSeparator />
        <SelectItem value="apple">Apple</SelectItem>
        <SelectItem value="banana">Banana</SelectItem>
        <SelectItem value="blueberry">Blueberry</SelectItem>
@@ -158,6 +162,7 @@ The `Select` component can be used to create a basic dropdown menu.
         SelectContent,
         SelectLabel,
         SelectItem,
+        SelectSeparator,
     } from "ruru-ui/components/select";
 
     export function BasicSelect() {
@@ -169,6 +174,7 @@ The `Select` component can be used to create a basic dropdown menu.
                 <SelectContent>
                     <SelectGroup>
                         <SelectLabel>Fruits</SelectLabel>
+                        <SelectSeparator />
                         <SelectItem value="apple">Apple</SelectItem>
                         <SelectItem value="banana">Banana</SelectItem>
                         <SelectItem value="blueberry">Blueberry</SelectItem>
@@ -197,6 +203,7 @@ You can disable the `Select` component by passing the `disabled` prop to the `Se
   <SelectContent>
     <SelectGroup>
       <SelectLabel>Fruits</SelectLabel>
+      <SelectSeparator />
       <SelectItem value="apple">Apple</SelectItem>
       <SelectItem value="banana">Banana</SelectItem>
       <SelectItem value="blueberry">Blueberry</SelectItem>
@@ -216,6 +223,7 @@ You can disable the `Select` component by passing the `disabled` prop to the `Se
         SelectContent,
         SelectLabel,
         SelectItem,
+        SelectSeparator,
     } from "ruru-ui/components/select";
 
     export function DisabledSelect() {
@@ -227,6 +235,7 @@ You can disable the `Select` component by passing the `disabled` prop to the `Se
                 <SelectContent>
                     <SelectGroup>
                         <SelectLabel>Fruits</SelectLabel>
+                        <SelectSeparator />
                         <SelectItem value="apple">Apple</SelectItem>
                         <SelectItem value="banana">Banana</SelectItem>
                         <SelectItem value="blueberry">Blueberry</SelectItem>
@@ -256,6 +265,7 @@ You can set a default value for the `Select` component by passing the `defaultVa
    <SelectContent>
      <SelectGroup>
        <SelectLabel>Fruits</SelectLabel>
+       <SelectSeparator />
        <SelectItem value="apple">Apple</SelectItem>
        <SelectItem value="banana">Banana</SelectItem>
        <SelectItem value="blueberry">Blueberry</SelectItem>
@@ -275,6 +285,7 @@ You can set a default value for the `Select` component by passing the `defaultVa
    SelectContent,
    SelectLabel,
    SelectItem,
+   SelectSeparator,
  } from "ruru-ui/components/select";
 
 export function DefaultValueSelect() {
@@ -286,6 +297,7 @@ export function DefaultValueSelect() {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Fruits</SelectLabel>
+          <SelectSeparator />
           <SelectItem value="apple">Apple</SelectItem>
           <SelectItem value="banana">Banana</SelectItem>
           <SelectItem value="blueberry">Blueberry</SelectItem>
@@ -297,6 +309,36 @@ export function DefaultValueSelect() {
   );
 }
 ```
+</Tab>
+</Tabs>
+
+### ScrollDownButton and ScrollUpButton
+
+You can add scroll buttons to the `Select` component by using the `SelectScrollDownButton` and `SelectScrollUpButton` components.
+
+<Tabs items={["Preview", "Code"]}>
+<Tab className={"flex justify-center"} value="Preview">
+<SelectCountries />
+</Tab>
+<Tab className={"-mt-8"} value="Code">
+  <Select>
+    <SelectTrigger className="w-[180px]">
+      <SelectValue placeholder="Select a version." />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectSeparator />
+        <SelectScrollUpButton />
+        {Array.from({ length: 50 }, (_, index) => (
+          <SelectItem key={index} value={String(index)}>
+            Ruru-UI-V{index}
+          </SelectItem>
+        ))}
+        <SelectScrollDownButton />
+      </SelectGroup>
+    </SelectContent>
+  </Select>
 </Tab>
 </Tabs>
 
