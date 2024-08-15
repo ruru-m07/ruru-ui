@@ -25,7 +25,6 @@ type SpinnerProps = React.ComponentPropsWithoutRef<"div"> & {
    */
   size?: number;
 };
-
 /**
  * A spinner component to indicate loading state.
  * Displays a rotating spinner with configurable class names.

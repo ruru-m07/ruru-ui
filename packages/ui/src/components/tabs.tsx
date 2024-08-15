@@ -97,7 +97,6 @@ export interface TabsProps extends BaseProps {
    * @default undefined
    */
   groupId?: string;
-
   /**
    * Enable persistent
    * @default false

@@ -50,7 +50,6 @@ export interface ButtonProps
    * ```
    */
   asChild?: boolean;
-
   /**
    * Element to render before the button text.
    * @type {React.ReactNode}
@@ -62,7 +61,6 @@ export interface ButtonProps
    * ```
    */
   prefix?: React.ReactNode;
-
   /**
    * Element to render after the button text.
    * @type {React.ReactNode}
@@ -74,7 +72,6 @@ export interface ButtonProps
    * ```
    */
   suffix?: React.ReactNode;
-
   /**
    * Disable the button.
    * @type {boolean}
@@ -86,7 +83,6 @@ export interface ButtonProps
    * ```
    */
   disabled?: boolean;
-
   /**
    * Show loading spinner inside the button.
    * @type {boolean}
@@ -99,7 +95,6 @@ export interface ButtonProps
    */
   loading?: boolean;
 }
-
 /**
  * A customizable button component with different variants and sizes.
  *
@@ -140,7 +135,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <div className={disabled ? " cursor-not-allowed " : undefined}>
         <Comp
-          className={cn(buttonVariants({ variant, size }), className)}
+          className={cn(
+            buttonVariants({ variant: loading ? "secondary" : variant, size }),
+            className,
+          )}
           ref={ref}
           disabled={disabled}
           {...props}

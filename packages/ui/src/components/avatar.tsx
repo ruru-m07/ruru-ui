@@ -81,7 +81,6 @@ const Avatar = React.forwardRef<HTMLImageElement, AvatarProps>(
   },
 );
 Avatar.displayName = "Avatar";
-
 /**
  * Props for the AvatarGroup component.
  */
@@ -135,7 +134,6 @@ type AvatarGroupProps = Omit<
    *
    */
   limit?: number;
-
   aClassName?: string;
   lnClassName?: string;
 };
@@ -180,7 +178,6 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   },
 );
 AvatarGroup.displayName = "AvatarGroup";
-
 /**
  * Props for the AvatarWithBadge component.
  */
@@ -249,7 +246,6 @@ type AvatarWithBadgeProps = Omit<
    *
    */
   badgeSrc: string;
-
   iClassName?: string;
   sClassName?: string;
 };

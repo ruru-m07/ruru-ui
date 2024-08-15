@@ -47,6 +47,12 @@ export const ui: Registry = [
     files: ["switch.tsx"],
   },
   {
+    name: "tabs",
+    type: "components:ui",
+    dependencies: ["@radix-ui/react-tabs"],
+    files: ["tabs.tsx"],
+  },
+  {
     name: "textarea",
     type: "components:ui",
     files: ["textarea.tsx"],

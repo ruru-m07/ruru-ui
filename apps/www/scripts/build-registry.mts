@@ -98,15 +98,14 @@ async function buildStyles(registry: Registry) {
         "utf8",
       );
 
-      // Remove single-line comments
-      content = content.replace(/\/\/.*$/gm, "");
+      // Remove single-line comments, excluding URLs
+      content = content.replace(/(^|[^:])\/\/.*$/gm, "$1");
 
       // Remove multi-line comments
       content = content.replace(/\/\*[\s\S]*?\*\//gm, "");
 
-      // ! it also removeing white lines :( , will fix
       // Remove lines that are completely empty (after removing comments)
-      content = content.replace(/^\s*\n/gm, "");
+      // content = content.replace(/^\s*\n/gm, "");
 
       return {
         name: basename(file),

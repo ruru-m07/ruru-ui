@@ -45,6 +45,12 @@
     "type": "components:ui"
   },
   {
+    "name": "tabs",
+    "dependencies": ["@radix-ui/react-tabs"],
+    "files": ["tabs.tsx"],
+    "type": "components:ui"
+  },
+  {
     "name": "textarea",
     "files": ["textarea.tsx"],
     "type": "components:ui"
