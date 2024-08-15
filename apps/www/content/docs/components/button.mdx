@@ -31,12 +31,12 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
       </Tab>
       <Tab value={"yarn"}>
       ```bash
-      npx shadcn-ui@latest add button
+      npx ruru-ui@latest add button
       ```
       </Tab>
       <Tab value={"bun"}>
       ```bash
-      bunx --bun shadcn-ui@latest add button
+      bunx --bun ruru-ui@latest add button
       ```
     </Tab>
     </Tabs>
@@ -77,13 +77,15 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
 
 ---
 
-You can use the `buttonVariants` helper to create a link that looks like a button.
+You can use the `buttonVariants` helper to create a link that looks like a button. You can't use buttonVariants in RSC.
 
 ```tsx
+// [!code word:buttonVariants]
 import { buttonVariants } from "ruru-ui/components/button";
 ```
 
 ```tsx
+// [!code word:buttonVariants]
 <Link href={"/"} className={buttonVariants({ variant: "secondary" })}>
   Click here
 </Link>
@@ -92,6 +94,7 @@ import { buttonVariants } from "ruru-ui/components/button";
 Alternatively, you can set the `asChild` parameter and nest the link component.
 
 ```tsx
+// [!code word:asChild]
 <Button asChild>
   <Link href="/login">Login</Link>
 </Button>

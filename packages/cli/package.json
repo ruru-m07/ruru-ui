@@ -46,6 +46,7 @@
     "@babel/parser": "^7.25.3",
     "@babel/plugin-transform-typescript": "^7.25.2",
     "@clack/prompts": "^0.7.0",
+    "commander": "^12.1.0",
     "cosmiconfig": "^9.0.0",
     "cross-spawn": "^7.0.3",
     "dotenv": "^16.4.5",

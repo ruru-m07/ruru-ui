@@ -28,6 +28,7 @@ import template from "lodash.template";
 import ora from "ora";
 import { applyPrefixesCss } from "@/utils/transformers/transform-tw-prefix";
 import * as z from "zod";
+import { Command } from "commander";
 
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
@@ -39,57 +40,62 @@ const PROJECT_DEPENDENCIES = [
 const initOptionsSchema = z.object({
   defaults: z.boolean().default(false),
   autodetact: z.boolean().default(false),
+  yes: z.boolean(),
+  cwd: z.string(),
 });
 
-export async function init() {
-  console.log("\n");
-  intro(pc.white(pc.bold(" 🚀  Welcome to the installation wizard! ")));
+export const init = new Command()
+  .name("init")
+  .description("initialize your project and install dependencies")
+  .option("-y, --yes", "skip confirmation prompt.", false)
+  .option("-d, --defaults", "use default configuration.", false)
+  .option("-a, --autodetact", "autodetact configuration by freamwork.", false)
+  .option(
+    "-c, --cwd <cwd>",
+    "the working directory. defaults to the current directory.",
+    process.cwd(),
+  )
+  .action(async (opts) => {
+    console.log("\n");
+    intro(pc.white(pc.bold(" 🚀  Welcome to the installation wizard! ")));
 
-  const flags = process.argv
-    .slice(3, process.argv.length)
-    .filter((arg) => arg.startsWith("-"));
+    const options = initOptionsSchema.parse(opts);
+    const cwd = options.cwd;
 
-  const opts = {
-    defaults: flags.includes("-d"),
-    autodetact: flags.includes("-a"),
-  };
+    preFlight(cwd);
 
-  const options = initOptionsSchema.parse({
-    ...opts,
-  });
+    const projectConfig = await getProjectConfig(cwd);
 
-  // TODO: we'll give the user the option to change this.
-  const cwd = process.cwd();
+    if (options.autodetact && projectConfig) {
+      console.log(pc.green(pc.bold("\n config found! \n ")));
 
-  preFlight(cwd);
-  const projectConfig = await getProjectConfig(cwd);
+      const config = await promptForMinimalConfig(
+        cwd,
+        projectConfig,
+        options.defaults,
+      );
+      await runInit(cwd, config);
+    } else {
+      // Read config.
+      const existingConfig = await getConfig(cwd);
+      const config = await promptForConfig(
+        cwd,
+        existingConfig,
+        options.defaults,
+      );
+      await runInit(cwd, config);
+    }
 
-  if (options.autodetact && projectConfig) {
-    console.log(pc.green(pc.bold("\n config found! \n ")));
+    const nextSteps = `npx ruru-ui-cli add button             `;
 
-    const config = await promptForMinimalConfig(
-      cwd,
-      projectConfig,
-      options.defaults,
+    note(nextSteps, "Next steps.");
+
+    outro(
+      `Problems? ${pc.underline(pc.cyan("https://github.com/ruru-m07/ruru-ui/issues"))}`,
     );
-    await runInit(cwd, config);
-  } else {
-    // Read config.
-    const existingConfig = await getConfig(cwd);
-    const config = await promptForConfig(cwd, existingConfig, options.defaults);
-    await runInit(cwd, config);
-  }
 
-  const nextSteps = `npx ruru-ui-cli add button             `;
-
-  note(nextSteps, "Next steps.");
-
-  outro(
-    `Problems? ${pc.underline(pc.cyan("https://github.com/ruru-m07/ruru-ui/issues"))}`,
-  );
-
-  process.exit(0);
-}
+    process.exit(0);
+  });
 
 /**
  * ! Prompt for minimal configuration.
@@ -173,7 +179,6 @@ export async function runInit(cwd: string, config: Config) {
   const dependenciesSpinner = ora(`Installing dependencies...`)?.start();
   const packageManager = await getPackageManager(cwd);
 
-  // TODO: add support for other icon libraries.
   const deps = [...PROJECT_DEPENDENCIES, "@radix-ui/react-icons"];
 
   await execa(
@@ -243,8 +248,8 @@ export async function promptForConfig(
       components: () =>
         text({
           message: `Configure the import alias for ${pc.bold("components")}:`,
-          placeholder: "@/components",
-          initialValue: "@/components",
+          placeholder: "@/components/ui",
+          initialValue: "@/components/ui",
         }),
       utils: () =>
         text({

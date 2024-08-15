@@ -1,12 +1,11 @@
 {
   "root": true,
   "pages": [
-    "---Getting Started---",
+    "---Guide---",
     "index",
     "installation",
     "cli",
     "dark-mode",
-    "typography",
     "changelog",
     "---Components---",
     "...components",

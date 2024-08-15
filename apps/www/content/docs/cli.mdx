@@ -24,12 +24,12 @@ pnpm dlx ruru-ui-cli@latest init
 </Tab>
 <Tab value={"yarn"}>
 ```bash
-npx shadcn-ui@latest init 
+npx ruru-ui@latest init 
 ```
 </Tab>
 <Tab value={"bun"}>
 ```bash
-bunx --bun shadcn-ui@latest init 
+bunx --bun ruru-ui@latest init 
 ```
 </Tab>
 </Tabs>
@@ -43,7 +43,7 @@ bunx --bun shadcn-ui@latest init
 ◇ Where is your tailwind.config.js located? ./tailwind.config.js
 ◇ Would you like to use CSS variables for colors? Yes
 ◇ Are you using a custom tailwind prefix eg. tw-? (Leave blank if not) (Leave blank if not)
-◇ Configure the import alias for components: @/components
+◇ Configure the import alias for components: @/components/ui
 ◇ Configure the import alias for utils: @/lib/utils
 ◇ Would you like to use RSC ? Yes
 ◇ Write configuration to components.json. Proceed? Yes
@@ -54,8 +54,19 @@ bunx --bun shadcn-ui@latest init
 
 The `init` command supports the following options:
 
-- `-d`: Use default configuration settings without prompting.
-- `-a`: Automatically detect existing project configuration.
+```txt
+Usage: Ruru-UI init [options]
+
+initialize your project and install dependencies
+
+Options:
+  -y, --yes         skip confirmation prompt. (default: false)
+  -d, --defaults    use default configuration. (default: false)
+  -a, --autodetact  autodetact configuration by freamwork. (default: false)   
+  -c, --cwd <cwd>   the working directory. defaults to the current directory. 
+                    (default: "D:\\GitHub\\ruru-ui\\apps\\sink")
+  -h, --help        display help for command
+```
 
 
 ## add
@@ -77,12 +88,12 @@ pnpm dlx ruru-ui-cli@latest add [component]
 </Tab>
 <Tab value={"yarn"}>
 ```bash
-npx shadcn-ui@latest add [component] 
+npx ruru-ui@latest add [component] 
 ```
 </Tab>
 <Tab value={"bun"}>
 ```bash
-bunx --bun shadcn-ui@latest add [component]
+bunx --bun ruru-ui@latest add [component]
 ```
 </Tab>
 </Tabs>
@@ -91,7 +102,21 @@ bunx --bun shadcn-ui@latest add [component]
 
 The `add` command supports the following options:
 
-- `-y`: Skip the confirmation prompt. 
-- `-o`: Overwrite existing files.
-- `-a`: Install all components.
+```txt
+Usage: Ruru-UI add [options] [components...]
+
+add a component to your project
+
+Arguments:
+  components         the components to add
+
+Options:
+  -y, --yes          skip confirmation prompt. (default: true)
+  -o, --overwrite    overwrite existing files. (default: false)
+  -c, --cwd <cwd>    the working directory. defaults to the current
+                     directory. (default: "D:\\GitHub\\ruru-ui\\apps\\sink")  
+  -a, --all          add all available components (default: false)
+  -p, --path <path>  the path to add the component to.
+  -h, --help         display help for command
+```
 

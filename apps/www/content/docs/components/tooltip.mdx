@@ -32,12 +32,12 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
       </Tab>
       <Tab value={"yarn"}>
       ```bash
-      npx shadcn-ui@latest add tooltip
+      npx ruru-ui@latest add tooltip
       ```
       </Tab>
       <Tab value={"bun"}>
       ```bash
-      bunx --bun shadcn-ui@latest add tooltip
+      bunx --bun ruru-ui@latest add tooltip
       ```
     </Tab>
     </Tabs>
@@ -89,7 +89,7 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
                 <TooltipTrigger asChild>
                     <Button>Hover or focus me</Button>
                 </TooltipTrigger>
-                <TooltipContent className="px-[15px] py-[px]">
+                <TooltipContent>
                     Tooltip content here
                 </TooltipContent>
             </Tooltip>

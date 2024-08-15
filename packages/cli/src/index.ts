@@ -1,23 +1,26 @@
 #!/usr/bin/env node
 
 import "dotenv/config";
+import { Command } from "commander";
+import { getPackageInfo } from "./utils";
+import { init } from "./commands/init";
+import { add } from "./commands/add";
 
 async function main(): Promise<void> {
-  switch (process.argv[2]) {
-    case "init":
-      if (process.argv[3] === "-h") {
-        console.log("Usage: initalize Ruru-ui. ");
-        return;
-      }
-      await import("./commands/init").then((mod) => mod.init());
-      break;
-    case "add":
-      await import("./commands/add").then((mod) => mod.add());
-      break;
-    default:
-      console.log("Usage: <command>");
-      break;
-  }
+  const program = new Command();
+
+  program
+    .name("Ruru-UI")
+    .description("CLI tool to initialize Ruru-UI")
+    .version(
+      getPackageInfo().version || "1.0.0",
+      "-v, --version",
+      "display the version number",
+    );
+
+  program.addCommand(init).addCommand(add);
+
+  program.parse();
 }
 
 main().catch((e: unknown) => {
