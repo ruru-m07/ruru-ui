@@ -15,8 +15,8 @@
     "version": "changeset version && pnpm install --lockfile-only"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
-    "@typescript-eslint/parser": "^7.16.1",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
     "@vercel/style-guide": "^6.0.0",
     "eslint": "^8.57.0",
     "eslint-plugin-tailwindcss": "^3.17.4",
