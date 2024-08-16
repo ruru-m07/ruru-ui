@@ -5,6 +5,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 import { cn } from "@/utils/cn";
 import { Spinner } from "./spinner";
+import { motion } from "framer-motion";
+import { useRuru } from "@/provider";
 
 export const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
@@ -130,32 +132,45 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
+    const { animation } = useRuru();
+
     const Comp = asChild ? Slot : "button";
+
+    const buttonContent = (
+      <Comp
+        className={cn(
+          buttonVariants({
+            variant: loading ? "secondary" : variant,
+            size,
+          }),
+          className,
+        )}
+        ref={ref}
+        disabled={disabled}
+        {...props}
+      >
+        {loading ? <Spinner className="mr-2" /> : null}
+        {prefix ? (
+          <span className="mr-2 flex items-center justify-center">
+            {prefix}
+          </span>
+        ) : null}
+        {props.children}
+        {suffix ? (
+          <span className="ml-2 flex items-center justify-center">
+            {suffix}
+          </span>
+        ) : null}
+      </Comp>
+    );
 
     return (
       <div className={disabled ? " cursor-not-allowed " : undefined}>
-        <Comp
-          className={cn(
-            buttonVariants({ variant: loading ? "secondary" : variant, size }),
-            className,
-          )}
-          ref={ref}
-          disabled={disabled}
-          {...props}
-        >
-          {loading ? <Spinner className="mr-2" /> : null}
-          {prefix ? (
-            <span className="mr-2 flex items-center justify-center">
-              {prefix}
-            </span>
-          ) : null}
-          {props.children}
-          {suffix ? (
-            <span className="ml-2 flex items-center justify-center">
-              {suffix}
-            </span>
-          ) : null}
-        </Comp>
+        {animation ? (
+          <motion.div whileTap={{ scale: 0.93 }}>{buttonContent}</motion.div>
+        ) : (
+          buttonContent
+        )}
       </div>
     );
   },

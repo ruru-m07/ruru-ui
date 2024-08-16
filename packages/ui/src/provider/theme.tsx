@@ -7,16 +7,18 @@ import { type RuruThemeProviderProps } from "@/interface/RuruThemeProviderProps"
 /**
  * A wrapper component to provide theme context using `next-themes`.
  *
- * @param {React.ReactNode} children - The child elements to render within the theme provider.
- * @param {string} [attribute="class"] - The attribute to use for the theme.
- * @param {string} [defaultTheme="system"] - The default theme to apply.
- * @param {boolean} [enableSystem=true] - Whether to enable the system theme detection.
- * @param {boolean} [disableTransitionOnChange=true] - Whether to disable transitions when changing themes.
- *
+ * @param {RuruThemeProviderProps} props - The component properties.
+ * @returns {React.ReactElement} - The theme provider component.
  * @example
+ *
  * ```tsx
- * <RuruThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
- *   <YourComponent />
+ * <RuruThemeProvider
+ *  attribute="data-theme"
+ *  defaultTheme="dark"
+ *  enableSystem={false}
+ *  disableTransitionOnChange={true}
+ *  >
+ *    <App />
  * </RuruThemeProvider>
  * ```
  */
@@ -34,7 +36,7 @@ export const RuruThemeProvider: React.FC<RuruThemeProviderProps> = ({
       enableSystem={enableSystem}
       disableTransitionOnChange={disableTransitionOnChange}
     >
-      {children}
+      <div className="bg-card">{children}</div>
     </ThemeProvider>
   );
 };

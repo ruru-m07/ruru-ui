@@ -97,6 +97,7 @@
     "@tailwindcss/typography": "^0.5.13",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.3.28",
     "next-themes": "^0.3.0",
     "react": "^18.2.0",
     "tailwind-merge": "^2.4.0",
