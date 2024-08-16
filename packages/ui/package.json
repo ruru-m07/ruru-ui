@@ -76,7 +76,7 @@
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "postcss": "^8.4.39",
     "postcss-cli": "^11.0.0",
     "postcss-lightningcss": "^1.0.0",
