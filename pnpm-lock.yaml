@@ -61,14 +61,14 @@ importers:
         specifier: 0.0.1-security
         version: 0.0.1-security
       fumadocs-core:
-        specifier: 12.4.2
-        version: 12.4.2(@types/react@18.3.3)(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 13.2.2
+        version: 13.2.2(@types/react@18.3.3)(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       fumadocs-docgen:
         specifier: ^1.1.0
         version: 1.1.0(typescript@5.5.3)
       fumadocs-mdx:
         specifier: 8.2.33
-        version: 8.2.33(fumadocs-core@12.4.2(@types/react@18.3.3)(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        version: 8.2.33(fumadocs-core@13.2.2(@types/react@18.3.3)(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       fumadocs-twoslash:
         specifier: ^1.1.0
         version: 1.1.0(typescript@5.5.3)
@@ -1684,14 +1684,23 @@ packages:
   '@shikijs/core@1.10.3':
     resolution: {integrity: sha512-D45PMaBaeDHxww+EkcDQtDAtzv00Gcsp72ukBtaLSmqRvh0WgGMq3Al0rl1QQBZfuneO75NXMIzEZGFitThWbg==}
 
+  '@shikijs/core@1.13.0':
+    resolution: {integrity: sha512-Mj5NVfbAXcD1GnwOTSPl8hBn/T8UDpfFQTptp+p41n/CbUcJtOq98WaRD7Lz3hCglYotUTHUWtzu3JhK6XlkAA==}
+
   '@shikijs/core@1.6.5':
     resolution: {integrity: sha512-XcQYt6e4L61ruAxHiL3Xg1DL/XkWWjzDdeckB/DtN8jAxoAU+bcxsV6DetC8NafHpL4YpGhxy9iXF0ND/u6HmA==}
 
   '@shikijs/rehype@1.10.3':
     resolution: {integrity: sha512-ghLPkqtx+AEL3LNTR8YpVJroAuiGvZZv+2u2CUB5rw5l4gsJ/2SycrC7s3Hpe+5qMuVXDAq/xImFQyhB0nQpuw==}
 
+  '@shikijs/rehype@1.13.0':
+    resolution: {integrity: sha512-Taty5qG1OoxXSpF4F0eEQRJbMekKIrGdaz038rzL0Mnvs8WsIoJiKlLFUOUKPN0aeWXPa1g6etZjC9oW6P9+uA==}
+
   '@shikijs/transformers@1.10.3':
     resolution: {integrity: sha512-MNjsyye2WHVdxfZUSr5frS97sLGe6G1T+1P41QjyBFJehZphMcr4aBlRLmq6OSPBslYe9byQPVvt/LJCOfxw8Q==}
+
+  '@shikijs/transformers@1.13.0':
+    resolution: {integrity: sha512-51aLIT6a93rVGoTxl2+p6hb7ILbTA4p/unoibEAjnPMzHto4cqxhuHyDVgtQur5ANpGsL3ihSGKaZDrpcWH8vQ==}
 
   '@shikijs/twoslash@1.6.5':
     resolution: {integrity: sha512-vEdG64AKiTTppyVX60DBkvEntxCwG9vIi4gGJFeIpFu87nt88iCiPmUBO7ZzXBLAW2VjlzE4Bu0av3Tp3MAM6A==}
@@ -3022,6 +3031,13 @@ packages:
       react: '>= 18'
       react-dom: '>= 18'
 
+  fumadocs-core@13.2.2:
+    resolution: {integrity: sha512-qG31vguI8vc4ZY+L5lnWNchZi6HfKnZ7/NBAQEFM2vezsl1jSc7bKLa874scTWwQlCYUzthmRkJapRG/tESFMw==}
+    peerDependencies:
+      next: '>= 14.1.0'
+      react: '>= 18'
+      react-dom: '>= 18'
+
   fumadocs-docgen@1.1.0:
     resolution: {integrity: sha512-476elxwVBUnZV9LeTomGS0Tt37gNI7IRfLHl0V8sWBzEowgQ63f9sVFWFwQljoVKYTCIPP5ic5k/XVW0LkGMhw==}
 
@@ -3292,6 +3308,11 @@ packages:
   ignore@5.3.1:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
     engines: {node: '>= 4'}
+
+  image-size@1.1.1:
+    resolution: {integrity: sha512-541xKlUw6jr/6gGuk92F+mYM5zaFAc5ahphvkqvNe2bQ6gVBkd6bfrmVJ2t4KDAfikAYZyIqTnktX3i6/aQDrQ==}
+    engines: {node: '>=16.x'}
+    hasBin: true
 
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -4521,6 +4542,9 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
+  queue@6.0.2:
+    resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
+
   rc@1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
@@ -4811,6 +4835,9 @@ packages:
 
   shiki@1.10.3:
     resolution: {integrity: sha512-eneCLncGuvPdTutJuLyUGS8QNPAVFO5Trvld2wgEq1e002mwctAhJKeMGWtWVXOIEzmlcLRqcgPSorR6AVzOmQ==}
+
+  shiki@1.13.0:
+    resolution: {integrity: sha512-e0dWfnONbEv6xl7FJy3XIhsVHQ/65XHDZl92+6H9+4xWjfdo7pmkqG7Kg47KWtDiEtzM5Z+oEfb4vtRvoZ/X9w==}
 
   shiki@1.6.5:
     resolution: {integrity: sha512-iFzypldJG0zeyRHKAhaSGCf+YWXpMMyUyOrCVFBFKGGdF5vrB6jbd66/SQljxV20aSrVZEAQwUto/hhuNi/CIg==}
@@ -6941,6 +6968,10 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
 
+  '@shikijs/core@1.13.0':
+    dependencies:
+      '@types/hast': 3.0.4
+
   '@shikijs/core@1.6.5': {}
 
   '@shikijs/rehype@1.10.3':
@@ -6952,9 +6983,22 @@ snapshots:
       unified: 11.0.5
       unist-util-visit: 5.0.0
 
+  '@shikijs/rehype@1.13.0':
+    dependencies:
+      '@shikijs/transformers': 1.13.0
+      '@types/hast': 3.0.4
+      hast-util-to-string: 3.0.0
+      shiki: 1.13.0
+      unified: 11.0.5
+      unist-util-visit: 5.0.0
+
   '@shikijs/transformers@1.10.3':
     dependencies:
       shiki: 1.10.3
+
+  '@shikijs/transformers@1.13.0':
+    dependencies:
+      shiki: 1.13.0
 
   '@shikijs/twoslash@1.6.5(typescript@5.5.3)':
     dependencies:
@@ -7373,10 +7417,6 @@ snapshots:
       - jest
       - supports-color
       - vitest
-
-  acorn-jsx@5.3.2(acorn@8.10.0):
-    dependencies:
-      acorn: 8.10.0
 
   acorn-jsx@5.3.2(acorn@8.12.1):
     dependencies:
@@ -8634,6 +8674,31 @@ snapshots:
       - '@types/react'
       - supports-color
 
+  fumadocs-core@13.2.2(@types/react@18.3.3)(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@formatjs/intl-localematcher': 0.5.4
+      '@shikijs/rehype': 1.13.0
+      '@shikijs/transformers': 1.13.0
+      flexsearch: 0.7.21
+      github-slugger: 2.0.0
+      image-size: 1.1.1
+      negotiator: 0.6.3
+      next: 14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      npm-to-yarn: 2.2.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-remove-scroll: 2.5.10(@types/react@18.3.3)(react@18.3.1)
+      remark: 15.0.1
+      remark-gfm: 4.0.0
+      remark-mdx: 3.0.1
+      scroll-into-view-if-needed: 3.1.0
+      shiki: 1.13.0
+      swr: 2.2.5(react@18.3.1)
+      unist-util-visit: 5.0.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
   fumadocs-docgen@1.1.0(typescript@5.5.3):
     dependencies:
       estree-util-value-to-estree: 3.1.2
@@ -8645,13 +8710,13 @@ snapshots:
       - supports-color
       - typescript
 
-  fumadocs-mdx@8.2.33(fumadocs-core@12.4.2(@types/react@18.3.3)(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
+  fumadocs-mdx@8.2.33(fumadocs-core@13.2.2(@types/react@18.3.3)(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
     dependencies:
       '@mdx-js/mdx': 3.0.1
       cross-spawn: 7.0.3
       estree-util-value-to-estree: 3.1.2
       fast-glob: 3.3.2
-      fumadocs-core: 12.4.2(@types/react@18.3.3)(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      fumadocs-core: 13.2.2(@types/react@18.3.3)(next@14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gray-matter: 4.0.3
       next: 14.2.5(@babel/core@7.24.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       zod: 3.23.8
@@ -9047,6 +9112,10 @@ snapshots:
   ieee754@1.2.1: {}
 
   ignore@5.3.1: {}
+
+  image-size@1.1.1:
+    dependencies:
+      queue: 6.0.2
 
   import-fresh@3.3.0:
     dependencies:
@@ -9836,8 +9905,8 @@ snapshots:
 
   micromark-extension-mdxjs@3.0.0:
     dependencies:
-      acorn: 8.10.0
-      acorn-jsx: 5.3.2(acorn@8.10.0)
+      acorn: 8.12.1
+      acorn-jsx: 5.3.2(acorn@8.12.1)
       micromark-extension-mdx-expression: 3.0.0
       micromark-extension-mdx-jsx: 3.0.0
       micromark-extension-mdx-md: 2.0.0
@@ -10542,6 +10611,10 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
+  queue@6.0.2:
+    dependencies:
+      inherits: 2.0.4
+
   rc@1.2.8:
     dependencies:
       deep-extend: 0.6.0
@@ -10943,6 +11016,11 @@ snapshots:
   shiki@1.10.3:
     dependencies:
       '@shikijs/core': 1.10.3
+      '@types/hast': 3.0.4
+
+  shiki@1.13.0:
+    dependencies:
+      '@shikijs/core': 1.13.0
       '@types/hast': 3.0.4
 
   shiki@1.6.5:
