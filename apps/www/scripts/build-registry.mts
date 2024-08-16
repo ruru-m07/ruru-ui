@@ -64,10 +64,6 @@ export const Index: Record<string, any> = {
     "utf8",
   );
 
-  // Write style index.
-  rimraf.sync(path.join(process.cwd(), "__registry__/index.tsx"));
-  await fs.writeFile(path.join(process.cwd(), "__registry__/index.tsx"), index);
-
   console.log("✅ Registry built!");
 }
 
