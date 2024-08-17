@@ -1,0 +1,10 @@
+{
+  "name": "index",
+  "files": [
+    {
+      "name": "index.tsx",
+      "content": "\"use client\";\n\nimport React, { createContext, useContext, useState } from \"react\";\nimport { type RuruContextType } from \"@/interfaces/RuruContextType\";\nimport { type RuruProviderProps } from \"@/interfaces/RuruProviderProps\";\nimport { RuruThemeProvider } from \"./theme\";\n\nconst RuruContext = createContext<RuruContextType | undefined>(undefined);\n\nexport const RuruProvider: React.FC<RuruProviderProps> = ({\n  children,\n  togleThemeAnimation = false,\n  disableAnimation = false,\n  disableBaseColor = false,\n}) => {\n  const [animation, setAnimation] = useState(!disableAnimation);\n\n  return (\n    <RuruContext.Provider value={{ disableAnimation, animation, setAnimation }}>\n      <RuruThemeProvider disableTransitionOnChange={!togleThemeAnimation}>\n        {disableBaseColor ? (\n          children\n        ) : (\n          <div className=\"bg-card\">{children}</div>\n        )}\n      </RuruThemeProvider>\n    </RuruContext.Provider>\n  );\n};\n\nexport const useRuru = (): RuruContextType => {\n  const context = useContext(RuruContext);\n  if (!context) {\n    throw new Error(\"useRuru must be used within a RuruProvider\");\n  }\n  return context;\n};\n"
+    }
+  ],
+  "type": "components:component"
+}

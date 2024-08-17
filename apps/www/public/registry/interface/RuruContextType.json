@@ -1,0 +1,4 @@
+{
+  "name": "RuruContextType",
+  "content": "\nexport interface RuruContextType {\n  disableAnimation: boolean;\n  animation: boolean;\n  setAnimation: (Animation: boolean) => void;\n}\n"
+}

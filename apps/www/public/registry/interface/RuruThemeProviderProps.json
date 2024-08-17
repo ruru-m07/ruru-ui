@@ -1,0 +1,4 @@
+{
+  "name": "RuruThemeProviderProps",
+  "content": "import { type ReactNode } from \"react\";\n\nexport interface RuruThemeProviderProps {\n  children: ReactNode;\n  attribute?: string;\n  defaultTheme?: string;\n  enableSystem?: boolean;\n  disableTransitionOnChange?: boolean;\n}\n"
+}

@@ -1,0 +1,198 @@
+---
+title: ruru.json
+description: The `ruru.json` file is used to configure the project.
+---
+
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+The `ruru.json` file is used to configure the project.
+
+We use it to understand how your project is set up and how to generate components customized for your project.
+
+You can create a `ruru.json` file by running the following command:
+
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+<Tab value={"npm"}>
+```bash
+npx ruru-ui-cli@latest init 
+```
+</Tab>
+<Tab value={"pnpm"}>
+```bash
+pnpm dlx ruru-ui-cli@latest init 
+```
+</Tab>
+<Tab value={"yarn"}>
+```bash
+npx ruru-ui-cli@latest init 
+```
+</Tab>
+<Tab value={"bun"}>
+```bash
+bunx --bun ruru-ui-cli@latest init 
+```
+</Tab>
+</Tabs>
+
+Read more about the `init` command [here](/docs/cli#init).
+
+## $schema
+---
+
+The `$schema` property is used to specify the version of the schema that the `ruru.json` file uses.
+
+```json title="ruru.json"
+{
+    "$schema": "https://ruru-ui.vercel.app/schema.json"
+}
+```
+
+## tailwind
+---
+
+
+### config
+
+The `tailwind` property is used to specify the configuration for the Tailwind CSS framework.
+
+```json title="ruru.json"
+{
+    "tailwind": {
+        "config": "./tailwind.config.js"
+    }
+}
+```
+
+### css
+
+The `css` property is used to specify the configuration for your css file.
+
+```json title="ruru.json"
+{
+    "tailwind": {
+        "css": "./app/globals.css"
+    }
+}
+```
+
+### cssVariables
+
+The `cssVariables` property is used to specify if you would like to use CSS variables for colors.
+
+```json title="ruru.json"
+{
+    "tailwind": {
+        "cssVariables": true
+    }
+}
+```
+
+### prefix
+
+The `prefix` property is used to specify if you are using a custom tailwind prefix eg. tw-.
+
+```json title="ruru.json"
+{
+    "tailwind": {
+        "prefix": "tw-"
+    }
+}
+```
+
+## rsc
+---
+
+The `rsc` property is used to specify if you would like to use the RSC (React State Component) pattern.
+
+```json title="ruru.json"
+{
+    "rsc": true
+}
+```
+
+## tsx
+---
+
+The `tsx` property is used to specify if you would like to use TypeScript.
+
+```json title="ruru.json"
+{
+    "tsx": true
+}
+```
+
+## aliases
+---
+
+The `aliases` property is used to specify the import alias for components and utils.
+
+```json title="ruru.json"
+{
+    "aliases": {
+        "components": "@/components/ui",
+        "utils": "@/lib/utils"
+    }
+}
+```
+
+### utils
+
+The `utils` property is used to specify the import alias for utils.
+
+```json title="ruru.json"
+{
+    "aliases": {
+        "utils": "@/lib/utils"
+    }
+}
+```
+
+### components
+
+The `components` property is used to specify the import alias for components.
+
+```json title="ruru.json"
+{
+    "aliases": {
+        "components": "@/components/ui"
+    }
+}
+```
+
+### ui
+
+The `ui` property is used to specify the import alias for ui components.
+
+```json title="ruru.json"
+{
+    "aliases": {
+        "ui": "@/components/ui"
+    }
+}
+```
+
+### provider
+
+The `provider` property is used to specify the import alias for the provider.
+
+```json title="ruru.json"
+{
+    "aliases": {
+        "provider": "@/lib/provider"
+    }
+}
+```
+
+### interfaces
+
+
+The `interfaces` property is used to specify the import alias for interfaces.
+
+```json title="ruru.json"
+{
+    "aliases": {
+        "interfaces": "@/lib/interfaces"
+    }
+}
+```
+

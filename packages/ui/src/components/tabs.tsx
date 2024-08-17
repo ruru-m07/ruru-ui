@@ -5,8 +5,16 @@ import type {
   TabsProps as BaseProps,
 } from "@radix-ui/react-tabs";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import React, { useMemo, useState, useCallback, useLayoutEffect } from "react";
+import React, {
+  useMemo,
+  useState,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+} from "react";
 import { cn } from "@/utils/cn";
+import { motion } from "framer-motion";
+import { useRuru } from "@/provider";
 
 const TabsPrimitiveRoot = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Root>,
@@ -22,6 +30,66 @@ const TabsPrimitiveRoot = React.forwardRef<
 });
 
 TabsPrimitiveRoot.displayName = "TabsPrimitiveRoot";
+
+const AnimatedTabsList = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+>(({ children, ...props }, ref) => {
+  const [activeIndex] = useState(0);
+  const [indicatorProps, setIndicatorProps] = useState({
+    width: 0,
+    left: 0,
+  });
+  const [hasMounted, setHasMounted] = useState(false);
+
+  const listRef = useRef<HTMLDivElement | null>(null);
+
+  useLayoutEffect(() => {
+    if (!listRef.current) return;
+
+    const activeTab = listRef.current.querySelector(
+      '[data-state="active"]',
+    ) as HTMLButtonElement | null;
+
+    if (activeTab) {
+      setIndicatorProps({
+        width: activeTab.offsetWidth,
+        left: activeTab.offsetLeft,
+      });
+    }
+
+    if (!hasMounted) {
+      setHasMounted(true);
+    }
+  }, [activeIndex, children, hasMounted]);
+
+  return (
+    <TabsPrimitive.List
+      ref={(node) => {
+        listRef.current = node;
+        if (typeof ref === "function") ref(node);
+        else if (ref) ref.current = node;
+      }}
+      {...props}
+      className={cn(
+        "relative flex flex-row items-end gap-4 overflow-x-auto px-4 border-b",
+        props.className,
+      )}
+    >
+      {children}
+      <motion.div
+        className="absolute bottom-0 h-[2px] bg-primary"
+        animate={
+          hasMounted
+            ? { width: indicatorProps.width, left: indicatorProps.left }
+            : false
+        }
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      />
+    </TabsPrimitive.List>
+  );
+});
+AnimatedTabsList.displayName = "AnimatedTabsList";
 
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
@@ -41,16 +109,21 @@ TabsList.displayName = "TabsList";
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->((props, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    {...props}
-    className={cn(
-      "whitespace-nowrap border-b border-transparent py-2 text-sm font-medium transition-colors hover:text-primary disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-primary data-[state=active]:text-primary text-muted-foreground mx-1",
-      props.className,
-    )}
-  />
-));
+>((props, ref) => {
+  const { animation } = useRuru();
+  return (
+    <TabsPrimitive.Trigger
+      ref={ref}
+      {...props}
+      className={cn(
+        "whitespace-nowrap py-2 text-sm font-medium transition-colors hover:text-primary disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-primary text-muted-foreground mx-1 ",
+        props.className,
+        !animation &&
+          "border-b border-transparent data-[state=active]:border-primary",
+      )}
+    />
+  );
+});
 TabsTrigger.displayName = "TabsTrigger";
 
 const TabsContent = React.forwardRef<
@@ -125,6 +198,7 @@ export function Tabs({
   disabled = false,
   ...props
 }: TabsProps): React.ReactElement {
+  const { animation } = useRuru();
   const values = useMemo(() => items.map((item) => toValue(item)), [items]);
   const [value, setValue] = useState(values[defaultIndex]);
 
@@ -164,13 +238,28 @@ export function Tabs({
       {...props}
       className={cn("my-4", props.className)}
     >
-      <TabsList>
-        {values.map((v, i) => (
-          <TabsTrigger disabled={disabled} key={v} value={v}>
-            {items[i]}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+      {animation ? (
+        <AnimatedTabsList>
+          {values.map((v, i) => (
+            <TabsTrigger
+              className="relative "
+              disabled={disabled}
+              key={v}
+              value={v}
+            >
+              {items[i]}
+            </TabsTrigger>
+          ))}
+        </AnimatedTabsList>
+      ) : (
+        <TabsList>
+          {values.map((v, i) => (
+            <TabsTrigger disabled={disabled} key={v} value={v}>
+              {items[i]}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      )}
       {props.children}
     </TabsPrimitiveRoot>
   );

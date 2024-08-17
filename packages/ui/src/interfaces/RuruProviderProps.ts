@@ -1,5 +1,4 @@
 import { type ReactNode } from "react";
-
 /**
  * Properties for the `RuruProvider` component.
  *
@@ -17,4 +16,6 @@ import { type ReactNode } from "react";
 export interface RuruProviderProps {
   children: ReactNode;
   togleThemeAnimation?: boolean;
+  disableAnimation?: boolean;
+  disableBaseColor?: boolean;
 }

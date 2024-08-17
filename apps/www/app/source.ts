@@ -1,7 +1,6 @@
 import { map } from "@/.map";
 import { createMDXSource, defaultSchemas } from "fumadocs-mdx";
 import { BuildPageTreeOptions, loader } from "fumadocs-core/source";
-import { PageTree } from "fumadocs-core/server";
 import { z } from "zod";
 
 // @ts-ignore

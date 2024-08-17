@@ -29,12 +29,25 @@ import ora from "ora";
 import { applyPrefixesCss } from "@/utils/transformers/transform-tw-prefix";
 import * as z from "zod";
 import { Command } from "commander";
+import {
+  fetchInterfaceTree,
+  fetchTree,
+  getInterfaceRegistryIndex,
+  getItemTargetPath,
+  getProviderRegistryIndex,
+  getRegistryBaseColor,
+  resolveInterfaceTree,
+  resolveTree,
+} from "@/utils/registry";
+import { transform } from "@/utils/transformers";
 
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
   "class-variance-authority",
   "clsx",
   "tailwind-merge",
+  "framer-motion",
+  "next-themes",
 ];
 
 const initOptionsSchema = z.object({
@@ -78,6 +91,7 @@ export const init = new Command()
     } else {
       // Read config.
       const existingConfig = await getConfig(cwd);
+
       const config = await promptForConfig(
         cwd,
         existingConfig,
@@ -103,6 +117,12 @@ export const init = new Command()
 
 export async function runInit(cwd: string, config: Config) {
   const spinner = ora(`Initializing project...`)?.start();
+
+  const registryIndex = await getProviderRegistryIndex();
+
+  const tree = await resolveTree(registryIndex, ["index", "theme"]);
+  const payload = await fetchTree(tree);
+  const baseColor = await getRegistryBaseColor();
 
   // Ensure all resolved paths directories exist.
   for (const [key, resolvedPath] of Object.entries(config.resolvedPaths)) {
@@ -173,6 +193,96 @@ export async function runInit(cwd: string, config: Config) {
     "utf8",
   );
 
+  // write provider file. and theme file in  config.resolvedPaths.provider
+
+  const providerSpinner = ora(`Writing provider file...`)?.start();
+
+  for (const item of payload) {
+    spinner.text = `Installing ${item.name}...`;
+    const targetDir = await getItemTargetPath(
+      config,
+      item,
+      cwd ? path.resolve(cwd, cwd) : undefined,
+    );
+
+    if (!targetDir) {
+      continue;
+    }
+
+    if (!existsSync(targetDir)) {
+      await fs.mkdir(targetDir, { recursive: true });
+    }
+
+    for (const file of item.files) {
+      let filePath = path.resolve(
+        targetDir,
+        config.resolvedPaths.provider,
+        file.name,
+      );
+
+      // Run transformers.
+      const content = await transform({
+        filename: file.name,
+        raw: file.content,
+        config,
+        baseColor,
+      });
+
+      if (!config.tsx) {
+        filePath = filePath.replace(/\.tsx$/, ".jsx");
+        filePath = filePath.replace(/\.ts$/, ".js");
+      }
+
+      await fs.writeFile(filePath, content);
+    }
+  }
+
+  providerSpinner?.succeed();
+
+  // write interface files if user use TS
+  // all TS files are on /registry/interface/index.json => [ "RuruContextType.ts", "RuruProviderProps.ts", "RuruThemeProviderProps.ts"]
+
+  // TODO: write interface files
+
+  if (config.tsx) {
+    // first get all interface files name
+    const interfaceRegistryIndex = await getInterfaceRegistryIndex();
+    const interfaceTree = await resolveInterfaceTree(interfaceRegistryIndex);
+    const interfacePayload = await fetchInterfaceTree(interfaceTree);
+
+    const interfaceSpinner = ora(`Writing interface files...`)?.start();
+
+    for (const item of interfacePayload) {
+      spinner.text = `Installing ${item.name}...`;
+      const targetDir = config.resolvedPaths.interfaces;
+
+      if (!targetDir) {
+        continue;
+      }
+
+      if (!existsSync(targetDir)) {
+        await fs.mkdir(targetDir, { recursive: true });
+      }
+
+      // Determine the file path and force it to have a .ts extension
+      let filePath = path.resolve(targetDir, item.name);
+      filePath = `${filePath}.ts`; // Append .ts extension
+
+      // Run transformers.
+      const content = await transform({
+        filename: item.name,
+        raw: item.content,
+        config,
+        baseColor,
+      });
+
+      // Save the file with the .ts extension
+      await fs.writeFile(filePath, content);
+    }
+
+    interfaceSpinner?.succeed();
+  }
+
   spinner?.succeed();
 
   // Install dependencies.
@@ -208,11 +318,6 @@ export async function promptForConfig(
         confirm({
           message: `Would you like to use ${pc.bold("TypeScript")} (recommended)?`,
           initialValue: true,
-        }),
-      defaults: () =>
-        confirm({
-          message: `use default configuration.`,
-          initialValue: false,
         }),
       tailwindCss: () =>
         text({
@@ -257,6 +362,18 @@ export async function promptForConfig(
           placeholder: "@/lib/utils",
           initialValue: "@/lib/utils",
         }),
+      provider: () =>
+        text({
+          message: `Configure the import alias for ${pc.bold("provider")}:`,
+          placeholder: "@/provider",
+          initialValue: "@/provider",
+        }),
+      interfaces: () =>
+        text({
+          message: `Configure the import alias for ${pc.bold("interfaces")}:`,
+          placeholder: "@/interfaces",
+          initialValue: "@/interfaces",
+        }),
       rsc: () =>
         confirm({
           message: `Would you like to use ${pc.bold("RSC")} ?`,
@@ -272,6 +389,7 @@ export async function promptForConfig(
   );
 
   const config = rawConfigSchema.parse({
+    $schema: "https://ruru-ui.vercel.app/schema.json",
     tailwind: {
       config: options.tailwindConfig,
       css: options.tailwindCss,
@@ -284,12 +402,14 @@ export async function promptForConfig(
       components: options.components,
       utils: options.utils,
       ui: options.components,
+      provider: options.provider,
+      interfaces: options.interfaces,
     },
   });
 
   if (!skip) {
     const proceed = confirm({
-      message: `Write configuration to ${pc.bold("components.json")}. Proceed??`,
+      message: `Write configuration to ${pc.bold("ruru.json")}. Proceed??`,
       initialValue: true,
     });
 
@@ -300,8 +420,8 @@ export async function promptForConfig(
 
   // Write to file.
 
-  const spinner = ora(`Writing components.json...`)?.start();
-  const targetPath = path.resolve(cwd, "components.json");
+  const spinner = ora(`Writing ruru.json...`)?.start();
+  const targetPath = path.resolve(cwd, "ruru.json");
   await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8");
   spinner.succeed();
 
@@ -338,8 +458,8 @@ export async function promptForMinimalConfig(
   });
 
   // Write to file.
-  const spinner = ora(`Writing components.json...`).start();
-  const targetPath = path.resolve(cwd, "components.json");
+  const spinner = ora(`Writing ruru.json...`).start();
+  const targetPath = path.resolve(cwd, "ruru.json");
   await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8");
   spinner.succeed();
 

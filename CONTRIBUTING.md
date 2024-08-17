@@ -1,6 +1,43 @@
-# Contribution Guidelines
+## Contribution Guidelines
 
-Welcome to our project! We appreciate your interest in contributing. Before you get started, please take a moment to review the following guidelines.
+Thank you for your interest in contributing to this project! We're excited to have you collaborate with us.
+Before you dive in, please take a moment to review these guidelines.
+
+### General Guidelines
+
+This project is organized as a monorepo and utilizes Turborepo, pnpm, and
+[Changesets](https://github.com/changesets/changesets).
+
+#### Before You Submit
+
+- Ensure there are no existing pull requests (PRs) that address the same issue or feature.
+- Format your code using `pnpm run prettier`.
+- Document your changes by running `pnpm changeset` to create a changeset.
+- Execute unit tests with `pnpm test` and update any snapshots as needed.
+
+#### Adding New Features
+
+If you plan to add a new feature, please open an issue first (Feature Request) with detailed information and justification for the feature.
+Once the feature request is approved, feel free to proceed with your pull request.
+
+#### Fixing Bugs
+
+When fixing a bug, include a thorough description of the issue, along with a live demo if possible.
+Alternatively, you can submit a bug report and reference it in your PR.
+
+#### Contributing to Documentation
+
+Improving documentation is always welcome. Please check for any typos or grammatical errors before submitting changes.
+
+### New to Open Source?
+
+A great way to start contributing is by working on documentation.
+The documentation files can be found in `/apps/docs/content/docs`.
+
+To preview the documentation site in development mode,
+first build the necessary dependencies using `pnpm run build --filter=./packages/*`, then start the development server with `pnpm run dev --filter=docs`.
+
+No extra environment variables are required to run this project.
 
 ## Code of Conduct
 

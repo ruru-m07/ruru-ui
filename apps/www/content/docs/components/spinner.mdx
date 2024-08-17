@@ -25,12 +25,12 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
       </Tab>
       <Tab value={"yarn"}>
       ```bash
-      npx ruru-ui@latest add spinner
+      npx ruru-ui-cli@latest add spinner
       ```
       </Tab>
       <Tab value={"bun"}>
       ```bash
-      bunx --bun ruru-ui@latest add spinner
+      bunx --bun ruru-ui-cli@latest add spinner
       ```
     </Tab>
     </Tabs>
@@ -58,17 +58,17 @@ The Spinner component is used to indicate that a page is loading or that an acti
     <Spinner />
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Spinner } from "ruru-ui/components/spinner";
+```tsx
+// [!code word:Spinner]
+import { Spinner } from "ruru-ui/components/spinner";
 
-    export function SpinnerDemo() {
-      return (
-          <Spinner />
-      )
-    }
-    ```
-    </Tab>
-
+export function Demo() {
+  return (
+      <Spinner />
+  )
+}
+```
+  </Tab>
 </Tabs>
 
 ### Custom size
@@ -80,22 +80,23 @@ You can customize the size of the spinner by passing the `size` prop.
     <Spinner size={30} />
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Spinner } from "ruru-ui/components/spinner";
+```tsx
+// [!code word:size]
+// [!code word:30]
+import { Spinner } from "ruru-ui/components/spinner";
 
-    export function SpinnerDemo() {
-      return (
-        <Spinner size={30} />
-      )
-    }
-    ```
-    </Tab>
-
+export function SpinnerDemo() {
+  return (
+    <Spinner size={30} />
+  )
+}
+```
+  </Tab>
 </Tabs>
 
 ## Props
 
-| Name      | Type   | Default | Description                    |
-| --------- | ------ | ------- | ------------------------------ |
-| size      | number | 20      | The size of the spinner.       |
-| className | string | -       | The class name of the spinner. |
+| Name          | Type       | Default | Description                    |
+| ------------- | ---------- | ------- | ------------------------------ |
+| **size**      | **number** | `20`    | The size of the spinner.       |
+| **className** | **string** | `-`     | The class name of the spinner. |

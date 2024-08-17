@@ -4,7 +4,11 @@ import { RootProvider } from "fumadocs-ui/provider";
 import type { Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import type { ReactNode } from "react";
+import { RuruProvider } from "ruru-ui/provider";
 import "fumadocs-ui/style.css";
+import "fumadocs-ui/twoslash.css";
+import { ScrollArea } from "@/components/scroll-area";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = createMetadata({
   title: {
@@ -27,7 +31,12 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={GeistSans.className} suppressHydrationWarning>
       <body>
-        <RootProvider>{children}</RootProvider>
+        <Analytics />
+        <RootProvider>
+          <RuruProvider disableBaseColor>
+            <ScrollArea className="h-screen">{children}</ScrollArea>
+          </RuruProvider>
+        </RootProvider>
       </body>
     </html>
   );
