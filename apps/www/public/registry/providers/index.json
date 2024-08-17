@@ -1,0 +1,12 @@
+[
+  {
+    "name": "index",
+    "files": ["index.tsx"],
+    "type": "components:component"
+  },
+  {
+    "name": "theme",
+    "files": ["theme.tsx"],
+    "type": "components:component"
+  }
+]

@@ -12,9 +12,9 @@ export const DEFAULT_TAILWIND_CONFIG = "tailwind.config.js";
 export const DEFAULT_TAILWIND_BASE_COLOR = "slate";
 
 // TODO: Figure out if we want to support all cosmiconfig formats.
-// A simple components.json file would be nice.
+// A simple ruru.json file would be nice.
 const explorer = cosmiconfig("components", {
-  searchPlaces: ["components.json"],
+  searchPlaces: ["ruru.json"],
 });
 
 export const rawConfigSchema = z
@@ -31,6 +31,8 @@ export const rawConfigSchema = z
       components: z.string(),
       utils: z.string(),
       ui: z.string().optional(),
+      provider: z.string().optional(),
+      interfaces: z.string().optional(),
     }),
   })
   .strict();
@@ -44,6 +46,8 @@ export const configSchema = rawConfigSchema.extend({
     utils: z.string(),
     components: z.string(),
     ui: z.string(),
+    provider: z.string(),
+    interfaces: z.string(),
   }),
 });
 
@@ -81,6 +85,12 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
       ui: config.aliases["ui"]
         ? await resolveImport(config.aliases["ui"], tsConfig)
         : await resolveImport(config.aliases["components"], tsConfig),
+      provider: config.aliases["provider"]
+        ? await resolveImport(config.aliases["provider"], tsConfig)
+        : await resolveImport(config.aliases["components"], tsConfig),
+      interfaces: config.aliases["interfaces"]
+        ? await resolveImport(config.aliases["interfaces"], tsConfig)
+        : await resolveImport(config.aliases["components"], tsConfig),
     },
   });
 }
@@ -95,6 +105,6 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
 
     return rawConfigSchema.parse(configResult.config);
   } catch (error) {
-    throw new Error(`Invalid configuration found in ${cwd}/components.json.`);
+    throw new Error(`Invalid configuration found in ${cwd}/ruru.json.`);
   }
 }

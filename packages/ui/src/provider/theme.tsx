@@ -2,8 +2,7 @@
 
 import { ThemeProvider } from "next-themes";
 import React from "react";
-import { type RuruThemeProviderProps } from "@/interface/RuruThemeProviderProps";
-
+import { type RuruThemeProviderProps } from "@/interfaces/RuruThemeProviderProps";
 /**
  * A wrapper component to provide theme context using `next-themes`.
  *
@@ -36,7 +35,10 @@ export const RuruThemeProvider: React.FC<RuruThemeProviderProps> = ({
       enableSystem={enableSystem}
       disableTransitionOnChange={disableTransitionOnChange}
     >
-      <div className="bg-card">{children}</div>
+      <div>{children}</div>
     </ThemeProvider>
   );
 };
+
+import { useTheme } from "next-themes";
+export { useTheme };

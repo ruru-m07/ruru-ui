@@ -33,6 +33,29 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
         );
       }
     }
+
+    // Replace `import { type RuruProviderProps } from "@/interface/RuruProviderProps";`
+    if (
+      moduleSpecifier.startsWith("@/interface/") &&
+      config.aliases.interfaces
+    ) {
+      console.log(moduleSpecifier);
+      if (config.aliases.ui) {
+        importDeclaration.setModuleSpecifier(
+          moduleSpecifier.replace(
+            /^@\/interface\/[^/]+\/ui/,
+            config.aliases.interfaces,
+          ),
+        );
+      } else {
+        importDeclaration.setModuleSpecifier(
+          moduleSpecifier.replace(
+            /^@\/interface\/[^/]+/,
+            config.aliases.interfaces,
+          ),
+        );
+      }
+    }
   }
 
   return sourceFile;

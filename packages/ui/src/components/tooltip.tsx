@@ -2,8 +2,10 @@
 
 import * as React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import { motion } from "framer-motion";
 
 import { cn } from "@/utils/cn";
+import { useRuru } from "@/provider";
 /**
  * TooltipProvider component.
  * Provides context for all tooltip components.
@@ -66,20 +68,50 @@ const TooltipTrigger = TooltipPrimitive.Trigger;
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
+>(({ className, sideOffset = 5, ...props }, ref) => {
+  const { animation } = useRuru();
+
+  return animation ? (
+    <AnimatedTooltipContent ref={ref} {...props} />
+  ) : (
+    <TooltipPrimitive.Content
+      ref={ref}
+      className={cn(
+        "h-fit data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade text-primary-foreground select-none rounded-[4px] bg-primary px-[15px] py-[10px] text-[15px] leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity]",
+        className,
+      )}
+      sideOffset={sideOffset}
+      {...props}
+    >
+      {props.children}
+      <TooltipPrimitive.Arrow className="fill-primary" />
+    </TooltipPrimitive.Content>
+  );
+});
+TooltipContent.displayName = TooltipPrimitive.Content.displayName;
+
+const AnimatedTooltipContent = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
 >(({ className, sideOffset = 5, ...props }, ref) => (
-  <TooltipPrimitive.Content
-    ref={ref}
-    className={cn(
-      "h-fit data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade text-primary-foreground select-none rounded-[4px] bg-primary px-[15px] py-[10px] text-[15px] leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity]",
-      className,
-    )}
-    sideOffset={sideOffset}
-    {...props}
-  >
-    {props.children}
-    <TooltipPrimitive.Arrow className="fill-primary" />
+  <TooltipPrimitive.Content asChild sideOffset={sideOffset} {...props}>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className={cn(
+        "h-fit text-primary-foreground select-none rounded-[4px] bg-primary px-[15px] py-[10px] text-[15px] leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity]",
+        className,
+      )}
+    >
+      <div>
+        {props.children}
+        <TooltipPrimitive.Arrow className="fill-primary" />
+      </div>
+    </motion.div>
   </TooltipPrimitive.Content>
 ));
-TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

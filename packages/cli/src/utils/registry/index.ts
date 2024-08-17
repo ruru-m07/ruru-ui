@@ -1,10 +1,12 @@
 import path from "path";
 import { Config } from "@/utils/get-config";
 import {
+  interfaceRegistryIndexsSchemaSchema,
   registryBaseColorSchema,
   registryIndexSchema,
   registryItemWithContentSchema,
   registryWithContentSchema,
+  registryWithContentSchemaForInterfaces,
   stylesSchema,
 } from "@/utils/registry/schema";
 import { HttpsProxyAgent } from "https-proxy-agent";
@@ -23,6 +25,26 @@ export async function getRegistryIndex() {
     const [result] = await fetchRegistry(["index.json"]);
 
     return registryIndexSchema.parse(result);
+  } catch (error) {
+    throw new Error(`Failed to fetch components from registry.`);
+  }
+}
+
+export async function getProviderRegistryIndex() {
+  try {
+    const [result] = await fetchRegistry(["providers/index.json"]);
+
+    return registryIndexSchema.parse(result);
+  } catch (error) {
+    throw new Error(`Failed to fetch components from registry.`);
+  }
+}
+
+export async function getInterfaceRegistryIndex() {
+  try {
+    const [result] = await fetchRegistry(["interface/index.json"]);
+
+    return interfaceRegistryIndexsSchemaSchema.parse(result);
   } catch (error) {
     throw new Error(`Failed to fetch components from registry.`);
   }
@@ -100,12 +122,44 @@ export async function resolveTree(
   );
 }
 
-export async function fetchTree(tree: z.infer<typeof registryIndexSchema>) {
+export async function resolveInterfaceTree(
+  index: z.infer<typeof interfaceRegistryIndexsSchemaSchema>,
+) {
+  return index;
+}
+
+export async function fetchComponentsTree(
+  tree: z.infer<typeof registryIndexSchema>,
+) {
   try {
     const paths = tree.map((item) => `components/${item.name}.json`);
     const result = await fetchRegistry(paths);
 
     return registryWithContentSchema.parse(result);
+  } catch (error) {
+    throw new Error(`Failed to fetch tree from registry.`);
+  }
+}
+
+export async function fetchTree(tree: z.infer<typeof registryIndexSchema>) {
+  try {
+    const paths = tree.map((item) => `providers/components/${item.name}.json`);
+    const result = await fetchRegistry(paths);
+
+    return registryWithContentSchema.parse(result);
+  } catch (error) {
+    throw new Error(`Failed to fetch tree from registry.`);
+  }
+}
+
+export async function fetchInterfaceTree(
+  tree: z.infer<typeof interfaceRegistryIndexsSchemaSchema>,
+) {
+  try {
+    const paths = tree.map((item) => `interface/${item.name}.json`);
+    const result = await fetchRegistry(paths);
+
+    return registryWithContentSchemaForInterfaces.parse(result);
   } catch (error) {
     throw new Error(`Failed to fetch tree from registry.`);
   }
@@ -122,6 +176,10 @@ export async function getItemTargetPath(
 
   if (item.type === "components:ui" && config.aliases.ui) {
     return config.resolvedPaths.ui;
+  }
+
+  if (item.type === "components:component" && config.aliases.provider) {
+    return config.resolvedPaths.provider;
   }
 
   const [parent, type] = item.type.split(":");

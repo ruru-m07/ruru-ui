@@ -57,18 +57,21 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
 
 <Tabs items={["Preview", "Code"]}>
   <Tab className={"flex justify-center"} value="Preview" >
-    <Button>Click me</Button>
+    <Button> Click me! </Button>
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Button } from "ruru-ui/components/button";
+```tsx
+//  [!code word:Button]
+import { Button } from "ruru-ui/components/button";
 
-    export function ButtonDemo() {
-      return (
-          <Button>Button</Button>
-      )
-    }
-    ```
+export function Demo() {
+  return (
+    <div className={"flex justify-between items-center"}>
+      <Button> Click me! </Button>
+    </div>
+  )
+}
+```
     </Tab>
 
 </Tabs>
@@ -109,7 +112,7 @@ Alternatively, you can set the `asChild` parameter and nest the link component.
 The `Button` component is like a chameleon, it can change its appearance to match different moods and situations. It's like having a button for every occasion!
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-between gap-5"} value="Preview" >
+  <Tab className={"flex flex-wrap justify-around"} value="Preview" >
     <Button> Default </Button>
     <Button variant="secondary"> Secondary </Button>
     <Button variant="tertiary"> Tertiary </Button>
@@ -117,21 +120,22 @@ The `Button` component is like a chameleon, it can change its appearance to matc
     <Button variant="warning"> Warning </Button>
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Button } from "ruru-ui/components/button";
+```tsx
+// [!code word:variant]
+import { Button } from "ruru-ui/components/button";
 
-    export function ButtonDemo() {
-      return (
-        <div className={"flex justify-between gap-5"}>
-            <Button> Default </Button>
-            <Button variant="secondary"> Secondary </Button>
-            <Button variant="tertiary"> Tertiary </Button>
-            <Button variant="error"> Error </Button>
-            <Button variant="warning"> Warning </Button>
-        </div>
-      )
-    }
-    ```
+export function ButtonDemo() {
+  return (
+    <div className={"flex justify-between gap-5"}>
+        <Button> Default </Button>
+        <Button variant="secondary"> Secondary </Button>
+        <Button variant="tertiary"> Tertiary </Button>
+        <Button variant="error"> Error </Button>
+        <Button variant="warning"> Warning </Button>
+    </div>
+  )
+}
+```
     </Tab>
 
 </Tabs>
@@ -153,25 +157,26 @@ So go ahead, unleash your creativity and choose the perfect variant for your but
 The `Button` component comes in a variety of sizes to suit your needs. Whether you want a small button for a subtle touch or a large button that commands attention, we've got you covered!
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-between gap-5"} value="Preview" >
+  <Tab className={"flex justify-between items-center"} value="Preview" >
     <Button size="small"> Small </Button>
     <Button> Default </Button>
     <Button size="large"> Large </Button>
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Button } from "ruru-ui/components/button";
+```tsx
+// [!code word:size]
+import { Button } from "ruru-ui/components/button";
 
-    export function ButtonDemo() {
-      return (
-        <div className={"flex justify-between gap-5"}>
-            <Button size="small"> Small </Button>
-            <Button> Default </Button>
-            <Button size="large"> Large </Button>
-        </div>
-      )
-    }
-    ```
+export function ButtonDemo() {
+  return (
+    <div className={"flex justify-between items-center"}>
+        <Button size="small"> Small </Button>
+        <Button> Default </Button>
+        <Button size="large"> Large </Button>
+    </div>
+  )
+}
+```
     </Tab>
 
 </Tabs>
@@ -192,7 +197,7 @@ So go ahead, choose the perfect size for your button and make a statement that c
 The `Button` component allows you to add a prefix and suffix to your button. This is perfect for when you need to add a little extra flair or information to your button.
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-between gap-5"} value="Preview" >
+  <Tab className={"flex justify-between items-center"} value="Preview" >
     <Button prefix={<ArrowLeftIcon />}>Upload</Button>
     <Button prefix={<ArrowLeftIcon />} suffix={<ArrowRightIcon />}>
         Upload
@@ -200,22 +205,24 @@ The `Button` component allows you to add a prefix and suffix to your button. Thi
     <Button suffix={<ArrowRightIcon />}>Upload</Button>
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Button } from "ruru-ui/components/button";
-    import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
-    
-    export function ButtonDemo() {
-      return (
-        <div className={"flex justify-between gap-5"}>
-            <Button prefix={<ArrowLeftIcon />}>Upload</Button>
-            <Button prefix={<ArrowLeftIcon />} suffix={<ArrowRightIcon />}>
-                Upload
-            </Button>
-            <Button suffix={<ArrowRightIcon />}>Upload</Button>
-        </div>
-      )
-    }
-    ```
+```tsx
+// [!code word:prefix]
+// [!code word:suffix]
+import { Button } from "ruru-ui/components/button";
+import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
+
+export function ButtonDemo() {
+  return (
+    <div className={"flex justify-between items-center"}>
+        <Button prefix={<ArrowLeftIcon />}>Upload</Button>
+        <Button prefix={<ArrowLeftIcon />} suffix={<ArrowRightIcon />}>
+            Upload
+        </Button>
+        <Button suffix={<ArrowRightIcon />}>Upload</Button>
+    </div>
+  )
+}
+```
     </Tab>
 
 </Tabs>
@@ -234,7 +241,7 @@ So go ahead, add a prefix and suffix to your button and make it stand out from t
 The `Button` component allows you to show a loading spinner when the button is in a loading state. This is perfect for when you need to indicate to the user that something is happening in the background.
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-between gap-5"} value="Preview" >
+  <Tab className={"flex justify-between items-center"} value="Preview" >
     <Button loading variant={"secondary"} disabled size={"small"}>
         default
     </Button>
@@ -246,25 +253,26 @@ The `Button` component allows you to show a loading spinner when the button is i
     </Button>
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Button } from "ruru-ui/components/button";
+```tsx
+// [!code word:loading]
+import { Button } from "ruru-ui/components/button";
 
-    export function ButtonDemo() {
-      return (
-        <div className={"flex justify-between gap-5"}>
-          <Button loading variant={"secondary"} disabled size={"small"}>
-              default
-          </Button>
-          <Button loading variant={"secondary"} disabled>
-              default
-          </Button>
-          <Button loading variant={"secondary"} disabled size={"large"}>
-              default
-          </Button>
-        </div>
-      )
-    }
-    ```
+export function ButtonDemo() {
+  return (
+    <div className={"flex justify-between items-center"}>
+      <Button loading variant={"secondary"} disabled size={"small"}>
+          default
+      </Button>
+      <Button loading variant={"secondary"} disabled>
+          default
+      </Button>
+      <Button loading variant={"secondary"} disabled size={"large"}>
+          default
+      </Button>
+    </div>
+  )
+}
+```
     </Tab>
 
 </Tabs>
@@ -282,7 +290,7 @@ So go ahead, show a loading spinner on your button and let your users know that 
 The `Button` component allows you to disable the button by passing the `disabled` prop. This is perfect for when you need to prevent the user from interacting with the button.
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-between gap-5"} value="Preview" >
+  <Tab className={"flex justify-between items-center"} value="Preview" >
     <Button disabled> Default </Button>
     <Button disabled variant="secondary"> Secondary </Button>
     <Button disabled variant="tertiary"> Tertiary </Button>
@@ -290,21 +298,22 @@ The `Button` component allows you to disable the button by passing the `disabled
     <Button disabled variant="warning"> Warning </Button>
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Button } from "ruru-ui/components/button";
+```tsx
+// [!code word:disabled]
+import { Button } from "ruru-ui/components/button";
 
-    export function ButtonDemo() {
-      return (
-        <div className={"flex justify-between gap-5"}>
-            <Button disabled> Default </Button>
-            <Button disabled variant="secondary"> Secondary </Button>
-            <Button disabled variant="tertiary"> Tertiary </Button>
-            <Button disabled variant="error"> Error </Button>
-            <Button disabled variant="warning"> Warning </Button>
-        </div>
-      )
-    }
-    ```
+export function ButtonDemo() {
+  return (
+    <div className={"flex justify-between items-center"}>
+        <Button disabled> Default </Button>
+        <Button disabled variant="secondary"> Secondary </Button>
+        <Button disabled variant="tertiary"> Tertiary </Button>
+        <Button disabled variant="error"> Error </Button>
+        <Button disabled variant="warning"> Warning </Button>
+    </div>
+  )
+}
+```
     </Tab>
 
 </Tabs>
@@ -314,25 +323,27 @@ The `Button` component allows you to disable the button by passing the `disabled
 #### Icon
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-center gap-5"} value="Preview" >
+  <Tab className={"flex justify-center items-center"} value="Preview" >
     <Button variant="secondary" size="icon"> 
         <ChevronRightIcon />
     </Button>
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Button } from "ruru-ui/components/button";
+```tsx
+// [!code word:size]
+// [!code word:"icon"]
+import { Button } from "ruru-ui/components/button";
 
-    export function ButtonDemo() {
-      return (
-        <div className={"flex justify-center gap-5"}>
-            <Button variant="secondary" size="icon">
-                <ChevronRightIcon />
-            </Button>
-        </div>
-      )
-    }
-    ```
+export function ButtonDemo() {
+  return (
+    <div className={"flex justify-center items-center"}>
+        <Button variant="secondary" size="icon">
+            <ChevronRightIcon />
+        </Button>
+    </div>
+  )
+}
+```
     </Tab>
 
 </Tabs>

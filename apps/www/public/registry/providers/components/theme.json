@@ -1,0 +1,10 @@
+{
+  "name": "theme",
+  "files": [
+    {
+      "name": "theme.tsx",
+      "content": "\"use client\";\n\nimport { ThemeProvider } from \"next-themes\";\nimport React from \"react\";\nimport { type RuruThemeProviderProps } from \"@/interfaces/RuruThemeProviderProps\";\n\nexport const RuruThemeProvider: React.FC<RuruThemeProviderProps> = ({\n  children,\n  attribute = \"class\",\n  defaultTheme = \"system\",\n  enableSystem = true,\n  disableTransitionOnChange = true,\n}) => {\n  return (\n    <ThemeProvider\n      attribute={attribute}\n      defaultTheme={defaultTheme}\n      enableSystem={enableSystem}\n      disableTransitionOnChange={disableTransitionOnChange}\n    >\n      <div>{children}</div>\n    </ThemeProvider>\n  );\n};\n\nimport { useTheme } from \"next-themes\";\nexport { useTheme };\n"
+    }
+  ],
+  "type": "components:component"
+}

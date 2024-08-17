@@ -3,7 +3,7 @@ import * as z from "zod";
 import pc from "picocolors";
 import { getConfig } from "@/utils/get-config";
 import {
-  fetchTree,
+  fetchComponentsTree,
   getItemTargetPath,
   getRegistryBaseColor,
   getRegistryIndex,
@@ -57,7 +57,7 @@ export const add = new Command()
 
       if (!config) {
         pc.white(
-          `Configuration is missing. Please run ${pc.green(`init`)} to create a components.json file.`,
+          `Configuration is missing. Please run ${pc.green(`init`)} to create a ruru.json file.`,
         );
         process.exit(1);
       }
@@ -91,7 +91,7 @@ export const add = new Command()
       }
 
       const tree = await resolveTree(registryIndex, selectedComponents);
-      const payload = await fetchTree(tree);
+      const payload = await fetchComponentsTree(tree);
       const baseColor = await getRegistryBaseColor();
 
       if (!payload.length) {
@@ -217,7 +217,7 @@ export const add = new Command()
             registryIndex,
             subcategoryComponents,
           );
-          const subcategoryPayload = await fetchTree(subcategoryTree);
+          const subcategoryPayload = await fetchComponentsTree(subcategoryTree);
 
           for (const subitem of subcategoryPayload) {
             spinner.text = `Installing subcategory component ${subitem.name}...`;

@@ -54,23 +54,19 @@ To use the Checkbox component, import it from `ruru-ui` and include it in your c
 This example shows a basic checkbox.
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-between gap-5"} value="Preview" >
+  <Tab className={"flex items-center"} value="Preview" >
     <Checkbox />
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Checkbox } from "ruru-ui/components/checkbox";
+```tsx
+// [!code word:Checkbox]
+import { Checkbox } from "ruru-ui/components/checkbox";
 
-    export function CheckboxDemo() {
-      return (
-        <div className={"flex justify-between gap-5"}>
-            <Checkbox />
-        </div>
-      )
-    }
-    ```
-    </Tab>
-
+export function Demo() {
+  return <Checkbox />
+}
+```
+ </Tab>
 </Tabs>
 
 ## Examples
@@ -82,21 +78,18 @@ This example shows a basic checkbox.
 This example demonstrates a checkbox in an indeterminate state.
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-between gap-5"} value="Preview" >
+  <Tab className={"flex items-center"} value="Preview" >
     <Checkbox indeterminate />
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Checkbox } from "ruru-ui/components/checkbox";
+```tsx
+// [!code word:indeterminate]
+import { Checkbox } from "ruru-ui/components/checkbox";
 
-    export function CheckboxDemo() {
-      return (
-        <div className={"flex justify-between gap-5"}>
-            <Checkbox indeterminate />
-        </div>
-      )
-    }
-    ```
+export function CheckboxDemo() {
+  return <Checkbox indeterminate />
+}
+```
     </Tab>
 
 </Tabs>
@@ -106,21 +99,18 @@ This example demonstrates a checkbox in an indeterminate state.
 This example shows a checkbox in a disabled state, making it unclickable.
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-between gap-5"} value="Preview" >
+  <Tab className={"flex items-center"} value="Preview" >
     <Checkbox disabled />
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Checkbox } from "ruru-ui/components/checkbox";
+```tsx
+// [!code word:disabled]
+import { Checkbox } from "ruru-ui/components/checkbox";
 
-    export function CheckboxDemo() {
-      return (
-        <div className={"flex justify-between gap-5"}>
-            <Checkbox disabled />
-        </div>
-      )
-    }
-    ```
+export function CheckboxDemo() {
+  return <Checkbox disabled />
+}
+```
     </Tab>
 
 </Tabs>
@@ -130,21 +120,18 @@ This example shows a checkbox in a disabled state, making it unclickable.
 This example shows a checkbox that is checked by default.
 
 <Tabs items={["Preview", "Code"]}>
-  <Tab className={"flex justify-between gap-5"} value="Preview" >
+  <Tab className={"flex items-center"} value="Preview" >
     <Checkbox checked />
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Checkbox } from "ruru-ui/components/checkbox";
+```tsx
+// [!code word:checked]
+import { Checkbox } from "ruru-ui/components/checkbox";
 
-    export function CheckboxDemo() {
-      return (
-        <div className={"flex justify-between gap-5"}>
-            <Checkbox checked />
-        </div>
-      )
-    }
-    ```
+export function CheckboxDemo() {
+  return <Checkbox checked />
+}
+```
     </Tab>
 
 </Tabs>
@@ -166,25 +153,26 @@ This example shows a checkbox with an associated label.
     </div>
   </Tab>
   <Tab className={"-mt-8"} value="Code">
-   ```tsx
-    import { Checkbox } from "ruru-ui/components/checkbox";
+```tsx
+// [!code word:policy]
+import { Checkbox } from "ruru-ui/components/checkbox"; // [!code highlight]
 
-    export function CheckboxDemo() {
-      return (
-        <div className={"flex justify-between gap-5"}>
-            <div className="flex items-center space-x-2">
-                <Checkbox id="terms" />
-                <label
-                    htmlFor="terms"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                    Accept terms and conditions
-                </label>
-            </div>
-        </div>
-      )
-    }
-    ```
+export function CheckboxDemo() {
+  return (
+    <div className={"flex justify-between gap-5"}>
+        <div className="flex items-center space-x-2"> // [!code highlight]
+            <Checkbox id="policy" /> // [!code highlight]
+            <label // [!code highlight]
+                htmlFor="policy" // [!code highlight]
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" // [!code highlight]
+            > // [!code highlight]
+                Accept terms and conditions // [!code highlight]
+            </label> // [!code highlight]
+        </div> // [!code highlight]
+    </div>
+  )
+}
+```
     </Tab>
 
 </Tabs>

@@ -8,7 +8,11 @@ const AnimationToggle = () => {
   const { setAnimation } = useRuru();
   return (
     <div className="flex items-center space-x-2">
-      <Switch onCheckedChange={(e) => setAnimation(e)} id="toggle-animation" />
+      <Switch
+        defaultChecked
+        onCheckedChange={(e) => setAnimation(e)}
+        id="toggle-animation"
+      />
       <label htmlFor="toggle-animation"> toggle animation </label>
     </div>
   );

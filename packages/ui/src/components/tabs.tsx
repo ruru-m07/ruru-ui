@@ -35,12 +35,12 @@ const AnimatedTabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
 >(({ children, ...props }, ref) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex] = useState(0);
   const [indicatorProps, setIndicatorProps] = useState({
     width: 0,
     left: 0,
   });
+  const [hasMounted, setHasMounted] = useState(false);
 
   const listRef = useRef<HTMLDivElement | null>(null);
 
@@ -57,7 +57,11 @@ const AnimatedTabsList = React.forwardRef<
         left: activeTab.offsetLeft,
       });
     }
-  }, [activeIndex, children]);
+
+    if (!hasMounted) {
+      setHasMounted(true);
+    }
+  }, [activeIndex, children, hasMounted]);
 
   return (
     <TabsPrimitive.List
@@ -75,7 +79,11 @@ const AnimatedTabsList = React.forwardRef<
       {children}
       <motion.div
         className="absolute bottom-0 h-[2px] bg-primary"
-        animate={{ width: indicatorProps.width, left: indicatorProps.left }}
+        animate={
+          hasMounted
+            ? { width: indicatorProps.width, left: indicatorProps.left }
+            : false
+        }
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
       />
     </TabsPrimitive.List>
@@ -101,16 +109,21 @@ TabsList.displayName = "TabsList";
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->((props, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    {...props}
-    className={cn(
-      "whitespace-nowrap border-b border-transparent py-2 text-sm font-medium transition-colors hover:text-primary disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-primary text-muted-foreground mx-1 data-[state=active]:border-primary",
-      props.className,
-    )}
-  />
-));
+>((props, ref) => {
+  const { animation } = useRuru();
+  return (
+    <TabsPrimitive.Trigger
+      ref={ref}
+      {...props}
+      className={cn(
+        "whitespace-nowrap py-2 text-sm font-medium transition-colors hover:text-primary disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-primary text-muted-foreground mx-1 ",
+        props.className,
+        !animation &&
+          "border-b border-transparent data-[state=active]:border-primary",
+      )}
+    />
+  );
+});
 TabsTrigger.displayName = "TabsTrigger";
 
 const TabsContent = React.forwardRef<

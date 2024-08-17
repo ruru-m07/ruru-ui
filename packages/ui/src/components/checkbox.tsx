@@ -11,7 +11,19 @@ type CheckboxProps = React.ComponentPropsWithoutRef<
 > & {
   indeterminate?: boolean;
 };
-
+/**
+ * Checkbox component
+ *
+ * @param {React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>} props
+ * @param {boolean} [props.indeterminate=false] - Indeterminate state of the checkbox
+ * @returns {React.ReactElement} - The checkbox component
+ * @example
+ *
+ * ```tsx
+ * <Checkbox indeterminate />
+ * ```
+ *
+ */
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   CheckboxProps

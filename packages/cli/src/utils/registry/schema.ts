@@ -24,6 +24,15 @@ export const registryItemWithContentSchema = registryItemSchema.extend({
 
 export const registryWithContentSchema = z.array(registryItemWithContentSchema);
 
+export const registryItemWithContentSchemaForInterfaces = z.object({
+  name: z.string(),
+  content: z.string(),
+});
+
+export const registryWithContentSchemaForInterfaces = z.array(
+  registryItemWithContentSchemaForInterfaces,
+);
+
 export const stylesSchema = z.array(
   z.object({
     name: z.string(),
@@ -43,3 +52,11 @@ export const registryBaseColorSchema = z.object({
   inlineColorsTemplate: z.string(),
   cssVarsTemplate: z.string(),
 });
+
+export const interfaceRegistryIndexSchemaSchema = z.object({
+  name: z.string(),
+});
+
+export const interfaceRegistryIndexsSchemaSchema = z.array(
+  interfaceRegistryIndexSchemaSchema,
+);

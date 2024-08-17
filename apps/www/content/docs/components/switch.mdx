@@ -7,6 +7,7 @@ preview: switch
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 import { Switch } from "ruru-ui/components/switch";
 import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import SwiychEvent from "../../../components/SwitchEvent.tsx";
 
 ## Installation
 
@@ -53,36 +54,18 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
         <Switch />
     </Tab>
     <Tab className={"-mt-8"} value="Code">
-        ```tsx
-        import { Switch } from "your-ui-library/components/switch";
+```tsx
+// [!code word:Switch]
+import { Switch } from "your-ui-library/components/switch";
 
-        export function SwitchDemo() {
-            return <Switch />;
-        }
-        ```
-
+export function Demo() {
+    return <Switch />;
+}
+```
   </Tab>
 </Tabs>
 
 ## Variants
-
-### Default Switch
-
-<Tabs items={["Preview", "Code"]}>
-    <Tab className={"flex justify-center"} value="Preview">
-        <Switch />
-    </Tab>
-    <Tab className={"-mt-8"} value="Code">
-        ```tsx
-        import { Switch } from "your-ui-library/components/switch";
-
-        export function DefaultSwitchDemo() {
-            return <Switch />;
-        }
-        ```
-    </Tab>
-
-</Tabs>
 
 ### Disabled Switch
 
@@ -91,13 +74,14 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
         <Switch disabled />
     </Tab>
     <Tab className={"-mt-8"} value="Code">
-        ```tsx
-        import { Switch } from "your-ui-library/components/switch";
+```tsx
+// [!code word:disabled]
+import { Switch } from "your-ui-library/components/switch";
 
-        export function DisabledSwitchDemo() {
-            return <Switch disabled />;
-        }
-        ```
+export function SwitchDemo() {
+    return <Switch disabled />;
+}
+```
     </Tab>
 
 </Tabs>
@@ -106,8 +90,8 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
 
 | Name          | Type    | Default | Description                            |
 | ------------- | ------- | ------- | -------------------------------------- |
-| **className** | string  | `"" `   | Additional class names for the switch. |
-| **disabled**  | boolean | `false` | Flag to disable the switch.            |
+| **className** | **string**  | `"" `   | Additional class names for the switch. |
+| **disabled**  | **boolean** | `false` | Flag to disable the switch.            |
 
 ## Examples
 
@@ -121,19 +105,22 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
         </div>
     </Tab>
     <Tab className={"-mt-8"} value="Code">
-        ```tsx
-        import { Switch } from "your-ui-library/components/switch";
+```tsx
+// [!code word:airplane-mode]
+// [!code word:id]
+// [!code word:htmlFor]
+import { Switch } from "your-ui-library/components/switch";
 
-        export function DefaultSwitchExample() {
-            return (
-                <div className="flex items-center space-x-2">
-                    <Switch id="airplane-mode" />
-                    <label htmlFor="airplane-mode">toggle Mode</label>
-                </div>
-            );
-        }
+export function Demo() {
+    return (
+        <div className="flex items-center space-x-2">
+            <Switch id="airplane-mode" />
+            <label htmlFor="airplane-mode">toggle Mode</label>
+        </div>
+    );
+}
 
-        ```
+```
     </Tab>
 
 </Tabs>
@@ -145,17 +132,50 @@ import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
         <Switch defaultChecked />
     </Tab>
     <Tab className={"-mt-8"} value="Code">
-        ```tsx
-        import { Switch } from "your-ui-library/components/switch";
+```tsx
+// [!code word:defaultChecked]
+import { Switch } from "your-ui-library/components/switch";
 
-        export function DefaultCheckedSwitchDemo() {
-            return <Switch defaultChecked />;
-        }
-        ```
+export function SwitchDemo() {
+    return <Switch defaultChecked />;
+}
+```
     </Tab>
 
 </Tabs>
 
----
+### onCheckedChange function
 
-This document provides an overview of the Switch component, including usage examples, variants, props, and example implementations.
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <SwiychEvent />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+// [!code word:onCheckedChange]
+"use client";
+
+import React, { useState } from "react";
+import { Switch } from "ruru-ui/components/switch";
+
+const SwiychDemo = (): React.ReactNode => {
+  const [value, setValue] = useState<boolean>(false); // [!code highlight]
+  return (
+    <div className="flex flex-col justify-center items-center">
+      <div className="flex items-center space-x-2">
+        <Switch
+          onCheckedChange={(e) => setValue(e)} // [!code highlight]
+          id="toggle-animation"
+        />
+        <label htmlFor="toggle value"> toggle value </label>
+      </div>
+      <p>{String(value)}</p>
+    </div>
+  );
+};
+
+export default SwiychDemo;
+```
+    </Tab>
+</Tabs>
+

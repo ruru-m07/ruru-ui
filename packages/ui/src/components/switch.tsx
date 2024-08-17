@@ -1,10 +1,19 @@
-// "use client";
-
 import * as React from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 
 import { cn } from "@/utils/cn";
-
+/**
+ * Switch component
+ *
+ * @param {string} className - Additional class names for the switch.
+ * @param {React.Ref<React.ElementRef<typeof SwitchPrimitives.Root>>} ref - Forwarded ref.
+ *
+ * @example
+ *
+ * ```tsx
+ * <Switch />
+ * ```
+ */
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>

@@ -1,5 +1,4 @@
 import { type ReactNode } from "react";
-
 /**
  * Properties for the `RuruThemeProvider` component.
  *

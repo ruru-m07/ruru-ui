@@ -1,10 +1,9 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import { type RuruContextType } from "@/interface/RuruContextType";
-import { type RuruProviderProps } from "@/interface/RuruProviderProps";
+import { type RuruContextType } from "@/interfaces/RuruContextType";
+import { type RuruProviderProps } from "@/interfaces/RuruProviderProps";
 import { RuruThemeProvider } from "./theme";
-
 // Create the context with default values
 const RuruContext = createContext<RuruContextType | undefined>(undefined);
 
@@ -12,18 +11,22 @@ export const RuruProvider: React.FC<RuruProviderProps> = ({
   children,
   togleThemeAnimation = false,
   disableAnimation = false,
+  disableBaseColor = false,
 }) => {
   const [animation, setAnimation] = useState(!disableAnimation);
 
   return (
     <RuruContext.Provider value={{ disableAnimation, animation, setAnimation }}>
       <RuruThemeProvider disableTransitionOnChange={!togleThemeAnimation}>
-        {children}
+        {disableBaseColor ? (
+          children
+        ) : (
+          <div className="bg-card">{children}</div>
+        )}
       </RuruThemeProvider>
     </RuruContext.Provider>
   );
 };
-
 /**
  * Custom hook to use the Ruru context.
  *

@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cn } from "@/utils/cn";
-
 /**
  * Props for the Avatar component.
  */
@@ -56,7 +55,6 @@ type AvatarProps = Omit<
    */
   src: string;
 };
-
 /**
  * Avatar component
  * @param {AvatarProps} props
@@ -134,10 +132,34 @@ type AvatarGroupProps = Omit<
    *
    */
   limit?: number;
+  /**
+   * Additional class name for the avatar
+   *
+   * @type string
+   * @example
+   *
+   * ```tsx
+   * <AvatarGroup aClassName="text-primary-foreground" />
+   * ```
+   */
   aClassName?: string;
+  /**
+   * Additional class name for the last count
+   *
+   * @type string
+   * @example
+   *
+   * ```tsx
+   * <AvatarGroup lnClassName="text-primary-foreground" />
+   * ```
+   */
   lnClassName?: string;
 };
-
+/**
+ * AvatarGroup component
+ * @param {AvatarGroupProps} props
+ * @returns {ReactElement}
+ */
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   (
     { className, aClassName, lnClassName, size = 30, members, limit, ...props },
@@ -246,10 +268,30 @@ type AvatarWithBadgeProps = Omit<
    *
    */
   badgeSrc: string;
+  /**
+   * Additional class name for the avatar
+   *
+   * @type string
+   * @example
+   *
+   * ```tsx
+   * <AvatarWithBadge iClassName="text-primary-foreground" />
+   * ```
+   */
   iClassName?: string;
+  /**
+   * Additional class name for the badge
+   *
+   * @type string
+   *
+   * @example
+   *
+   * ```tsx
+   * <AvatarWithBadge sClassName="text-primary-foreground" />
+   * ```
+   */
   sClassName?: string;
 };
-
 /**
  * AvatarWithBadge component
  *
