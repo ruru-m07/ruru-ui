@@ -16,12 +16,71 @@ const Select = SelectPrimitive.Root;
 const SelectGroup = SelectPrimitive.Group;
 const SelectValue = SelectPrimitive.Value;
 
+export const selectAnimationVariants = {
+  zoom: {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 0.9 },
+    transition: { type: "spring", stiffness: 600, damping: 25 },
+  },
+  scaleBounce: {
+    initial: { opacity: 0, scale: 0.5 },
+    animate: { opacity: 1, scale: [1.2, 0.9, 1] },
+    exit: { opacity: 0, scale: 0.5 },
+    transition: { type: "spring", stiffness: 600, damping: 20 },
+  },
+  fade: {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: { duration: 0.3 },
+  },
+  slideUp: {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 20 },
+    transition: { type: "spring", stiffness: 500, damping: 20 },
+  },
+  slideDown: {
+    initial: { opacity: 0, y: -20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
+    transition: { type: "spring", stiffness: 500, damping: 20 },
+  },
+  slideRight: {
+    initial: { opacity: 0, x: -30 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -30 },
+    transition: { type: "spring", stiffness: 400, damping: 20 },
+  },
+  slideLeft: {
+    initial: { opacity: 0, x: 30 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 30 },
+    transition: { type: "spring", stiffness: 400, damping: 20 },
+  },
+  flip: {
+    initial: { opacity: 0, rotateY: 90 },
+    animate: { opacity: 1, rotateY: 0 },
+    exit: { opacity: 0, rotateY: 90 },
+    transition: { type: "spring", stiffness: 500, damping: 30 },
+  },
+  rotate: {
+    initial: { opacity: 0, rotate: -180 },
+    animate: { opacity: 1, rotate: 0 },
+    exit: { opacity: 0, rotate: -180 },
+    transition: { type: "spring", stiffness: 500, damping: 25 },
+  },
+};
+
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
+    enableAnimation?: boolean;
+  }
+>(({ className, children, enableAnimation = false, ...props }, ref) => {
   const { animation } = useRuru();
-  return animation ? (
+  return animation && enableAnimation ? (
     <motion.div whileTap={{ scale: 0.93 }}>
       <SelectPrimitive.Trigger
         ref={ref}
@@ -93,46 +152,50 @@ SelectScrollDownButton.displayName =
 // Animated SelectContent component
 const AnimatedSelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(({ className, children, position = "popper", ...props }, ref) => (
-  <SelectPrimitive.Portal>
-    <SelectPrimitive.Content
-      className={cn(
-        "relative z-50 max-h-96 my-2 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md",
-        position === "popper" &&
-          "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
-        className,
-      )}
-      ref={ref}
-      asChild
-      position={position}
-      {...props}
-    >
-      <motion.div
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> & {
+    selectedVariant: keyof typeof selectAnimationVariants;
+  }
+>(
+  (
+    { className, children, position = "popper", selectedVariant, ...props },
+    ref,
+  ) => (
+    <SelectPrimitive.Portal>
+      <SelectPrimitive.Content
         className={cn(
-          "relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md",
+          "relative z-50 max-h-96 my-2 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md",
+          position === "popper" &&
+            "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
           className,
         )}
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        transition={{ type: "spring", stiffness: 700, damping: 15 }}
+        ref={ref}
+        asChild
+        position={position}
+        {...props}
       >
-        <SelectScrollUpButton />
-        <SelectPrimitive.Viewport
+        <motion.div
           className={cn(
-            "p-1",
-            position === "popper" &&
-              "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]",
+            "relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md",
+            className,
           )}
+          {...selectAnimationVariants[selectedVariant]}
         >
-          {children}
-        </SelectPrimitive.Viewport>
-        <SelectScrollDownButton />
-      </motion.div>
-    </SelectPrimitive.Content>
-  </SelectPrimitive.Portal>
-));
+          <SelectScrollUpButton />
+          <SelectPrimitive.Viewport
+            className={cn(
+              "p-1",
+              position === "popper" &&
+                "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]",
+            )}
+          >
+            {children}
+          </SelectPrimitive.Viewport>
+          <SelectScrollDownButton />
+        </motion.div>
+      </SelectPrimitive.Content>
+    </SelectPrimitive.Portal>
+  ),
+);
 AnimatedSelectContent.displayName = SelectPrimitive.Content.displayName;
 
 // Non-animated SelectContent component
@@ -170,11 +233,19 @@ StaticSelectContent.displayName = SelectPrimitive.Content.displayName;
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> & {
+    variants?: keyof typeof selectAnimationVariants;
+  }
 >((props, ref) => {
   const { animation } = useRuru();
+  const selectedVariant = props.variants || "zoom";
+
   return animation ? (
-    <AnimatedSelectContent ref={ref} {...props} />
+    <AnimatedSelectContent
+      selectedVariant={selectedVariant}
+      ref={ref}
+      {...props}
+    />
   ) : (
     <StaticSelectContent ref={ref} {...props} />
   );

@@ -1,0 +1,42 @@
+---
+title: Hooks
+description: Hooks are a new addition in React 16.8 that let you use state and other React features without writing a class. 
+---
+
+### useRuru
+
+The `useRuru` hook is used to provide a context to all components in the tree.
+
+```tsx title="layout.tsx"
+// [!code word:useRuru]
+"use client";
+
+import React from "react";
+import { Switch } from "ruru-ui/components/switch";
+import { useRuru } from "ruru-ui/provider";
+
+const AnimationToggle = () => {
+  const { setAnimation } = useRuru();
+  return (
+    <div className="flex items-center space-x-2">
+      <Switch
+        defaultChecked
+        onCheckedChange={(e) => setAnimation(e)}
+        id="toggle-animation"
+      />
+      <label htmlFor="toggle-animation"> toggle animation </label>
+    </div>
+  );
+};
+
+export default AnimationToggle;
+```
+
+### props
+
+| name                    | type                             | default | description                            |
+| ----------------------- | -------------------------------- | ------- | -------------------------------------- |
+| **animation**           | **boolean**                      | `-`     | The animation state.                   |
+| **setAnimation**        | **(Animation: boolean) => void** | `-`     | Set the animation state.               |
+| **togleThemeAnimation** | **boolean**                      | `false` | Enable or disable the theme animation. |
+

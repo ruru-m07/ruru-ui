@@ -3,3 +3,38 @@ title: Animation
 description: The Animation component is used to animate elements.
 ---
 
+import { Callout } from 'fumadocs-ui/components/callout';
+
+<Callout title="feat: improve component UI" type="warn">
+  Will change the components soon. will batter UI
+</Callout>
+
+## Animation
+
+The `Animation` component is used to animate elements.
+
+```tsx title="AnimationToggle.tsx"
+// [!code word:useRuru]
+// [!code word:setAnimation]
+"use client";
+
+import React from "react";
+import { Switch } from "@/components/ui/switch";
+import { useRuru } from "@/provider";  // [!code highlight]
+
+const AnimationToggle = () => {
+  const { setAnimation } = useRuru();  // [!code highlight]
+  return (
+    <div className="flex items-center space-x-2">
+      <Switch
+        defaultChecked
+        onCheckedChange={(e) => setAnimation(e)} // [!code highlight]
+        id="toggle-animation"
+      />
+      <label htmlFor="toggle-animation"> toggle animation </label>
+    </div>
+  );
+};
+
+export default AnimationToggle;
+```

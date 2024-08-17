@@ -20,6 +20,8 @@ import {
 } from "ruru-ui/components/select";
 import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
 import SelectCountries from "../../../components/selectLargeData.tsx"
+import SelectAnimationVariants from "../../../components/selectAnimationVariants.tsx"
+import { Callout } from 'fumadocs-ui/components/callout';
 
 ## Installation
 
@@ -38,12 +40,12 @@ import SelectCountries from "../../../components/selectLargeData.tsx"
       </Tab>
       <Tab value={"yarn"}>
       ```bash
-      npx ruru-ui@latest add select
+      npx ruru-ui-cli@latest add select
       ```
       </Tab>
       <Tab value={"bun"}>
       ```bash
-      bunx --bun ruru-ui@latest add select
+      bunx --bun ruru-ui-cli@latest add select
       ```
     </Tab>
     </Tabs>
@@ -341,6 +343,23 @@ You can add scroll buttons to the `Select` component by using the `SelectScrollD
   </Select>
 </Tab>
 </Tabs>
+
+## Select Animation Variants
+
+The `Select` component supports two animation variants: `zoom`, `scaleBounce` Etc.... You can set the animation variant by passing the `variant` prop to the `SelectContent` component.
+
+<Tabs items={["Preview", "Code"]}>
+<Tab className={"flex justify-center"} value="Preview">
+  <SelectAnimationVariants />
+</Tab>
+<Tab className={"-mt-8"} value="Code">
+
+</Tab>
+</Tabs>
+
+<Callout type="info">
+  The animation variants only work when the animation mode is turned on.
+</Callout>
 
 ## Props
 

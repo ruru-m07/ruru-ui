@@ -11,9 +11,6 @@
         "css": {
           "type": "string"
         },
-        "baseColor": {
-          "type": "string"
-        },
         "cssVariables": {
           "type": "boolean"
         },

@@ -37,6 +37,7 @@ import {
   SelectTrigger,
   SelectValue,
   SelectSeparator,
+  selectAnimationVariants,
 } from "ruru-ui/components/select";
 import AnimationToggle from "@/components/animationToggle";
 
@@ -556,6 +557,28 @@ const Playground = () => {
           </SelectContent>
         </Select>
       </Card>
+      <div className="rounded-md w-[80%] py-4 grid grid-cols-3 place-items-center my-2 mx-2 border-[1.5px] border-input">
+        {Object.keys(selectAnimationVariants).map((variantKey: any, index) => (
+          <div key={index} style={{ marginBottom: "20px" }}>
+            <Select defaultValue={variantKey}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select a fruit" />
+              </SelectTrigger>
+              <SelectContent variants={variantKey}>
+                <SelectGroup>
+                  <SelectLabel>{variantKey}</SelectLabel>
+                  <SelectSeparator />
+                  <SelectItem value="banana">Banana</SelectItem>
+                  <SelectItem value="blueberry">Blueberry</SelectItem>
+                  <SelectItem value={variantKey}>{variantKey}</SelectItem>
+                  <SelectItem value="grapes">Grapes</SelectItem>
+                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+        ))}
+      </div>
 
       <div className="my-52" />
     </div>

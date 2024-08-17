@@ -3,6 +3,33 @@ title: Dark Mode
 description: How to enable dark mode in your app.
 ---
 
-import { Callout } from "fumadocs-ui/components/callout";
+import { Callout } from 'fumadocs-ui/components/callout';
 
-<Callout title="Component coming soon"></Callout>
+<Callout title="feat: improve component UI" type="warn">
+  Will change the components soon. will batter UI
+</Callout>
+
+## Dark Mode
+
+```tsx title="DarkModeToggle.tsx"
+// [!code word:useTheme]
+// [!code word:setTheme]
+"use client";
+
+import * as React from "react";
+import { useTheme } from "@/provider/theme"; // [!code highlight]
+
+import { Button } from "@/components/ui/button";
+
+export function ModeToggle() {
+  const { setTheme } = useTheme(); // [!code highlight]
+
+  return (
+    <div className="flex my-10 space-x-5">
+      <Button onClick={() => setTheme("light")}>Light</Button>
+      <Button onClick={() => setTheme("dark")}>Dark</Button>
+      <Button onClick={() => setTheme("system")}>system</Button>
+    </div>
+  );
+}
+```

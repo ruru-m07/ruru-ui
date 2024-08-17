@@ -2,3 +2,31 @@
 title: Provider
 description: The Provider component is used to provide a context to all components in the tree.
 ---
+
+## RuruProvider
+
+The `RuruProvider` component is used to provide a context to all components in the tree.
+
+```tsx title="layout.tsx"
+// [!code word:RuruProvider]
+import { RuruProvider } from "@/provider";
+
+export default function RootLayout() {
+  return (
+    <html lang="en">
+      <body>
+        <RuruProvider>{children}</RuruProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+### props
+
+| name                    | type          | default | description                            |
+| ----------------------- | ------------- | ------- | -------------------------------------- |
+| **children**            | **ReactNode** | `-`     | The children to render.                |
+| **togleThemeAnimation** | **boolean**   | `false` | Enable or disable the theme animation. |
+| **disableAnimation**    | **boolean**   | `false` | Enable or disable the animation.       |
+| **disableBaseColor**    | **boolean**   | `false` | Enable or disable the base color.      |

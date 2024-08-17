@@ -29,12 +29,12 @@ import { Step, Steps } from "fumadocs-ui/components/steps";
       </Tab>
       <Tab value={"yarn"}>
       ```bash
-      npx ruru-ui@latest init
+      npx ruru-ui-cli@latest init
       ```
       </Tab>
       <Tab value={"bun"}>
       ```bash
-      bunx --bun ruru-ui@latest init
+      bunx --bun ruru-ui-cli@latest init
       ```
     </Tab>
    </Tabs>
@@ -72,6 +72,27 @@ import { Step, Steps } from "fumadocs-ui/components/steps";
 
     <Step>
 
+    ### Add the Provider
+
+    Add the `RuruProvider` component to your layout file:
+
+```tsx title="layout.tsx"
+// [!code word:RuruProvider]
+import { RuruProvider } from "@/provider";
+
+export default function RootLayout() {
+  return (
+    <html lang="en">
+      <body>
+        <RuruProvider>{children}</RuruProvider>
+      </body>
+    </html>
+  );
+}
+```
+    </Step>
+    <Step>
+
     ### That's it
 
     Now you can start adding components
@@ -89,18 +110,18 @@ import { Step, Steps } from "fumadocs-ui/components/steps";
       </Tab>
       <Tab value={"yarn"}>
       ```bash
-      npx ruru-ui@latest add button
+      npx ruru-ui-cli@latest add button
       ```
       </Tab>
       <Tab value={"bun"}>
       ```bash
-      bunx --bun ruru-ui@latest add button
+      bunx --bun ruru-ui-cli@latest add button
       ```
     </Tab>
 
    </Tabs>
 
-This command adds the `button` component to your project.
+    This command adds the `button` component to your project.
 
     ```tsx title="App.tsx"
     // [!code word:Button]
@@ -121,23 +142,49 @@ This command adds the `button` component to your project.
   </Rutab>
 
   <Rutab value="Dependencies">
-## Install Dependencies
+    <Steps>
+    <Step>
+      ### Install Dependencies
 
-First, you'll need to install **ruru UI** and its peer dependencies. You can do this using npm or yarn:
+      First, you'll need to install **ruru UI** and its peer dependencies. You can do this using npm or yarn:
 
 ```package-install
 npm i ruru-ui@latest
 ```
+    </Step>
+    <Step>
+      ### Import Styles
 
-## Import Styles
+      Next, you'll need to import **ruru UI**'s styles into your project. You can do this by including the following line in your main stylesheet:
 
-Next, you'll need to import **ruru UI**'s styles into your project. You can do this by including the following line in your main stylesheet:
+      ```tsx title="layout.tsx"
+      import "ruru-ui/style.css";
+      ```
+    </Step>
+    <Step>
+
+### Setup Provider
+
+To provide a context to all components in your project, you'll need to add the `RuruProvider` component to your layout file:
 
 ```tsx title="layout.tsx"
-import "ruru-ui/style.css";
-```
+// [!code word:RuruProvider]
+import { RuruProvider } from "ruru-ui/provider";
 
-## Usage
+export default function RootLayout() {
+  return (
+    <html lang="en">
+      <body>
+        <RuruProvider>{children}</RuruProvider>
+      </body>
+    </html>
+  );
+}
+```
+    </Step>
+    <Step>
+
+### Usage
 
 Now that you've installed **ruru UI** and imported its styles, you can start using the components in your project. Here's an example of how you can use a button component:
 
@@ -150,32 +197,12 @@ function App() {
     <Button>Click me</Button> // [!code highlight]
   );  
 }
-```
-
-That's it! You're now ready to start building beautiful interfaces with **ruru UI**. If you have any questions or need further assistance, feel free to reach out to us on [GitHub Discussions](https://github.com/ruru-m07/ruru-ui/discussions/3).
-
+```  
+    </Step>
+    </Steps>
   </Rutab>
 </Rutabs>
 
-## Next Steps
-
-<Cards>
-  <Card
-    href="/docs/dark-mode"
-    title="Dark Mode"
-    description="Learn how to enable dark mode in your ruru UI app."
-  />
-  <Card
-    href="/docs/components/button"
-    title="Button"
-    description="Explore the Button component and its props."
-  />
-  <Card
-    href="/docs/cli"
-    title="CLI"
-    description="Learn how to use the ruru UI CLI to add components to your project."
-  />
-  
-</Cards>
+  That's it! You're now ready to start building beautiful interfaces with **ruru UI**. If you have any questions or need further assistance, feel free to reach out to us on [GitHub Discussions](https://github.com/ruru-m07/ruru-ui/discussions/3).
 
 ---
