@@ -19,6 +19,10 @@ const explorer = cosmiconfig("components", {
 
 export const rawConfigSchema = z
   .object({
+    $schema: z
+      .string()
+      .optional()
+      .default("https://ruru-ui.vercel.app/schema.json"),
     rsc: z.coerce.boolean().default(false),
     tsx: z.coerce.boolean().default(true),
     tailwind: z.object({

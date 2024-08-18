@@ -18,7 +18,7 @@
           "type": "string"
         }
       },
-      "required": ["config", "css", "baseColor", "cssVariables"]
+      "required": ["config", "css", "cssVariables"]
     },
     "rsc": {
       "type": "boolean"
