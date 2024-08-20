@@ -5,10 +5,18 @@ description: The CLI is a command-line interface that allows you to add componen
 
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 
-## init
+## Introduction
 
-Use the `init` command to initialize dependencies for a new project.
+The Ruru UI CLI is a command-line tool designed to help you initialize projects and add UI components with ease.
 
+## Getting Started
+
+### Initialization (`init`)
+Use the init command to set up the necessary dependencies for a new project.
+
+### Example:
+
+Run the following command based on your package manager:
 The `init`, and CSS variables for the project.
 
 <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
@@ -34,6 +42,20 @@ bunx --bun ruru-ui-cli@latest init
 </Tab>
 </Tabs>
 
+#### Configuration Options:
+
+During initialization, you’ll be prompted to configure the project:
+
+- TypeScript (recommended)
+- Global CSS file
+- Tailwind configuration
+- CSS variables
+- Custom Tailwind prefix (if any)
+- Import aliases for components, utils, provider, and interfaces
+
+These configurations will be saved to ruru.json.
+
+#### Command Options:
 
 ```txt
 // [!code word:Yes]
@@ -59,7 +81,7 @@ bunx --bun ruru-ui-cli@latest init
 
 ```
 
-### Options
+#### Options
 
 The `init` command supports the following options:
 
@@ -78,11 +100,13 @@ Options:
 ```
 
 
-## add
+### Adding Components (`add`)
 
-Use the `add` command to add components to your project.
+The `add` command allows you to quickly add UI components to your project.
 
-The `add` command adds a component to your project and installs all required dependencies.
+#### Example:
+
+Use the following commands depending on your package manager:
 
 <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
 <Tab value={"npm"}>
@@ -107,7 +131,7 @@ bunx --bun ruru-ui-cli@latest add [component]
 </Tab>
 </Tabs>
 
-### Options
+#### Options
 
 The `add` command supports the following options:
 
