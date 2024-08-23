@@ -1,0 +1,550 @@
+---
+title: Modal
+description: The Modal component is used to display content in a modal dialog.
+preview: modal
+---
+
+
+import Modal, { ModalProvider } from "ruru-ui/components/modal";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import Usage from "../../../components/preview/Modal/usage.tsx";
+import Trigger from "../../../components/preview/Modal/trigger.tsx";
+import SingleButton from "../../../components/preview/Modal/singleButton.tsx";
+import Disabled from "../../../components/preview/Modal/disabled.tsx";
+import CustomWidth from "../../../components/preview/Modal/customWidth.tsx";
+import CustomWidth2 from "../../../components/preview/Modal/customWidth2.tsx";
+import Preview from "../../../components/preview/Modal/preview.tsx";
+
+## Installation
+
+<Rutabs items={["CLI", "Dependencies"]}>
+<Rutab value={"CLI"}>
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+<Tab value={"npm"}>
+```bash
+npx ruru-ui-cli@latest add modal
+```
+</Tab>
+<Tab value={"pnpm"}>
+```bash
+pnpm dlx ruru-ui-cli@latest add modal
+```
+</Tab>
+<Tab value={"yarn"}>
+```bash
+npx ruru-ui-cli@latest add modal
+```
+</Tab>
+<Tab value={"bun"}>
+```bash
+bunx --bun ruru-ui-cli@latest add modal
+```
+</Tab>
+</Tabs>
+</Rutab>
+<Rutab value={"Dependencies"}>
+
+```package-install
+npm install ruru-ui@latest
+```
+
+</Rutab>
+</Rutabs>
+
+## Usage
+
+Here is an example of how to use the `Modal` component.
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Usage />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+"use client";
+
+import React, { useState } from "react";
+import { Input } from "ruru-ui/components/input";
+import Modal, { ModalProvider } from "ruru-ui/components/modal";
+
+const Usage = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleSubmit = async () => {
+    setIsLoading(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsLoading(false);
+  };
+
+  return (
+    <div>
+      <ModalProvider>
+        <Modal.Trigger>Open Modal</Modal.Trigger>
+        <Modal>
+          <Modal.Body>
+            <Modal.Header>
+              <Modal.Title>
+                Create Username
+              </Modal.Title>
+              <Modal.Subtitle>
+                Enter a unique name for your token to differentiate it from
+                other tokens and then select the scope.
+              </Modal.Subtitle>
+            </Modal.Header>
+            <Modal.Content>
+              <Input label="username" placeholder="enter your username." />
+            </Modal.Content>
+          </Modal.Body>
+          <Modal.Actions>
+            <Modal.Close variant="secondary">Cancel</Modal.Close>
+            <Modal.Action loading={isLoading} onClick={handleSubmit}>
+              Submit
+            </Modal.Action>
+          </Modal.Actions>
+        </Modal>
+      </ModalProvider>
+    </div>
+  );
+};
+
+export default Usage;
+```
+    </Tab>
+</Tabs>
+
+
+## Example
+
+### Modal with Trigger
+
+The `Modal` component can be used with a custom trigger button.
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Trigger />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+"use client";
+
+import React from "react";
+import { Button } from "ruru-ui/components/button";
+import { Input } from "ruru-ui/components/input";
+import Modal, { ModalProvider } from "ruru-ui/components/modal";
+
+const TriggerDemo = () => {
+  return (
+    <ModalProvider>
+      <Modal.Trigger asChild>
+        <Button>Open Custom Trigger</Button>
+      </Modal.Trigger>
+      <Modal>
+        <Modal.Body>
+          <Modal.Header>
+            <Modal.Title>
+              Custom Trigger
+            </Modal.Title>
+            <Modal.Subtitle>
+              This modal opens with a custom trigger button.
+            </Modal.Subtitle>
+          </Modal.Header>
+          <Modal.Content className="">
+            <Input
+              prefix="https://"
+              suffix=".vercel.app"
+              placeholder="enter your username."
+              disabled
+              value={"ruru-ui-git-component-modal-ruru-07"}
+            />
+          </Modal.Content>
+        </Modal.Body>
+        <Modal.Actions>
+          <Modal.Close variant="secondary">Cancel</Modal.Close>
+          <Modal.Action>Submit</Modal.Action>
+        </Modal.Actions>
+      </Modal>
+    </ModalProvider>
+  );
+};
+
+export default TriggerDemo;
+```
+    </Tab>
+</Tabs>
+
+
+### Single button
+
+The `Modal` component can be used with a single button.
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <SingleButton />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+"use client";
+
+import React from "react";
+import { Button } from "ruru-ui/components/button";
+import { Input } from "ruru-ui/components/input";
+import Modal, { ModalProvider } from "ruru-ui/components/modal";
+
+const SingleButton = () => {
+  return (
+    <ModalProvider>
+      <Modal.Trigger asChild>
+        <Button>Open Custom Trigger</Button>
+      </Modal.Trigger>
+      <Modal>
+        <Modal.Body>
+          <Modal.Header>
+            <Modal.Title>
+              Custom Trigger
+            </Modal.Title>
+            <Modal.Subtitle>
+              This modal opens with a custom trigger button.
+            </Modal.Subtitle>
+          </Modal.Header>
+          <Modal.Content className="">
+            <Input
+              prefix="https://"
+              suffix=".vercel.app"
+              placeholder="enter your username."
+              disabled
+              value={"ruru-ui-git-component-modal-ruru-07"}
+            />
+          </Modal.Content>
+        </Modal.Body>
+        <Modal.Actions>
+          <Modal.Close fullWidth variant="secondary">Cancel</Modal.Close>
+        </Modal.Actions>
+      </Modal>
+    </ModalProvider>
+  );
+};
+
+export default SingleButton;
+```
+    </Tab>
+</Tabs>
+
+### Disabled actions
+
+The `Modal` component can be used with disabled actions.
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Disabled />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+"use client";
+
+import React from "react";
+import { Button } from "ruru-ui/components/button";
+import { Input } from "ruru-ui/components/input";
+import Modal, { ModalProvider } from "ruru-ui/components/modal";
+
+const Disabled = () => {
+  return (
+    <ModalProvider>
+      <Modal.Trigger asChild>
+        <Button>Open Custom Trigger</Button>
+      </Modal.Trigger>
+      <Modal>
+        <Modal.Body>
+          <Modal.Header>
+            <Modal.Title>
+              Custom Trigger
+            </Modal.Title>
+            <Modal.Subtitle>
+              This modal opens with a custom trigger button.
+            </Modal.Subtitle>
+          </Modal.Header>
+          <Modal.Content className="">
+            <Input
+              prefix="https://"
+              suffix=".vercel.app"
+              placeholder="enter your username."
+              disabled
+              value={"ruru-ui-git-component-modal-ruru-07"}
+            />
+          </Modal.Content>
+        </Modal.Body>
+        <Modal.Actions>
+          <Modal.Close variant="secondary">Cancel</Modal.Close>
+          <Modal.Close disabled> Submit </Modal.Close>
+        </Modal.Actions>
+      </Modal>
+    </ModalProvider>
+  );
+};
+
+export default Disabled;
+```
+    </Tab>
+</Tabs>
+
+### Modal with custom width
+
+The `Modal` component can be used with a custom width.
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <CustomWidth />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+"use client";
+
+import React from "react";
+import { Button } from "ruru-ui/components/button";
+import { Input } from "ruru-ui/components/input";
+import Modal, { ModalProvider } from "ruru-ui/components/modal";
+
+const CustomWidth = () => {
+  return (
+    <ModalProvider>
+      <Modal.Trigger asChild>
+        <Button>Open Modal</Button>
+      </Modal.Trigger>
+      <Modal>
+        <Modal.Body>
+          <Modal.Header>
+            <Modal.Title>
+              Custom Width
+            </Modal.Title>
+            <Modal.Subtitle>
+              This modal opens with a Custom Width button.
+            </Modal.Subtitle>
+          </Modal.Header>
+          <Modal.Content className="">
+            <Input  
+              prefix="https://"
+              suffix=".vercel.app"
+              placeholder="enter your username."
+              disabled
+              value={"ruru-ui-git-component-modal-ruru-07"}
+            />
+          </Modal.Content>
+        </Modal.Body>
+        <Modal.Actions>
+          <Modal.Close fullWidth variant="secondary">Cancel</Modal.Close>
+        </Modal.Actions>
+      </Modal>
+    </ModalProvider>
+  );
+};
+
+export default CustomWidth;
+```
+    </Tab>
+</Tabs>
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <CustomWidth2 />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+"use client";
+
+import React from "react";
+import { Button } from "ruru-ui/components/button";
+import { Input } from "ruru-ui/components/input";
+import Modal, { ModalProvider } from "ruru-ui/components/modal";
+
+const CustomWidth2 = () => {
+  return (
+    <ModalProvider>
+      <Modal.Trigger asChild>
+        <Button>Open Modal</Button>
+      </Modal.Trigger>
+      <Modal>
+        <Modal.Body>
+          <Modal.Header>
+            <Modal.Title>
+              Custom Width
+            </Modal.Title>
+            <Modal.Subtitle>
+              This modal opens with a Custom Width button.
+            </Modal.Subtitle>
+          </Modal.Header>
+          <Modal.Content className="">
+            <Input
+              prefix="https://"
+              suffix=".vercel.app"
+              placeholder="enter your username."
+              disabled
+              value={"ruru-ui-git-component-modal-ruru-07"}
+            />
+          </Modal.Content>
+        </Modal.Body>
+        <Modal.Actions>
+          <Modal.Close fullWidth variant="secondary">
+            Cancel
+          </Modal.Close>
+          <Modal.Close fullWidth>Submit</Modal.Close>
+        </Modal.Actions>
+      </Modal>
+    </ModalProvider>
+  );
+};
+
+export default CustomWidth2;
+```
+    </Tab>
+</Tabs>
+
+### Preview Component
+
+The component that you see on preview
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <Preview />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+"use client";
+
+import React, { useState } from "react";
+import Modal, { ModalProvider } from "ruru-ui/components/modal";
+import { Input } from "ruru-ui/components/input";
+
+const Preview = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState<boolean>(false);
+
+  const handleSubmit = async () => {
+    setIsLoading(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setStatus(true);
+    setIsLoading(false);
+
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    setStatus(false);
+  };
+
+  return (
+    <div className="">
+      <ModalProvider>
+        <Modal.Trigger>Deploy</Modal.Trigger>
+        <Modal>
+          <Modal.Body>
+            <Modal.Header>
+              <Modal.Title
+                style={{
+                  marginTop: "0em",
+                  marginBottom: "5px",
+                }}
+                className="p-0"
+              >
+                Deploy to production
+              </Modal.Title>
+              <Modal.Subtitle
+                className="p-0"
+                style={{
+                  marginTop: "0em",
+                  marginBottom: "0em",
+                }}
+              >
+                Deploy your site to production by clicking the button below.
+              </Modal.Subtitle>
+            </Modal.Header>
+            <Modal.Content className="">
+              <Input
+                prefix="https://"
+                suffix=".vercel.app"
+                placeholder="enter your username."
+                disabled
+                value={"ruru-ui-git-component-modal-ruru-07"}
+              />
+            </Modal.Content>
+          </Modal.Body>
+          <Modal.Actions>
+            <Modal.Close variant="secondary">Cancel</Modal.Close>
+            <Modal.Action
+              className={status ? "bg-[#0f2e18] text-[#62c073] rounded-md" : ""}
+              loading={isLoading}
+              disabled={isLoading}
+              onClick={handleSubmit}
+            >
+              {status ? (
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
+                    fill="currentColor"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              ) : (
+                "Deploy"
+              )}
+            </Modal.Action>
+          </Modal.Actions>
+        </Modal>
+      </ModalProvider>
+    </div>
+  );
+};
+
+export default Preview;
+```
+    </Tab>
+</Tabs>
+
+## Props
+
+Here's how the props table would look for the `Modal` component, formatted in the same style:
+
+## Props
+
+### Modal
+
+| Name              | Type                              | Default     | Description                                                                            |
+| ----------------- | --------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
+| **children**      | **ReactNode**                     | `undefined` | The children of the Modal component.                                                   |
+| **onClickOutside**| **() => void**                    | `undefined` | The function to call when the user clicks outside the modal.                           |
+
+### ModalAction
+
+| Name              | Type                              | Default     | Description                                                                            |
+| ----------------- | --------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
+| **fullWidth**     | **boolean**                       | `false`     | Determines if the action button should take the full width.                            |
+| **onClick**       | **() =\> void \| Promise\<void>**   | `undefined` | The function to call when the user clicks the action.                                  |
+
+### Trigger
+
+| Name              | Type                              | Default     | Description                                                                            |
+| ----------------- | --------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
+| **children**      | **ReactNode**                     | `undefined` | The children of the Modal component.                                                   |
+| **onClick**       | **() => void**                    | `undefined` | The function to call when the user clicks the trigger.                                 |
+| **asChild**       | **boolean**                       | `false`     | Render as a child component.                                                           |
+
+### DivProps
+
+| Name              | Type                              | Default     | Description                                                                            |
+| ----------------- | --------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
+| **className**     | **string**                        | `""`        | Additional class names for the container.                                              |
+| **children**      | **ReactNode**                     | `undefined` | The children of the component.                                                         |
+
+### PTagProps
+
+| Name              | Type                              | Default     | Description                                                                            |
+| ----------------- | --------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
+| **className**     | **string**                        | `""`        | Additional class names for the paragraph element.                                      |
+| **children**      | **ReactNode**                     | `undefined` | The children of the paragraph element.                                                 |
+

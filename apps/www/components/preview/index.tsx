@@ -27,6 +27,7 @@ import {
 
 import { BadgePreview } from "../badgePreview";
 import Tabspreview from "../tabs";
+import { default as ModalPreview } from "./Modal/preview";
 
 export default {
   button: (
@@ -161,6 +162,11 @@ export default {
           </SelectContent>
         </Select>
       </div>
+    </Wrapper>
+  ),
+  modal: (
+    <Wrapper>
+      <ModalPreview />
     </Wrapper>
   ),
 } as Record<string, ReactNode>;

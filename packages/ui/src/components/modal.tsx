@@ -1,3 +1,5 @@
+"use client";
+
 import React, {
   useState,
   useContext,
@@ -107,6 +109,15 @@ export interface DivProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
+  > {}
+
+/**
+ * Represents the props for the Modal component.
+ */
+export interface PTagProps
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLParagraphElement>,
+    HTMLParagraphElement
   > {}
 
 /**
@@ -296,17 +307,17 @@ Modal.Header = ({
 /**
  * Represents the Modal component.
  *
- * @param {DivProps} props - The props for the Modal component.
+ * @param {PTagProps} props - The props for the Modal component.
  * @returns {React.ReactElement}
  */
 Modal.Title = ({
   children,
   className,
   ...props
-}: DivProps): React.ReactElement => (
-  <h2 className={cn("text-2xl", className)} {...props}>
+}: PTagProps): React.ReactElement => (
+  <p className={cn("text-2xl", className)} {...props}>
     {children}
-  </h2>
+  </p>
 );
 
 /**
