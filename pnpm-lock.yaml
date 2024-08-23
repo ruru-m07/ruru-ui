@@ -371,7 +371,7 @@ importers:
         version: 1.0.7(tailwindcss@3.4.4)
       tsup:
         specifier: ^8.1.1
-        version: 8.1.1(@swc/core@1.6.13)(postcss@8.4.39)(tsx@4.17.0)(typescript@5.5.3)
+        version: 8.1.1(@swc/core@1.6.13)(postcss@8.4.39)(typescript@5.5.3)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -402,7 +402,7 @@ importers:
         version: 8.4.39
       postcss-cli:
         specifier: ^11.0.0
-        version: 11.0.0(postcss@8.4.39)(tsx@4.17.0)
+        version: 11.0.0(postcss@8.4.39)
       postcss-lightningcss:
         specifier: ^1.0.0
         version: 1.0.0(postcss@8.4.39)
@@ -1080,6 +1080,7 @@ packages:
     cpu: [ppc64]
     os: [aix]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/android-arm64@0.23.0:
@@ -1088,6 +1089,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/android-arm@0.23.0:
@@ -1096,6 +1098,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/android-x64@0.23.0:
@@ -1104,6 +1107,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/darwin-arm64@0.23.0:
@@ -1112,6 +1116,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/darwin-x64@0.23.0:
@@ -1120,6 +1125,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/freebsd-arm64@0.23.0:
@@ -1128,6 +1134,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/freebsd-x64@0.23.0:
@@ -1136,6 +1143,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-arm64@0.23.0:
@@ -1144,6 +1152,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-arm@0.23.0:
@@ -1152,6 +1161,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-ia32@0.23.0:
@@ -1160,6 +1170,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-loong64@0.23.0:
@@ -1168,6 +1179,7 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-mips64el@0.23.0:
@@ -1176,6 +1188,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-ppc64@0.23.0:
@@ -1184,6 +1197,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-riscv64@0.23.0:
@@ -1192,6 +1206,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-s390x@0.23.0:
@@ -1200,6 +1215,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-x64@0.23.0:
@@ -1208,6 +1224,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/netbsd-x64@0.23.0:
@@ -1216,6 +1233,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/openbsd-arm64@0.23.0:
@@ -1224,6 +1242,7 @@ packages:
     cpu: [arm64]
     os: [openbsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/openbsd-x64@0.23.0:
@@ -1232,6 +1251,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/sunos-x64@0.23.0:
@@ -1240,6 +1260,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/win32-arm64@0.23.0:
@@ -1248,6 +1269,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/win32-ia32@0.23.0:
@@ -1256,6 +1278,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/win32-x64@0.23.0:
@@ -1264,6 +1287,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.57.0):
@@ -4890,6 +4914,7 @@ packages:
       '@esbuild/win32-arm64': 0.23.0
       '@esbuild/win32-ia32': 0.23.0
       '@esbuild/win32-x64': 0.23.0
+    dev: false
 
   /escalade@3.1.2:
     resolution: {integrity: sha512-ErCHMCae19vR8vQGe50xIsVomy19rg6gFu3+r3jkEO46suLMWBksvVyoGgQV+jOfl84ZSOSlmv6Gxa89PmTGmA==}
@@ -8386,7 +8411,7 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /postcss-cli@11.0.0(postcss@8.4.39)(tsx@4.17.0):
+  /postcss-cli@11.0.0(postcss@8.4.39):
     resolution: {integrity: sha512-xMITAI7M0u1yolVcXJ9XTZiO9aO49mcoKQy6pCDFdMh9kGqhzLVpWxeD/32M/QBmkhcGypZFFOLNLmIW4Pg4RA==}
     engines: {node: '>=18'}
     hasBin: true
@@ -8400,7 +8425,7 @@ packages:
       globby: 14.0.2
       picocolors: 1.0.1
       postcss: 8.4.39
-      postcss-load-config: 5.1.0(postcss@8.4.39)(tsx@4.17.0)
+      postcss-load-config: 5.1.0(postcss@8.4.39)
       postcss-reporter: 7.1.0(postcss@8.4.39)
       pretty-hrtime: 1.0.3
       read-cache: 1.0.0
@@ -8458,7 +8483,7 @@ packages:
       postcss: 8.4.39
       yaml: 2.4.5
 
-  /postcss-load-config@5.1.0(postcss@8.4.39)(tsx@4.17.0):
+  /postcss-load-config@5.1.0(postcss@8.4.39):
     resolution: {integrity: sha512-G5AJ+IX0aD0dygOE0yFZQ/huFFMSNneyfp0e3/bT05a8OfPC5FUoZRPfGijUdGOJNMewJiwzcHJXFafFzeKFVA==}
     engines: {node: '>= 18'}
     peerDependencies:
@@ -8475,9 +8500,30 @@ packages:
     dependencies:
       lilconfig: 3.1.2
       postcss: 8.4.39
-      tsx: 4.17.0
       yaml: 2.4.5
     dev: true
+
+  /postcss-load-config@6.0.1(postcss@8.4.39):
+    resolution: {integrity: sha512-oPtTM4oerL+UXmx+93ytZVN82RrlY/wPUV8IeDxFrzIjXOLF1pN+EmKPLbubvKHT2HC20xXsCAH2Z+CKV6Oz/g==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      jiti: '>=1.21.0'
+      postcss: '>=8.0.9'
+      tsx: ^4.8.1
+      yaml: ^2.4.2
+    peerDependenciesMeta:
+      jiti:
+        optional: true
+      postcss:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
+        optional: true
+    dependencies:
+      lilconfig: 3.1.2
+      postcss: 8.4.39
+    dev: false
 
   /postcss-load-config@6.0.1(postcss@8.4.39)(tsx@4.17.0):
     resolution: {integrity: sha512-oPtTM4oerL+UXmx+93ytZVN82RrlY/wPUV8IeDxFrzIjXOLF1pN+EmKPLbubvKHT2HC20xXsCAH2Z+CKV6Oz/g==}
@@ -9896,7 +9942,7 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /tsup@8.1.1(@swc/core@1.6.13)(postcss@8.4.39)(tsx@4.17.0)(typescript@5.5.3):
+  /tsup@8.1.1(@swc/core@1.6.13)(postcss@8.4.39)(typescript@5.5.3):
     resolution: {integrity: sha512-lLXP3BshJ6y/32b3tPZUB2siD2mkJ6mLzhbPOShfjogSc3aRw8MhbBV4cPKbqkbXuhsJR+c9B0W9RHMbtbXLMQ==}
     engines: {node: '>=18'}
     hasBin: true
@@ -9926,7 +9972,7 @@ packages:
       globby: 11.1.0
       joycon: 3.1.1
       postcss: 8.4.39
-      postcss-load-config: 6.0.1(postcss@8.4.39)(tsx@4.17.0)
+      postcss-load-config: 6.0.1(postcss@8.4.39)
       resolve-from: 5.0.0
       rollup: 4.18.1
       source-map: 0.8.0-beta.0
@@ -10001,6 +10047,7 @@ packages:
       get-tsconfig: 4.7.5
     optionalDependencies:
       fsevents: 2.3.3
+    dev: false
 
   /turbo-darwin-64@2.0.9:
     resolution: {integrity: sha512-owlGsOaExuVGBUfrnJwjkL1BWlvefjSKczEAcpLx4BI7Oh6ttakOi+JyomkPkFlYElRpjbvlR2gP8WIn6M/+xQ==}

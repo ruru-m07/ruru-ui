@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Card from "@/components/ui/card";
 import { ModeToggle } from "@/components/ui/ModeToggle";
 import {
@@ -40,8 +40,16 @@ import {
   selectAnimationVariants,
 } from "ruru-ui/components/select";
 import AnimationToggle from "@/components/animationToggle";
+import Modal, { ModalProvider } from "ruru-ui/components/modal";
 
 const Playground = () => {
+  const handleSubmit = async () => {
+    // Your submit logic here
+    console.log("Submitted");
+    // Simulate an API call or any async operation
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  };
+
   return (
     <div className="flex flex-col items-center justify-center bg-card">
       <ModeToggle />
@@ -579,6 +587,64 @@ const Playground = () => {
           </div>
         ))}
       </div>
+
+      <Card>
+        {/* <Button onClick={() => setOpen(true)} size="small">
+          Open Modal
+        </Button> */}
+
+        {/* <Modal active={open} onClickOutside={() => setOpen(false)}>
+          <Modal.Body>
+            <Modal.Header>
+              <Modal.Title>Create Username</Modal.Title>
+              <Modal.Subtitle>
+                Enter a unique name for your token to differentiate it from
+                other tokens and then select the scope.
+              </Modal.Subtitle>
+            </Modal.Header>
+            <Modal.Content>
+              <Input label="username" placeholder="enter your username." />
+            </Modal.Content>
+          </Modal.Body>
+
+          <Modal.Actions> */}
+        {/* <Modal.Action onClick={() => setOpen(false)} variant="secondary">
+            Cancel
+          </Modal.Action>
+
+          <Modal.Action onClick={() => setOpen(false)}>Submit</Modal.Action> */}
+        {/* <Modal.Action
+              fullWidth
+              onClick={() => setOpen(false)}
+              variant="secondary"
+            >
+              Cancel
+            </Modal.Action>
+          </Modal.Actions>
+        </Modal>*/}
+
+        <ModalProvider>
+          <Modal.Trigger>Open Modal</Modal.Trigger>
+          <Modal>
+            <Modal.Body>
+              <Modal.Header>
+                <Modal.Title>Create Username</Modal.Title>
+                <Modal.Subtitle>
+                  Enter a unique name for your token to differentiate it from
+                  other tokens and then select the scope.
+                </Modal.Subtitle>
+              </Modal.Header>
+              <Modal.Content>
+                <Input label="username" placeholder="enter your username." />
+              </Modal.Content>
+            </Modal.Body>
+            <Modal.Actions>
+              <Modal.Close variant="secondary">Cancel</Modal.Close>
+              <Modal.Action onClick={handleSubmit}>Submit</Modal.Action>
+            </Modal.Actions>
+          </Modal>
+        </ModalProvider>
+      </Card>
 
       <div className="my-52" />
     </div>

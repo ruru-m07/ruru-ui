@@ -165,7 +165,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
 
     return (
-      <div className={disabled ? " cursor-not-allowed " : undefined}>
+      <div className={cn(className, disabled && "cursor-not-allowed ")}>
         {animation ? (
           <motion.div whileTap={{ scale: 0.93 }}>{buttonContent}</motion.div>
         ) : (

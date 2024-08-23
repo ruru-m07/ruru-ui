@@ -52,7 +52,7 @@ const PROJECT_DEPENDENCIES = [
 
 const initOptionsSchema = z.object({
   defaults: z.boolean().default(false),
-  autodetact: z.boolean().default(false),
+  autodetect: z.boolean().default(false),
   yes: z.boolean(),
   cwd: z.string(),
 });
@@ -62,7 +62,7 @@ export const init = new Command()
   .description("initialize your project and install dependencies")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option("-d, --defaults", "use default configuration.", false)
-  .option("-a, --autodetact", "autodetact configuration by freamwork.", false)
+  .option("-a, --autodetect ", "autodetect  configuration by framework.", false)
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
@@ -79,7 +79,7 @@ export const init = new Command()
 
     const projectConfig = await getProjectConfig(cwd);
 
-    if (options.autodetact && projectConfig) {
+    if (options.autodetect && projectConfig) {
       console.log(pc.green(pc.bold("\n config found! \n ")));
 
       const config = await promptForMinimalConfig(
