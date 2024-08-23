@@ -45,7 +45,7 @@ export interface ModalContextProps {
  * Represents the props for the Modal component.
  */
 export interface ModalProps
-  extends ForwardRefComponent<HTMLDivElement, HTMLMotionProps<"div">> {
+  extends Partial<ForwardRefComponent<HTMLDivElement, HTMLMotionProps<"div">>> {
   /**
    * The children of the Modal component.
    */
