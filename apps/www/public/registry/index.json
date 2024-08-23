@@ -60,5 +60,11 @@
     "dependencies": ["@radix-ui/react-tooltip"],
     "files": ["tooltip.tsx"],
     "type": "components:ui"
+  },
+  {
+    "name": "modal",
+    "files": ["modal.tsx"],
+    "type": "components:ui",
+    "subcategory": ["button"]
   }
 ]

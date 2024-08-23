@@ -63,4 +63,10 @@ export const ui: Registry = [
     dependencies: ["@radix-ui/react-tooltip"],
     files: ["tooltip.tsx"],
   },
+  {
+    name: "modal",
+    type: "components:ui",
+    files: ["modal.tsx"],
+    subcategory: ["button"],
+  },
 ];
