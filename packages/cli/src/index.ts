@@ -2,7 +2,6 @@
 
 import "dotenv/config";
 import { Command } from "commander";
-import { getPackageInfo } from "./utils";
 import { init } from "./commands/init";
 import { add } from "./commands/add";
 
@@ -12,11 +11,7 @@ async function main(): Promise<void> {
   program
     .name("Ruru-UI")
     .description("CLI tool to initialize Ruru-UI")
-    .version(
-      getPackageInfo().version || "1.0.0",
-      "-v, --version",
-      "display the version number",
-    );
+    .version("0.0.7", "-v, --version", "display the version number");
 
   program.addCommand(init).addCommand(add);
 
