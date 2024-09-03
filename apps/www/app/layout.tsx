@@ -1,14 +1,15 @@
-import { baseUrl, createMetadata } from "@/utils/metadata";
-import "./global.css";
-import { RootProvider } from "fumadocs-ui/provider";
-import type { Viewport } from "next";
-import { GeistSans } from "geist/font/sans";
 import type { ReactNode } from "react";
-import { RuruProvider } from "ruru-ui/provider";
-import "fumadocs-ui/style.css";
-import "fumadocs-ui/twoslash.css";
+import type { Viewport } from "next";
 import { ScrollArea } from "@/components/scroll-area";
 import { Analytics } from "@vercel/analytics/react";
+import { RootProvider } from "fumadocs-ui/provider";
+import { RuruProvider } from "ruru-ui/provider";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { baseUrl, createMetadata } from "@/utils/metadata";
+import "./global.css";
+import "fumadocs-ui/style.css";
+import "fumadocs-ui/twoslash.css";
 
 export const metadata = createMetadata({
   title: {
@@ -29,7 +30,11 @@ export const viewport: Viewport = {
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={GeistSans.className} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <Analytics />
         <RootProvider>
