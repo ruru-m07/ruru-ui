@@ -66,5 +66,17 @@
     "files": ["modal.tsx"],
     "type": "components:ui",
     "subcategory": ["button"]
+  },
+  {
+    "name": "form",
+    "dependencies": ["react-hook-form", "@radix-ui/react-slot"],
+    "files": ["form.tsx"],
+    "type": "components:ui",
+    "subcategory": ["label"]
+  },
+  {
+    "name": "label",
+    "files": ["label.tsx"],
+    "type": "components:ui"
   }
 ]

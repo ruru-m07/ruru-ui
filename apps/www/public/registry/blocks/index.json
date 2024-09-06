@@ -1,0 +1,10 @@
+[
+  {
+    "name": "login-1",
+    "files": ["login-1.tsx"],
+    "dependencies": ["react-hook-form", "@hookform/resolvers", "zod"],
+    "components": ["button", "input", "form"],
+    "type": "block:component",
+    "default_export": "Login1"
+  }
+]

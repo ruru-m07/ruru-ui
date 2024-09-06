@@ -1,11 +1,15 @@
+"use client";
+
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
+
 import Link from "next/link";
 import React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { Button } from "ruru-ui/components/button";
 import { Input, PasswordInput } from "ruru-ui/components/input";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -15,7 +19,7 @@ import {
   FormMessage,
 } from "ruru-ui/components/form";
 
-const Login1 = () => {
+const Login1 = (): React.ReactNode => {
   const loginSchema = z.object({
     email: z.string().email({ message: "Please enter a valid email address." }),
     password: z
@@ -41,16 +45,16 @@ const Login1 = () => {
       <div className="flex flex-col items-center w-96 border rounded-md bg-card p-4">
         <div className="grid place-items-center">
           <div className="flex items-center gap-4">
-            <Image
+            <img
               className="dark:block hidden"
-              src={"/logo-white.png"}
+              src={"https://ruru-ui.vercel.app/logo-white.png"}
               alt="logo"
               height={40}
               width={40}
             />
-            <Image
+            <img
               className="dark:hidden block"
-              src={"/logo-black.png"}
+              src={"https://ruru-ui.vercel.app/logo-black.png"}
               alt="logo"
               height={40}
               width={40}
@@ -102,8 +106,14 @@ const Login1 = () => {
             </Link>
 
             <div className="py-4 w-full space-y-3">
-              <Button className="w-full"> Login </Button>
-              <Button className="w-full" variant={"secondary"}>
+              <Button type="submit" className="w-full">
+                Login
+              </Button>
+              <Button
+                className="w-full"
+                variant={"secondary"}
+                onClick={() => console.log("Login with Github")}
+              >
                 Login with Github
               </Button>
             </div>

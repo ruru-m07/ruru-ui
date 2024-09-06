@@ -69,4 +69,16 @@ export const ui: Registry = [
     files: ["modal.tsx"],
     subcategory: ["button"],
   },
+  {
+    name: "form",
+    type: "components:ui",
+    files: ["form.tsx"],
+    dependencies: ["react-hook-form", "@radix-ui/react-slot"],
+    subcategory: ["label"],
+  },
+  {
+    name: "label",
+    type: "components:ui",
+    files: ["label.tsx"],
+  },
 ];

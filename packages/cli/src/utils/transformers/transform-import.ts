@@ -34,6 +34,16 @@ export const transformImport: Transformer = async ({ sourceFile, config }) => {
       }
     }
 
+    // Replace `import { Button } from "ruru-ui/components/button";` want to repace ruru-ui/components/ with the components alias.
+    if (moduleSpecifier.startsWith("ruru-ui/components/")) {
+      importDeclaration.setModuleSpecifier(
+        moduleSpecifier.replace(
+          /^ruru-ui\/components/,
+          config.aliases.components,
+        ),
+      );
+    }
+
     // Replace `import { type RuruProviderProps } from "@/interface/RuruProviderProps";`
     if (
       moduleSpecifier.startsWith("@/interface/") &&
