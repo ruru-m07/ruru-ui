@@ -495,6 +495,8 @@ async function registryInfo() {
 }
 
 try {
+  const startTime = Date.now();
+
   const result = registrySchema.safeParse(registry);
 
   if (!result.success) {
@@ -502,12 +504,18 @@ try {
     process.exit(1);
   }
 
-  await buildRegistry(result.data);
-  await buildStyles(result.data);
-  await buildinterfaceRegistry();
-  await buildBlocksRegistry();
-  await buildRegistryIndex();
-  console.log("✅ All done!\n");
+  // * run all the build functions parallelly.
+  await Promise.all([
+    buildRegistry(result.data),
+    buildStyles(result.data),
+    buildinterfaceRegistry(),
+    buildBlocksRegistry(),
+    buildRegistryIndex(),
+  ]);
+
+  const endTime = Date.now();
+  const totalTime = endTime - startTime;
+  console.log(`\n✅ All done! Build time: ${totalTime}ms\n`);
 
   await registryInfo();
 } catch (error) {
