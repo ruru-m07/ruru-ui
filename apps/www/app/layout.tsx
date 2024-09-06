@@ -38,7 +38,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <body>
         <Analytics />
         <RootProvider>
-          <RuruProvider disableBaseColor>
+          <RuruProvider>
             <ScrollArea className="h-screen">{children}</ScrollArea>
           </RuruProvider>
         </RootProvider>

@@ -17,5 +17,4 @@ export interface RuruProviderProps {
   children: ReactNode;
   togleThemeAnimation?: boolean;
   disableAnimation?: boolean;
-  disableBaseColor?: boolean;
 }
