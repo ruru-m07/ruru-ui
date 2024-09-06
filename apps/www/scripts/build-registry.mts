@@ -250,11 +250,12 @@ async function buildBlocksRegistry() {
 
       let content = readFileSync(path.join("components/blocks", file), "utf8");
 
+      // todo: will do something like ignore spasicl commnts.
       // Remove single-line comments, excluding URLs
-      content = content.replace(/(^|[^:])\/\/.*$/gm, "$1");
+      // content = content.replace(/(^|[^:])\/\/.*$/gm, "$1");
 
       // Remove multi-line comments
-      content = content.replace(/\/\*[\s\S]*?\*\//gm, "");
+      // content = content.replace(/\/\*[\s\S]*?\*\//gm, "");
 
       // Remove lines that are completely empty (after removing comments)
       // content = content.replace(/^\s*\n/gm, "");
@@ -334,11 +335,12 @@ async function buildRegistryIndex() {
 
       let content = readFileSync(path.join("components/blocks", file), "utf8");
 
+      // todo: will do something like ignore spasicl commnts.
       // Remove single-line comments, excluding URLs
-      content = content.replace(/(^|[^:])\/\/.*$/gm, "$1");
+      // content = content.replace(/(^|[^:])\/\/.*$/gm, "$1");
 
       // Remove multi-line comments
-      content = content.replace(/\/\*[\s\S]*?\*\//gm, "");
+      // content = content.replace(/\/\*[\s\S]*?\*\//gm, "");
 
       // Remove lines that are completely empty (after removing comments)
       // content = content.replace(/^\s*\n/gm, "");

@@ -104,7 +104,7 @@ Components:     ${blockInfo?.components?.join(", ")}
         text({
           message: `Where would you like to install the block?`,
           placeholder: `@/components/block`,
-          initialValue: `components/block`,
+          defaultValue: `components/block`,
         }),
     });
 
