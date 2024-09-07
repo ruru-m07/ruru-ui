@@ -24,10 +24,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "ruru-ui/components/select";
+import { Label } from "ruru-ui/components/label";
 
 import { BadgePreview } from "../badgePreview";
 import Tabspreview from "../tabs";
 import { default as ModalPreview } from "./Modal/preview";
+import FormPreview from "./form/preview";
 
 export default {
   button: (
@@ -167,6 +169,19 @@ export default {
   modal: (
     <Wrapper>
       <ModalPreview />
+    </Wrapper>
+  ),
+  label: (
+    <Wrapper>
+      <div className="flex items-center space-x-2">
+        <Checkbox id="terms" />
+        <Label htmlFor="terms">Accept terms and conditions</Label>
+      </div>
+    </Wrapper>
+  ),
+  form: (
+    <Wrapper className="max-h-[500px] overflow-y-hidden">
+      <FormPreview />
     </Wrapper>
   ),
 } as Record<string, ReactNode>;

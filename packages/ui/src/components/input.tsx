@@ -293,7 +293,7 @@ SearchInput.displayName = "SearchInput";
 
 const PasswordInput = React.forwardRef<
   HTMLInputElement,
-  Omit<InputProps, "label">
+  Omit<InputProps, "label" | "error">
 >(({ className, ...props }, ref) => {
   const [showPassword, setShowPassword] = React.useState(false);
 

@@ -1,6 +1,7 @@
 import { type BaseLayoutProps, type DocsLayoutProps } from "fumadocs-ui/layout";
 import { pageTree } from "@/app/source";
 import Image from "next/image";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 // shared configuration
 export const baseOptions: BaseLayoutProps = {
@@ -93,6 +94,11 @@ export const baseOptions: BaseLayoutProps = {
       ),
       text: "Sponsors",
       url: "/sponsors",
+    },
+    {
+      icon: <GitHubLogoIcon />,
+      text: "Github",
+      url: "https://github.com/ruru-m07/ruru-ui",
     },
   ],
 };

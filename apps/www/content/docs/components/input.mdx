@@ -4,9 +4,10 @@ description: The Input component is used to get user input.
 preview: input
 ---
 
-import { Input, SearchInput } from "ruru-ui/components/input";
+import { Input, SearchInput, PasswordInput } from "ruru-ui/components/input";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import { Label } from "ruru-ui/components/label";
 
 ## Installation
 
@@ -165,6 +166,33 @@ export function InputExample() {
   </Tab>
 </Tabs>
 
+### Password Input
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <div className="w-96">
+      <Label> Password </Label>
+      <PasswordInput placeholder="••••••••" />
+    </div>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+// [!code word:PasswordInput]
+import { PasswordInput } from "ruru-ui/components/input";
+import { Label } from "ruru-ui/components/label";
+
+export function Demo() {
+  return (
+    <div className="w-96">
+      <Label> Password </Label>
+      <PasswordInput placeholder="••••••••" />
+    </div>
+  )
+}
+```
+  </Tab>
+</Tabs>
+
 
 ## Props
 
@@ -187,3 +215,9 @@ export function InputExample() {
 | Name                    | Type        | Default | Description                          |
 | ----------------------- | ----------- | ------- | ------------------------------------ |
 | **enablePrefixStyling** | **boolean** | `false` | Flag to apply styling to the prefix. |
+
+### PasswordInput
+
+| Name              | Type                                      | Default   | Description                    |
+| ----------------- | ----------------------------------------- | --------- | ------------------------------ |
+| **...InputProps** | **Omit\<InputProps, "label" \| "error">** | `-`       | Props for the Input component. |

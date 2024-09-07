@@ -1,0 +1,158 @@
+---
+title: Form
+description: A form is used to collect and validate user input, commonly used in web applications.
+preview: form
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import { Input } from "ruru-ui/components/input";
+import { Button } from "ruru-ui/components/button";
+import { Form, FormField, FormControl, FormItem, FormLabel, FormDescription, FormMessage } from "ruru-ui/components/form";
+import FormPreview from "../../../components/preview/form/preview";
+
+## Installation
+
+<Rutabs items={["CLI", "Dependencies"]}>
+<Rutab value={"CLI"}>
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+<Tab value={"npm"}>
+```bash
+npx ruru-ui-cli@latest add form
+```
+</Tab>
+<Tab value={"pnpm"}>
+```bash
+pnpm dlx ruru-ui-cli@latest add form
+```
+</Tab>
+<Tab value={"yarn"}>
+```bash
+npx ruru-ui-cli@latest add form
+```
+</Tab>
+<Tab value={"bun"}>
+```bash
+bunx --bun ruru-ui-cli@latest add form
+```
+</Tab>
+</Tabs>
+
+</Rutab>
+<Rutab value={"Dependencies"}>
+```package-install
+npm install ruru-ui@latest
+```
+</Rutab>
+</Rutabs>
+
+## Usage
+
+The `Form` component is a wrapper around `react-hook-form` that simplifies building forms with validation and accessibility.
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+      <div className="space-y-8">
+        <FormPreview />
+      </div>
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+// [!code word:onSubmit]
+// [!code word:SearchSchema]
+// [!code word:"use client"]
+// [!code word:type]
+// [!code word:"submit"]
+"use client";   // [!code highlight]
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { Button } from "ruru-ui/components/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "ruru-ui/components/form";
+import { Input } from "ruru-ui/components/input";
+import { z } from "zod";
+
+const FormPreview = () => {
+  const SearchSchema = z.object({   // [!code highlight]
+    username: z.string().min(3).max(20),    // [!code highlight]
+  });   // [!code highlight]
+
+  const form = useForm<z.infer<typeof SearchSchema>>({  // [!code highlight]
+    resolver: zodResolver(SearchSchema),    // [!code highlight]
+    defaultValues: {    // [!code highlight]
+      username: "", // [!code highlight]
+    },  // [!code highlight]
+  });   // [!code highlight]
+
+  function onSubmit(values: z.infer<typeof SearchSchema>) { // [!code highlight]
+    // Do something with the form values.   // [!code highlight]
+    console.log(values);    // [!code highlight]
+  } // [!code highlight]
+
+  return (
+    <div className="w-72 border rounded-md p-3">
+      <Form {...form}>  // [!code highlight]
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="w-full space-y-2"
+        >
+          <div className="my-3">
+// [!code word:FormField]
+            <FormField  // [!code highlight]
+              control={form.control}    // [!code highlight]
+              name="username"   // [!code highlight]
+              render={({ field }) => (  // [!code highlight]
+                <FormItem>  // [!code highlight]
+                  <FormLabel>Username</FormLabel>   // [!code highlight]
+                  <FormControl> // [!code highlight]
+                    <Input placeholder="enter your username." {...field} /> // [!code highlight]
+                  </FormControl>    // [!code highlight]
+                  <FormMessage />   // [!code highlight]
+                </FormItem> // [!code highlight]
+              )}    // [!code highlight]
+            />  // [!code highlight]
+          </div>
+          <div className="py-4 w-full space-y-3">
+            <Button type="submit" className="w-full">
+              Login
+            </Button>
+          </div>
+        </form>
+      </Form>   // [!code highlight]
+    </div>
+  );
+};
+
+export default FormPreview;
+```
+    </Tab>
+</Tabs>
+
+## Features
+
+The `Form` component offers:
+
+- Composable components for building forms.
+- Controlled form fields via `FormField`.
+- Integration with `react-hook-form` for form state management.
+- Validation support using Zod.
+- Accessibility features like aria attributes and proper labeling.
+- Flexibility to style forms with any design system.
+- Built-in support for Radix UI components.
+- Works with various schema libraries (e.g., Zod).
+
+## Props
+
+| Name          | Type                                             | Default | Description                                       |
+| ------------- | ------------------------------------------------ | ------- | ------------------------------------------------- |
+| **children**  | **React.ReactNode**                              | `null`  | Form content, including form fields and buttons.  |
+| **onSubmit**  | **(data: any) => void**                          | `null`  | The function to handle form submission.           |
+| **...props**  | **React.FormHTMLAttributes\<HTMLFormElement>**   | `null`  | Additional HTML attributes for the form element.  |

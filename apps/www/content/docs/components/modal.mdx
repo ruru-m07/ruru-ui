@@ -62,6 +62,17 @@ Here is an example of how to use the `Modal` component.
     </Tab>
     <Tab className={"-mt-8"} value="Code">
 ```tsx
+// [!code word:ModalProvider]
+// [!code word:Modal,]
+// [!code word:Modal.Trigger]
+// [!code word:Modal.Body]
+// [!code word:Modal.Header]
+// [!code word:Modal.Title]
+// [!code word:Modal.Subtitle]
+// [!code word:Modal.Content]
+// [!code word:Modal.Actions]
+// [!code word:Modal.Close]
+// [!code word:Modal.Action]
 "use client";
 
 import React, { useState } from "react";
@@ -132,40 +143,40 @@ The `Modal` component can be used with a custom trigger button.
 import React from "react";
 import { Button } from "ruru-ui/components/button";
 import { Input } from "ruru-ui/components/input";
-import Modal, { ModalProvider } from "ruru-ui/components/modal";
+import Modal, { ModalProvider } from "ruru-ui/components/modal"; // [!code highlight]
 
 const TriggerDemo = () => {
   return (
-    <ModalProvider>
-      <Modal.Trigger asChild>
-        <Button>Open Custom Trigger</Button>
-      </Modal.Trigger>
-      <Modal>
-        <Modal.Body>
-          <Modal.Header>
-            <Modal.Title>
-              Custom Trigger
-            </Modal.Title>
-            <Modal.Subtitle>
-              This modal opens with a custom trigger button.
-            </Modal.Subtitle>
-          </Modal.Header>
-          <Modal.Content className="">
-            <Input
-              prefix="https://"
-              suffix=".vercel.app"
-              placeholder="enter your username."
-              disabled
-              value={"ruru-ui-git-component-modal-ruru-07"}
-            />
-          </Modal.Content>
-        </Modal.Body>
-        <Modal.Actions>
-          <Modal.Close variant="secondary">Cancel</Modal.Close>
-          <Modal.Action>Submit</Modal.Action>
-        </Modal.Actions>
-      </Modal>
-    </ModalProvider>
+    <ModalProvider> // [!code highlight]
+      <Modal.Trigger asChild> // [!code highlight]
+        <Button>Open Custom Trigger</Button>  // [!code highlight]
+      </Modal.Trigger>  // [!code highlight]
+      <Modal> // [!code highlight]
+        <Modal.Body>  // [!code highlight]
+          <Modal.Header>  // [!code highlight]
+            <Modal.Title> // [!code highlight]
+              Custom Trigger  // [!code highlight]
+            </Modal.Title>  // [!code highlight]
+            <Modal.Subtitle>  // [!code highlight]
+              This modal opens with a custom trigger button.  // [!code highlight]
+            </Modal.Subtitle> // [!code highlight]
+          </Modal.Header> // [!code highlight]
+          <Modal.Content>  // [!code highlight]
+            <Input  // [!code highlight]
+              prefix="https://" // [!code highlight]
+              suffix=".vercel.app"  // [!code highlight]
+              placeholder="enter your username."  // [!code highlight]
+              disabled  // [!code highlight]
+              value={"ruru-ui-git-component-modal-ruru-07"} // [!code highlight]
+            />  // [!code highlight]
+          </Modal.Content>  // [!code highlight]
+        </Modal.Body> // [!code highlight]
+        <Modal.Actions> // [!code highlight]
+          <Modal.Close variant="secondary">Cancel</Modal.Close> // [!code highlight]
+          <Modal.Action>Submit</Modal.Action> // [!code highlight]
+        </Modal.Actions>  // [!code highlight]
+      </Modal>  // [!code highlight]
+    </ModalProvider>  // [!code highlight]
   );
 };
 
@@ -185,12 +196,13 @@ The `Modal` component can be used with a single button.
     </Tab>
     <Tab className={"-mt-8"} value="Code">
 ```tsx
+// [!code word:Modal.Close]
 "use client";
 
 import React from "react";
 import { Button } from "ruru-ui/components/button";
 import { Input } from "ruru-ui/components/input";
-import Modal, { ModalProvider } from "ruru-ui/components/modal";
+import Modal, { ModalProvider } from "ruru-ui/components/modal";  // [!code highlight]
 
 const SingleButton = () => {
   return (
@@ -208,7 +220,7 @@ const SingleButton = () => {
               This modal opens with a custom trigger button.
             </Modal.Subtitle>
           </Modal.Header>
-          <Modal.Content className="">
+          <Modal.Content>
             <Input
               prefix="https://"
               suffix=".vercel.app"
@@ -219,7 +231,7 @@ const SingleButton = () => {
           </Modal.Content>
         </Modal.Body>
         <Modal.Actions>
-          <Modal.Close fullWidth variant="secondary">Cancel</Modal.Close>
+          <Modal.Close fullWidth variant="secondary">Cancel</Modal.Close> // [!code highlight]
         </Modal.Actions>
       </Modal>
     </ModalProvider>
@@ -264,7 +276,7 @@ const Disabled = () => {
               This modal opens with a custom trigger button.
             </Modal.Subtitle>
           </Modal.Header>
-          <Modal.Content className="">
+          <Modal.Content>
             <Input
               prefix="https://"
               suffix=".vercel.app"
@@ -275,6 +287,7 @@ const Disabled = () => {
           </Modal.Content>
         </Modal.Body>
         <Modal.Actions>
+          // [!code word:disabled]
           <Modal.Close variant="secondary">Cancel</Modal.Close>
           <Modal.Close disabled> Submit </Modal.Close>
         </Modal.Actions>
@@ -321,7 +334,7 @@ const CustomWidth = () => {
               This modal opens with a Custom Width button.
             </Modal.Subtitle>
           </Modal.Header>
-          <Modal.Content className="">
+          <Modal.Content>
             <Input  
               prefix="https://"
               suffix=".vercel.app"
@@ -332,6 +345,7 @@ const CustomWidth = () => {
           </Modal.Content>
         </Modal.Body>
         <Modal.Actions>
+          // [!code word:fullWidth]
           <Modal.Close fullWidth variant="secondary">Cancel</Modal.Close>
         </Modal.Actions>
       </Modal>
@@ -373,7 +387,7 @@ const CustomWidth2 = () => {
               This modal opens with a Custom Width button.
             </Modal.Subtitle>
           </Modal.Header>
-          <Modal.Content className="">
+          <Modal.Content>
             <Input
               prefix="https://"
               suffix=".vercel.app"
@@ -384,6 +398,7 @@ const CustomWidth2 = () => {
           </Modal.Content>
         </Modal.Body>
         <Modal.Actions>
+        // [!code word:fullWidth]
           <Modal.Close fullWidth variant="secondary">
             Cancel
           </Modal.Close>
@@ -409,6 +424,11 @@ The component that you see on preview
     </Tab>
     <Tab className={"-mt-8"} value="Code">
 ```tsx
+// [!code word:handleSubmit]
+// [!code word:isLoading]
+// [!code word:setIsLoading]
+// [!code word:status]
+// [!code word:setStatus]
 "use client";
 
 import React, { useState } from "react";
@@ -419,20 +439,21 @@ const Preview = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<boolean>(false);
 
-  const handleSubmit = async () => {
-    setIsLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setStatus(true);
-    setIsLoading(false);
-
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    setStatus(false);
-  };
+  const handleSubmit = async () => { // [!code highlight]
+    setIsLoading(true); // [!code highlight]
+  // [!code highlight]
+    await new Promise((resolve) => setTimeout(resolve, 2000));  // [!code highlight]
+    setStatus(true);  // [!code highlight]
+    setIsLoading(false);  // [!code highlight]
+  // [!code highlight]
+    await new Promise((resolve) => setTimeout(resolve, 500)); // [!code highlight]
+  // [!code highlight]
+    setStatus(false); // [!code highlight]
+  };  // [!code highlight]
 
   return (
-    <div className="">
+    <div >
       <ModalProvider>
         <Modal.Trigger>Deploy</Modal.Trigger>
         <Modal>
@@ -457,7 +478,7 @@ const Preview = () => {
                 Deploy your site to production by clicking the button below.
               </Modal.Subtitle>
             </Modal.Header>
-            <Modal.Content className="">
+            <Modal.Content>
               <Input
                 prefix="https://"
                 suffix=".vercel.app"

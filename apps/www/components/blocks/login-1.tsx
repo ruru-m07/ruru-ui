@@ -41,7 +41,7 @@ const Login1 = (): React.ReactNode => {
   }
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center h-screen">
       <div className="flex flex-col items-center w-96 border rounded-md bg-card p-4">
         <div className="grid place-items-center">
           <div className="flex items-center gap-4">

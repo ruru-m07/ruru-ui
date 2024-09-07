@@ -4,6 +4,7 @@ export interface Block {
   name: string;
   files: string[];
   dependencies?: string[];
+  devDependencies?: string[];
   components?: string[];
   type: "block:component" | "block:hooks";
   default_export: string | (() => React.ReactNode);

@@ -59,12 +59,13 @@ export const block = new Command()
     if (options.info) {
       const formattedBlockInfo = `
 Block Information:
-------------------------------------------------------
+--------------------------------------------------------
 Name:           ${blockInfo?.name}
 Files:          ${blockInfo?.files.join(", ")}
 Type:           ${blockInfo?.type}
 Dependencies:   ${blockInfo?.dependencies?.join(", ")}
 Components:     ${blockInfo?.components?.join(", ")}
+--------------------------------------------------------
 `;
 
       console.log(formattedBlockInfo);

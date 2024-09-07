@@ -251,10 +251,11 @@ const Modal = ({
  * @param {TriggerProps} props - The props for the Modal component.
  * @returns {React.ReactElement}
  */
-Modal.Trigger = ({
+const ModalTrigger = ({
   children,
   onClick,
   asChild = false,
+  ...props
 }: TriggerProps): React.ReactElement => {
   const { openModal } = useModal();
 
@@ -273,8 +274,15 @@ Modal.Trigger = ({
     );
   }
 
-  return <Button onClick={handleClick}>{children}</Button>;
+  return (
+    <Button onClick={handleClick} {...props}>
+      {children}
+    </Button>
+  );
 };
+
+Modal.Trigger = ModalTrigger;
+ModalTrigger.displayName = "Modal.Trigger";
 
 /**
  * Represents the Modal component.
@@ -282,19 +290,22 @@ Modal.Trigger = ({
  * @param {DivProps} props - The props for the Modal component.
  * @returns {React.ReactElement}
  */
-Modal.Body = ({ children, ...props }: DivProps): React.ReactElement => (
+const ModalBody = ({ children, ...props }: DivProps): React.ReactElement => (
   <div className="mb-5" {...props}>
     {children}
   </div>
 );
 
+Modal.Body = ModalBody;
+ModalBody.displayName = "Modal.Body";
+
 /**
  * Represents the Modal component.
  *
  * @param {DivProps} props - The props for the Modal component.
  * @returns {React.ReactElement}
  */
-Modal.Header = ({
+const ModalHeader = ({
   children,
   className,
   ...props
@@ -304,13 +315,16 @@ Modal.Header = ({
   </div>
 );
 
+Modal.Header = ModalHeader;
+ModalHeader.displayName = "Modal.Header";
+
 /**
  * Represents the Modal component.
  *
  * @param {PTagProps} props - The props for the Modal component.
  * @returns {React.ReactElement}
  */
-Modal.Title = ({
+const ModalTitle = ({
   children,
   className,
   ...props
@@ -320,13 +334,16 @@ Modal.Title = ({
   </p>
 );
 
+Modal.Title = ModalTitle;
+ModalTitle.displayName = "Modal.Title";
+
 /**
  * Represents the Modal component.
  *
  * @param {DivProps} props - The props for the Modal component.
  * @returns {React.ReactElement}
  */
-Modal.Content = ({
+const ModalContent = ({
   children,
   className,
   ...props
@@ -336,13 +353,16 @@ Modal.Content = ({
   </div>
 );
 
+Modal.Content = ModalContent;
+ModalContent.displayName = "Modal.Content";
+
 /**
  * Represents the Modal component.
  *
  * @param {DivProps} props - The props for the Modal component.
  * @returns {React.ReactElement}
  */
-Modal.Subtitle = ({
+const ModalSubtitle = ({
   children,
   className,
   ...props
@@ -352,13 +372,16 @@ Modal.Subtitle = ({
   </p>
 );
 
+Modal.Subtitle = ModalSubtitle;
+ModalSubtitle.displayName = "Modal.Subtitle";
+
 /**
  * Represents the Modal component.
  *
  * @param {DivProps} props - The props for the Modal component.
  * @returns {React.ReactElement}
  */
-Modal.Actions = ({
+const ModalActions = ({
   children,
   className,
   ...props
@@ -374,13 +397,16 @@ Modal.Actions = ({
   </div>
 );
 
+Modal.Actions = ModalActions;
+ModalActions.displayName = "Modal.Actions";
+
 /**
  * Represents the Modal component.
  *
  * @param {ModalActionProps} props - The props for the Modal component.
  * @returns {React.ReactElement}
  */
-Modal.Action = ({
+const ModalAction = ({
   fullWidth = false,
   onClick,
   className,
@@ -406,16 +432,22 @@ Modal.Action = ({
   );
 };
 
+Modal.Action = ModalAction;
+ModalAction.displayName = "Modal.Action";
+
 /**
  * Represents the Modal component.
  *
  * @param {ModalActionProps} props - The props for the Modal component.
  * @returns {React.ReactElement}
  */
-Modal.Close = (props: ModalActionProps): React.ReactElement => (
+const ModalClose = (props: ModalActionProps): React.ReactElement => (
   <Modal.Action {...props} onClick={useModal().closeModal}>
     {props.children}
   </Modal.Action>
 );
+
+Modal.Close = ModalClose;
+ModalClose.displayName = "Modal.Close";
 
 export default Modal;

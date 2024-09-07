@@ -62,6 +62,8 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 ## Usage
 
+The `Select` component can be used to create a basic dropdown menu.
+
 ---
 
 <Tabs items={["Preview", "Code"]}>
@@ -88,37 +90,37 @@ import { Callout } from 'fumadocs-ui/components/callout';
     <Tab className={"-mt-8"} value="Code">
 ```tsx
 import {
-    Select,
-    SelectGroup,
-    SelectValue,
-    SelectTrigger,
-    SelectContent,
-    SelectLabel,
-    SelectItem,
-    SelectSeparator,
-    SelectScrollUpButton,
-    SelectScrollDownButton,
-} from "ruru-ui/components/select";
+    Select, // [!code highlight]
+    SelectGroup,  // [!code highlight]
+    SelectValue,  // [!code highlight]
+    SelectTrigger,  // [!code highlight]
+    SelectContent,  // [!code highlight]
+    SelectLabel,  // [!code highlight]
+    SelectItem, // [!code highlight]
+    SelectSeparator,  // [!code highlight]
+    SelectScrollUpButton, // [!code highlight]
+    SelectScrollDownButton, // [!code highlight]
+} from "ruru-ui/components/select"; // [!code highlight]
 
 export function SelectDemo() {
     return (
         <div className={"flex justify-between gap-5"}>
-            <Select>
-                <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select a fruit" />
-                </SelectTrigger>
-                <SelectContent>
-                <SelectGroup>
-                    <SelectLabel>Fruits</SelectLabel>
-                    <SelectSeparator />
-                    <SelectItem value="apple">Apple</SelectItem>
-                    <SelectItem value="banana">Banana</SelectItem>
-                    <SelectItem value="blueberry">Blueberry</SelectItem>
-                    <SelectItem value="grapes">Grapes</SelectItem>
-                    <SelectItem value="pineapple">Pineapple</SelectItem>
-                </SelectGroup>
-                </SelectContent>
-            </Select>
+            <Select>  // [!code highlight]
+                <SelectTrigger className="w-[180px]"> // [!code highlight]
+                <SelectValue placeholder="Select a fruit" />  // [!code highlight]
+                </SelectTrigger>  // [!code highlight]
+                <SelectContent> // [!code highlight]
+                  <SelectGroup> // [!code highlight]
+                      <SelectLabel>Fruits</SelectLabel> // [!code highlight]
+                      <SelectSeparator /> // [!code highlight]
+                      <SelectItem value="apple">Apple</SelectItem>  // [!code highlight]
+                      <SelectItem value="banana">Banana</SelectItem>  // [!code highlight]
+                      <SelectItem value="blueberry">Blueberry</SelectItem>  // [!code highlight]
+                      <SelectItem value="grapes">Grapes</SelectItem>  // [!code highlight]
+                      <SelectItem value="pineapple">Pineapple</SelectItem>  // [!code highlight]
+                  </SelectGroup>  // [!code highlight]
+                </SelectContent>  // [!code highlight]
+            </Select> // [!code highlight]
         </div>
     )
 }
@@ -130,67 +132,6 @@ export function SelectDemo() {
 ## Examples
 
 ---
-
-### Basic Usage
-
-The `Select` component can be used to create a basic dropdown menu.
-
-<Tabs items={["Preview", "Code"]}>
-<Tab className={"flex justify-center"} value="Preview">
- <Select>
-   <SelectTrigger className="w-[180px]">
-     <SelectValue placeholder="Select a fruit" />
-   </SelectTrigger>
-   <SelectContent>
-     <SelectGroup>
-       <SelectLabel>Fruits</SelectLabel>
-       <SelectSeparator />
-       <SelectItem value="apple">Apple</SelectItem>
-       <SelectItem value="banana">Banana</SelectItem>
-       <SelectItem value="blueberry">Blueberry</SelectItem>
-       <SelectItem value="grapes">Grapes</SelectItem>
-       <SelectItem value="pineapple">Pineapple</SelectItem>
-     </SelectGroup>
-   </SelectContent>
- </Select>
-</Tab>
-<Tab className={"-mt-8"} value="Code">
-    ```tsx
-    import {
-        Select,
-        SelectGroup,
-        SelectValue,
-        SelectTrigger,
-        SelectContent,
-        SelectLabel,
-        SelectItem,
-        SelectSeparator,
-    } from "ruru-ui/components/select";
-
-    export function BasicSelect() {
-        return (
-            <Select>
-                <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Select a fruit" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectGroup>
-                        <SelectLabel>Fruits</SelectLabel>
-                        <SelectSeparator />
-                        <SelectItem value="apple">Apple</SelectItem>
-                        <SelectItem value="banana">Banana</SelectItem>
-                        <SelectItem value="blueberry">Blueberry</SelectItem>
-                        <SelectItem value="grapes">Grapes</SelectItem>
-                        <SelectItem value="pineapple">Pineapple</SelectItem>
-                    </SelectGroup>
-                </SelectContent>
-            </Select>
-        );
-    }
-    ```
-
-</Tab>
-</Tabs>
 
 ### Disabled Select
 
@@ -230,6 +171,7 @@ You can disable the `Select` component by passing the `disabled` prop to the `Se
 
     export function DisabledSelect() {
         return (
+    // [!code word:disabled]
             <Select>
                 <SelectTrigger disabled className="w-[180px]">
                     <SelectValue placeholder="Select a fruit" />
@@ -279,19 +221,20 @@ You can set a default value for the `Select` component by passing the `defaultVa
 </Tab>
 <Tab className={"-mt-8"} value="Code">
 ```tsx
- import {
-   Select,
-   SelectGroup,
-   SelectValue,
-   SelectTrigger,
-   SelectContent,
-   SelectLabel,
-   SelectItem,
-   SelectSeparator,
- } from "ruru-ui/components/select";
+import {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectLabel,
+  SelectItem,
+  SelectSeparator,
+} from "ruru-ui/components/select";
 
 export function DefaultValueSelect() {
   return (
+    // [!code word:defaultValue]
     <Select defaultValue="banana">
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select a fruit" />
@@ -323,24 +266,49 @@ You can add scroll buttons to the `Select` component by using the `SelectScrollD
 <SelectCountries />
 </Tab>
 <Tab className={"-mt-8"} value="Code">
-  <Select>
-    <SelectTrigger className="w-[180px]">
-      <SelectValue placeholder="Select a version." />
-    </SelectTrigger>
-    <SelectContent>
-      <SelectGroup>
-        <SelectLabel>Fruits</SelectLabel>
-        <SelectSeparator />
-        <SelectScrollUpButton />
-        {Array.from({ length: 50 }, (_, index) => (
-          <SelectItem key={index} value={String(index)}>
-            Ruru-UI-V{index}
-          </SelectItem>
-        ))}
-        <SelectScrollDownButton />
-      </SelectGroup>
-    </SelectContent>
-  </Select>
+```tsx
+// [!code word:SelectScrollDownButton]
+// [!code word:SelectScrollUpButton]
+import {
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+} from "ruru-ui/components/select";
+
+const SelectCountries = () => {
+  return (
+    <>
+      <Select>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Select a version." />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectSeparator />
+            <SelectScrollUpButton />
+            {Array.from({ length: 50 }, (_, index) => (
+              <SelectItem key={index} value={String(index)}>
+                Ruru-UI-V{index}
+              </SelectItem>
+            ))}
+            <SelectScrollDownButton />
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </>
+  );
+};
+
+export default SelectCountries;
+```
 </Tab>
 </Tabs>
 
@@ -354,6 +322,15 @@ The `Select` component supports two animation variants: `zoom`, `scaleBounce` Et
 </Tab>
 <Tab className={"-mt-8"} value="Code">
 ```tsx
+// [!code word:selectAnimationVariants]
+// [!code word:SelectContent]
+// [!code word:SelectGroup]
+// [!code word:SelectItem]
+// [!code word:SelectLabel]
+// [!code word:SelectSeparator]
+// [!code word:SelectTrigger]
+// [!code word:SelectValue]
+// [!code word:Select,]
 "use client";
 
 import React from "react";
@@ -369,7 +346,7 @@ import {
   SelectValue,
 } from "ruru-ui/components/select";
 
-const SelectAnimationVariants = () => {
+const AnimationVariants = () => {
   return (
     <div className="py-4 grid grid-cols-3 place-items-center gap-10">
       {Object.keys(selectAnimationVariants).map((variantKey: any, index) => (
