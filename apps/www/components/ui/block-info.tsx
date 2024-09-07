@@ -57,7 +57,7 @@ const BlockInfo = ({
                   components:
                   {block.components?.map((component, index) => (
                     <Link
-                      href={`/docs/${component}`}
+                      href={`/docs/components/${component}`}
                       key={index}
                       className="mx-1 text-primary hover:underline"
                     >

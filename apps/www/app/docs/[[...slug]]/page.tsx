@@ -4,6 +4,7 @@ import { DocsPage, DocsBody } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
 import Preview from "@/components/preview";
 import EditonGithub from "@/components/EditonGithub";
+import SponserBanner from "@/components/sponserBanner";
 
 interface Param {
   slug: string[];
@@ -17,6 +18,7 @@ export default async function Page({ params }: { params: Param }) {
   const footer = (
     <div className="w-full">
       <EditonGithub path={path} />
+      <SponserBanner />
     </div>
   );
 
