@@ -439,7 +439,7 @@ const Terminal = ({ data }: { data: string }) => {
             Terminal
           </h4>
         </div>
-        <div className="my-2 w-2 h-2 rounded-full bg-green-800" />
+        <div className="my-2 w-2 h-2 rounded-full bg-green-600/45" />
       </div>
       <pre className="px-4 py-2 text-muted-foreground text-xs whitespace-pre-wrap bg-secondary/40">
         {data}

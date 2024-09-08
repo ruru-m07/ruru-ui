@@ -23,4 +23,20 @@ export const blocks: Block[] = [
     type: "block:component",
     default_export: "Login1",
   },
+  {
+    name: "register-1",
+    files: ["register-1.tsx"],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+    components: ["button", "input", "form"],
+    type: "block:component",
+    default_export: "Register1",
+  },
+  {
+    name: "forgot-1",
+    files: ["forgot-1.tsx"],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+    components: ["button", "input", "form"],
+    type: "block:component",
+    default_export: "Forgot1",
+  },
 ];
