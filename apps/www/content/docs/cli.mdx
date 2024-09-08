@@ -153,3 +153,94 @@ Options:
   -h, --help         display help for command
 ```
 
+### Adding Blocks (`block`)
+
+The `block` command allows you to quickly add blocks to your project.
+
+#### Example:
+
+Use the following commands depending on your package manager:
+
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+<Tab value={"npm"}>
+```bash
+npx ruru-ui-cli@latest block [name] 
+```
+</Tab>
+<Tab value={"pnpm"}>
+```bash
+pnpm dlx ruru-ui-cli@latest block [name]
+```
+</Tab>
+<Tab value={"yarn"}>
+```bash
+npx ruru-ui-cli@latest block [name] 
+```
+</Tab>
+<Tab value={"bun"}>
+```bash
+bunx --bun ruru-ui-cli@latest block [name]
+```
+</Tab>
+</Tabs>
+
+let's say you want to create a login block, you can do it by running the following command:
+
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+<Tab value={"npm"}>
+```bash
+npx ruru-ui-cli@latest block login-1
+```
+</Tab>
+<Tab value={"pnpm"}>
+```bash
+pnpm dlx ruru-ui-cli@latest block login-1
+```
+</Tab>
+<Tab value={"yarn"}>
+```bash
+npx ruru-ui-cli@latest block login-1
+```
+</Tab>
+<Tab value={"bun"}>
+```bash
+bunx --bun ruru-ui-cli@latest block login-1
+```
+</Tab>
+</Tabs>
+
+Check Out the [login-1 Block](/blocks#login-1)
+
+#### Options
+
+The `block` command supports the following options:
+
+```txt
+Usage: Ruru-UI block [options] <block>
+
+Add a new block
+
+Options:
+  -y, --yes        Skip confirmation prompt. (default: false)
+  -o, --overwrite  Overwrite existing files. (default: false)
+  -c, --cwd <cwd>  The working directory. Defaults to the current
+                   directory. (default: "D:\\GitHub\\ruru-ui")
+  -i, --info       Show block info (default: false)
+  -h, --help       display help for command
+```
+
+##### Block Info
+
+The `block` command also supports the `--info` option, which displays information about the block.
+
+```txt
+Block Information:
+--------------------------------------------------------
+Name:           login-1
+Files:          login-1.tsx
+Type:           block:component
+Dependencies:   react-hook-form, @hookform/resolvers, zod
+Components:     button, input, form
+--------------------------------------------------------
+
+```

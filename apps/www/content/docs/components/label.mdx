@@ -1,0 +1,84 @@
+---
+title: Label
+description: A label is a piece of text that describes the purpose of a form element.
+preview: label
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import { Checkbox } from "ruru-ui/components/checkbox";
+import { Label } from "ruru-ui/components/label";
+
+## Installation
+
+<Rutabs items={["CLI", "Dependencies"]}>
+<Rutab value={"CLI"}>
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+<Tab value={"npm"}>
+```bash
+npx ruru-ui-cli@latest add label
+```
+</Tab>
+<Tab value={"pnpm"}>
+```bash
+pnpm dlx ruru-ui-cli@latest add label
+```
+</Tab>
+<Tab value={"yarn"}>
+```bash
+npx ruru-ui-cli@latest add label
+```
+</Tab>
+<Tab value={"bun"}>
+```bash
+bunx --bun ruru-ui-cli@latest add label
+```
+</Tab>
+</Tabs>
+
+</Rutab>
+<Rutab value={"Dependencies"}>
+```package-install
+npm install ruru-ui@latest
+```
+</Rutab>
+</Rutabs>
+
+## Usage
+
+The `Label` component is used to associate a label with a form element. It is used to describe the purpose of the form element.
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+      <div className="flex items-center space-x-2">
+        <Checkbox id="terms1" />
+        <Label htmlFor="terms1">Accept terms and conditions</Label>
+      </div>
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+// [!code word:Label]
+import { Checkbox } from "ruru-ui/components/checkbox";
+import { Label } from "ruru-ui/components/label";
+
+export function Demo() {
+  return (
+    <div className="flex items-center space-x-2">
+      <Checkbox id="terms" />
+      <Label htmlFor="terms">Accept terms and conditions</Label>
+    </div>
+  )
+}
+
+```
+    </Tab>
+</Tabs>
+
+## Props
+
+| Name          | Type                                             | Default | Description                                       |
+| ------------- | ------------------------------------------------ | ------- | ------------------------------------------------- |
+| **children**  | **React.ReactNode**                              | `null`  | The children of the Label component.              |
+| **className** | **string**                                       | `""`    | Additional class names to apply.                  |
+| **htmlFor**   | **string**                                       | `""`    | The ID of the associated element.                 |
+| **...props**  | **React.LabelHTMLAttributes\<HTMLLabelElement>** | `null`  | Additional HTML attributes for the label element. |

@@ -368,16 +368,16 @@ export async function promptForConfig(
           placeholder: "@/provider",
           initialValue: "@/provider",
         }),
+      rsc: () =>
+        confirm({
+          message: `Would you like to use ${pc.bold("RSC")} ?`,
+          initialValue: true,
+        }),
       interfaces: () =>
         text({
           message: `Configure the import alias for ${pc.bold("interfaces")}:`,
           placeholder: "@/interfaces",
           initialValue: "@/interfaces",
-        }),
-      rsc: () =>
-        confirm({
-          message: `Would you like to use ${pc.bold("RSC")} ?`,
-          initialValue: true,
         }),
     },
     {

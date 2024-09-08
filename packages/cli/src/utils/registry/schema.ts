@@ -13,6 +13,17 @@ export const registryItemSchema = z.object({
 
 export const registryIndexSchema = z.array(registryItemSchema);
 
+export const registryItemSchemaForBlock = z.object({
+  name: z.string(),
+  files: z.array(z.string()),
+  type: z.enum(["block:component"]),
+  dependencies: z.array(z.string()).optional(),
+  devDependencies: z.array(z.string()).optional(),
+  components: z.array(z.string()).optional(),
+});
+
+export const registryBlockIndexSchema = z.array(registryItemSchemaForBlock);
+
 export const registryItemWithContentSchema = registryItemSchema.extend({
   files: z.array(
     z.object({
@@ -22,7 +33,21 @@ export const registryItemWithContentSchema = registryItemSchema.extend({
   ),
 });
 
+export const registryItemWithContentForBlockSchema =
+  registryItemSchemaForBlock.extend({
+    files: z.array(
+      z.object({
+        name: z.string(),
+        content: z.string(),
+      }),
+    ),
+  });
+
 export const registryWithContentSchema = z.array(registryItemWithContentSchema);
+
+export const registryWithContentSchemaForBlocks = z.array(
+  registryItemWithContentForBlockSchema,
+);
 
 export const registryItemWithContentSchemaForInterfaces = z.object({
   name: z.string(),

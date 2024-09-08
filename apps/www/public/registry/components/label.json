@@ -1,0 +1,10 @@
+{
+  "name": "label",
+  "files": [
+    {
+      "name": "label.tsx",
+      "content": "import { cn } from \"@/utils/cn\";\nimport React from \"react\";\n\n\nexport interface LabelProps\n  extends React.LabelHTMLAttributes<HTMLLabelElement> {\n  \n  children?: React.ReactNode;\n}\n\n\nexport const Label = React.forwardRef<HTMLLabelElement, LabelProps>(\n  (props, ref) => (\n    <label\n      ref={ref}\n      className={cn(\"text-sm text-muted-foreground\", props.className)}\n      {...props}\n    >\n      {props.children}\n    </label>\n  ),\n);\nLabel.displayName = \"Label\";\n"
+    }
+  ],
+  "type": "components:ui"
+}

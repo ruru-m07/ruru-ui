@@ -11,18 +11,13 @@ export const RuruProvider: React.FC<RuruProviderProps> = ({
   children,
   togleThemeAnimation = false,
   disableAnimation = false,
-  disableBaseColor = false,
 }) => {
   const [animation, setAnimation] = useState(!disableAnimation);
 
   return (
     <RuruContext.Provider value={{ disableAnimation, animation, setAnimation }}>
       <RuruThemeProvider disableTransitionOnChange={!togleThemeAnimation}>
-        {disableBaseColor ? (
-          children
-        ) : (
-          <div className="bg-card">{children}</div>
-        )}
+        {children}
       </RuruThemeProvider>
     </RuruContext.Provider>
   );

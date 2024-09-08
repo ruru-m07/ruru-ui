@@ -113,5 +113,6 @@ const AnimatedTooltipContent = React.forwardRef<
     </motion.div>
   </TooltipPrimitive.Content>
 ));
+AnimatedTooltipContent.displayName = "AnimatedTooltipContent";
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

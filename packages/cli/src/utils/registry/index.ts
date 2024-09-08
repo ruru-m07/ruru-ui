@@ -1,4 +1,4 @@
-import path from "path";
+import { config } from "@/utils";
 import { Config } from "@/utils/get-config";
 import {
   interfaceRegistryIndexsSchemaSchema,
@@ -7,12 +7,14 @@ import {
   registryItemWithContentSchema,
   registryWithContentSchema,
   registryWithContentSchemaForInterfaces,
+  registryBlockIndexSchema,
   stylesSchema,
+  registryWithContentSchemaForBlocks,
 } from "@/utils/registry/schema";
 import { HttpsProxyAgent } from "https-proxy-agent";
 import fetch from "node-fetch";
+import path from "path";
 import { z } from "zod";
-import { config } from "@/utils";
 
 const { baseUrl } = config();
 
@@ -40,6 +42,16 @@ export async function getProviderRegistryIndex() {
   }
 }
 
+export async function getBlocksRegistryIndex() {
+  try {
+    const [result] = await fetchRegistry(["blocks/index.json"]);
+
+    return registryBlockIndexSchema.parse(result);
+  } catch (error) {
+    throw new Error(`Failed to fetch blocks from registry.`);
+  }
+}
+
 export async function getInterfaceRegistryIndex() {
   try {
     const [result] = await fetchRegistry(["interface/index.json"]);
@@ -58,31 +70,6 @@ export async function getRegistryStyles() {
   } catch (error) {
     throw new Error(`Failed to fetch styles from registry.`);
   }
-}
-
-export async function getRegistryBaseColors() {
-  return [
-    {
-      name: "slate",
-      label: "Slate",
-    },
-    {
-      name: "gray",
-      label: "Gray",
-    },
-    {
-      name: "zinc",
-      label: "Zinc",
-    },
-    {
-      name: "neutral",
-      label: "Neutral",
-    },
-    {
-      name: "stone",
-      label: "Stone",
-    },
-  ];
 }
 
 export async function getRegistryBaseColor() {
@@ -128,6 +115,28 @@ export async function resolveInterfaceTree(
   return index;
 }
 
+export async function resolveBlockTree(
+  index: z.infer<typeof registryBlockIndexSchema>,
+  names: string[],
+) {
+  const tree: z.infer<typeof registryBlockIndexSchema> = [];
+
+  for (const name of names) {
+    const entry = index.find((entry) => entry.name === name);
+
+    if (!entry) {
+      continue;
+    }
+
+    tree.push(entry);
+  }
+
+  return tree.filter(
+    (component, index, self) =>
+      self.findIndex((c) => c.name === component.name) === index,
+  );
+}
+
 export async function fetchComponentsTree(
   tree: z.infer<typeof registryIndexSchema>,
 ) {
@@ -137,7 +146,20 @@ export async function fetchComponentsTree(
 
     return registryWithContentSchema.parse(result);
   } catch (error) {
-    throw new Error(`Failed to fetch tree from registry.`);
+    throw new Error(`Failed to fetch component tree from registry.`);
+  }
+}
+
+export async function fetchBlockTree(
+  tree: z.infer<typeof registryBlockIndexSchema>,
+) {
+  try {
+    const paths = tree.map((item) => `blocks/${item.name}.json`);
+    const result = await fetchRegistry(paths);
+
+    return registryWithContentSchemaForBlocks.parse(result);
+  } catch (error) {
+    throw new Error(`Failed to fetch block tree from registry.`);
   }
 }
 
@@ -161,7 +183,7 @@ export async function fetchInterfaceTree(
 
     return registryWithContentSchemaForInterfaces.parse(result);
   } catch (error) {
-    throw new Error(`Failed to fetch tree from registry.`);
+    throw new Error(`Failed to fetch interface tree from registry.`);
   }
 }
 
@@ -192,6 +214,24 @@ export async function getItemTargetPath(
     type,
   );
 }
+
+// ! This function is not used in the codebase
+// export async function getItemTargetPathForBlock(
+//   blockPath: string,
+//   config: Config,
+//   item: Pick<z.infer<typeof registryItemWithContentForBlockSchema>, "type">,
+//   override?: string
+// ) {
+//   if (override) {
+//     return override;
+//   }
+
+//   if (item.type === "block:component" && config.aliases.ui) {
+//     return config.resolvedPaths.ui;
+//   }
+
+//   return null;
+// }
 
 async function fetchRegistry(paths: string[]) {
   try {

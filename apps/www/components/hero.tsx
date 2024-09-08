@@ -3,9 +3,12 @@
 import React from "react";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { buttonVariants } from "ruru-ui/components/button";
+import { Button, buttonVariants } from "ruru-ui/components/button";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
+  const router = useRouter();
+
   return (
     <main className="flex items-center justify-center bg-[url('/rings-bg.svg')] w-full h-screen bg-cover relative bg-no-repeat flex-wrap bg-center">
       <div
@@ -79,23 +82,20 @@ const Hero = () => {
           beautiful, and highly customizable user interfaces.
         </p>
         <div className="flex space-x-3">
-          <Link
-            href={"/docs"}
-            className={
-              "h-9 px-4 py-2 bg-primary text-primary-foreground shadow hover:bg-primary/85 hover:shadow-md inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+          <Button onClick={() => router.push("/docs")}>Get Started</Button>
+          {/* <Button variant={"secondary"}>
+            <Link target="_blank" className="flex items-center" href={"https://github.com/ruru-m07/ruru-ui"}>
+              <GitHubLogoIcon className="mr-2" /> Give a star
+            </Link>
+          </Button> */}
+          <Button
+            onClick={() =>
+              window.open("https://github.com/ruru-m07/ruru-ui", "_blank")
             }
-          >
-            Get Started
-          </Link>
-          <Link
-            href={"https://github.com/ruru-m07/ruru-ui"}
-            target="_blank"
-            className={buttonVariants({
-              variant: "secondary",
-            })}
+            variant={"secondary"}
           >
             <GitHubLogoIcon className="mr-2" /> Give a star
-          </Link>
+          </Button>
         </div>
       </div>
     </main>
