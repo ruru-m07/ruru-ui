@@ -16,7 +16,7 @@ const SponserBanner = (): React.ReactNode => {
           buttonVariants({
             variant: "secondary",
           }),
-          "w-full mt-3 hover:border-pink-500 hover:dark:bg-pink-600/15",
+          "w-full mt-3 hover:border-pink-500 hover:bg-pink-600/15 hover:dark:bg-pink-600/15",
         )}
       >
         <Heart className="text-pink-500 mr-2 items-center" size={16} />

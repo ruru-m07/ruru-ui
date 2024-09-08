@@ -1,4 +1,5 @@
 import SponserBanner from "@/components/sponserBanner";
+import Link from "next/link";
 import React from "react";
 
 const SponsorsPage = () => {
@@ -8,8 +9,7 @@ const SponsorsPage = () => {
         <h1 className="scroll-m-20 pb-2 text-4xl font-semibold tracking-tight first:mt-0">
           Support{" "}
           <span className="relative after:content-['']  after:absolute  after:top-[95%] after:w-[150%] after:[aspect-ratio:5_/_1] after:left-2/4 after:-translate-x-1/2 after:translate-y-[0]  after:rounded-[50%] after:border-[2px] after:border-[solid] after:border-pink-500 after:[clip-path:polygon(0_0,_50%_50%,_100%_0)]">
-            <span className="text-pink-500">R</span>uru{" "}
-            <span className="text-pink-500">UI</span>
+            Ruru UI
           </span>
         </h1>
         <p className="leading-7 [&:not(:first-child)]:mt-3">
@@ -27,16 +27,16 @@ const SponsorsPage = () => {
         <p className="leading-7 [&:not(:first-child)]:mt-6 text-xs text-muted-foreground">
           Organization Sponsors
         </p>
-        <div className="my-4 text-xs h-20 flex items-center">
-          NO ORGANIZATION SPONSORS YET :(
+        <div className="my-1 text-xs flex items-center">
+          no organization sponsors yet :( <Be />
         </div>
       </div>
-      <div className="mb-5 grid place-items-center">
+      <div className="mb-5 grid place-items-center mt-5">
         <p className="leading-7 [&:not(:first-child)]:mt-6 text-xs text-muted-foreground">
           Individual Sponsors
         </p>
-        <div className="my-4 text-xs h-20 flex items-center">
-          NO INDIVIDUAL SPONSORS YET :(
+        <div className="my-1 text-xs flex items-center">
+          no organization sponsors yet :( <Be />
         </div>
       </div>
     </div>
@@ -44,3 +44,15 @@ const SponsorsPage = () => {
 };
 
 export default SponsorsPage;
+
+const Be = () => {
+  return (
+    <Link
+      href={"https://github.com/sponsors/ruru-m07"}
+      target="_blank"
+      className="underline text-xs ml-3"
+    >
+      become the first sponsor.
+    </Link>
+  );
+};
