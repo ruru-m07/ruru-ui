@@ -16,8 +16,9 @@ export const buttonVariants = cva(
         default:
           "bg-primary text-primary-foreground shadow hover:bg-primary/85 hover:shadow-md",
         secondary:
-          "border-input border-[1.5px] bg-primary-foreground hover:bg-[#f3f3f3] dark:hover:bg-[#202020]",
-        tertiary: "text-primary hover:bg-[#f3f3f3] dark:hover:bg-[#202020]",
+          "border-input border-[1.5px] bg-primary-foreground/50 hover:bg-primary-foreground/100 dark:bg-primary-foreground/5 hover:dark:bg-primary-foreground/10",
+        tertiary:
+          "text-primary hover:bg-primary-foreground/100 dark:hover:bg-primary-foreground/5",
         error: "bg-[#d93036] hover:bg-[#ff6166]",
         warning: "bg-[#ff990a] text-primary-foreground hover:bg-[#d27504]",
       },

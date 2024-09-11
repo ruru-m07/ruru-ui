@@ -184,7 +184,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
         {extraMembersCount > 0 && (
           <div
             className={cn(
-              `lastcount -ml-2 flex items-center justify-center rounded-full border bg-primary-foreground`,
+              `lastcount -ml-2 flex items-center justify-center rounded-full border bg-muted`,
               lnClassName,
             )}
             style={{
