@@ -19,7 +19,7 @@ const variants = {
   "green-subtle": "bg-[#0f2e18] text-[#62c073]",
   teal: "bg-[#12a594] text-white",
   "teal-subtle": "bg-[#083a33] text-[#0ac7b4]",
-  inverted: "bg-primary text-primary-foreground",
+  inverted: "bg-black text-white dark:bg-white dark:text-black",
 };
 
 const sizes = {
