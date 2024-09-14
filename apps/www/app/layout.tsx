@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import type { Viewport } from "next";
 import { ScrollArea } from "@/components/scroll-area";
-import { Analytics } from "@vercel/analytics/react";
 import { RootProvider } from "fumadocs-ui/provider";
 import { RuruProvider } from "ruru-ui/provider";
 import { GeistSans } from "geist/font/sans";
@@ -10,6 +9,7 @@ import { baseUrl, createMetadata } from "@/utils/metadata";
 import "./global.css";
 import "fumadocs-ui/style.css";
 import "fumadocs-ui/twoslash.css";
+import { CSPostHogProvider } from "./providers";
 
 export const metadata = createMetadata({
   title: {
@@ -36,12 +36,13 @@ export default function Layout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
     >
       <body>
-        <Analytics />
-        <RootProvider>
-          <RuruProvider>
-            <ScrollArea className="h-screen">{children}</ScrollArea>
-          </RuruProvider>
-        </RootProvider>
+        <CSPostHogProvider>
+          <RootProvider>
+            <RuruProvider>
+              <ScrollArea className="h-screen">{children}</ScrollArea>
+            </RuruProvider>
+          </RootProvider>
+        </CSPostHogProvider>
       </body>
     </html>
   );
