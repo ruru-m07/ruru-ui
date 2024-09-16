@@ -1,0 +1,138 @@
+{
+  "mainColor": 1093632,
+  "mode": "dark",
+  "hex": "#fafafa",
+  "r": 16,
+  "g": 176,
+  "b": 0,
+  "darkColorsAmount": 5,
+  "darkness": 100,
+  "darkColorsHueAngle": 0,
+  "darkColorsSaturation": 0,
+  "lightColorsAmount": 5,
+  "lightness": 100,
+  "lightColorsHueAngle": 0,
+  "lightColorsSaturation": 0,
+  "darkColors": ["#000000", "#032300", "#064600", "#0A6A00", "#0D8D00"],
+  "lightColors": ["#40C033", "#70D066", "#9FDF99", "#CFEFCC", "#FFFFFF"],
+  "cssVariables": {
+    "shadcn": {
+      "dark": {
+        "background": { "color": "#0a0a0a", "isLocked": false },
+        "foreground": {
+          "color": "#f0f0f0",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 17.37272426550883
+          }
+        },
+        "primary": { "color": "#fafafa" },
+        "primaryForeground": {
+          "color": "#171717",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 17.176123405576867
+          }
+        },
+        "card": { "color": "#0f0f0f" },
+        "cardForeground": {
+          "color": "#fafafa",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 18.36490146542823
+          }
+        },
+        "popover": { "color": "#121212" },
+        "popoverForeground": {
+          "color": "#e0e0e0",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 14.191271550935179
+          }
+        },
+        "secondary": { "color": "#212121" },
+        "secondaryForeground": {
+          "color": "#fafafa",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 15.427024555796525
+          }
+        },
+        "muted": { "color": "#212121", "isLocked": false },
+        "mutedForeground": {
+          "color": "#9b9b9b",
+          "contrastChecker": { "level": "good", "contrast": 5.7933860539506465 }
+        },
+        "accent": { "color": "#212121" },
+        "accentForeground": {
+          "color": "#fafafa",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 15.427024555796525
+          }
+        },
+        "border": { "color": "#2e2e2e" },
+        "input": { "color": "#000000" },
+        "ring": { "color": "#262626" }
+      },
+      "light": {
+        "background": { "color": "#fafafa" },
+        "foreground": {
+          "color": "#0a0a0a",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 18.96800669384249
+          }
+        },
+        "primary": { "color": "#171717" },
+        "primaryForeground": {
+          "color": "#fafafa",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 17.176123405576867
+          }
+        },
+        "card": { "color": "#fefefe" },
+        "cardForeground": {
+          "color": "#0a0a0a",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 19.630372398278624
+          }
+        },
+        "popover": { "color": "#FFFFFF" },
+        "popoverForeground": {
+          "color": "#272727",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 14.938418916797357
+          }
+        },
+        "secondary": { "color": "#f5f5f5" },
+        "secondaryForeground": {
+          "color": "#171717",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 16.44407502596064
+          }
+        },
+        "muted": { "color": "#f5f5f5" },
+        "mutedForeground": {
+          "color": "#737373",
+          "contrastChecker": { "level": "medium", "contrast": 4.34923168556426 }
+        },
+        "accent": { "color": "#f0f0f0" },
+        "accentForeground": {
+          "color": "#171717",
+          "contrastChecker": {
+            "level": "excellent",
+            "contrast": 15.731545264179312
+          }
+        },
+        "border": { "color": "#e5e5e5" },
+        "input": { "color": "#242424" },
+        "ring": { "color": "#a3a3a3" }
+      }
+    }
+  }
+}
