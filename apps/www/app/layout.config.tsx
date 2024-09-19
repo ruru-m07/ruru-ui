@@ -2,6 +2,7 @@ import { type BaseLayoutProps, type DocsLayoutProps } from "fumadocs-ui/layout";
 import { pageTree } from "@/app/source";
 import Image from "next/image";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { PaintbrushVertical } from "lucide-react";
 
 // shared configuration
 export const baseOptions: BaseLayoutProps = {
@@ -10,14 +11,14 @@ export const baseOptions: BaseLayoutProps = {
       <>
         <Image
           className="size-8 [.uwu_&]:hidden [header_&]:size-6 dark:block hidden"
-          src={"/logo-white.png"}
+          src={"/assets/logo-white.png"}
           alt="logo"
           height={100}
           width={100}
         />
         <Image
           className="size-8 [.uwu_&]:hidden [header_&]:size-6 dark:hidden block"
-          src={"/logo-black.png"}
+          src={"/assets/logo-black.png"}
           alt="logo"
           height={100}
           width={100}
@@ -74,6 +75,11 @@ export const baseOptions: BaseLayoutProps = {
       text: "Blocks",
       url: "/blocks",
       active: "nested-url",
+    },
+    {
+      icon: <PaintbrushVertical size={16} strokeWidth={1.5} />,
+      text: "Theme",
+      url: "/theme",
     },
     {
       icon: (

@@ -7,7 +7,7 @@ import { jsx, jsxs } from "react/jsx-runtime";
 export interface CodeBlockProps {
   code: string;
   wrapper?: Base.CodeBlockProps;
-  lang: "bash" | "ts" | "tsx";
+  lang: "bash" | "ts" | "tsx" | "css" | "txt";
 }
 
 export async function CodeBlock({

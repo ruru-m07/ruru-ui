@@ -11,7 +11,7 @@ export default function Card({
   return (
     <div
       className={cn(
-        "rounded-md space-x-3 w-[80%] py-4 flex items-center justify-around my-2 border-[1.5px] border-input ",
+        "rounded-md space-x-3 w-[100%] py-4 flex items-center justify-around my-2 border-[1.5px] border-input ",
         className,
       )}
     >

@@ -4,7 +4,7 @@ export default function CodeBlockServer({
   code,
   lang,
 }: {
-  lang?: "bash" | "ts" | "tsx";
+  lang?: "bash" | "ts" | "tsx" | "css" | "txt";
   code: string[];
 }) {
   if (typeof code[0] !== "string") {

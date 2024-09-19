@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Card from "@/components/ui/card";
-import { ModeToggle } from "@/components/ui/ModeToggle";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -39,7 +38,6 @@ import {
   SelectSeparator,
   selectAnimationVariants,
 } from "ruru-ui/components/select";
-import AnimationToggle from "@/components/animationToggle";
 import Modal, { ModalProvider } from "ruru-ui/components/modal";
 
 const Playground = () => {
@@ -51,11 +49,8 @@ const Playground = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-card">
-      <ModeToggle />
-      <AnimationToggle />
-
-      <Card>
+    <div className="flex flex-col items-center justify-center">
+      <Card className="mt-4">
         <Button size={"small"}>default</Button>
         <Button>default</Button>
         <Button size={"large"}>default</Button>
@@ -480,7 +475,7 @@ const Playground = () => {
         />
       </Card>
 
-      <div className="w-[80%]">
+      <div className="w-full">
         <Tabs items={["Apple", "Orange", "Mango"]}>
           <Tab value={"Apple"}>Apple</Tab>
           <Tab value={"Orange"}>Orange</Tab>
@@ -488,7 +483,7 @@ const Playground = () => {
         </Tabs>
       </div>
 
-      <div className="w-[80%]">
+      <div className="w-full">
         <Tabs disabled items={["Apple", "Orange", "Mango"]}>
           <Tab value={"Apple"}>Apple</Tab>
           <Tab value={"Orange"}>Orange</Tab>
@@ -496,7 +491,7 @@ const Playground = () => {
         </Tabs>
       </div>
 
-      <div className="w-[80%]">
+      <div className="w-full">
         <Tabs defaultIndex={2} items={["Apple", "Orange", "Mango"]}>
           <Tab value={"Apple"}>Apple</Tab>
           <Tab value={"Orange"}>Orange</Tab>
@@ -565,7 +560,7 @@ const Playground = () => {
           </SelectContent>
         </Select>
       </Card>
-      <div className="rounded-md w-[80%] py-4 grid grid-cols-3 place-items-center my-2 mx-2 border-[1.5px] border-input">
+      <div className="rounded-md w-full py-4 grid grid-cols-3 place-items-center my-2 mx-2 border-[1.5px] border-input">
         {Object.keys(selectAnimationVariants).map((variantKey: any, index) => (
           <div key={index} style={{ marginBottom: "20px" }}>
             <Select defaultValue={variantKey}>
@@ -589,40 +584,6 @@ const Playground = () => {
       </div>
 
       <Card>
-        {/* <Button onClick={() => setOpen(true)} size="small">
-          Open Modal
-        </Button> */}
-
-        {/* <Modal active={open} onClickOutside={() => setOpen(false)}>
-          <Modal.Body>
-            <Modal.Header>
-              <Modal.Title>Create Username</Modal.Title>
-              <Modal.Subtitle>
-                Enter a unique name for your token to differentiate it from
-                other tokens and then select the scope.
-              </Modal.Subtitle>
-            </Modal.Header>
-            <Modal.Content>
-              <Input label="username" placeholder="enter your username." />
-            </Modal.Content>
-          </Modal.Body>
-
-          <Modal.Actions> */}
-        {/* <Modal.Action onClick={() => setOpen(false)} variant="secondary">
-            Cancel
-          </Modal.Action>
-
-          <Modal.Action onClick={() => setOpen(false)}>Submit</Modal.Action> */}
-        {/* <Modal.Action
-              fullWidth
-              onClick={() => setOpen(false)}
-              variant="secondary"
-            >
-              Cancel
-            </Modal.Action>
-          </Modal.Actions>
-        </Modal>*/}
-
         <ModalProvider>
           <Modal.Trigger>Open Modal</Modal.Trigger>
           <Modal>
@@ -646,7 +607,7 @@ const Playground = () => {
         </ModalProvider>
       </Card>
 
-      <div className="my-52" />
+      <div className="my-10" />
     </div>
   );
 };
