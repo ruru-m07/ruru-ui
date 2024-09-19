@@ -257,9 +257,9 @@ export function DefaultValueSelect() {
 </Tab>
 </Tabs>
 
-### ScrollDownButton and ScrollUpButton
+### Scrollable
 
-You can add scroll buttons to the `Select` component by using the `SelectScrollDownButton` and `SelectScrollUpButton` components.
+When the content in the Select component exceeds the maximum height, it becomes scrollable, adding `ScrollUpButton` and `ScrollDownButton` to help users easily navigate through the options.
 
 <Tabs items={["Preview", "Code"]}>
 <Tab className={"flex justify-center"} value="Preview">
@@ -267,8 +267,6 @@ You can add scroll buttons to the `Select` component by using the `SelectScrollD
 </Tab>
 <Tab className={"-mt-8"} value="Code">
 ```tsx
-// [!code word:SelectScrollDownButton]
-// [!code word:SelectScrollUpButton]
 import {
   Select,
   SelectContent,
@@ -277,8 +275,6 @@ import {
   SelectGroup,
   SelectItem,
   SelectLabel,
-  SelectScrollDownButton,
-  SelectScrollUpButton,
   SelectSeparator,
 } from "ruru-ui/components/select";
 
@@ -293,13 +289,11 @@ const SelectCountries = () => {
           <SelectGroup>
             <SelectLabel>Fruits</SelectLabel>
             <SelectSeparator />
-            <SelectScrollUpButton />
             {Array.from({ length: 50 }, (_, index) => (
               <SelectItem key={index} value={String(index)}>
                 Ruru-UI-V{index}
               </SelectItem>
             ))}
-            <SelectScrollDownButton />
           </SelectGroup>
         </SelectContent>
       </Select>
