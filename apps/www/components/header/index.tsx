@@ -31,7 +31,7 @@ export default function Header() {
               </TooltipContent>
             </Tooltip>
 
-            <Tooltip>
+            {/* <Tooltip>
               <TooltipTrigger asChild>
                 <ThemeFeatures />
               </TooltipTrigger>
@@ -43,7 +43,7 @@ export default function Header() {
                 <ThemeImport />
               </TooltipTrigger>
               <TooltipContent>Import a theme from a JSON file</TooltipContent>
-            </Tooltip>
+            </Tooltip> */}
           </TooltipProvider>
         </div>
       </div>

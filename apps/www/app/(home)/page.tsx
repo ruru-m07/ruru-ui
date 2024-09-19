@@ -27,7 +27,7 @@ const CodeBlockServer = dynamic(
         <Spinner className="mr-4" /> Loading...
       </div>
     ),
-  }
+  },
 );
 
 export default function HomePage() {
@@ -391,7 +391,7 @@ export default function App() {
                   className={cn(
                     "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
                     "bg-primary text-primary-foreground shadow hover:bg-primary/85 hover:shadow-md",
-                    "h-9 px-4 py-2"
+                    "h-9 px-4 py-2",
                   )}
                   href={"/docs"}
                 >
@@ -401,7 +401,7 @@ export default function App() {
                   className={cn(
                     "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
                     "border-input border-[1.5px] bg-primary-foreground hover:bg-[#f3f3f3] dark:hover:bg-[#202020]",
-                    "h-9 px-4 py-2"
+                    "h-9 px-4 py-2",
                   )}
                   href={"https://github.com/ruru-m07/ruru-ui"}
                   target="_blank"
@@ -434,7 +434,7 @@ const StepCounter = ({
     <div
       className={cn(
         "bg-primary rounded-full w-7 h-7 flex items-center justify-center mb-3",
-        className
+        className,
       )}
     >
       <label className="text-primary-foreground">{count}</label>
