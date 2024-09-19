@@ -13,6 +13,8 @@ import { PaintbrushVertical } from "lucide-react";
 import "react-color-palette/css";
 import Login1 from "@/components/blocks/login-1";
 import Playground from "../playground/page";
+import { Tab, Tabs } from "ruru-ui/components/tabs";
+import Colors from "@/components/colors";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const {
@@ -73,9 +75,18 @@ const ThemePage = () => {
           <div className="flex">
             <ThemeVariablesSettingSidebar />
             <Layout>
-              <div className="flex items-center overflow-auto justify-center bg-background rounded w-full relative">
-                <Playground />
-              </div>
+              <Tabs className="w-full" items={["playground", "colors"]}>
+                <Tab value={"playground"}>
+                  <div className="flex items-center overflow-auto justify-center rounded w-full relative">
+                    <Playground />
+                  </div>
+                </Tab>
+                <Tab value={"colors"}>
+                  <div className="flex items-center overflow-auto justify-center rounded w-full relative">
+                    <Colors />
+                  </div>
+                </Tab>
+              </Tabs>
             </Layout>
           </div>
         </div>
