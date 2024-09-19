@@ -7,6 +7,7 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
+    "postbuild": "next-sitemap",
     "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --ignore-path .gitignore --ignore-path .prettierignore --write \"**/*.{ts,tsx,mdx,json}\" --cache"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "hast-util-to-jsx-runtime": "^2.3.0",
     "lucide-react": "^0.437.0",
     "next": "^14.2.4",
+    "next-sitemap": "^4.2.3",
     "os": "^0.1.2",
     "path": "^0.12.7",
     "posthog-js": "^1.161.3",

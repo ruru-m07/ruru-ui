@@ -1,14 +1,33 @@
 import { notFound } from "next/navigation";
 import { blocks } from "@/registry/blocks";
 import { blocks_registry } from "@/__registry__/blocks";
+import { Metadata } from "next";
 
-export default async function BlockPage({
-  params,
-}: {
-  params: {
-    name: string;
+type Params = {
+  name: string;
+};
+
+type Props = {
+  params: Params;
+};
+
+export async function generateStaticParams(): Promise<Params[]> {
+  return blocks.map((block) => ({
+    name: block.name,
+  }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const block = blocks.find((block) => block.name === params.name);
+  if (!block) return {};
+
+  return {
+    title: `${block.name} Block`,
+    description: `View details for the ${block.name} block`,
   };
-}) {
+}
+
+export default async function BlockPage({ params }: Props) {
   const { name } = params;
 
   // Find the block by name in blocks

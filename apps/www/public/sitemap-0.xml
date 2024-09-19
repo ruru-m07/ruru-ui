@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://ruru-ui.vercel.app/color</loc><lastmod>2024-09-19T13:01:48.136Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/playground</loc><lastmod>2024-09-19T13:01:48.366Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/blocks/login-1</loc><lastmod>2024-09-19T13:01:48.627Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/blocks/register-1</loc><lastmod>2024-09-19T13:01:49.034Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/blocks/forgot-1</loc><lastmod>2024-09-19T13:01:49.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/theme__</loc><lastmod>2024-09-19T13:01:49.716Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/sponsors</loc><lastmod>2024-09-19T13:01:50.000Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app</loc><lastmod>2024-09-19T13:01:50.303Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/animation</loc><lastmod>2024-09-19T13:01:50.579Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/block</loc><lastmod>2024-09-19T13:01:50.826Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/cli</loc><lastmod>2024-09-19T13:01:51.081Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/dark-mode</loc><lastmod>2024-09-19T13:01:51.334Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/hooks</loc><lastmod>2024-09-19T13:01:51.578Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs</loc><lastmod>2024-09-19T13:01:51.780Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/installation</loc><lastmod>2024-09-19T13:01:52.025Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/provider</loc><lastmod>2024-09-19T13:01:52.231Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/ruru-json</loc><lastmod>2024-09-19T13:01:52.420Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/avatar</loc><lastmod>2024-09-19T13:01:52.683Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/badge</loc><lastmod>2024-09-19T13:01:52.876Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/button</loc><lastmod>2024-09-19T13:01:53.131Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/checkbox</loc><lastmod>2024-09-19T13:01:53.356Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/form</loc><lastmod>2024-09-19T13:01:53.544Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/input</loc><lastmod>2024-09-19T13:01:53.758Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/label</loc><lastmod>2024-09-19T13:01:53.997Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/modal</loc><lastmod>2024-09-19T13:01:54.221Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/select</loc><lastmod>2024-09-19T13:01:54.408Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/spinner</loc><lastmod>2024-09-19T13:01:54.635Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/switch</loc><lastmod>2024-09-19T13:01:54.854Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/tabs</loc><lastmod>2024-09-19T13:01:55.093Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/textarea</loc><lastmod>2024-09-19T13:01:55.282Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/docs/components/tooltip</loc><lastmod>2024-09-19T13:01:55.480Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/blocks</loc><lastmod>2024-09-19T13:01:55.645Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ruru-ui.vercel.app/theme</loc><lastmod>2024-09-19T13:01:55.883Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+</urlset>

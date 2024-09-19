@@ -11,7 +11,6 @@ import { Button } from "ruru-ui/components/button";
 import { PaintbrushVertical } from "lucide-react";
 
 import "react-color-palette/css";
-import Login1 from "@/components/blocks/login-1";
 import Playground from "../playground/page";
 import { Tab, Tabs } from "ruru-ui/components/tabs";
 import Colors from "@/components/colors";
