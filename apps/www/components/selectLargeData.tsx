@@ -6,8 +6,6 @@ import {
   SelectGroup,
   SelectItem,
   SelectLabel,
-  SelectScrollDownButton,
-  SelectScrollUpButton,
   SelectSeparator,
 } from "ruru-ui/components/select";
 
@@ -22,13 +20,11 @@ const SelectCountries = () => {
           <SelectGroup>
             <SelectLabel>Fruits</SelectLabel>
             <SelectSeparator />
-            <SelectScrollUpButton />
             {Array.from({ length: 50 }, (_, index) => (
               <SelectItem key={index} value={String(index)}>
                 Ruru-UI-V{index}
               </SelectItem>
             ))}
-            <SelectScrollDownButton />
           </SelectGroup>
         </SelectContent>
       </Select>
