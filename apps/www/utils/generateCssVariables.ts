@@ -1,12 +1,12 @@
-import { ShadcnVariables } from "@/contexts/ThemeContext";
+import { RuruVariables } from "@/contexts/ThemeContext";
 import { extractHSLValues } from "./getHSLValues";
 
 export function generateCssVariables({
   light,
   dark,
 }: {
-  light: ShadcnVariables;
-  dark: ShadcnVariables;
+  light: RuruVariables;
+  dark: RuruVariables;
 }) {
   return `@layer base {
   :root {

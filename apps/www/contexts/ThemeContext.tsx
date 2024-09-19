@@ -9,7 +9,7 @@ import {
 } from "react";
 import Color from "color";
 import { getColorsList } from "@/utils/getColorsList";
-import { generateShadcnColorAttributes } from "@/utils/generateShadcnColorAttributes";
+import { generateColorAttributes } from "@/utils/generateColorAttributes";
 import { getContrastInfo } from "@/utils/colors";
 
 export type ContrastLevels = "low" | "medium" | "good" | "excellent";
@@ -23,7 +23,7 @@ export interface ColorState {
   isLocked?: boolean;
   contrastChecker?: ContrastInfo;
 }
-export interface ShadcnVariables {
+export interface RuruVariables {
   background: ColorState;
   foreground: ColorState;
   primary: ColorState;
@@ -60,9 +60,9 @@ export type ThemeVariables = {
   darkColors: string[];
   lightColors: string[];
   cssVariables: {
-    shadcn: {
-      light: ShadcnVariables;
-      dark: ShadcnVariables;
+    ruru: {
+      light: RuruVariables;
+      dark: RuruVariables;
     };
   };
   mode: "dark" | "light";
@@ -125,7 +125,7 @@ function getThemeVariablesDefaultValues(): ThemeVariables {
     darkColors,
     lightColors,
     cssVariables: {
-      shadcn: generateShadcnColorAttributes({ hex, darkColors, lightColors }),
+      ruru: generateColorAttributes({ hex, darkColors, lightColors }),
     },
   };
 }
@@ -153,11 +153,11 @@ export function ThemeContextProvider({ children }: { children: ReactNode }) {
     setVariables({
       ...variables,
       cssVariables: {
-        shadcn: generateShadcnColorAttributes({
+        ruru: generateColorAttributes({
           hex,
           darkColors,
           lightColors,
-          shadcnVariables: cssVariables,
+          RuruVariables: cssVariables,
         }),
       },
     });
@@ -300,108 +300,108 @@ export function ThemeContextProvider({ children }: { children: ReactNode }) {
   }
 
   function setCssVariables(cssVariables: ThemeVariables["cssVariables"]) {
-    cssVariables.shadcn.light = {
-      ...cssVariables.shadcn.light,
+    cssVariables.ruru.light = {
+      ...cssVariables.ruru.light,
       foreground: {
-        ...cssVariables.shadcn.light.foreground,
+        ...cssVariables.ruru.light.foreground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.light.background.color,
-          foregroundColor: cssVariables.shadcn.light.foreground.color,
+          backgroundColor: cssVariables.ruru.light.background.color,
+          foregroundColor: cssVariables.ruru.light.foreground.color,
         }),
       },
       primaryForeground: {
-        ...cssVariables.shadcn.light.primaryForeground,
+        ...cssVariables.ruru.light.primaryForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.light.primary.color,
-          foregroundColor: cssVariables.shadcn.light.primaryForeground.color,
+          backgroundColor: cssVariables.ruru.light.primary.color,
+          foregroundColor: cssVariables.ruru.light.primaryForeground.color,
         }),
       },
       cardForeground: {
-        ...cssVariables.shadcn.light.cardForeground,
+        ...cssVariables.ruru.light.cardForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.light.card.color,
-          foregroundColor: cssVariables.shadcn.light.cardForeground.color,
+          backgroundColor: cssVariables.ruru.light.card.color,
+          foregroundColor: cssVariables.ruru.light.cardForeground.color,
         }),
       },
       popoverForeground: {
-        ...cssVariables.shadcn.light.popoverForeground,
+        ...cssVariables.ruru.light.popoverForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.light.popover.color,
-          foregroundColor: cssVariables.shadcn.light.popoverForeground.color,
+          backgroundColor: cssVariables.ruru.light.popover.color,
+          foregroundColor: cssVariables.ruru.light.popoverForeground.color,
         }),
       },
       secondaryForeground: {
-        ...cssVariables.shadcn.light.secondaryForeground,
+        ...cssVariables.ruru.light.secondaryForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.light.secondary.color,
-          foregroundColor: cssVariables.shadcn.light.secondaryForeground.color,
+          backgroundColor: cssVariables.ruru.light.secondary.color,
+          foregroundColor: cssVariables.ruru.light.secondaryForeground.color,
         }),
       },
       mutedForeground: {
-        ...cssVariables.shadcn.light.mutedForeground,
+        ...cssVariables.ruru.light.mutedForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.light.muted.color,
-          foregroundColor: cssVariables.shadcn.light.mutedForeground.color,
+          backgroundColor: cssVariables.ruru.light.muted.color,
+          foregroundColor: cssVariables.ruru.light.mutedForeground.color,
         }),
       },
       accentForeground: {
-        ...cssVariables.shadcn.light.accentForeground,
+        ...cssVariables.ruru.light.accentForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.light.accent.color,
-          foregroundColor: cssVariables.shadcn.light.accentForeground.color,
+          backgroundColor: cssVariables.ruru.light.accent.color,
+          foregroundColor: cssVariables.ruru.light.accentForeground.color,
         }),
       },
     };
 
-    cssVariables.shadcn.dark = {
-      ...cssVariables.shadcn.dark,
+    cssVariables.ruru.dark = {
+      ...cssVariables.ruru.dark,
       foreground: {
-        ...cssVariables.shadcn.dark.foreground,
+        ...cssVariables.ruru.dark.foreground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.dark.background.color,
-          foregroundColor: cssVariables.shadcn.dark.foreground.color,
+          backgroundColor: cssVariables.ruru.dark.background.color,
+          foregroundColor: cssVariables.ruru.dark.foreground.color,
         }),
       },
       primaryForeground: {
-        ...cssVariables.shadcn.dark.primaryForeground,
+        ...cssVariables.ruru.dark.primaryForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.dark.primary.color,
-          foregroundColor: cssVariables.shadcn.dark.primaryForeground.color,
+          backgroundColor: cssVariables.ruru.dark.primary.color,
+          foregroundColor: cssVariables.ruru.dark.primaryForeground.color,
         }),
       },
       cardForeground: {
-        ...cssVariables.shadcn.dark.cardForeground,
+        ...cssVariables.ruru.dark.cardForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.dark.card.color,
-          foregroundColor: cssVariables.shadcn.dark.cardForeground.color,
+          backgroundColor: cssVariables.ruru.dark.card.color,
+          foregroundColor: cssVariables.ruru.dark.cardForeground.color,
         }),
       },
       popoverForeground: {
-        ...cssVariables.shadcn.dark.popoverForeground,
+        ...cssVariables.ruru.dark.popoverForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.dark.popover.color,
-          foregroundColor: cssVariables.shadcn.dark.popoverForeground.color,
+          backgroundColor: cssVariables.ruru.dark.popover.color,
+          foregroundColor: cssVariables.ruru.dark.popoverForeground.color,
         }),
       },
       secondaryForeground: {
-        ...cssVariables.shadcn.dark.secondaryForeground,
+        ...cssVariables.ruru.dark.secondaryForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.dark.secondary.color,
-          foregroundColor: cssVariables.shadcn.dark.secondaryForeground.color,
+          backgroundColor: cssVariables.ruru.dark.secondary.color,
+          foregroundColor: cssVariables.ruru.dark.secondaryForeground.color,
         }),
       },
       mutedForeground: {
-        ...cssVariables.shadcn.dark.mutedForeground,
+        ...cssVariables.ruru.dark.mutedForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.dark.muted.color,
-          foregroundColor: cssVariables.shadcn.dark.mutedForeground.color,
+          backgroundColor: cssVariables.ruru.dark.muted.color,
+          foregroundColor: cssVariables.ruru.dark.mutedForeground.color,
         }),
       },
       accentForeground: {
-        ...cssVariables.shadcn.dark.accentForeground,
+        ...cssVariables.ruru.dark.accentForeground,
         contrastChecker: getContrastInfo({
-          backgroundColor: cssVariables.shadcn.dark.accent.color,
-          foregroundColor: cssVariables.shadcn.dark.accentForeground.color,
+          backgroundColor: cssVariables.ruru.dark.accent.color,
+          foregroundColor: cssVariables.ruru.dark.accentForeground.color,
         }),
       },
     };

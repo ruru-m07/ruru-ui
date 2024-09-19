@@ -19,7 +19,7 @@ import Colors from "@/components/colors";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const {
     cssVariables: {
-      shadcn: { light, dark },
+      ruru: { light, dark },
     },
     mode,
   } = useThemeContext();

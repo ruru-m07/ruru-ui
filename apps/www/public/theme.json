@@ -16,7 +16,7 @@
   "darkColors": ["#000000", "#032300", "#064600", "#0A6A00", "#0D8D00"],
   "lightColors": ["#40C033", "#70D066", "#9FDF99", "#CFEFCC", "#FFFFFF"],
   "cssVariables": {
-    "shadcn": {
+    "ruru": {
       "dark": {
         "background": { "color": "#0a0a0a", "isLocked": false },
         "foreground": {

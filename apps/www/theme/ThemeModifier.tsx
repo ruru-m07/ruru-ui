@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function ThemeModifier() {
   const {
     cssVariables: {
-      shadcn: { light, dark },
+      ruru: { light, dark },
     },
     hex,
     mode,

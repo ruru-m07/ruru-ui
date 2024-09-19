@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useThemeContext } from "@/contexts/ThemeContext";
-import { generateCssVariables } from "@/utils/generateShadcnCssVariables";
+import { generateCssVariables } from "@/utils/generateCssVariables";
 import Modal, { ModalProvider } from "ruru-ui/components/modal";
 import { Button } from "ruru-ui/components/button";
 import { Spinner } from "ruru-ui/components/spinner";
@@ -24,7 +24,7 @@ const CodeBlockServer = dynamic(
 export default function ButtonShowCode() {
   const {
     cssVariables: {
-      shadcn: { dark, light },
+      ruru: { dark, light },
     },
   } = useThemeContext();
 

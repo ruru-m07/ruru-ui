@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
   ContrastInfo,
-  ShadcnVariables,
+  RuruVariables,
   useThemeContext,
 } from "@/contexts/ThemeContext";
 
@@ -30,11 +30,11 @@ function CssVariablesContainer({
   contrastInfo,
   isLocked,
 }: {
-  variable: keyof ShadcnVariables;
+  variable: keyof RuruVariables;
   hex: string;
   isLocked: boolean | undefined;
   changeCssVariables: (
-    cssVariable: keyof ShadcnVariables,
+    cssVariable: keyof RuruVariables,
     hex: string,
     theme: "dark" | "light",
     lock?: boolean | undefined,
@@ -92,7 +92,7 @@ function CssVariablesContainer({
 export default function ThemeVariablesSettingSidebar() {
   const {
     cssVariables: {
-      shadcn: { light, dark },
+      ruru: { light, dark },
     },
     setCssVariables,
     mode,
@@ -100,7 +100,7 @@ export default function ThemeVariablesSettingSidebar() {
 
   const backgroundMix = mode === "light" ? "black" : "white";
   const changeCssVariables = (
-    cssVariable: keyof ShadcnVariables,
+    cssVariable: keyof RuruVariables,
     hex: string,
     theme: "dark" | "light",
     lock: boolean | undefined = undefined,
@@ -108,7 +108,7 @@ export default function ThemeVariablesSettingSidebar() {
     const isLightTheme = theme === "light";
 
     const themeUpdate = {
-      shadcn: {
+      ruru: {
         dark: isLightTheme
           ? { ...dark }
           : {
@@ -148,12 +148,12 @@ export default function ThemeVariablesSettingSidebar() {
           Object.keys(light).map((e) => (
             <CssVariablesContainer
               key={`light-${e}`}
-              variable={e as keyof ShadcnVariables}
-              hex={light[e as keyof ShadcnVariables].color}
+              variable={e as keyof RuruVariables}
+              hex={light[e as keyof RuruVariables].color}
               changeCssVariables={changeCssVariables}
               theme="light"
-              isLocked={light[e as keyof ShadcnVariables].isLocked}
-              contrastInfo={light[e as keyof ShadcnVariables].contrastChecker}
+              isLocked={light[e as keyof RuruVariables].isLocked}
+              contrastInfo={light[e as keyof RuruVariables].contrastChecker}
             />
           ))}
 
@@ -161,12 +161,12 @@ export default function ThemeVariablesSettingSidebar() {
           Object.keys(dark).map((e) => (
             <CssVariablesContainer
               key={`dark-${e}`}
-              variable={e as keyof ShadcnVariables}
-              hex={dark[e as keyof ShadcnVariables].color}
+              variable={e as keyof RuruVariables}
+              hex={dark[e as keyof RuruVariables].color}
               changeCssVariables={changeCssVariables}
               theme="dark"
-              isLocked={dark[e as keyof ShadcnVariables].isLocked}
-              contrastInfo={dark[e as keyof ShadcnVariables].contrastChecker}
+              isLocked={dark[e as keyof RuruVariables].isLocked}
+              contrastInfo={dark[e as keyof RuruVariables].contrastChecker}
             />
           ))}
       </div>
