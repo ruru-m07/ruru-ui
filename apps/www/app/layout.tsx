@@ -36,6 +36,12 @@ export default function Layout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
     >
       <body>
+        <head>
+          <meta
+            name="google-site-verification"
+            content="NyaIMHJt9--uZGUgzJpGQPNcUJtVLtvaEkodqOuJ7-I"
+          />
+        </head>
         <CSPostHogProvider>
           <RootProvider>
             <RuruProvider>
