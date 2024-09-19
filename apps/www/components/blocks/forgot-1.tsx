@@ -43,14 +43,14 @@ const Forgot1 = (): React.ReactNode => {
           <div className="flex items-center gap-4">
             <img
               className="dark:block hidden"
-              src={"https://ruru-ui.vercel.app/logo-white.png"}
+              src={"https://ruru-ui.vercel.app/assets/logo-white.png"}
               alt="logo"
               height={40}
               width={40}
             />
             <img
               className="dark:hidden block"
-              src={"https://ruru-ui.vercel.app/logo-black.png"}
+              src={"https://ruru-ui.vercel.app/assets/logo-black.png"}
               alt="logo"
               height={40}
               width={40}

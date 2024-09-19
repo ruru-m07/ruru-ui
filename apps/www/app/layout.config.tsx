@@ -11,14 +11,14 @@ export const baseOptions: BaseLayoutProps = {
       <>
         <Image
           className="size-8 [.uwu_&]:hidden [header_&]:size-6 dark:block hidden"
-          src={"/logo-white.png"}
+          src={"/assets/logo-white.png"}
           alt="logo"
           height={100}
           width={100}
         />
         <Image
           className="size-8 [.uwu_&]:hidden [header_&]:size-6 dark:hidden block"
-          src={"/logo-black.png"}
+          src={"/assets/logo-black.png"}
           alt="logo"
           height={100}
           width={100}

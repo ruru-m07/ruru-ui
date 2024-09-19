@@ -10,7 +10,7 @@ const Hero = () => {
   const router = useRouter();
 
   return (
-    <main className="flex items-center justify-center bg-[url('/rings-bg.svg')] w-full h-screen bg-cover relative bg-no-repeat flex-wrap bg-center">
+    <main className="flex items-center justify-center bg-[url('/assets/rings-bg.svg')] w-full h-screen bg-cover relative bg-no-repeat flex-wrap bg-center">
       <div
         aria-hidden="true"
         className="bg-[radial-gradient(_50%_50%_at_50%_50%,_#fff_0,_hsla(0,_0%,_100%,_0)_100%_)] opacity-[0.06] rotate-45 w-full -top-[80px] max-w-[1800px]"
