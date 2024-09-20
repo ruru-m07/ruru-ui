@@ -2,8 +2,5 @@
 User-agent: *
 Allow: /
 
-# Host
-Host: https://ruru-ui.vercel.app
-
 # Sitemaps
 Sitemap: https://ruru-ui.vercel.app/sitemap.xml
