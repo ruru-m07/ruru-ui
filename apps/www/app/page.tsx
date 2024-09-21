@@ -1,6 +1,8 @@
 import React from "react";
-import Hero from "../../components/hero";
+import Hero from "@/components/hero";
 import {
+  Heart,
+  LayoutTemplate,
   LibraryBig,
   Palette,
   Plus,
@@ -13,10 +15,11 @@ import { cn } from "@/utils/cn";
 import { File, Folder, Files } from "fumadocs-ui/components/files";
 import { Spinner } from "ruru-ui/components/spinner";
 import dynamic from "next/dynamic";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon, HeartIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { Button } from "ruru-ui/components/button";
 import { Footer } from "@/components/footer";
+import ContributorCounter from "@/components/contributor-count";
+import Image from "next/image";
 
 const CodeBlockServer = dynamic(
   () => import("@/components/ui/code-block-server"),
@@ -81,9 +84,9 @@ export default function App() {
   return (
     <>
       <main>
-        <div className="dark:bg-[#050505]">
+        <div>
           <Hero />
-          <div className="border w-[80%] m-auto">
+          <div className="border w-[80%] m-auto z-10 bg-[#050505] mt-5">
             <div
               className="relative p-6 text-center text-3xl font-bold py-14"
               style={{
@@ -355,6 +358,71 @@ export default function App() {
                 <span className="font-medium">
                   Support for RSC (React Server Components).
                 </span>
+              </div>
+            </div>
+
+            <ShapratorHorizontal />
+
+            <div className="flex flex-col items-center justify-center py-10">
+              <Heart size={36} className="mb-3" />
+              <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                Made Possible by You.
+              </h3>
+              <p className="text-sm text-muted-foreground my-3">
+                Ruru UI is 100% powered by passion and open source community.
+              </p>
+
+              <ContributorCounter repoOwner={"ruru-m07"} repoName={"ruru-ui"} />
+
+              <p className="text-sm text-muted-foreground my-3">
+                Some of our best contributors.
+              </p>
+            </div>
+
+            <ShapratorHorizontal />
+
+            <div className="flex">
+              <Link href={"/theme"} className="w-1/2 border-r p-4">
+                <div className="z-10">
+                  <div className="flex items-center ml-5 mt-5">
+                    <Palette size={20} strokeWidth={1.5} className="mr-2" />
+                    <h2 className="text-base font-medium">Theming</h2>
+                  </div>
+                  <p className="text-muted-foreground text-xs ml-5 mt-2">
+                    Customize theme your components.
+                  </p>
+                </div>
+                <div>
+                  <Image
+                    src="/assets/theme.svg"
+                    alt="theme"
+                    width={715}
+                    height={409}
+                  />
+                </div>
+              </Link>
+              <div className="w-1/2 p-4 bg-[#080808]">
+                <div className="z-10">
+                  <div className="flex items-center ml-5 mt-5">
+                    <LayoutTemplate
+                      size={20}
+                      strokeWidth={1.5}
+                      className="mr-2"
+                    />
+                    <h2 className="text-base font-medium">Blocks</h2>
+                  </div>
+                  <p className="text-muted-foreground text-xs ml-5 mt-2">
+                    The Blocks To Build Your App Faster
+                  </p>
+                </div>
+                <div>
+                  <Image
+                    src="/assets/blocks.svg"
+                    alt="theme"
+                    width={715}
+                    height={409}
+                  />
+                </div>
               </div>
             </div>
 
