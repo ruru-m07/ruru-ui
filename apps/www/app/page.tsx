@@ -382,8 +382,8 @@ export default function App() {
             <ShapratorHorizontal />
 
             <div className="flex">
-              <Link href={"/theme"} className="w-1/2 border-r p-4">
-                <div className="z-10">
+              <Link href={"/theme"} className="w-1/2 border-r">
+                <div className="z-10 p-4">
                   <div className="flex items-center ml-5 mt-5">
                     <Palette size={20} strokeWidth={1.5} className="mr-2" />
                     <h2 className="text-base font-medium">Theming</h2>
@@ -401,8 +401,8 @@ export default function App() {
                   />
                 </div>
               </Link>
-              <div className="w-1/2 p-4 bg-[#080808]">
-                <div className="z-10">
+              <Link href={"/blocks"} className="w-1/2 bg-[#080808]">
+                <div className="z-10 p-4">
                   <div className="flex items-center ml-5 mt-5">
                     <LayoutTemplate
                       size={20}
@@ -418,12 +418,12 @@ export default function App() {
                 <div>
                   <Image
                     src="/assets/blocks.svg"
-                    alt="theme"
+                    alt="blocks"
                     width={715}
                     height={409}
                   />
                 </div>
-              </div>
+              </Link>
             </div>
 
             <ShapratorHorizontal />

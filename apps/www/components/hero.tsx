@@ -12,7 +12,7 @@ const Hero = () => {
   const router = useRouter();
 
   return (
-    <main className="flex items-center justify-center w-full h-screen bg-cover relative bg-no-repeat flex-wrap bg-center">
+    <main className="flex items-center justify-center w-full h-screen bg-cover relative bg-no-repeat flex-wrap bg-center bg-[#05050541]">
       <Image
         className="absolute top-0 ring-0 -z-10"
         src={"/assets/background_dots.svg"}
@@ -38,7 +38,7 @@ const Hero = () => {
         aria-hidden="true"
         className="opacity-[0.06] rotate-45 w-full -top-[80px] max-w-[1800px]"
       ></div>
-      <div className="flex flex-col items-center max-w-[800px] px-[16px] -mt-64 z-10">
+      <div className="flex flex-col items-center max-w-[800px] px-[16px] -mt-72 z-10">
         <h1 className="text-4xl font-bold text-center space-x-2 ">
           <span
             className="[box-shadow:0_0_0_1.5px_#444444] px-[2px] py-[0] relative inline-flex mr-2"
@@ -116,7 +116,7 @@ const Hero = () => {
             Ruru UI
           </span>
         </h1>
-        <p className="text-muted-foreground text-lg mx-20 mt-6 mb-6 text-center ">
+        <p className="text-muted-foreground text-lg mx-20 mt-9 mb-9 text-center ">
           the ultimate design system and UI library for creating seamless,
           beautiful, and highly customizable user interfaces.
         </p>
@@ -132,7 +132,7 @@ const Hero = () => {
           </Button>
         </div>
         <div className="fixed h-[50px] border rounded-full mt-10 flex justify-around items-center px-2  top-0 backdrop-blur-xl bg-primary-foreground/35">
-          {["docs", "block", "theme", "sponsors"].map((i) => (
+          {["docs", "blocks", "theme", "sponsors"].map((i) => (
             <Link
               key={i}
               href={`/${i}`}
