@@ -81,4 +81,10 @@ export const ui: Registry = [
     type: "components:ui",
     files: ["label.tsx"],
   },
+  {
+    name: "dropzone",
+    type: "components:ui",
+    files: ["dropzone.tsx"],
+    dependencies: ["react-dropzone"],
+  },
 ];
