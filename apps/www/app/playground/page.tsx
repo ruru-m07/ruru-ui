@@ -39,6 +39,8 @@ import {
   selectAnimationVariants,
 } from "ruru-ui/components/select";
 import Modal, { ModalProvider } from "ruru-ui/components/modal";
+import { Dropzone } from "ruru-ui/components/dropzone";
+import AdvanceDropzone from "@/components/preview/dropzone/advanceDropzone";
 
 const Playground = () => {
   const handleSubmit = async () => {
@@ -605,6 +607,14 @@ const Playground = () => {
             </Modal.Actions>
           </Modal>
         </ModalProvider>
+      </Card>
+
+      <Card className="p-10">
+        <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)} />
+      </Card>
+
+      <Card className="p-10">
+        <AdvanceDropzone />
       </Card>
 
       <div className="my-10" />

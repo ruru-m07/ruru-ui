@@ -145,6 +145,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      react-dropzone:
+        specifier: ^14.2.3
+        version: 14.2.3(react@18.3.1)
       react-resizable-panels:
         specifier: ^2.1.2
         version: 2.1.2(react-dom@18.3.1)(react@18.3.1)
@@ -344,6 +347,9 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.3.1
+      react-dropzone:
+        specifier: ^14.2.3
+        version: 14.2.3(react@18.3.1)
       react-hook-form:
         specifier: ^7.53.0
         version: 7.53.0(react@18.3.1)
@@ -4043,6 +4049,11 @@ packages:
     hasBin: true
     dev: false
 
+  /attr-accept@2.2.2:
+    resolution: {integrity: sha512-7prDjvt9HmqiZ0cl5CRjtS84sEyhsHP2coDkaZKRKVfCDo9s7iw7ChVmar78Gu9pC4SoR/28wFu/G5JJhTnqEg==}
+    engines: {node: '>=4'}
+    dev: false
+
   /autoprefixer@10.4.19(postcss@8.4.39):
     resolution: {integrity: sha512-BaENR2+zBZ8xXhM4pUaKUxlVdxZ0EZhjvbopwnXmxRUfqDmwSpC2lAi/QXvx7NRdPCo1WKEcEF6mV64si1z4Ew==}
     engines: {node: ^10 || ^12 || >=14}
@@ -5588,6 +5599,13 @@ packages:
     dependencies:
       flat-cache: 3.2.0
     dev: true
+
+  /file-selector@0.6.0:
+    resolution: {integrity: sha512-QlZ5yJC0VxHxQQsQhXvBaC7VRJ2uaxTf+Tfpu4Z/OcVQJVpZO+DGU0rkoVW5ce2SccxugvpBJoMvUs59iILYdw==}
+    engines: {node: '>= 12'}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
 
   /fill-range@7.1.1:
     resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
@@ -8699,7 +8717,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /property-information@6.5.0:
     resolution: {integrity: sha512-PgTgs/BlvHxOu8QuEN7wi5A0OmXaBcHpmCSTehcs6Uuu9IkDIEo13Hy7n898RHfrQ49vKCoGeWZSaAK01nwVig==}
@@ -8765,6 +8782,18 @@ packages:
       scheduler: 0.23.2
     dev: false
 
+  /react-dropzone@14.2.3(react@18.3.1):
+    resolution: {integrity: sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug==}
+    engines: {node: '>= 10.13'}
+    peerDependencies:
+      react: '>= 16.8 || 18.0.0'
+    dependencies:
+      attr-accept: 2.2.2
+      file-selector: 0.6.0
+      prop-types: 15.8.1
+      react: 18.3.1
+    dev: false
+
   /react-hook-form@7.53.0(react@18.3.1):
     resolution: {integrity: sha512-M1n3HhqCww6S2hxLxciEXy2oISPnAzxY7gvwVPrtlczTM/1dDadXgUxDpHMrMTblDOcm/AXtXxHwZ3jpg1mqKQ==}
     engines: {node: '>=18.0.0'}
@@ -8776,7 +8805,6 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-    dev: true
 
   /react-medium-image-zoom@5.2.7(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-I2mC3zQMmJ/JH5D04WIT5cS8jxFvB9Ybr3ORiIIeT3hPWRxT6mnC4dNUyvO1mVxxg158H6249UClr7tXRm5IUQ==}
