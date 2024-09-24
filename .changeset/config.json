@@ -9,5 +9,5 @@
   "updateInternalDependencies": "patch",
   "privatePackages": { "version": false },
   "bumpVersionsWithWorkspaceProtocolOnly": true,
-  "ignore": ["www", "sink"]
+  "ignore": ["www"]
 }
