@@ -1,0 +1,155 @@
+---
+title: Dropzone
+description: Dropzone allows the user to drag and drop files to upload.
+preview: dropzone
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import { Dropzone } from "ruru-ui/components/dropzone";
+import AdvanceDropzone from "@/components/preview/dropzone/advanceDropzone";
+
+## Installation
+
+<Rutabs items={["CLI", "Dependencies"]}>
+<Rutab value={"CLI"}>
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+<Tab value={"npm"}>
+```bash
+npx ruru-ui-cli@latest add dropzone
+```
+</Tab>
+<Tab value={"pnpm"}>
+```bash
+pnpm dlx ruru-ui-cli@latest add dropzone
+```
+</Tab>
+<Tab value={"yarn"}>
+```bash
+npx ruru-ui-cli@latest add dropzone
+```
+</Tab>
+<Tab value={"bun"}>
+```bash
+bunx --bun ruru-ui-cli@latest add dropzone
+```
+</Tab>
+</Tabs>
+
+</Rutab>
+<Rutab value={"Dependencies"}>
+```package-install
+npm install ruru-ui@latest
+```
+</Rutab>
+</Rutabs>
+
+## Usage
+
+The `Dropzone` component is used to allow the user to drag and drop files to upload.
+This component is a **wrapper** around the [react-dropzone](https://github.com/react-dropzone/react-dropzone) library.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <div className="p-4 w-full">
+      <Dropzone />
+    </div>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+// [!code word:Dropzone]
+import { Dropzone } from "ruru-ui/components/dropzone";
+
+export function Demo() {
+  return <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)} />;
+}
+```
+  </Tab>
+</Tabs>
+
+---
+
+### Advanced Example
+
+In this example, we learn how to handle files using the Dropzone component.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <div className="p-4 w-full">
+      <AdvanceDropzone className="m-10" />
+    </div>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+"use client";
+
+import React from "react";
+import { Dropzone, RD } from "ruru-ui/components/dropzone";
+
+import { File } from "lucide-react";
+
+const AdvanceDropzone = () => {
+  const [files, setFiles] = React.useState<RD.FileWithPath[]>([]);
+
+  function formatFileSize(bytes: number) {
+    if (bytes === 0) return "0 Bytes";
+    const k = 1024;
+    const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+  }
+
+  const onDrop = (acceptedFiles: RD.FileWithPath[]) => {
+    setFiles((p) => [...p, ...acceptedFiles]);
+  };
+
+  return (
+    <div className="w-full">
+      <Dropzone onDrop={onDrop} />
+      {files.length > 0 && (
+        <section className="my-4">
+          <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+            Files
+          </h4>
+          {files.map((file, index) => (
+            <div
+              key={index}
+              className="space-x-3 w-[100%] border-[1.5px] border-input  flex items-center justify-between rounded-md py-3 px-3 my-3"
+            >
+              <div className="flex items-center">
+                <File size={20} className="text-muted-foreground" />
+                <span className="ml-2 text-sm">{file.path}</span>
+              </div>
+              <span className="text-muted-foreground text-xs">
+                {formatFileSize(file.size)}
+              </span>
+            </div>
+          ))}
+        </section>
+      )}
+    </div>
+  );
+};
+
+export default AdvanceDropzone;
+```
+  </Tab>
+</Tabs>
+
+## Import
+
+We are exporting the `RD` component from the `react-dropzone` module.
+Here RD is the alias for the `react-dropzone` library.
+
+```tsx title="dropzone.tsx"
+// [!code word:RD]
+import * as RD from "react-dropzone";
+export { RD };
+```
+
+## Props
+
+| Name      | Type                                              | Default | Description                                               |
+| --------- | ------------------------------------------------- | ------- | --------------------------------------------------------- |
+| className | string                                            | ""      | Optional additional class names for styling the dropzone. |
+| props     | DropzoneProps & React.RefAttributes\<DropzoneRef> | {}      | Props passed to the `react-dropzone` component.           |
