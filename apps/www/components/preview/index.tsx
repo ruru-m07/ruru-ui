@@ -30,6 +30,7 @@ import { BadgePreview } from "../badgePreview";
 import Tabspreview from "../tabs";
 import { default as ModalPreview } from "./Modal/preview";
 import FormPreview from "./form/preview";
+import DropzonePreview from "./dropzone/dropzone";
 
 export default {
   button: (
@@ -184,4 +185,5 @@ export default {
       <FormPreview />
     </Wrapper>
   ),
+  dropzone: <DropzonePreview />,
 } as Record<string, ReactNode>;
