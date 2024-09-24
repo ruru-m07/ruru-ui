@@ -1,0 +1,213 @@
+---
+title: Accordion
+description: The accordion component is a vertically stacked set of interactive headings that each contain a title, content, or both.
+preview: accordion
+---
+
+import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent, Accordions, Accordion } from "ruru-ui/components/accordion";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import { Link } from 'lucide-react';
+
+## Installation
+
+<Rutabs items={["CLI", "Dependencies"]}>
+  <Rutab value={"CLI"}>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value={"npm"}>
+      ```bash
+      npx ruru-ui-cli@latest add accordion
+      ```
+      </Tab>
+      <Tab value={"pnpm"}>
+      ```bash
+      pnpm dlx ruru-ui-cli@latest add accordion
+      ```
+      </Tab>
+      <Tab value={"yarn"}>
+      ```bash
+      npx ruru-ui-cli@latest add accordion
+      ```
+      </Tab>
+      <Tab value={"bun"}>
+      ```bash
+      bunx --bun ruru-ui-cli@latest add accordion
+      ```
+    </Tab>
+    </Tabs>
+
+  </Rutab>
+  <Rutab value={"Dependencies"}>
+    ```package-install
+    npm install ruru-ui@latest
+    ```
+  </Rutab>
+</Rutabs>
+
+## Usage
+
+The `Accordion` component is a vertically stacked set of interactive headings that each contain a title, content, or both.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview" >
+    <div className="min-h-72 flex justify-center items-center">
+      <AccordionRoot type="single" collapsible className="w-full max-w-[400px]">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Is it responsive?</AccordionTrigger>
+          <AccordionContent>Yes. It is responsive and mobile-friendly.</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Is it customizable?</AccordionTrigger>
+          <AccordionContent>Yes. It is customizable and supports theming.</AccordionContent>
+        </AccordionItem>
+      </AccordionRoot>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "ruru-ui/components/accordion";
+
+export function Demo() {
+  return (
+    <AccordionRoot type="single" collapsible className="w-full max-w-[400px]">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Is it responsive?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It is responsive and mobile-friendly.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Is it customizable?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It is customizable and supports theming.
+        </AccordionContent>
+      </AccordionItem>
+    </AccordionRoot>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+## Customizability
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview" >
+    <div className="min-h-72 flex justify-center items-center">
+      <AccordionRoot type="single" collapsible className="w-full max-w-[600px] border rounded-lg">
+        {Array.from(new Array(4)).map((_, index) => (
+          <AccordionItem value={`item-${index}`} key={index} className="px-4 last-of-type:border-none">
+            <AccordionTrigger chevronPosition="left">
+              <Link size={16} />
+              <span className="w-full text-left">Is this accessible?</span>
+            </AccordionTrigger>
+            <AccordionContent>
+              Yes. It adheres to the WAI-ARIA design pattern.
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </AccordionRoot>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "ruru-ui/components/accordion";
+import { Link } from 'lucide-react';
+
+export function Demo() {
+  return (
+    <AccordionRoot type="single" collapsible className="w-full max-w-[600px] border rounded-lg">
+      {Array.from(new Array(4)).map((_, index) => (
+        <AccordionItem value={`item-${index}`} key={index} className="px-4 last-of-type:border-none">
+          <AccordionTrigger chevronPosition="left">
+            <Link size={16} />
+            <span className="w-full text-left">Is this accessible?</span>
+          </AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+      ))}
+    </AccordionRoot>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+## Multiple Variants
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview" >
+    <div className="min-h-72 flex justify-center items-center">
+      <Accordions className="max-w-[600px]">
+        {Array.from(new Array(4)).map((_, index) => (
+          <Accordion id={`item-${index}`} trigger={`Is this accessible?`} key={index}>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </Accordion>
+        ))}
+      </Accordions>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+import {
+  Accordions,
+  Accordion
+} from "ruru-ui/components/accordion";
+
+export function Demo() {
+  return (
+    <Accordions className="max-w-[600px]">
+      {Array.from(new Array(4)).map((_, index) => (
+        <Accordion id={`item-${index}`} trigger={`Is this accessible?`} key={index}>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </Accordion>
+      ))}
+    </Accordions>
+  )
+}
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+| Prop | Description | Type | Default |
+| ---- | ----------- | ---- | ------- |
+| `asChild` | Render the accordion as a child component. | `boolean` | `false` |
+| `type` | The type of accordion. | `"single" \| "multiple"` | `"multiple"` |
+| `value` | The value of the accordion. | `string \| string[]` | `undefined \| []` |
+| `defaultValue` | The default value of the accordion. | `string \| string[]` | `undefined \| []` |
+| `onValueChange` | The callback function that is triggered when the value of the accordion changes. | `(value: string \| string[]) => void` | `undefined` |
+| `collapsible` | Allow the accordion to be collapsible. | `boolean` | `false` |
+| `disabled` | Disable the accordion. | `boolean` | `false` |
+| `dir` | The direction of the accordion. | `"ltr" \| "rtl"` | `"ltr"` |
+| `orientation` | The orientation of the accordion. | `"vertical" \| "horizontal"` | `"vertical"` |
+
+| Data Attribute | Description | Values |
+| -------------- | ----------- | ------ |
+| `[data-orientation]` | The orientation of the accordion. | `"vertical" \| "horizontal"` |
+

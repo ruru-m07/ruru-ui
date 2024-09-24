@@ -25,6 +25,12 @@ import {
   SelectValue,
 } from "ruru-ui/components/select";
 import { Label } from "ruru-ui/components/label";
+import {
+  AccordionRoot,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "ruru-ui/components/accordion";
 
 import { BadgePreview } from "../badgePreview";
 import Tabspreview from "../tabs";
@@ -182,6 +188,30 @@ export default {
   form: (
     <Wrapper className="max-h-[500px] overflow-y-hidden">
       <FormPreview />
+    </Wrapper>
+  ),
+  accordion: (
+    <Wrapper>
+      <AccordionRoot type="single" collapsible className="w-full max-w-[400px]">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Is it responsive?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It is responsive and mobile-friendly.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Is it customizable?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It is customizable and supports theming.
+          </AccordionContent>
+        </AccordionItem>
+      </AccordionRoot>
     </Wrapper>
   ),
 } as Record<string, ReactNode>;
