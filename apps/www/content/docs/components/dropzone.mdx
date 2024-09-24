@@ -51,7 +51,9 @@ This component is a **wrapper** around the [react-dropzone](https://github.com/r
 
 <Tabs items={["Preview", "Code"]}>
   <Tab className={"flex justify-center"} value="Preview" >
-    <Dropzone className="m-10" />
+    <div className="p-4 w-full">
+      <Dropzone />
+    </div>
   </Tab>
   <Tab className={"-mt-8"} value="Code">
 ```tsx
@@ -73,7 +75,9 @@ In this example, we learn how to handle files using the Dropzone component.
 
 <Tabs items={["Preview", "Code"]}>
   <Tab className={"flex justify-center"} value="Preview" >
-    <AdvanceDropzone className="m-10" />
+    <div className="p-4 w-full">
+      <AdvanceDropzone className="m-10" />
+    </div>
   </Tab>
   <Tab className={"-mt-8"} value="Code">
 ```tsx
@@ -131,6 +135,17 @@ export default AdvanceDropzone;
 ```
   </Tab>
 </Tabs>
+
+## Import
+
+We are exporting the `RD` component from the `react-dropzone` module.
+Here RD is the alias for the `react-dropzone` library.
+
+```tsx title="dropzone.tsx"
+// [!code word:RD]
+import * as RD from "react-dropzone";
+export { RD };
+```
 
 ## Props
 
