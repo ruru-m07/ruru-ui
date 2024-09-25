@@ -51,6 +51,48 @@ Please note that this project is governed by our [Code of Conduct](https://githu
 4. Test your changes thoroughly.
 5. Submit a pull request (PR) with a clear explanation of your changes and why they are beneficial.
 
+### New Component
+
+1. Create a new file in the `/packages/ui/src/components/[your-component].tsx` directory.
+
+2. Add your component to the `/apps/www/registry/ui.ts` file.
+
+```json
+{
+  name: "button",
+  type: "components:ui",
+  dependencies: ["@radix-ui/react-slot"],
+  subcategory: ["spinner"],
+  files: ["button.tsx"],
+},
+```
+
+3. write component documentation in `/apps/www/content/docs/components/[your-component].mdx`.
+
+- add previre component in `/apps/www/components/preview/index.tsx`.
+
+```tsx
+button: (
+  <Wrapper>
+    <div className="flex items-center justify-center gap-4">
+      <Button className="w-fit" variant={"secondary"}>
+        Button
+      </Button>
+    </div>
+  </Wrapper>
+),
+```
+
+- make sure u add required details **title** **description** ans **preview**
+
+```mdx
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+preview: button
+---
+```
+
 ## Issue Reporting
 
 If you encounter a bug or have a feature request, please open an issue. with a clear title and description.
