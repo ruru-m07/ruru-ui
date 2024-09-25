@@ -87,4 +87,10 @@ export const ui: Registry = [
     files: ["dropzone.tsx"],
     dependencies: ["react-dropzone"],
   },
+  {
+    name: "accordion",
+    type: "components:ui",
+    dependencies: ["@radix-ui/react-accordion"],
+    files: ["accordion.tsx"],
+  },
 ];

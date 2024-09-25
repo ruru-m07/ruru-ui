@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { ChevronDownIcon, Link1Icon } from "@radix-ui/react-icons";
+import { cva, type VariantProps } from "class-variance-authority";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { cn } from "@/utils/cn";
 
 const AccordionRoot = React.forwardRef<
@@ -41,18 +42,25 @@ const AccordionTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & {
     hideChevron?: boolean;
     chevronPosition?: "left" | "right";
+    chevronRotation?: "full" | "half";
   }
 >(
   (
-    { className, children, hideChevron = false, chevronPosition, ...props },
+    {
+      className,
+      children,
+      hideChevron = false,
+      chevronPosition,
+      chevronRotation = "full",
+      ...props
+    },
     ref
   ) => (
-    <AccordionPrimitive.Header className="flex !m-0">
+    <AccordionPrimitive.Header className="flex !m-0 !text-current">
       <AccordionPrimitive.Trigger
         ref={ref}
         className={cn(
-          "flex flex-1 items-center justify-between gap-4 py-4 text-sm font-medium transition-all",
-          !hideChevron ? "[&[data-state=open]>svg.chevron]:rotate-180" : "",
+          "group/accordion flex flex-1 items-center justify-between gap-4 py-4 text-sm font-medium transition-all",
           chevronPosition === "left"
             ? "flex-row-reverse data-[orientation=horizontal]:flex-col-reverse"
             : "flex-row data-[orientation=horizontal]:flex-col",
@@ -62,7 +70,14 @@ const AccordionTrigger = React.forwardRef<
       >
         {children}
         {!hideChevron && (
-          <ChevronDownIcon className="chevron h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+          <ChevronDownIcon
+            className={cn(
+              "chevron h-4 w-4 shrink-0 text-current transition-transform duration-200",
+              chevronRotation === "full"
+                ? "rotate-0 group-data-[state=open]/accordion:rotate-180"
+                : "-rotate-90 group-data-[state=open]/accordion:rotate-0"
+            )}
+          />
         )}
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
@@ -88,66 +103,254 @@ const AccordionContent = React.forwardRef<
 ));
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
-const AccordionVariants = {
-  default: {
-    accordions: cn(),
-    accordion: cn("border-b last-of-type:border-none"),
+export const AccordionsVariants = cva(cn("w-full rounded-lg"), {
+  variants: {
+    variant: {
+      default: cn(),
+      primary: cn(),
+      none: cn("border-none rounded-none"),
+    },
+    theme: {
+      default: cn("text-primary-foreground"),
+      primary: "border",
+      secondary: cn("border text-foreground"),
+      tertiary: cn("border-none text-primary-foreground"),
+    },
   },
-};
+  defaultVariants: {
+    variant: "default",
+    theme: "default",
+  },
+});
 
+export const AccordionVariants = cva(
+  cn(
+    "w-full border-b last-of-type:border-none first-of-type:rounded-t-lg last-of-type:rounded-b-lg transition-colors"
+  ),
+  {
+    variants: {
+      variant: {
+        default: cn(),
+        primary: cn(),
+        none: cn(
+          "border-none rounded-none first-of-type:rounded-none last-of-type:rounded-none"
+        ),
+      },
+      theme: {
+        default: cn("bg-primary hover:bg-primary/85 text-primary-foreground"),
+        primary: cn("bg-none text-foreground"),
+        secondary: cn(
+          "bg-secondary/55 hover:bg-secondary text-secondary-foreground"
+        ),
+        tertiary: cn("bg-none hover:bg-accent/75 border-none text-foreground"),
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      theme: "default",
+    },
+  }
+);
+
+/**
+ * Accordions are a collection of vertically stacked sections that expand and collapse on click.
+ *
+ * @param {React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>} props
+ *
+ * @prop {"default", "primary", "none"} variant - The variant of the accordion.
+ * @prop {"default", "primary", "secondary", "tertiary"} theme - The theme of the accordion.
+ * @prop {"single" | "multiple"} type - The type of the accordion.
+ * @prop {React.ReactNode} children - The content of the accordion.
+ * @prop {string} className - The class name of the accordion.
+ * @param {React.Ref<HTMLButtonElement>} ref - Forwarded ref.
+ *
+ * @example
+ * ```tsx
+ * <Accordions variant="primary" theme="primary">
+ *  <Accordion id="item-1" trigger="Item 1">
+ *   Content 1
+ *  </Accordion>
+ * </Accordions>
+ */
 const Accordions = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
-    variant?: keyof typeof AccordionVariants;
+    /**
+     * The variant of the accordion.
+     * @default "default"
+     * @type {VariantProps<typeof AccordionsVariants>["variant"]}
+     *
+     * @example
+     * ```tsx
+     * <Accordions variant="primary">
+     *  <Accordion id="item-1" trigger="Item 1">
+     *   Content 1
+     *  </Accordion>
+     * </Accordions>
+     * ```
+     */
+    variant?: VariantProps<typeof AccordionsVariants>["variant"];
+    /**
+     * The theme of the accordion.
+     * @default "default"
+     * @type {VariantProps<typeof AccordionsVariants>["theme"]}
+     *
+     * @example
+     * ```tsx
+     * <Accordions theme="primary">
+     *  <Accordion id="item-1" trigger="Item 1">
+     *   Content 1
+     *  </Accordion>
+     * </Accordions>
+     */
+    theme?: VariantProps<typeof AccordionsVariants>["theme"];
   }
->(({ className, type = "single", variant, ...props }, ref) => (
-  // @ts-expect-error -- Multiple types
-  <AccordionRoot
-    ref={ref}
-    type={type}
-    collapsible={type === "single" ? true : undefined}
-    className={cn("w-full border rounded-lg", className)}
-    data-variant={variant}
-    {...props}
-  />
-));
+>(
+  (
+    {
+      className,
+      type = "single",
+      variant = "default",
+      theme = "default",
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const newClildren = React.Children.map(children, (child) => {
+      if (React.isValidElement(child)) {
+        // @ts-expect-error -- Unknown type
+        return React.cloneElement(child, { variant, theme });
+      }
+      return child;
+    });
+
+    return (
+      // @ts-expect-error -- Multiple types
+      <AccordionRoot
+        ref={ref}
+        type={type}
+        collapsible={type === "single" ? true : undefined}
+        className={cn(AccordionsVariants({ variant, theme }), className)}
+        data-variant={variant}
+        data-theme={theme}
+        {...props}
+      >
+        {newClildren}
+      </AccordionRoot>
+    );
+  }
+);
 Accordions.displayName = "Accordions";
 
+/**
+ * An accordion is a vertically stacked section that expands and collapses on click.
+ *
+ * @param {React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>} props
+ *
+ * @prop {"default", "primary", "none"} variant - The variant of the accordion.
+ * @prop {"default", "primary", "secondary", "tertiary"} theme - The theme of the accordion.
+ * @prop {string} TClassName - The class name of the trigger.
+ * @prop {string} CClassName - The class name of the content.
+ * @prop {React.ReactNode} trigger - The trigger of the accordion.
+ * @prop {string} id - The id of the accordion.
+ * @prop {React.ReactNode} children - The content of the accordion.
+ * @prop {string} className - The class name of the accordion.
+ * @param {React.Ref<HTMLButtonElement>} ref - Forwarded ref.
+ *
+ * @example
+ * ```tsx
+ * <Accordion id="item-1" trigger="Item 1">
+ *  Content 1
+ * </Accordion>
+ */
 const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   Omit<
     React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>,
     "value"
   > & {
+    variant?: VariantProps<typeof AccordionVariants>["variant"];
+    theme?: VariantProps<typeof AccordionVariants>["theme"];
+    /**
+     * The class name of the trigger.
+     * @type {string}
+     */
     TClassName?: string;
+    /**
+     * The class name of the content.
+     * @type {string}
+     */
     CClassName?: string;
+    /**
+     * The trigger of the accordion.
+     * @type {React.ReactNode}
+     *
+     * @example
+     * ```tsx
+     * <Accordion id="item-1" trigger="Item 1">
+     *  Content 1
+     * </Accordion>
+     */
     trigger: React.ReactNode;
+    /**
+     * The id of the accordion.
+     * @type {string}
+     *
+     * @example
+     * ```tsx
+     * <Accordion id="item-1" trigger="Item 1">
+     *  Content 1
+     * </Accordion>
+     */
     id: string;
   }
 >(
   (
-    { className, TClassName, CClassName, trigger, id, children, ...props },
+    {
+      className,
+      variant = "default",
+      theme = "default",
+      TClassName,
+      CClassName,
+      trigger,
+      id,
+      children,
+      ...props
+    },
     ref
-  ) => (
-    <AccordionItem
-      ref={ref}
-      className={cn("border-b last-of-type:border-none", className)}
-      value={id}
-      {...props}
-    >
-      <AccordionTrigger
-        className={cn("px-4", TClassName)}
-        chevronPosition="left"
+  ) => {
+    return (
+      <AccordionItem
+        ref={ref}
+        className={cn(AccordionVariants({ variant, theme }), className)}
+        value={id}
+        data-variant={variant}
+        data-theme={theme}
+        {...props}
       >
-        <Link1Icon className="size-4" />
-        <span className="w-full text-left">{trigger}</span>
-      </AccordionTrigger>
-      <AccordionContent
-        className={cn("px-4", CClassName)}
-        children={children}
-      />
-    </AccordionItem>
-  )
+        <AccordionTrigger
+          className={cn("px-4 py-0", TClassName)}
+          chevronPosition={
+            ["primary"].includes(variant || "") ? "left" : "right"
+          }
+          chevronRotation={
+            ["primary"].includes(variant || "") ? "half" : "full"
+          }
+          data-variant={variant}
+          data-theme={theme}
+        >
+          {trigger}
+        </AccordionTrigger>
+        <AccordionContent
+          className={cn("px-4", CClassName)}
+          data-variant={variant}
+          data-theme={theme}
+          children={children}
+        />
+      </AccordionItem>
+    );
+  }
 );
 Accordion.displayName = "Accordion";
 

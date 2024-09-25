@@ -25,12 +25,7 @@ import {
   SelectValue,
 } from "ruru-ui/components/select";
 import { Label } from "ruru-ui/components/label";
-import {
-  AccordionRoot,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "ruru-ui/components/accordion";
+import { Accordions, Accordion } from "ruru-ui/components/accordion";
 
 import { BadgePreview } from "../badgePreview";
 import Tabspreview from "../tabs";
@@ -193,26 +188,27 @@ export default {
   ),
   accordion: (
     <Wrapper>
-      <AccordionRoot type="single" collapsible className="w-full max-w-[400px]">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>Is it responsive?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It is responsive and mobile-friendly.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3">
-          <AccordionTrigger>Is it customizable?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It is customizable and supports theming.
-          </AccordionContent>
-        </AccordionItem>
-      </AccordionRoot>
+      <Accordions
+        type="single"
+        collapsible
+        className="w-full max-w-[500px]"
+        variant="default"
+        theme="primary"
+      >
+        <Accordion id="item-1" trigger="Is it accessible?" TClassName="py-4">
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </Accordion>
+        <Accordion id="item-2" trigger="Is it responsive?" TClassName="py-4">
+          Yes. It is responsive and mobile-friendly.
+        </Accordion>
+        <Accordion id="item-3" trigger="Is it customizable?" TClassName="py-4">
+          Yes. It is customizable and supports multiple themes and variants. But
+          the core components can also be imported for custom styling.
+        </Accordion>
+        <Accordion id="item-4" trigger="Is it animated?" TClassName="py-4">
+          Yes. It is animated and supports custom animations through CSS or JS.
+        </Accordion>
+      </Accordions>
     </Wrapper>
   ),
   dropzone: <DropzonePreview />,
