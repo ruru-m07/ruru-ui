@@ -5,21 +5,13 @@ import { RootProvider } from "fumadocs-ui/provider";
 import { RuruProvider } from "ruru-ui/provider";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { baseUrl, createMetadata } from "@/utils/metadata";
+import { createMetadata } from "@/utils/metadata";
 import "./global.css";
 import "fumadocs-ui/style.css";
 import "fumadocs-ui/twoslash.css";
 import { CSPostHogProvider } from "./providers";
 
-export const metadata = createMetadata({
-  title: {
-    template: "%s | Ruru UI",
-    default: "Ruru UI",
-  },
-  description:
-    "Ruru UI is a design system for building classic web applications.",
-  metadataBase: baseUrl,
-});
+export const metadata = createMetadata({});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -36,12 +28,6 @@ export default function Layout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
     >
       <body>
-        <head>
-          <meta
-            name="google-site-verification"
-            content="NyaIMHJt9--uZGUgzJpGQPNcUJtVLtvaEkodqOuJ7-I"
-          />
-        </head>
         <CSPostHogProvider>
           <RootProvider>
             <RuruProvider>
