@@ -9,7 +9,7 @@ export function createMetadata(override: Metadata): Metadata {
       url: "https://ruru-ui.vercel.app",
       images: [
         {
-          url: "https://ruru-ui.vercel.app/assets/banner.png",
+          url: "https://ruru-ui.vercel.app/assets/banner.jpg",
           width: 1200,
           height: 567,
           alt: "ruru-ui",
