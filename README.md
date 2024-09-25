@@ -2,7 +2,7 @@
 
 Welcome to ruru UI, a comprehensive UI library and a set of reusable components designed to help you build beautiful and consistent user interfaces with ease.
 
-![banner-modified](https://github.com/user-attachments/assets/0dcd8002-daff-4b89-854f-f899a94ecaff)
+![banner-modified](./apps/www/public/assets/banner.png)
 
 ## Join the Community
 
