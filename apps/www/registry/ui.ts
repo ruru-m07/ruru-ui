@@ -92,5 +92,6 @@ export const ui: Registry = [
     type: "components:ui",
     dependencies: ["@radix-ui/react-accordion"],
     files: ["accordion.tsx"],
+    subcategory: ["button"],
   },
 ];

@@ -89,6 +89,7 @@
     "name": "accordion",
     "dependencies": ["@radix-ui/react-accordion"],
     "files": ["accordion.tsx"],
-    "type": "components:ui"
+    "type": "components:ui",
+    "subcategory": ["button"]
   }
 ]
