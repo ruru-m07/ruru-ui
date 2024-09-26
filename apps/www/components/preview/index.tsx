@@ -188,13 +188,7 @@ export default {
   ),
   accordion: (
     <Wrapper>
-      <Accordions
-        type="single"
-        collapsible
-        className="w-full max-w-[500px]"
-        variant="default"
-        theme="primary"
-      >
+      <Accordions type="single" collapsible className="w-full max-w-[500px]">
         <Accordion id="item-1" trigger="Is it accessible?" TClassName="py-4">
           Yes. It adheres to the WAI-ARIA design pattern.
         </Accordion>

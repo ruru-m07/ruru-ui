@@ -56,8 +56,6 @@ The `Accordion` component is a vertically stacked set of interactive headings th
         type="single"
         collapsible
         className="w-full max-w-[500px]"
-        variant="default"
-        theme="primary"
       >
         <Accordion id="item-1" trigger="Is it accessible?" TClassName="py-4">Yes. It adheres to the WAI-ARIA design pattern.</Accordion>
         <Accordion id="item-2" trigger="Is it responsive?" TClassName="py-4">Yes. It is responsive and mobile-friendly.</Accordion>
@@ -75,8 +73,6 @@ export function Demo() {
       type="single"
       collapsible
       className="w-full max-w-[500px]"
-      variant="default"
-      theme="primary"
     >
       <Accordion id="item-1" trigger="Is it accessible?" TClassName="py-4">
         Yes. It adheres to the WAI-ARIA design pattern.
@@ -178,23 +174,16 @@ export function Demo() {
       type="single"
       variant="default"
       theme="default"
+      showCopyButton={true}
     >
       {Array.from(new Array(4)).map((_, index) => (
         <Accordion
           id={`item-${index}`}
           key={index}
           trigger={
-            <>
-              <Button
-                variant={"tertiary"}
-                className="text-current hover:opacity-70 hover:bg-transparent transition-all"
-              >
-                <Link size={16} />
-              </Button>
-              <span className="w-full text-left py-4 text-current">
-                Accordion Item {index + 1}
-              </span>
-            </>
+            <span className="w-full text-left py-4 text-current">
+              Accordion Item {index + 1}
+            </span>
           }
         >
           This is the content of the accordion item {index + 1}
@@ -292,6 +281,7 @@ import {
 | `collapsible` | Whether the accordion is collapsible. | `boolean` | `false` |
 | `variant` | The variant of the accordion. | `"default" \| "primary" \| "none"` | `"default"` |
 | `theme` | The theme of the accordion. | `"default" \| "primary" \| "secondary" \| "tertiary"` | `"default"` |
+| `showCopyButton` | Weather to show copy button. | `boolean` | `false` |
 | `props` | Other props | typeof `AccordionPrimitive.Root` with `ref` | `{}` |
 
 | Data Attribute | Description | Values |
@@ -308,6 +298,7 @@ import {
 | `trigger` | The trigger of the accordion. | `ReactNode` | `undefined` |
 | `TClassName` | The class name of the trigger. | `string` | `undefined` |
 | `CClassName` | The class name of the content. | `string` | `undefined` |
+| `copyText` | Costom text to copy. | `string` | `undefined` |
 | `props` | Other props | typeof `AccordionPrimitive.Item` with `ref` | `{}` |
 
 | Data Attribute | Description | Values |

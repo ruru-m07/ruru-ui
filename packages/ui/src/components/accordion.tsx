@@ -3,8 +3,9 @@
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { cva, type VariantProps } from "class-variance-authority";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { CheckIcon, ChevronDownIcon, Link2Icon } from "@radix-ui/react-icons";
 import { cn } from "@/utils/cn";
+import { Button } from "./button";
 
 const AccordionRoot = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Root>,
@@ -43,6 +44,8 @@ const AccordionTrigger = React.forwardRef<
     hideChevron?: boolean;
     chevronPosition?: "left" | "right";
     chevronRotation?: "full" | "half";
+    before?: React.ReactNode;
+    after?: React.ReactNode;
   }
 >(
   (
@@ -52,11 +55,14 @@ const AccordionTrigger = React.forwardRef<
       hideChevron = false,
       chevronPosition,
       chevronRotation = "full",
+      before = null,
+      after = null,
       ...props
     },
     ref
   ) => (
-    <AccordionPrimitive.Header className="flex !m-0 !text-current">
+    <AccordionPrimitive.Header className="flex !m-0 !text-current items-center">
+      {before}
       <AccordionPrimitive.Trigger
         ref={ref}
         className={cn(
@@ -80,6 +86,7 @@ const AccordionTrigger = React.forwardRef<
           />
         )}
       </AccordionPrimitive.Trigger>
+      {after}
     </AccordionPrimitive.Header>
   )
 );
@@ -111,8 +118,8 @@ export const AccordionsVariants = cva(cn("w-full rounded-lg"), {
       none: cn("border-none rounded-none"),
     },
     theme: {
-      default: cn("text-primary-foreground"),
-      primary: "border",
+      default: cn("border"),
+      primary: cn("text-primary-foreground"),
       secondary: cn("border text-foreground"),
       tertiary: cn("border-none text-primary-foreground"),
     },
@@ -137,8 +144,8 @@ export const AccordionVariants = cva(
         ),
       },
       theme: {
-        default: cn("bg-primary hover:bg-primary/85 text-primary-foreground"),
-        primary: cn("bg-none text-foreground"),
+        default: cn("bg-none text-foreground"),
+        primary: cn("bg-primary hover:bg-primary/85 text-primary-foreground"),
         secondary: cn(
           "bg-secondary/55 hover:bg-secondary text-secondary-foreground"
         ),
@@ -204,6 +211,20 @@ const Accordions = React.forwardRef<
      * </Accordions>
      */
     theme?: VariantProps<typeof AccordionsVariants>["theme"];
+    /**
+     * To declare weather to show the copy button or not.
+     * @default false
+     * @type {boolean}
+     *
+     * @example
+     * ```tsx
+     * <Accordions showCopyButton>
+     *  <Accordion id="item-1" trigger="Item 1">
+     *   Content 1
+     *  </Accordion>
+     * </Accordions>
+     */
+    showCopyButton?: boolean;
   }
 >(
   (
@@ -212,6 +233,7 @@ const Accordions = React.forwardRef<
       type = "single",
       variant = "default",
       theme = "default",
+      showCopyButton = false,
       children,
       ...props
     },
@@ -220,7 +242,7 @@ const Accordions = React.forwardRef<
     const newClildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child)) {
         // @ts-expect-error -- Unknown type
-        return React.cloneElement(child, { variant, theme });
+        return React.cloneElement(child, { variant, theme, showCopyButton });
       }
       return child;
     });
@@ -270,8 +292,21 @@ const Accordion = React.forwardRef<
     React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>,
     "value"
   > & {
+    // These are the props coming from the parent component
     variant?: VariantProps<typeof AccordionVariants>["variant"];
     theme?: VariantProps<typeof AccordionVariants>["theme"];
+    showCopyButton?: boolean;
+    /**
+     * The text to be copied. `showCopyButton` need to be set true in `Accordions`.
+     * @type {string}
+     *
+     * @example
+     * ```tsx
+     * <Accordion id="item-1" trigger="Item 1" copyText="https://example.com">
+     *  Content 1
+     * </Accordion>
+     */
+    copyText?: string;
     /**
      * The class name of the trigger.
      * @type {string}
@@ -311,6 +346,8 @@ const Accordion = React.forwardRef<
       className,
       variant = "default",
       theme = "default",
+      showCopyButton = false,
+      copyText,
       TClassName,
       CClassName,
       trigger,
@@ -330,6 +367,7 @@ const Accordion = React.forwardRef<
         {...props}
       >
         <AccordionTrigger
+          id={id}
           className={cn("px-4 py-0", TClassName)}
           chevronPosition={
             ["primary"].includes(variant || "") ? "left" : "right"
@@ -339,6 +377,7 @@ const Accordion = React.forwardRef<
           }
           data-variant={variant}
           data-theme={theme}
+          after={showCopyButton && <CopyButton id={id} copyText={copyText} />}
         >
           {trigger}
         </AccordionTrigger>
@@ -353,6 +392,58 @@ const Accordion = React.forwardRef<
   }
 );
 Accordion.displayName = "Accordion";
+
+function CopyButton({ id, copyText }: { id: string; copyText?: string }) {
+  const [checked, setChecked] = React.useState(false);
+  const timeoutRef = React.useRef<number | null>(null);
+
+  const onCopy: React.MouseEventHandler<HTMLButtonElement> = React.useCallback(
+    (e) => {
+      e.stopPropagation();
+
+      const url = new URL(window.location.href);
+      url.hash = id;
+
+      navigator.clipboard.writeText(copyText || url.toString());
+    },
+    []
+  );
+
+  const onClick: React.MouseEventHandler<HTMLButtonElement> = React.useCallback(
+    (e) => {
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+      timeoutRef.current = window.setTimeout(() => {
+        setChecked(false);
+      }, 1500);
+      onCopy(e);
+      setChecked(true);
+    },
+    [onCopy]
+  );
+
+  // Avoid updates after being unmounted
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  return (
+    <Button
+      variant={"tertiary"}
+      className={cn(
+        "text-current hover:opacity-70 hover:bg-transparet transition-all"
+      )}
+      onClick={onClick}
+    >
+      {checked ? (
+        <CheckIcon className="size-4" />
+      ) : (
+        <Link2Icon className="size-4" />
+      )}
+    </Button>
+  );
+}
 
 export {
   AccordionRoot,

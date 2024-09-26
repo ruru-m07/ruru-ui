@@ -1,14 +1,13 @@
 "use client";
 
 import { VariantProps } from "class-variance-authority";
-import { Link } from "lucide-react";
 import React from "react";
 import {
   Accordion,
   Accordions,
   AccordionsVariants,
 } from "ruru-ui/components/accordion";
-import { Button } from "ruru-ui/components/button";
+import { Checkbox } from "ruru-ui/components/checkbox";
 import { Label } from "ruru-ui/components/label";
 import {
   Select,
@@ -28,6 +27,8 @@ export default function AccordionVariants({}: Props) {
 
   const [theme, setTheme] =
     React.useState<VariantProps<typeof AccordionsVariants>["theme"]>("default");
+
+  const [showCopyButton, setShowCopyButton] = React.useState(false);
 
   return (
     <div className="min-h-[400px] flex flex-col gap-6 justify-center items-center">
@@ -69,6 +70,15 @@ export default function AccordionVariants({}: Props) {
             ))}
           </SelectContent>
         </Select>
+
+        <div className="border rounded-md py-2 px-3 flex items-center gap-2">
+          <Checkbox
+            id="showCopyButton"
+            checked={showCopyButton}
+            onCheckedChange={(c) => setShowCopyButton(!!c)}
+          />
+          <Label htmlFor="showCopyButton">Copy Button</Label>
+        </div>
       </div>
 
       <Accordions
@@ -76,23 +86,16 @@ export default function AccordionVariants({}: Props) {
         type="single"
         variant={variant}
         theme={theme}
+        showCopyButton={showCopyButton}
       >
         {Array.from(new Array(4)).map((_, index) => (
           <Accordion
             id={`item-${index}`}
             key={index}
             trigger={
-              <>
-                <Button
-                  variant={"tertiary"}
-                  className="text-current hover:opacity-70 hover:bg-transparent transition-all"
-                >
-                  <Link size={16} />
-                </Button>
-                <span className="w-full text-left py-4 text-current">
-                  Accordion Item {index + 1}
-                </span>
-              </>
+              <span className="w-full text-left py-4 text-current">
+                Accordion Item {index + 1}
+              </span>
             }
           >
             This is the content of the accordion item {index + 1}
