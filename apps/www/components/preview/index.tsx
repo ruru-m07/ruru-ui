@@ -25,6 +25,7 @@ import {
   SelectValue,
 } from "ruru-ui/components/select";
 import { Label } from "ruru-ui/components/label";
+import { Accordions, Accordion } from "ruru-ui/components/accordion";
 
 import { BadgePreview } from "../badgePreview";
 import Tabspreview from "../tabs";
@@ -183,6 +184,25 @@ export default {
   form: (
     <Wrapper className="max-h-[500px] overflow-y-hidden">
       <FormPreview />
+    </Wrapper>
+  ),
+  accordion: (
+    <Wrapper>
+      <Accordions type="single" collapsible className="w-full max-w-[500px]">
+        <Accordion id="item-1" trigger="Is it accessible?" TClassName="py-4">
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </Accordion>
+        <Accordion id="item-2" trigger="Is it responsive?" TClassName="py-4">
+          Yes. It is responsive and mobile-friendly.
+        </Accordion>
+        <Accordion id="item-3" trigger="Is it customizable?" TClassName="py-4">
+          Yes. It is customizable and supports multiple themes and variants. But
+          the core components can also be imported for custom styling.
+        </Accordion>
+        <Accordion id="item-4" trigger="Is it animated?" TClassName="py-4">
+          Yes. It is animated and supports custom animations through CSS or JS.
+        </Accordion>
+      </Accordions>
     </Wrapper>
   ),
   dropzone: <DropzonePreview />,

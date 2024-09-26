@@ -84,5 +84,12 @@
     "dependencies": ["react-dropzone"],
     "files": ["dropzone.tsx"],
     "type": "components:ui"
+  },
+  {
+    "name": "accordion",
+    "dependencies": ["@radix-ui/react-accordion"],
+    "files": ["accordion.tsx"],
+    "type": "components:ui",
+    "subcategory": ["button"]
   }
 ]
