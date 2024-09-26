@@ -15,7 +15,7 @@ const AccordionRoot = React.forwardRef<
     ref={ref}
     className={cn(
       orientation === "horizontal" ? "flex flex-row" : "",
-      className
+      className,
     )}
     orientation={orientation}
     {...props}
@@ -31,7 +31,7 @@ const AccordionItem = React.forwardRef<
     className={cn(
       "data-[orientation=vertical]:border-b",
       "data-[orientation=horizontal]:flex data-[orientation=horizontal]:border-r",
-      className
+      className,
     )}
     {...props}
   />
@@ -59,7 +59,7 @@ const AccordionTrigger = React.forwardRef<
       after = null,
       ...props
     },
-    ref
+    ref,
   ) => (
     <AccordionPrimitive.Header className="flex !m-0 !text-current items-center">
       {before}
@@ -70,7 +70,7 @@ const AccordionTrigger = React.forwardRef<
           chevronPosition === "left"
             ? "flex-row-reverse data-[orientation=horizontal]:flex-col-reverse"
             : "flex-row data-[orientation=horizontal]:flex-col",
-          className
+          className,
         )}
         {...props}
       >
@@ -81,14 +81,14 @@ const AccordionTrigger = React.forwardRef<
               "chevron h-4 w-4 shrink-0 text-current transition-transform duration-200",
               chevronRotation === "full"
                 ? "rotate-0 group-data-[state=open]/accordion:rotate-180"
-                : "-rotate-90 group-data-[state=open]/accordion:rotate-0"
+                : "-rotate-90 group-data-[state=open]/accordion:rotate-0",
             )}
           />
         )}
       </AccordionPrimitive.Trigger>
       {after}
     </AccordionPrimitive.Header>
-  )
+  ),
 );
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 
@@ -101,7 +101,7 @@ const AccordionContent = React.forwardRef<
     className={cn(
       "overflow-hidden text-sm",
       "data-[state=closed]:data-[orientation=vertical]:animate-accordion-up data-[state=open]:data-[orientation=vertical]:animate-accordion-down",
-      "data-[state=closed]:data-[orientation=horizontal]:animate-accordion-left data-[state=open]:data-[orientation=horizontal]:animate-accordion-right"
+      "data-[state=closed]:data-[orientation=horizontal]:animate-accordion-left data-[state=open]:data-[orientation=horizontal]:animate-accordion-right",
     )}
     {...props}
   >
@@ -132,7 +132,7 @@ export const AccordionsVariants = cva(cn("w-full rounded-lg"), {
 
 export const AccordionVariants = cva(
   cn(
-    "w-full border-b last-of-type:border-none first-of-type:rounded-t-lg last-of-type:rounded-b-lg transition-colors"
+    "w-full border-b last-of-type:border-none first-of-type:rounded-t-lg last-of-type:rounded-b-lg transition-colors",
   ),
   {
     variants: {
@@ -140,14 +140,14 @@ export const AccordionVariants = cva(
         default: cn(),
         primary: cn(),
         none: cn(
-          "border-none rounded-none first-of-type:rounded-none last-of-type:rounded-none"
+          "border-none rounded-none first-of-type:rounded-none last-of-type:rounded-none",
         ),
       },
       theme: {
         default: cn("bg-none text-foreground"),
         primary: cn("bg-primary hover:bg-primary/85 text-primary-foreground"),
         secondary: cn(
-          "bg-secondary/55 hover:bg-secondary text-secondary-foreground"
+          "bg-secondary/55 hover:bg-secondary text-secondary-foreground",
         ),
         tertiary: cn("bg-none hover:bg-accent/75 border-none text-foreground"),
       },
@@ -156,7 +156,7 @@ export const AccordionVariants = cva(
       variant: "default",
       theme: "default",
     },
-  }
+  },
 );
 
 /**
@@ -237,7 +237,7 @@ const Accordions = React.forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const newClildren = React.Children.map(children, (child) => {
       if (React.isValidElement(child)) {
@@ -261,7 +261,7 @@ const Accordions = React.forwardRef<
         {newClildren}
       </AccordionRoot>
     );
-  }
+  },
 );
 Accordions.displayName = "Accordions";
 
@@ -355,7 +355,7 @@ const Accordion = React.forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <AccordionItem
@@ -389,7 +389,7 @@ const Accordion = React.forwardRef<
         />
       </AccordionItem>
     );
-  }
+  },
 );
 Accordion.displayName = "Accordion";
 
@@ -406,7 +406,7 @@ function CopyButton({ id, copyText }: { id: string; copyText?: string }) {
 
       navigator.clipboard.writeText(copyText || url.toString());
     },
-    []
+    [],
   );
 
   const onClick: React.MouseEventHandler<HTMLButtonElement> = React.useCallback(
@@ -418,7 +418,7 @@ function CopyButton({ id, copyText }: { id: string; copyText?: string }) {
       onCopy(e);
       setChecked(true);
     },
-    [onCopy]
+    [onCopy],
   );
 
   // Avoid updates after being unmounted
@@ -432,7 +432,7 @@ function CopyButton({ id, copyText }: { id: string; copyText?: string }) {
     <Button
       variant={"tertiary"}
       className={cn(
-        "text-current hover:opacity-70 hover:bg-transparet transition-all"
+        "text-current hover:opacity-70 hover:bg-transparet transition-all",
       )}
       onClick={onClick}
     >

@@ -22,7 +22,7 @@ type Props = {};
 export default function AccordionVariants({}: Props) {
   const [variant, setVariant] =
     React.useState<VariantProps<typeof AccordionsVariants>["variant"]>(
-      "default"
+      "default",
     );
 
   const [theme, setTheme] =
