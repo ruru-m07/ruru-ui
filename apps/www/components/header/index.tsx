@@ -13,7 +13,7 @@ import {
 export default function Header() {
   return (
     <header
-      className={`h-[80px] space-x-4 flex items-center justify-between w-full my-4 border rounded-md`}
+      className={`h-[80px] space-x-4 flex items-center justify-between w-full my-4 border rounded-md px-4 md:px-8`}
     >
       <div className="flex items-center space-x-2 w-full pr-5">
         <div className="flex items-center w-full space-x-4 ml-4">

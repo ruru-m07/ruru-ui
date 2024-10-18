@@ -116,7 +116,7 @@ export default function App() {
               </h2>
             </div>
             <ShapratorHorizontal />
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2">
               <div className="border-r p-4 py-6">
                 <StepCounter count={1} />
                 <h4 className="text-xl font-bold">Initialize.</h4>
@@ -143,7 +143,7 @@ export default function App() {
             <div className="flex flex-col items-center justify-center py-4">
               <StepCounter count={3} className="mb-0 mt-4" />
               <h4 className="text-xl font-bold">Use components.</h4>
-              <p className="text-muted-foreground mt-2">
+              <p className="text-muted-foreground mt-2 text-sm">
                 costomize and integrate components in your project. 🚀
               </p>
 
@@ -203,7 +203,7 @@ export default function App() {
 
             <ShapratorHorizontal />
 
-            <div className="grid grid-cols-3 grid-rows-2">
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 grid-rows-2">
               <div className="border-r px-6 py-12 hover:bg-primary-foreground/70">
                 <div className="mb-4 flex flex-row items-center gap-2 text-muted-foreground">
                   <Settings2
@@ -381,8 +381,8 @@ export default function App() {
 
             <ShapratorHorizontal />
 
-            <div className="flex">
-              <Link href={"/theme"} className="w-1/2 border-r">
+            <div className="flex flex-col md:flex-row">
+              <Link href={"/theme"} className="w-full md:w-1/2 border-r">
                 <div className="z-10 p-4">
                   <div className="flex items-center ml-5 mt-5">
                     <Palette size={20} strokeWidth={1.5} className="mr-2" />
@@ -401,7 +401,7 @@ export default function App() {
                   />
                 </div>
               </Link>
-              <Link href={"/blocks"} className="w-1/2 bg-[#080808]">
+              <Link href={"/blocks"} className="w-full md:w-1/2 bg-[#080808]">
                 <div className="z-10 p-4">
                   <div className="flex items-center ml-5 mt-5">
                     <LayoutTemplate
@@ -443,18 +443,18 @@ export default function App() {
 
             <ShapratorHorizontal />
 
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold w-1/3 text-muted-foreground flex items-center justify-center p-4">
+            <div className="flex flex-col md:flex-row items-center">
+              <h1 className="text-2xl font-bold w-full md:w-1/3 text-muted-foreground flex items-center justify-center p-4">
                 Build Your Components.
               </h1>
-              <div className="w-1/3 p-4 border-l border-r">
+              <div className="w-full md:w-1/3 p-4 border-l border-r">
                 <span className="text-muted-foreground">Available now</span>
                 <CodeBlockServer
                   lang="bash"
                   code={[`npx ruru-ui-cli@latest init`]}
                 />
               </div>
-              <div className="text-2xl font-bold w-1/3 text-muted-foreground h-full flex items-center justify-center p-4 space-x-4">
+              <div className="text-2xl font-bold w-full md:w-1/3 text-muted-foreground h-full flex items-center justify-center p-4 space-x-4">
                 <Link
                   className={cn(
                     "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
