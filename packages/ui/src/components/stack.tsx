@@ -385,8 +385,14 @@ export const Stack: React.FC<StackProps> = ({
         Object.assign(newStyles, resolvedMargin);
       }
 
-      if (width) newStyles.width = getResponsiveValue(width, "auto");
-      if (height) newStyles.height = getResponsiveValue(height, "auto");
+      if (width) {
+        const widthValue = getResponsiveValue(width, "auto");
+        newStyles.width = typeof widthValue === "number" ? `${widthValue}px` : widthValue;
+      }
+      if (height) {
+        const heightValue = getResponsiveValue(height, "auto");
+        newStyles.height = typeof heightValue === "number" ? `${heightValue}px` : heightValue;
+      }
       if (visibility)
         newStyles.visibility = getResponsiveValue(visibility, "visible");
       if (border) newStyles.border = border;
