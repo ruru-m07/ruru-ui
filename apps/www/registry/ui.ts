@@ -94,4 +94,9 @@ export const ui: Registry = [
     files: ["accordion.tsx"],
     subcategory: ["button"],
   },
+  {
+    name: "stack",
+    type: "components:ui",
+    files: ["stack.tsx"],
+  },
 ];

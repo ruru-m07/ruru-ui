@@ -91,5 +91,10 @@
     "files": ["accordion.tsx"],
     "type": "components:ui",
     "subcategory": ["button"]
+  },
+  {
+    "name": "stack",
+    "files": ["stack.tsx"],
+    "type": "components:ui"
   }
 ]

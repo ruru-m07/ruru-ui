@@ -1,0 +1,468 @@
+---
+title: Stack
+description: A stack is a container that holds a collection of items in a specific order.
+preview: stack
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
+import { Stack } from "ruru-ui/components/stack";
+
+## Installation
+
+<Rutabs items={["CLI", "Dependencies"]}>
+  <Rutab value={"CLI"}>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab value={"npm"}>
+      ```bash
+      npx ruru-ui-cli@latest add stack
+      ```
+      </Tab>
+      <Tab value={"pnpm"}>
+      ```bash
+      pnpm dlx ruru-ui-cli@latest add stack
+      ```
+      </Tab>
+      <Tab value={"yarn"}>
+      ```bash
+      npx ruru-ui-cli@latest add stack
+      ```
+      </Tab>
+      <Tab value={"bun"}>
+      ```bash
+      bunx --bun ruru-ui-cli@latest add stack
+      ```
+    </Tab>
+    </Tabs>
+
+  </Rutab>
+  <Rutab value={"Dependencies"}>
+
+    ```package-install
+    npm install ruru-ui@latest
+    ```
+
+  </Rutab>
+</Rutabs>
+
+## Usage
+
+### direction
+
+Defines the layout direction of the stack. It can be either `"row"` or `"column"`. Supports responsive breakpoints.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Stack gap={5} direction={{ sm: "column", lg: "row" }}>
+        <div className="bg-gray-200 h-12 w-12 rounded-md" />
+        <div className="bg-gray-300 h-12 w-12 rounded-md" />
+    </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+//  [!code word:Stack]
+//  [!code word:direction]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"flex justify-between items-center"}>
+      <Stack gap={5} direction={{ sm: "column", lg: "row" }}>
+        <div className="bg-gray-200 h-12 w-12 rounded-md" />
+        <div className="bg-gray-300 h-12 w-12 rounded-md" />
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+### gap
+
+Defines the space between the child elements. Accepts numbers or responsive breakpoints.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Stack gap={{ sm: 4, md: 8, lg: 16 }}>
+      <div className="bg-blue-300 h-12 w-12 rounded-md" />
+      <div className="bg-blue-400 h-12 w-12 rounded-md" />
+    </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+//  [!code word:gap]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"flex justify-between items-center"}>
+      <Stack gap={{ sm: 4, md: 8, lg: 16 }}>
+        <div className="bg-blue-300 h-12 w-12 rounded-md" />
+        <div className="bg-blue-400 h-12 w-12 rounded-md" />
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+### align
+
+Controls how child elements are aligned along the cross axis (vertical in a row layout, horizontal in a column layout).
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+    <Stack align={{ sm: "start", md: "center" }}>
+      <div className="bg-red-300 h-12 w-12 rounded-md" />
+      <div className="bg-red-400 h-12 w-12 rounded-md" />
+    </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+//  [!code word:align]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"flex justify-between items-center"}>
+      <Stack align={{ sm: "start", md: "center" }}>
+        <div className="bg-red-300 h-12 w-12 rounded-md" />
+        <div className="bg-red-400 h-12 w-12 rounded-md" />
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+### justify
+
+Determines how the elements are distributed along the main axis.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+      <Stack gap={10} justify={{ xs: "center", sm: "space-between" }}>
+        <div className="bg-green-300 h-12 w-12 rounded-md" />
+        <div className="bg-green-400 h-12 w-12 rounded-md" />
+      </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+//  [!code word:justify]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"w-full"}>
+      <Stack gap={10} justify={{ sm: "center", lg: "space-between" }}>
+        <div className="bg-green-300 h-12 w-12 rounded-md" />
+        <div className="bg-green-400 h-12 w-12 rounded-md" />
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+### wrap
+
+Allows child elements to wrap onto multiple lines.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+      <Stack wrap="wrap">
+        {Array(10)
+          .fill(0)
+          .map((_, i) => (
+            <div key={i} className="bg-yellow-200 h-12 w-12 m-2 rounded-md" />
+          ))}
+      </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+//  [!code word:wrap]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"w-full"}>
+      <Stack wrap="wrap">
+        {Array(10)
+          .fill(0)
+          .map((_, i) => (
+            <div key={i} className="bg-yellow-200 h-12 w-12 m-2 rounded-md" />
+          ))}
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+### padding
+
+Defines the padding around the stack. Supports fixed and responsive values.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+      <Stack padding={{ sm: 10, lg: 20 }} className="bg-gray-100">
+        <div className="bg-blue-400 h-12 w-12 rounded-md" />
+      </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+//  [!code word:padding]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"w-full"}>
+      <Stack padding={{ sm: 10, lg: 20 }} className="bg-gray-100">
+        <div className="bg-blue-400 h-12 w-12 rounded-md" />
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+### margin
+
+Applies margin to the stack element. Supports fixed and responsive values.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+      <Stack margin={{ sm: "5px", lg: "30px" }}>
+        <div className="bg-purple-300 h-12 w-12 rounded-md" />
+      </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+//  [!code word:margin]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"w-full bg-blue-400"}>
+      <Stack margin={{ sm: "5px", lg: "30px" }}>
+        <div className="bg-purple-300 h-12 w-12 rounded-md" />
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+### grow
+
+Determines how much the stack should grow relative to its siblings.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview" >
+      <div className="flex h-40">
+        <Stack grow={1} className="bg-green-200" />
+        <Stack grow={2} className="bg-green-400" />
+      </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+//  [!code word:grow]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+      <div className="flex h-40">
+        <Stack grow={1} className="bg-green-200" />
+        <Stack grow={2} className="bg-green-400" />
+      </div>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+### zIndex
+
+Controls the stack's stacking order on the page.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+      <Stack zIndex={10} className="relative">
+        <div className="bg-indigo-500 h-12 w-12 rounded-md" />
+      </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+//  [!code word:zIndex]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"w-full"}>
+      <Stack zIndex={10} className="relative">
+        <div className="bg-indigo-500 h-12 w-12 rounded-md" />
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+### visibility
+
+Sets the visibility of the stack. Can be `"visible"`, `"hidden"`, or `"collapse"`.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+      <Stack visibility={{ sm: "hidden", md: "visible" }}>
+        <div className="bg-red-500 h-12 w-12 rounded-md" />
+      </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+//  [!code word:visibility]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"w-full"}>
+      <Stack visibility={{ sm: "hidden", md: "visible" }}>
+        <div className="bg-red-500 h-12 w-12 rounded-md" />
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+### alignContent
+
+Defines how multiple rows of content are aligned along the cross axis.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"flex justify-center"} value="Preview" >
+      <Stack wrap="wrap" alignContent="center" height={200}>
+        {Array(6)
+          .fill(0)
+          .map((_, i) => (
+            <div key={i} className="bg-blue-200 h-12 w-12 m-2 rounded-md" />
+          ))}
+      </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+//  [!code word:visibility]
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"w-full"}>
+      <Stack wrap="wrap" alignContent="center" height={200}>
+        {Array(6)
+          .fill(0)
+          .map((_, i) => (
+            <div key={i} className="bg-blue-200 h-12 w-12 m-2 rounded-md" />
+          ))}
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+## Example
+
+Combining Multiple Props. Demonstrates the use of multiple props in a stack.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab className={"w-full flex justify-center"} value="Preview" >
+      <Stack
+        direction={{ sm: "column", lg: "row" }}
+        gap={{ sm: 2, lg: 10 }}
+        align="center"
+        justify="space-between"
+        padding={20}
+        backgroundColor="#fafafa"
+        border="1px solid #ddd"
+        borderRadius="8px"
+        className="w-full"
+      >
+        <div className="bg-blue-500 h-12 w-12 rounded-md" />
+        <div className="bg-red-500 h-12 w-12 rounded-md" />
+      </Stack>
+  </Tab>
+  <Tab className={"-mt-8"} value="Code">
+```tsx
+import { Stack } from "ruru-ui/components/stack";
+
+export function Demo() {
+  return (
+    <div className={"w-full"}>
+      <Stack
+        direction={{ sm: "column", lg: "row" }}
+        gap={{ sm: 2, lg: 10 }}
+        align="center"
+        justify="space-between"
+        padding={20}
+        backgroundColor="#fafafa"
+        border="1px solid #ddd"
+        borderRadius="8px"
+      >
+        <div className="bg-blue-500 h-12 w-12 rounded-md" />
+        <div className="bg-red-500 h-12 w-12 rounded-md" />
+      </Stack>
+    </div>
+  )
+}
+```
+    </Tab>
+
+</Tabs>
+
+## Props
+
+| Name                | Type                           | Default     | Description                                      |
+| ------------------- | ------------------------------ | ----------- | ------------------------------------------------ |
+| **children**        | ReactNode                      |             | Elements to be rendered inside the Stack.        |
+| **direction**       | Responsive\<"row" \| "column"> | `"row`"     | Defines the layout direction of the stack.       |
+| **gap**             | Responsive\<number>            | `0`         | Specifies the space between child elements.      |
+| **align**           | Responsive\<AlignItems>        | `"stretch"` | Aligns children along the cross axis.            |
+| **justify**         | Responsive\<JustifyContent>    | `"start`"   | Distributes children along the main axis.        |
+| **wrap**            | Responsive\<Wrap>              | `"nowrap"`  | Controls whether child elements should wrap.     |
+| **grow**            | number                         |             | Determines how much the stack should grow.       |
+| **padding**         | Responsive\<Spacing>           | `0`         | Applies padding to the stack.                    |
+| **margin**          | Responsive\<Spacing>           | `0`         | Applies margin to the stack.                     |
+| **width**           | Responsive\<number \| string>  | `"auto"`    | Sets the width of the stack.                     |
+| **height**          | Responsive\<number \| string>  | `"auto"`    | Sets the height of the stack.                    |
+| **border**          | string                         |             | Defines the border for the stack.                |
+| **borderRadius**    | string \| number               |             | Specifies the border radius of the stack.        |
+| **backgroundColor** | string                         |             | Sets the background color of the stack.          |
+| **maxWidth**        | string \| number               |             | Defines the maximum width of the stack.          |
+| **maxHeight**       | string \| number               |             | Defines the maximum height of the stack.         |
+| **alignContent**    | Responsive\<AlignContent>      | `"stretch"` | Aligns rows of content along the cross axis.     |
+| **zIndex**          | number                         |             | Controls the stack's stacking order on the page. |
+| **visibility**      | Responsive\<Visibility>        | `"visible"` | Controls the visibility of the stack.            |
+| **className**       | string                         |             | Additional CSS classes to apply to the stack.    |
+| **style**           | CSSProperties                  |             | Inline styles to be applied to the stack.        |
