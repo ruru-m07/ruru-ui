@@ -335,92 +335,19 @@ const parseSpacing = (value: Spacing) => {
  * </Stack>
  * ```
  */
-export const Stack: React.FC<StackProps> = ({
-  children,
-  direction,
-  gap,
-  align,
-  justify,
-  wrap,
-  grow,
-  padding,
-  margin,
-  width,
-  height,
-  border,
-  borderRadius,
-  backgroundColor,
-  maxWidth,
-  maxHeight,
-  alignContent,
-  zIndex,
-  visibility,
-  className = "",
-  style = {},
-}) => {
-  const [responsiveStyles, setResponsiveStyles] = useState<CSSProperties>({});
-
-  useEffect(() => {
-    const updateStyles = () => {
-      const newStyles: CSSProperties = {
-        display: "flex",
-      };
-
-      if (direction)
-        newStyles.flexDirection = getResponsiveValue(direction, "row");
-      if (gap !== undefined) newStyles.gap = `${getResponsiveValue(gap, 0)}px`;
-      if (align) newStyles.alignItems = getResponsiveValue(align, "stretch");
-      if (justify)
-        newStyles.justifyContent = getResponsiveValue(justify, "start");
-      if (wrap) newStyles.flexWrap = getResponsiveValue(wrap, "nowrap");
-      if (grow !== undefined) newStyles.flexGrow = grow;
-
-      if (padding !== undefined) {
-        const resolvedPadding = parseSpacing(getResponsiveValue(padding, 0));
-        Object.assign(newStyles, resolvedPadding);
-      }
-
-      if (margin !== undefined) {
-        const resolvedMargin = parseSpacing(getResponsiveValue(margin, 0));
-        Object.assign(newStyles, resolvedMargin);
-      }
-
-      if (width) {
-        const widthValue = getResponsiveValue(width, "auto");
-        newStyles.width = typeof widthValue === "number" ? `${widthValue}px` : widthValue;
-      }
-      if (height) {
-        const heightValue = getResponsiveValue(height, "auto");
-        newStyles.height = typeof heightValue === "number" ? `${heightValue}px` : heightValue;
-      }
-      if (visibility)
-        newStyles.visibility = getResponsiveValue(visibility, "visible");
-      if (border) newStyles.border = border;
-      if (borderRadius) newStyles.borderRadius = borderRadius;
-      if (backgroundColor) newStyles.backgroundColor = backgroundColor;
-      if (maxWidth) newStyles.maxWidth = maxWidth;
-      if (maxHeight) newStyles.maxHeight = maxHeight;
-      if (alignContent)
-        newStyles.alignContent = getResponsiveValue(alignContent, "stretch");
-      if (zIndex !== undefined) newStyles.zIndex = zIndex;
-
-      setResponsiveStyles(newStyles);
-    };
-
-    updateStyles();
-    window.addEventListener("resize", updateStyles);
-    return () => window.removeEventListener("resize", updateStyles);
-  }, [
+export const Stack: React.FC<StackProps> = React.memo(
+  ({
+    children,
     direction,
     gap,
     align,
     justify,
     wrap,
+    grow,
     padding,
     margin,
     width,
     height,
-    visibility,
     border,
     borderRadius,
     backgroundColor,
@@ -428,11 +355,92 @@ export const Stack: React.FC<StackProps> = ({
     maxHeight,
     alignContent,
     zIndex,
-  ]);
+    visibility,
+    className = "",
+    style = {},
+  }) => {
+    const [responsiveStyles, setResponsiveStyles] = useState<CSSProperties>({});
 
-  return (
-    <div className={clsx(className)} style={{ ...responsiveStyles, ...style }}>
-      {children}
-    </div>
-  );
-};
+    useEffect(() => {
+      const updateStyles = () => {
+        const newStyles: CSSProperties = {
+          display: "flex",
+        };
+
+        if (direction)
+          newStyles.flexDirection = getResponsiveValue(direction, "row");
+        if (gap !== undefined)
+          newStyles.gap = `${getResponsiveValue(gap, 0)}px`;
+        if (align) newStyles.alignItems = getResponsiveValue(align, "stretch");
+        if (justify)
+          newStyles.justifyContent = getResponsiveValue(justify, "start");
+        if (wrap) newStyles.flexWrap = getResponsiveValue(wrap, "nowrap");
+        if (grow !== undefined) newStyles.flexGrow = grow;
+
+        if (padding !== undefined) {
+          const resolvedPadding = parseSpacing(getResponsiveValue(padding, 0));
+          Object.assign(newStyles, resolvedPadding);
+        }
+
+        if (margin !== undefined) {
+          const resolvedMargin = parseSpacing(getResponsiveValue(margin, 0));
+          Object.assign(newStyles, resolvedMargin);
+        }
+
+        if (width) {
+          const widthValue = getResponsiveValue(width, "auto");
+          newStyles.width =
+            typeof widthValue === "number" ? `${widthValue}px` : widthValue;
+        }
+        if (height) {
+          const heightValue = getResponsiveValue(height, "auto");
+          newStyles.height =
+            typeof heightValue === "number" ? `${heightValue}px` : heightValue;
+        }
+        if (visibility)
+          newStyles.visibility = getResponsiveValue(visibility, "visible");
+        if (border) newStyles.border = border;
+        if (borderRadius) newStyles.borderRadius = borderRadius;
+        if (backgroundColor) newStyles.backgroundColor = backgroundColor;
+        if (maxWidth) newStyles.maxWidth = maxWidth;
+        if (maxHeight) newStyles.maxHeight = maxHeight;
+        if (alignContent)
+          newStyles.alignContent = getResponsiveValue(alignContent, "stretch");
+        if (zIndex !== undefined) newStyles.zIndex = zIndex;
+
+        setResponsiveStyles(newStyles);
+      };
+
+      updateStyles();
+      window.addEventListener("resize", updateStyles);
+      return () => window.removeEventListener("resize", updateStyles);
+    }, [
+      direction,
+      gap,
+      align,
+      justify,
+      wrap,
+      padding,
+      margin,
+      width,
+      height,
+      visibility,
+      border,
+      borderRadius,
+      backgroundColor,
+      maxWidth,
+      maxHeight,
+      alignContent,
+      zIndex,
+    ]);
+
+    return (
+      <div
+        className={clsx(className)}
+        style={{ ...responsiveStyles, ...style }}
+      >
+        {children}
+      </div>
+    );
+  },
+);
