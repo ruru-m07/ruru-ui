@@ -32,6 +32,7 @@ import Tabspreview from "../tabs";
 import { default as ModalPreview } from "./Modal/preview";
 import FormPreview from "./form/preview";
 import DropzonePreview from "./dropzone/dropzone";
+import { Stack } from "ruru-ui/components/stack";
 
 export default {
   button: (
@@ -206,4 +207,19 @@ export default {
     </Wrapper>
   ),
   dropzone: <DropzonePreview />,
+  stack: (
+    <Wrapper>
+      <Stack
+        gap={100}
+        justify={"space-between"}
+        padding={25}
+        borderRadius="8px"
+        className="bg-primary-foreground/95 border"
+      >
+        <div className="bg-gray-300 h-12 w-12 rounded-md" />
+        <div className="bg-gray-400 h-12 w-12 rounded-md" />
+        <div className="bg-gray-500 h-12 w-12 rounded-md" />
+      </Stack>
+    </Wrapper>
+  ),
 } as Record<string, ReactNode>;
