@@ -41,7 +41,6 @@ import {
 import Modal, { ModalProvider } from "ruru-ui/components/modal";
 import { Dropzone } from "ruru-ui/components/dropzone";
 import AdvanceDropzone from "@/components/preview/dropzone/advanceDropzone";
-import { Stack } from "ruru-ui/components/Stack";
 import StackPlayground from "@/components/stackPlaygrond";
 
 const Playground = () => {
