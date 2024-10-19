@@ -41,7 +41,7 @@ import {
 import Modal, { ModalProvider } from "ruru-ui/components/modal";
 import { Dropzone } from "ruru-ui/components/dropzone";
 import AdvanceDropzone from "@/components/preview/dropzone/advanceDropzone";
-import StackPlayground from "@/components/stackPlaygrond";
+import StackPlayground from "@/components/stackPlayground";
 
 const Playground = () => {
   const handleSubmit = async () => {
