@@ -1,7 +1,9 @@
-import type { HTMLAttributes } from "react";
+"use client";
+
+import { useEffect, useState, type HTMLAttributes } from "react";
 import Image from "next/image";
 import { cn } from "@/utils/cn";
-import { fetchContributors } from "@/utils/get-contributors";
+import { Contributor, fetchContributors } from "@/utils/get-contributors";
 
 export interface ContributorCounterProps
   extends HTMLAttributes<HTMLDivElement> {
@@ -10,16 +12,28 @@ export interface ContributorCounterProps
   displayCount?: number;
 }
 
-export default async function ContributorCounter({
+const ContributorCounter = ({
   repoOwner,
   repoName,
   displayCount = 20,
   ...props
-}: ContributorCounterProps): Promise<React.ReactElement> {
-  const contributors = await fetchContributors(repoOwner, repoName);
-  const topContributors = contributors
-    .filter((contributor) => contributor.login !== "turbobot-temp")
-    .slice(0, displayCount);
+}: ContributorCounterProps): React.ReactNode => {
+  const [topContributors, setTopContributors] = useState<Contributor[] | []>(
+    [],
+  );
+
+  async function fetchDtata() {
+    const contributors = await fetchContributors(repoOwner, repoName);
+    const topContributors = contributors
+      .filter((contributor) => contributor.login !== "turbobot-temp")
+      .slice(0, displayCount);
+
+    setTopContributors(topContributors);
+  }
+
+  useEffect(() => {
+    fetchDtata();
+  }, []);
 
   return (
     <div
@@ -47,12 +61,14 @@ export default async function ContributorCounter({
             />
           </a>
         ))}
-        {displayCount < contributors.length ? (
+        {displayCount < topContributors.length ? (
           <div className="size-12 content-center rounded-full bg-fd-secondary text-center">
-            +{contributors.length - displayCount}
+            +{topContributors.length - displayCount}
           </div>
         ) : null}
       </div>
     </div>
   );
-}
+};
+
+export default ContributorCounter;
