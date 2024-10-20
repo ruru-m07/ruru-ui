@@ -1,6 +1,6 @@
 {
   "name": "ruru-ui",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "Ruru UI Components",
   "publishConfig": {
     "access": "public"
