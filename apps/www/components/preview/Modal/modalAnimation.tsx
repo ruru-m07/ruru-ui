@@ -16,7 +16,7 @@ import Modal, { ModalProvider, modalVariants } from "ruru-ui/components/modal";
 import { Input } from "ruru-ui/components/input";
 import { Spinner } from "ruru-ui/components/spinner";
 
-const ModalAnimation = (): React.ReactNode => {
+const ModalAnimation = (): JSX.Element => {
   const [selectedVariant, setSelectedVariant] = useState<string>("default");
   const [submissionStatus, setSubmissionStatus] = useState<
     "idle" | "loading" | "success" | "error"
