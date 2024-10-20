@@ -4,7 +4,6 @@ description: The Modal component is used to display content in a modal dialog.
 preview: modal
 ---
 
-
 import Modal, { ModalProvider } from "ruru-ui/components/modal";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
@@ -15,6 +14,7 @@ import Disabled from "../../../components/preview/Modal/disabled.tsx";
 import CustomWidth from "../../../components/preview/Modal/customWidth.tsx";
 import CustomWidth2 from "../../../components/preview/Modal/customWidth2.tsx";
 import Preview from "../../../components/preview/Modal/preview.tsx";
+import ModalAnimation from "../../../components/preview/Modal/modalAnimation";
 
 ## Installation
 
@@ -125,7 +125,6 @@ export default Usage;
     </Tab>
 </Tabs>
 
-
 ## Example
 
 ### Modal with Trigger
@@ -184,7 +183,6 @@ export default TriggerDemo;
 ```
     </Tab>
 </Tabs>
-
 
 ### Single button
 
@@ -527,11 +525,97 @@ export default Preview;
     </Tab>
 </Tabs>
 
+## Animation Variants
+
+The `Modal` component supports multiple animation variants for opening and closing. You can set the animation variant by passing the `animationVariant` prop to the `Modal` component.
+
+<Tabs items={["Preview", "Code"]}>
+    <Tab className={"flex justify-center"} value="Preview">
+        <ModalAnimation />
+    </Tab>
+    <Tab className={"-mt-8"} value="Code">
+```tsx
+"use client";
+
+import React, { useState } from "react";
+import { Stack } from "ruru-ui/components/stack";
+import {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectLabel,
+  SelectItem,
+  SelectSeparator,
+} from "ruru-ui/components/select";
+import Modal, { ModalProvider, modalVariants } from "ruru-ui/components/modal";
+import { Input } from "ruru-ui/components/input";
+
+const ModalAnimation = (): React.ReactNode => {
+  const [selectedVariant, setSelectedVariant] = useState<string>("default");
+
+  const handleSubmit = async () => {
+    // Your submit logic here
+    console.log("Submitted");
+    // Simulate an API call or any async operation
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  };
+
+  return (
+    <Stack direction={"column"} justify={"center"} align={"center"} gap={20}>
+      <Select
+        onValueChange={(e) => setSelectedVariant(e)}
+        defaultValue="default"
+      >
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Select a animation variants" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>variants</SelectLabel>
+            <SelectSeparator />
+            {(
+              Object.keys(modalVariants) as Array<keyof typeof modalVariants>
+            ).map((variantKey, index) => (
+              <SelectItem value={variantKey}>{variantKey}</SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <ModalProvider>
+        <Modal.Trigger>Open {selectedVariant} Modal</Modal.Trigger>
+        <Modal animationVariant={selectedVariant as keyof typeof modalVariants}>
+          <Modal.Body>
+            <Modal.Header>
+              <Modal.Title>Create Username</Modal.Title>
+              <Modal.Subtitle>
+                Enter a unique name for your token to differentiate it from
+                other tokens and then select the scope.
+              </Modal.Subtitle>
+            </Modal.Header>
+            <Modal.Content>
+              <Input label="username" placeholder="enter your username." />
+            </Modal.Content>
+          </Modal.Body>
+          <Modal.Actions>
+            <Modal.Close variant="secondary">Cancel</Modal.Close>
+            <Modal.Action onClick={handleSubmit}>Submit</Modal.Action>
+          </Modal.Actions>
+        </Modal>
+      </ModalProvider>
+    </Stack>
+  );
+};
+
+export default ModalAnimation;
+```
+    </Tab>
+</Tabs>
+
 ## Props
 
 Here's how the props table would look for the `Modal` component, formatted in the same style:
-
-## Props
 
 ### Modal
 
@@ -539,6 +623,7 @@ Here's how the props table would look for the `Modal` component, formatted in th
 | ----------------- | --------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
 | **children**      | **ReactNode**                     | `undefined` | The children of the Modal component.                                                   |
 | **onClickOutside**| **() => void**                    | `undefined` | The function to call when the user clicks outside the modal.                           |
+| **animationVariant** | **"default" \| "fade" \| "slide"** | `"default"` | The animation variant to use for the modal.                                            |
 
 ### ModalAction
 

@@ -38,7 +38,7 @@ import {
   SelectSeparator,
   selectAnimationVariants,
 } from "ruru-ui/components/select";
-import Modal, { ModalProvider } from "ruru-ui/components/modal";
+import Modal, { ModalProvider, modalVariants } from "ruru-ui/components/modal";
 import { Dropzone } from "ruru-ui/components/dropzone";
 import AdvanceDropzone from "@/components/preview/dropzone/advanceDropzone";
 import StackPlayground from "@/components/stackPlayground";
@@ -609,6 +609,37 @@ const Playground = () => {
           </Modal>
         </ModalProvider>
       </Card>
+
+      {(Object.keys(modalVariants) as Array<keyof typeof modalVariants>).map(
+        (variantKey, index) => (
+          <Card key={index}>
+            <ModalProvider>
+              <Modal.Trigger>Open {variantKey} Modal</Modal.Trigger>
+              <Modal animationVariant={variantKey}>
+                <Modal.Body>
+                  <Modal.Header>
+                    <Modal.Title>Create Username</Modal.Title>
+                    <Modal.Subtitle>
+                      Enter a unique name for your token to differentiate it
+                      from other tokens and then select the scope.
+                    </Modal.Subtitle>
+                  </Modal.Header>
+                  <Modal.Content>
+                    <Input
+                      label="username"
+                      placeholder="enter your username."
+                    />
+                  </Modal.Content>
+                </Modal.Body>
+                <Modal.Actions>
+                  <Modal.Close variant="secondary">Cancel</Modal.Close>
+                  <Modal.Action onClick={handleSubmit}>Submit</Modal.Action>
+                </Modal.Actions>
+              </Modal>
+            </ModalProvider>
+          </Card>
+        ),
+      )}
 
       <Card className="p-10">
         <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)} />
