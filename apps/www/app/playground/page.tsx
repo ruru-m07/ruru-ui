@@ -638,7 +638,7 @@ const Playground = () => {
               </Modal>
             </ModalProvider>
           </Card>
-        )
+        ),
       )}
 
       <Card className="p-10">
