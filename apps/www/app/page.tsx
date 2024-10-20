@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Hero from "@/components/hero";
 import {
   Heart,
@@ -34,6 +36,13 @@ const CodeBlockServer = dynamic(
 );
 
 export default function HomePage() {
+  useEffect(() => {
+    if (localStorage.getItem("theme") === "light") {
+      localStorage.setItem("theme", "dark");
+      window.location.reload();
+    }
+  }, []);
+
   const data = {
     initTerminalText: `npx ruru-ui-cli@latest init
 
@@ -381,7 +390,7 @@ export default function App() {
 
             <ShapratorHorizontal />
 
-            <div className="flex flex-col md:flex-row">
+            <div className="flex xs:flex-col sm:flex-row">
               <Link href={"/theme"} className="w-full md:w-1/2 border-r">
                 <div className="z-10 p-4">
                   <div className="flex items-center ml-5 mt-5">
@@ -443,18 +452,18 @@ export default function App() {
 
             <ShapratorHorizontal />
 
-            <div className="flex flex-col md:flex-row items-center">
-              <h1 className="text-2xl font-bold w-full md:w-1/3 text-muted-foreground flex items-center justify-center p-4">
+            <div className="grid md:grid-cols-3">
+              <h1 className="text-2xl font-bold text-muted-foreground flex items-center justify-center p-4">
                 Build Your Components.
               </h1>
-              <div className="w-full md:w-1/3 p-4 border-l border-r">
+              <div className="p-4 border-l border-r">
                 <span className="text-muted-foreground">Available now</span>
                 <CodeBlockServer
                   lang="bash"
                   code={[`npx ruru-ui-cli@latest init`]}
                 />
               </div>
-              <div className="text-2xl font-bold w-full md:w-1/3 text-muted-foreground h-full flex items-center justify-center p-4 space-x-4">
+              <div className="text-2xl font-bold text-muted-foreground h-full flex items-center justify-center p-4 space-x-4">
                 <Link
                   className={cn(
                     "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",

@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     >
       <body>
         <CSPostHogProvider>
-          <RootProvider>
+          <RootProvider theme={{ defaultTheme: "dark" }}>
             <RuruProvider>
               <ScrollArea className="h-screen">{children}</ScrollArea>
             </RuruProvider>
