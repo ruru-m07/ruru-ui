@@ -390,7 +390,7 @@ export default function App() {
 
             <ShapratorHorizontal />
 
-            <div className="flex xs:flex-col sm:flex-row">
+            <div className="flex sm:flex-row">
               <Link href={"/theme"} className="w-full md:w-1/2 border-r">
                 <div className="z-10 p-4">
                   <div className="flex items-center ml-5 mt-5">
