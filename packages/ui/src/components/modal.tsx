@@ -59,6 +59,13 @@ export interface ModalProps
    * @returns {void}
    */
   onClickOutside?: () => void;
+  /**
+   * The animation variant to use for the modal.
+   *
+   * @type {string}
+   * @default "default"
+   */
+  animationVariant?: keyof typeof modalVariants;
 }
 
 /**
@@ -121,6 +128,182 @@ export interface PTagProps
   > {}
 
 /**
+ * Represents the props for the Modal component.
+ */
+export const modalVariants = {
+  default: {
+    hidden: {
+      opacity: 0,
+      y: -50,
+      rotateX: "0deg",
+      transition: { duration: 0.15 },
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotateX: "0deg",
+      transition: { duration: 0.15 },
+    },
+    exit: {
+      opacity: 0,
+      y: -50,
+      rotateX: "-10deg",
+      transition: { duration: 0.15 },
+    },
+  },
+  fade: {
+    hidden: {
+      opacity: 0,
+      transition: { duration: 0.15 },
+    },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.15 },
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.15 },
+    },
+  },
+  zoom: {
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+      transition: { duration: 0.15 },
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.15 },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      transition: { duration: 0.15 },
+    },
+  },
+  scaleBounce: {
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+      transition: { duration: 0.15 },
+    },
+    visible: {
+      opacity: 1,
+      scale: [1.1, 1],
+      transition: { duration: 0.3 },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      transition: { duration: 0.15 },
+    },
+  },
+  slideUp: {
+    hidden: {
+      opacity: 0,
+      y: 100,
+      transition: { duration: 0.15 },
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.15 },
+    },
+    exit: {
+      opacity: 0,
+      y: 100,
+      transition: { duration: 0.15 },
+    },
+  },
+  slideDown: {
+    hidden: {
+      opacity: 0,
+      y: -100,
+      transition: { duration: 0.15 },
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.15 },
+    },
+    exit: {
+      opacity: 0,
+      y: -100,
+      transition: { duration: 0.15 },
+    },
+  },
+  slideRight: {
+    hidden: {
+      opacity: 0,
+      x: 100,
+      transition: { duration: 0.15 },
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.15 },
+    },
+    exit: {
+      opacity: 0,
+      x: 100,
+      transition: { duration: 0.15 },
+    },
+  },
+  slideLeft: {
+    hidden: {
+      opacity: 0,
+      x: -100,
+      transition: { duration: 0.15 },
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.15 },
+    },
+    exit: {
+      opacity: 0,
+      x: -100,
+      transition: { duration: 0.15 },
+    },
+  },
+  flip: {
+    hidden: {
+      opacity: 0,
+      rotateY: "90deg",
+      transition: { duration: 0.15 },
+    },
+    visible: {
+      opacity: 1,
+      rotateY: "0deg",
+      transition: { duration: 0.15 },
+    },
+    exit: {
+      opacity: 0,
+      rotateY: "90deg",
+      transition: { duration: 0.15 },
+    },
+  },
+  rotate: {
+    hidden: {
+      opacity: 0,
+      rotate: "90deg",
+      transition: { duration: 0.15 },
+    },
+    visible: {
+      opacity: 1,
+      rotate: "0deg",
+      transition: { duration: 0.15 },
+    },
+    exit: {
+      opacity: 0,
+      rotate: "90deg",
+      transition: { duration: 0.15 },
+    },
+  },
+};
+
+/**
  * Represents the Modal component.
  *
  * @param {ModalProps} props - The props for the Modal component.
@@ -177,6 +360,7 @@ export const useModal = (): ModalContextProps => {
 const Modal = ({
   children,
   onClickOutside,
+  animationVariant = "default",
   ...props
 }: ModalProps): React.ReactElement => {
   const { isOpen, closeModal } = useModal();
@@ -197,27 +381,6 @@ const Modal = ({
     return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen, closeModal]);
 
-  const modalVariants = {
-    hidden: {
-      opacity: 0,
-      y: -50,
-      rotateX: "0deg",
-      transition: { duration: 0.15 },
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      rotateX: "0deg",
-      transition: { duration: 0.15 },
-    },
-    exit: {
-      opacity: 0,
-      y: -50,
-      rotateX: "-10deg",
-      transition: { duration: 0.15 },
-    },
-  };
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -232,7 +395,7 @@ const Modal = ({
           <motion.div
             className="bg-background border w-full max-w-[500px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] rounded-lg"
             onClick={(e) => e.stopPropagation()}
-            variants={modalVariants}
+            variants={modalVariants[animationVariant]}
             initial="hidden"
             animate="visible"
             exit="exit"
