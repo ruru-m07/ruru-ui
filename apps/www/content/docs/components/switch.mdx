@@ -55,8 +55,7 @@ import SwiychEvent from "../../../components/SwitchEvent.tsx";
     </Tab>
     <Tab className={"-mt-8"} value="Code">
 ```tsx
-// [!code word:Switch]
-import { Switch } from "your-ui-library/components/switch";
+import { Switch } from "ruru-ui/components/switch";
 
 export function Demo() {
     return <Switch />;
@@ -76,7 +75,7 @@ export function Demo() {
     <Tab className={"-mt-8"} value="Code">
 ```tsx
 // [!code word:disabled]
-import { Switch } from "your-ui-library/components/switch";
+import { Switch } from "ruru-ui/components/switch";
 
 export function SwitchDemo() {
     return <Switch disabled />;
@@ -85,13 +84,6 @@ export function SwitchDemo() {
     </Tab>
 
 </Tabs>
-
-## Props
-
-| Name          | Type    | Default | Description                            |
-| ------------- | ------- | ------- | -------------------------------------- |
-| **className** | **string**  | `"" `   | Additional class names for the switch. |
-| **disabled**  | **boolean** | `false` | Flag to disable the switch.            |
 
 ## Examples
 
@@ -107,9 +99,7 @@ export function SwitchDemo() {
     <Tab className={"-mt-8"} value="Code">
 ```tsx
 // [!code word:airplane-mode]
-// [!code word:id]
-// [!code word:htmlFor]
-import { Switch } from "your-ui-library/components/switch";
+import { Switch } from "ruru-ui/components/switch";
 
 export function Demo() {
     return (
@@ -134,7 +124,7 @@ export function Demo() {
     <Tab className={"-mt-8"} value="Code">
 ```tsx
 // [!code word:defaultChecked]
-import { Switch } from "your-ui-library/components/switch";
+import { Switch } from "ruru-ui/components/switch";
 
 export function SwitchDemo() {
     return <Switch defaultChecked />;
@@ -179,3 +169,12 @@ export default SwiychDemo;
     </Tab>
 </Tabs>
 
+## Props
+
+| Name                | Type                     | Default     | Description                                                  |
+| ------------------- | ------------------------ | ----------- | ------------------------------------------------------------ |
+| **className**       | **string**               | `"" `       | Additional class names for the switch.                       |
+| **disabled**        | **boolean**              | `false`     | Flag to disable the switch.                                  |
+| **id**              | **string**               | `""`        | Id for the switch.                                           |
+| **defaultChecked**  | **boolean**              | `false`     | Flag to set the switch to checked by default.                |
+| **onCheckedChange** | **(e: boolean) => void** | `undefined` | Callback function that is called when the switch is toggled. |
