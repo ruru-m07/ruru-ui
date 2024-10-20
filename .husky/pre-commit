@@ -1,1 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
 pnpm run --filter=./apps/www build:registry && pnpm prettier

@@ -7,7 +7,7 @@ preview: switch
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 import { Switch } from "ruru-ui/components/switch";
 import { Tabs as Rutabs, Tab as Rutab } from "ruru-ui/components/tabs";
-import SwiychEvent from "../../../components/SwitchEvent.tsx";
+import SwitchEvent from "../../../components/SwitchEvent.tsx";
 
 ## Installation
 
@@ -92,8 +92,8 @@ export function SwitchDemo() {
 <Tabs items={["Preview", "Code"]}>
     <Tab className={"flex justify-center"} value="Preview">
         <div className="flex items-center space-x-2">
-          <Switch id="airplane-mode" />
-          <label htmlFor="airplane-mode">toggle Mode</label>
+          <Switch id="airplane-mode-demo" />
+          <label htmlFor="airplane-mode-demo">toggle Mode</label>
         </div>
     </Tab>
     <Tab className={"-mt-8"} value="Code">
@@ -138,7 +138,7 @@ export function SwitchDemo() {
 
 <Tabs items={["Preview", "Code"]}>
     <Tab className={"flex justify-center"} value="Preview">
-        <SwiychEvent />
+        <SwitchEvent />
     </Tab>
     <Tab className={"-mt-8"} value="Code">
 ```tsx
@@ -177,4 +177,5 @@ export default SwiychDemo;
 | **disabled**        | **boolean**              | `false`     | Flag to disable the switch.                                  |
 | **id**              | **string**               | `""`        | Id for the switch.                                           |
 | **defaultChecked**  | **boolean**              | `false`     | Flag to set the switch to checked by default.                |
+| **checked**         | **boolean**              | `false`     | Flag to set the switch to checked.                           |
 | **onCheckedChange** | **(e: boolean) => void** | `undefined` | Callback function that is called when the switch is toggled. |
