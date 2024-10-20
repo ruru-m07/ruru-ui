@@ -41,7 +41,9 @@ const ModalAnimation = (): React.ReactNode => {
             {(
               Object.keys(modalVariants) as Array<keyof typeof modalVariants>
             ).map((variantKey) => (
-              <SelectItem key={variantKey} value={variantKey}>{variantKey}</SelectItem>
+              <SelectItem key={variantKey} value={variantKey}>
+                {variantKey}
+              </SelectItem>
             ))}
           </SelectGroup>
         </SelectContent>

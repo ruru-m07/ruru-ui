@@ -611,8 +611,8 @@ const Playground = () => {
       </Card>
 
       {(Object.keys(modalVariants) as Array<keyof typeof modalVariants>).map(
-        (variantKey, index) => (
-          <Card key={index}>
+        (variantKey) => (
+          <Card key={variantKey}>
             <ModalProvider>
               <Modal.Trigger>Open {variantKey} Modal</Modal.Trigger>
               <Modal animationVariant={variantKey}>
@@ -638,7 +638,7 @@ const Playground = () => {
               </Modal>
             </ModalProvider>
           </Card>
-        ),
+        )
       )}
 
       <Card className="p-10">
