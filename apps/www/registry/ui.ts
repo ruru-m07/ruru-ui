@@ -43,7 +43,6 @@ export const ui: Registry = [
   {
     name: "switch",
     type: "components:ui",
-    dependencies: ["@radix-ui/react-switch"],
     files: ["switch.tsx"],
   },
   {

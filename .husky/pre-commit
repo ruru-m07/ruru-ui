@@ -1,1 +1,14 @@
-pnpm run --filter=./apps/www build:registry && pnpm prettier
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running pre-commit hook..."
+if ! pnpm run --filter=./apps/www build:registry; then
+  echo "Error: Failed to build registry. Commit aborted."
+  exit 1
+fi
+echo "Registry built successfully. Running Prettier..."
+if ! pnpm prettier; then
+  echo "Error: Prettier formatting failed. Commit aborted."
+  exit 1
+fi
+echo "Pre-commit hook completed successfully."

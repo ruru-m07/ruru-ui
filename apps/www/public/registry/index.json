@@ -40,7 +40,6 @@
   },
   {
     "name": "switch",
-    "dependencies": ["@radix-ui/react-switch"],
     "files": ["switch.tsx"],
     "type": "components:ui"
   },
