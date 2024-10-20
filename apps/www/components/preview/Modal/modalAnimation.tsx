@@ -14,15 +14,26 @@ import {
 } from "ruru-ui/components/select";
 import Modal, { ModalProvider, modalVariants } from "ruru-ui/components/modal";
 import { Input } from "ruru-ui/components/input";
+import { Spinner } from "ruru-ui/components/spinner";
 
 const ModalAnimation = (): React.ReactNode => {
   const [selectedVariant, setSelectedVariant] = useState<string>("default");
+  const [submissionStatus, setSubmissionStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   const handleSubmit = async () => {
-    // Your submit logic here
-    console.log("Submitted");
-    // Simulate an API call or any async operation
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setSubmissionStatus("loading");
+    try {
+      // Your submit logic here
+      console.log(`Submitting with variant: ${selectedVariant}`);
+      // Simulate an API call or any async operation
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setSubmissionStatus("success");
+    } catch (error) {
+      console.error("Submission failed:", error);
+      setSubmissionStatus("error");
+    }
   };
 
   return (
@@ -65,7 +76,14 @@ const ModalAnimation = (): React.ReactNode => {
           </Modal.Body>
           <Modal.Actions>
             <Modal.Close variant="secondary">Cancel</Modal.Close>
-            <Modal.Action onClick={handleSubmit}>Submit</Modal.Action>
+            <Modal.Action
+              disabled={submissionStatus === "loading"}
+              variant={submissionStatus === "loading" ? "secondary" : "default"}
+              onClick={handleSubmit}
+            >
+              {submissionStatus === "loading" && <Spinner className="mr-2" />}{" "}
+              Submit
+            </Modal.Action>
           </Modal.Actions>
         </Modal>
       </ModalProvider>
