@@ -2,6 +2,8 @@ import SponserBanner from "@/components/sponserBanner";
 import Link from "next/link";
 import React from "react";
 
+import { Individual } from "./data";
+
 const SponsorsPage = () => {
   return (
     <div className="flex flex-col justify-center items-center py-4">
@@ -35,8 +37,25 @@ const SponsorsPage = () => {
         <p className="leading-7 [&:not(:first-child)]:mt-6 text-xs text-muted-foreground">
           Individual Sponsors
         </p>
-        <div className="my-1 text-xs flex items-center">
-          no organization sponsors yet :( <Be />
+        <div className="my-1 text-xs flex items-center mt-3">
+          {Individual.map((sponsor, i) => (
+            <a
+              key={sponsor.name}
+              href={sponsor.url}
+              rel="noreferrer noopener"
+              target="_blank"
+              className="inline-flex items-center gap-2 rounded-xl p-3 text-xs transition-colors hover:bg-primary/10"
+            >
+              <img
+                alt="avatar"
+                src={sponsor.avatar}
+                width="30"
+                height="30"
+                className="rounded-lg"
+              />
+              {sponsor.name}
+            </a>
+          ))}
         </div>
       </div>
     </div>

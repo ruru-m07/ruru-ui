@@ -22,6 +22,8 @@ import Link from "next/link";
 import { Footer } from "@/components/footer";
 import ContributorCounter from "@/components/contributor-count";
 import Image from "next/image";
+import StarButtonClient from "@/components/StarButtonClient";
+import StarButton from "@/components/starButton";
 
 const CodeBlockServer = dynamic(
   () => import("@/components/ui/code-block-server"),
@@ -381,6 +383,30 @@ export default function App() {
                 Ruru UI is 100% powered by passion and open source community.
               </p>
 
+              <div className="mb-8 flex flex-row items-center gap-2 mt-3">
+                <Link
+                  href="/sponsors"
+                  className={cn(
+                    "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+                    "border bg-gradient-to-t from-primary/10 shadow-inner shadow-primary/10 hover:bg-accent/50 hover:text-accent-foreground",
+                    "h-10 px-4 py-2",
+                  )}
+                >
+                  Sponsors
+                </Link>
+                <a
+                  href="https://github.com/ruru-m07/ruru-ui/contributors"
+                  rel="noreferrer noopener"
+                  className={cn(
+                    "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+                    "hover:bg-accent hover:text-accent-foreground",
+                    "h-10 px-4 py-2",
+                  )}
+                >
+                  Contributors
+                </a>
+              </div>
+
               <ContributorCounter repoOwner={"ruru-m07"} repoName={"ruru-ui"} />
 
               <p className="text-sm text-muted-foreground my-3">
@@ -466,25 +492,17 @@ export default function App() {
               <div className="text-2xl font-bold text-muted-foreground h-full flex items-center justify-center p-4 space-x-4">
                 <Link
                   className={cn(
-                    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
-                    "bg-primary text-primary-foreground shadow hover:bg-primary/85 hover:shadow-md",
-                    "h-9 px-4 py-2",
+                    "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+                    "bg-background bg-gradient-to-b from-primary to-primary/60 text-primary-foreground shadow-inner shadow-background/20 hover:bg-primary/90",
+                    "h-10 px-4 py-2",
                   )}
                   href={"/docs"}
                 >
                   Read Docs
                 </Link>
-                <Link
-                  className={cn(
-                    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
-                    "border-input border-[1.5px] bg-primary-foreground hover:bg-[#f3f3f3] dark:hover:bg-[#202020]",
-                    "h-9 px-4 py-2",
-                  )}
-                  href={"https://github.com/ruru-m07/ruru-ui"}
-                  target="_blank"
-                >
-                  <GitHubLogoIcon className="mr-2" /> Give a star
-                </Link>
+                <StarButtonClient>
+                  <StarButton />
+                </StarButtonClient>
               </div>
             </div>
           </div>

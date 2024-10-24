@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { Button, buttonVariants } from "ruru-ui/components/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { cn } from "@/utils/utils";
+import StarButton from "./starButton";
+import StarButtonClient from "./StarButtonClient";
 
 const Hero = () => {
   const router = useRouter();
@@ -121,15 +121,19 @@ const Hero = () => {
           beautiful, and highly customizable user interfaces.
         </p>
         <div className="flex space-x-3 mt-2">
-          <Button onClick={() => router.push("/docs")}>Get Started</Button>
-          <Button
-            onClick={() =>
-              window.open("https://github.com/ruru-m07/ruru-ui", "_blank")
-            }
-            variant={"secondary"}
+          <button
+            onClick={() => router.push("/docs")}
+            className={cn(
+              "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+              "bg-background bg-gradient-to-b from-primary to-primary/60 text-primary-foreground shadow-inner shadow-background/20 hover:bg-primary/90",
+              "h-10 px-4 py-2",
+            )}
           >
-            <GitHubLogoIcon className="mr-2" /> Give a star
-          </Button>
+            Get Started
+          </button>
+          <StarButtonClient>
+            <StarButton />
+          </StarButtonClient>
         </div>
         <div className="fixed h-[50px] border rounded-full mt-10 flex justify-around items-center px-2  top-0 backdrop-blur-xl bg-primary-foreground/35">
           {["docs", "blocks", "theme", "sponsors"].map((i) => (
