@@ -121,7 +121,7 @@ const Badge: React.FC<BadgeProps> = ({
   ...props
 }: BadgeProps): React.ReactElement => {
   return (
-    <div className={cn(badgeVariants({ variant, size }), className)} {...props}>
+    <div className={cn(badgeVariants({ variant, size }),"flex items-center justify-center", className)} {...props}>
       {icon && <span className="mr-1">{icon}</span>}
       {children}
     </div>

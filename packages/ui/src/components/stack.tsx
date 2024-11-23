@@ -3,19 +3,26 @@
 import React, { ReactNode, CSSProperties, useEffect, useState } from "react";
 import clsx from "clsx";
 
-type Direction = "row" | "column";
-type Align = "start" | "center" | "end" | "stretch" | "baseline";
-type Justify =
+export type Direction = "row" | "column";
+export type Align = "start" | "center" | "end";
+export type Justify =
   | "start"
   | "center"
   | "end"
   | "space-between"
   | "space-around"
   | "space-evenly";
-type Wrap = "nowrap" | "wrap" | "wrap-reverse";
-type Visibility = "visible" | "hidden" | "collapse";
+export type Wrap = "nowrap" | "wrap" | "wrap-reverse";
+export type Visibility = "visible" | "hidden" | "collapse";
+export type AlignContent =
+  | "start"
+  | "center"
+  | "end"
+  | "stretch"
+  | "space-between"
+  | "space-around";
 
-type Spacing =
+export type Spacing =
   | number
   | string
   | {
@@ -24,12 +31,12 @@ type Spacing =
       t?: number | string;
       b?: number | string;
     };
-type Responsive<T> = T | { sm?: T; md?: T; lg?: T; xl?: T };
+export type Responsive<T> = T | { sm?: T; md?: T; lg?: T; xl?: T };
 
 /**
  * Properties for the `Stack` component, used to manage layout by defining direction, spacing, alignment, and more.
  */
-interface StackProps {
+export interface StackProps {
   /**
    * The content elements to be rendered inside the Stack.
    *
@@ -204,9 +211,7 @@ interface StackProps {
    *   <div>Box 2</div>
    * </Stack>
    */
-  alignContent?: Responsive<
-    "start" | "center" | "end" | "stretch" | "space-between" | "space-around"
-  >;
+  alignContent?: Responsive<AlignContent>;
 
   /**
    * Controls the stacking order of the Stack using CSS `z-index`.
@@ -251,7 +256,7 @@ interface StackProps {
 
 const getResponsiveValue = <T,>(
   value: Responsive<T> | undefined,
-  defaultValue: T,
+  defaultValue: T
 ): T => {
   if (typeof value !== "object" || value === null) return value ?? defaultValue;
   if (typeof window === "undefined") return defaultValue;
@@ -360,6 +365,10 @@ export const Stack: React.FC<StackProps> = React.memo(
     style = {},
   }) => {
     const [responsiveStyles, setResponsiveStyles] = useState<CSSProperties>({});
+    // make a state that show that component is loaded
+    // and then show the component
+
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
       const updateStyles = () => {
@@ -409,6 +418,7 @@ export const Stack: React.FC<StackProps> = React.memo(
         if (zIndex !== undefined) newStyles.zIndex = zIndex;
 
         setResponsiveStyles(newStyles);
+        setIsLoaded(true);
       };
 
       updateStyles();
@@ -435,12 +445,24 @@ export const Stack: React.FC<StackProps> = React.memo(
     ]);
 
     return (
-      <div
-        className={clsx(className)}
-        style={{ ...responsiveStyles, ...style }}
-      >
-        {children}
-      </div>
+      <>
+        {isLoaded ? (
+          <div
+            className={clsx(className)}
+            style={{ ...responsiveStyles, ...style }}
+          >
+            {children}
+          </div>
+        ) : (
+          <div
+            className={"animate-pulse"}
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+          ></div>
+        )}
+      </>
     );
-  },
+  }
 );

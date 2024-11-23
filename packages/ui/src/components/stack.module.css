@@ -1,0 +1,21 @@
+/* components/stack.module.css */
+.stack {
+  display: flex;
+  flex-wrap: var(--stack-wrap, nowrap);
+  flex-direction: var(--stack-direction, row);
+  align-items: var(--stack-align, stretch);
+  justify-content: var(--stack-justify, flex-start);
+  padding: var(--stack-padding, 0);
+  margin: var(--stack-margin, 0);
+  background-color: var(--stack-bg-color, transparent);
+  border: var(--stack-border, none);
+  border-radius: var(--stack-border-radius, 0px);
+  width: var(--stack-width, auto);
+  height: var(--stack-height, auto);
+  max-width: var(--stack-max-width, none);
+  max-height: var(--stack-max-height, none);
+  align-content: var(--stack-align-content, stretch);
+  z-index: var(--stack-z-index, auto);
+  visibility: var(--stack-visibility, visible);
+  gap: var(--stack-gap, 0);
+}

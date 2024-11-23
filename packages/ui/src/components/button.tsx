@@ -9,29 +9,33 @@ import { motion } from "framer-motion";
 import { useRuru } from "@/provider";
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/70 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/85",
+        default:
+          "bg-primary text-primary-foreground shadow-sm shadow-black/[0.04] hover:bg-primary/90",
+        outline:
+          "border border-input bg-background shadow-sm shadow-black/[0.04] hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "border-input border-[1.5px] bg-secondary/55 hover:bg-secondary",
-        tertiary: "text-primary hover:bg-accent/75",
+          "bg-secondary text-secondary-foreground shadow-sm shadow-black/[0.04] hover:bg-secondary/80",
+        tertiary: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
         error: "bg-[#d93036] hover:bg-[#ff6166]",
         warning: "bg-[#ff990a] text-primary-foreground hover:bg-[#d27504]",
       },
       size: {
         default: "h-9 px-4 py-2",
-        small: "h-8 rounded-md px-3 text-xs",
-        large: "h-10 rounded-md px-8",
-        icon: "size-9",
+        small: "h-8 rounded-lg px-3 text-xs",
+        large: "h-10 rounded-lg px-8",
+        icon: "h-9 w-9",
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps
@@ -129,7 +133,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       loading = false,
       ...props
     },
-    ref,
+    ref
   ) => {
     const { animation } = useRuru();
 
@@ -142,7 +146,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             variant: loading ? "secondary" : variant,
             size,
           }),
-          className,
+          className
         )}
         ref={ref}
         disabled={disabled}
@@ -172,7 +176,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";

@@ -6,9 +6,9 @@ import { RuruProvider } from "ruru-ui/provider";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { createMetadata } from "@/utils/metadata";
-import "./global.css";
 import "fumadocs-ui/style.css";
 import "fumadocs-ui/twoslash.css";
+import "./global.css";
 import { CSPostHogProvider } from "./providers";
 
 export const metadata = createMetadata({});

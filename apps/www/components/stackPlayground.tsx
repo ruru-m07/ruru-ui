@@ -69,13 +69,6 @@ const StackPlayground = () => {
         <div className="bg-purple-300 h-12 w-12 rounded-md" />
       </Stack>
 
-      <H1>grow</H1>
-      <P>Determines how much the stack should grow relative to its siblings.</P>
-      <div className="flex h-40">
-        <Stack grow={1} className="bg-green-200" />
-        <Stack grow={2} className="bg-green-400" />
-      </div>
-
       <H1>zIndex</H1>
       <P>Controls the stack's stacking order on the page.</P>
       <Stack zIndex={10} className="relative">
@@ -111,9 +104,9 @@ const StackPlayground = () => {
         align="center"
         justify="space-between"
         padding={20}
-        backgroundColor="#fafafa"
         border="1px solid #ddd"
         borderRadius="8px"
+        className="bg-[#fafafa]"
       >
         <div className="bg-blue-500 h-12 w-12 rounded-md" />
         <div className="bg-red-500 h-12 w-12 rounded-md" />

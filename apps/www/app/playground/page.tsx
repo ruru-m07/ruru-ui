@@ -64,13 +64,15 @@ const Playground = () => {
         Types
       </H1> */}
       <Card>
-        <Button variant={"secondary"}>Upload</Button>
+        <Button variant={"secondary"}>secondary</Button>
 
-        <Button variant={"tertiary"}>Upload</Button>
+        <Button variant={"outline"}>outline</Button>
 
-        <Button variant={"error"}>Upload</Button>
+        <Button variant={"tertiary"}>tertiary</Button>
 
-        <Button variant={"warning"}>Upload</Button>
+        <Button variant={"error"}>error</Button>
+
+        <Button variant={"warning"}>warning</Button>
       </Card>
 
       <Card>
@@ -195,7 +197,7 @@ const Playground = () => {
 
       <Card>
         <div className="space-y-2">
-          <div className="space-x-2">
+          <div className="space-x-2 flex flex-wrap">
             <Badge variant="gray" size="lg" icon={<CubeIcon />}>
               gray
             </Badge>
@@ -217,7 +219,7 @@ const Playground = () => {
             </Badge>
           </div>
 
-          <div className="space-x-2">
+          <div className="space-x-2 flex flex-wrap">
             <Badge variant="blue" size="lg" icon={<CubeIcon />}>
               blue
             </Badge>
@@ -239,7 +241,7 @@ const Playground = () => {
             </Badge>
           </div>
 
-          <div className="space-x-2">
+          <div className="space-x-2 flex flex-wrap">
             <Badge variant="purple" size="lg" icon={<CubeIcon />}>
               purple
             </Badge>
@@ -261,7 +263,7 @@ const Playground = () => {
             </Badge>
           </div>
 
-          <div className="space-x-2">
+          <div className="space-x-2 flex flex-wrap">
             <Badge variant="amber" size="lg" icon={<CubeIcon />}>
               amber
             </Badge>
@@ -283,7 +285,7 @@ const Playground = () => {
             </Badge>
           </div>
 
-          <div className="space-x-2">
+          <div className="space-x-2 flex flex-wrap">
             <Badge variant="red" size="lg" icon={<CubeIcon />}>
               red
             </Badge>
@@ -305,7 +307,7 @@ const Playground = () => {
             </Badge>
           </div>
 
-          <div className="space-x-2">
+          <div className="space-x-2 flex flex-wrap">
             <Badge variant="pink" size="lg" icon={<CubeIcon />}>
               pink
             </Badge>
@@ -327,7 +329,7 @@ const Playground = () => {
             </Badge>
           </div>
 
-          <div className="space-x-2">
+          <div className="space-x-2 flex flex-wrap">
             <Badge variant="green" size="lg" icon={<CubeIcon />}>
               green
             </Badge>
@@ -349,7 +351,7 @@ const Playground = () => {
             </Badge>
           </div>
 
-          <div className="space-x-2">
+          <div className="space-x-2 flex flex-wrap">
             <Badge variant="teal" size="lg" icon={<CubeIcon />}>
               teal
             </Badge>
@@ -371,7 +373,7 @@ const Playground = () => {
             </Badge>
           </div>
 
-          <div className="space-x-2">
+          <div className="space-x-2 flex flex-wrap">
             <Badge variant="inverted" size="lg" icon={<CubeIcon />}>
               inverted
             </Badge>

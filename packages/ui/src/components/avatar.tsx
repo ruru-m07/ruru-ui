@@ -76,7 +76,7 @@ const Avatar = React.forwardRef<HTMLImageElement, AvatarProps>(
         {...props}
       />
     );
-  },
+  }
 );
 Avatar.displayName = "Avatar";
 /**
@@ -163,7 +163,7 @@ type AvatarGroupProps = Omit<
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   (
     { className, aClassName, lnClassName, size = 30, members, limit, ...props },
-    ref,
+    ref
   ) => {
     const displayedMembers =
       limit && members.length > limit ? members.slice(0, limit - 1) : members;
@@ -185,7 +185,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
           <div
             className={cn(
               `lastcount -ml-2 flex items-center justify-center rounded-full border bg-muted`,
-              lnClassName,
+              lnClassName
             )}
             style={{
               width: `${size}px`,
@@ -197,7 +197,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
         )}
       </div>
     );
-  },
+  }
 );
 AvatarGroup.displayName = "AvatarGroup";
 /**
@@ -310,7 +310,7 @@ const AvatarWithBadge = React.forwardRef<HTMLDivElement, AvatarWithBadgeProps>(
       badgeSrc,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <div
@@ -334,7 +334,7 @@ const AvatarWithBadge = React.forwardRef<HTMLDivElement, AvatarWithBadgeProps>(
         <img
           className={cn(
             "absolute bottom-0 left-0 rounded-full border",
-            sClassName,
+            sClassName
           )}
           style={{
             width: `${size / 3}px`,
@@ -345,8 +345,9 @@ const AvatarWithBadge = React.forwardRef<HTMLDivElement, AvatarWithBadgeProps>(
         />
       </div>
     );
-  },
+  }
 );
 AvatarWithBadge.displayName = "AvatarWithBadge";
 
 export { Avatar, AvatarGroup, AvatarWithBadge };
+export type { AvatarProps, AvatarGroupProps, AvatarWithBadgeProps };

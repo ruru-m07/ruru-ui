@@ -393,7 +393,7 @@ const Modal = ({
           {...props}
         >
           <motion.div
-            className="bg-background border w-full max-w-[500px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] rounded-lg"
+            className="bg-background border w-full max-w-[500px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] rounded-lg overflow-hidden"
             onClick={(e) => e.stopPropagation()}
             variants={modalVariants[animationVariant]}
             initial="hidden"
