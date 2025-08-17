@@ -1,5 +1,12 @@
 # Ruru-UI
 
+> [!CAUTION]
+> 🚧 I stopped maintaining this project a long time ago. I know it’s not that useful, polished, or impressive, but it still remains one of the best experiences I’ve had. I spent a lot of time and effort on it, and even though not every story has a happy ending, I can’t explain how much skill and knowledge I gained from it—it was totally worth it! This project may not count as one of my greatest achievements and might not provide much value on its own, but the skills and experience I earned from it are truly invaluable. ;D
+> 
+> ![last commit](https://img.shields.io/date/1729420800?label=updated&color=red&logo=github)
+
+---
+
 Welcome to ruru UI, a comprehensive UI library and a set of reusable components designed to help you build beautiful and consistent user interfaces with ease.
 
 ![banner-modified](./apps/www/public/assets/banner.jpg)
